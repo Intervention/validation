@@ -1,0 +1,25 @@
+{
+    "name": "intervention/validation",
+    "description": "Additional Validator Functions for the Laravel 4 Framework",
+    "version": "0.6.0-dev",
+    "keywords": ["validation", "Validator", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oliver Vogel",
+            "email": "oliver@olivervogel.net",
+            "homepage": "http://olivervogel.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "illuminate/validation": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Intervention\\Validation": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
