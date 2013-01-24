@@ -40,6 +40,7 @@ class ValidationServiceProvider extends ServiceProvider {
 				$messages['bic'] = $translator->get('validation::validation.bic');
 				$messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
 				$messages['creditcard'] = $translator->get('validation::validation.creditcard');
+				$messages['isbn'] = $translator->get('validation::validation.isbn');
 
 				return new ValidatorExtension($translator, $data, $rules, $messages);
 			});	

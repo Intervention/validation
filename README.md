@@ -27,7 +27,7 @@ Open your Laravel config file `config/app.php` and change the service provider f
     ),
   
 
-## Available Validation Rules
+## Available Validation Rules for Laravel 4
 
 The installed package provides the following additional validation rules including error messages.
 
@@ -46,3 +46,7 @@ The given field must be a valid creditcard number.
 ### hexcolor
 
 The field under validation must be a valid hexadecimal color code.
+
+### isbn
+
+The field under validation must be a valid International Standard Book Number (ISBN).

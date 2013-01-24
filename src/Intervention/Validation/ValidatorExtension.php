@@ -31,4 +31,9 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return $this->validator->isCreditcard($value);
     }
+
+    public function validateIsbn($attribute, $value, $parameters)
+    {
+        return $this->validator->isIsbn($value);
+    }
 }
