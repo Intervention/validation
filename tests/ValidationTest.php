@@ -57,4 +57,33 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         $this->assertFalse($this->validator->isIsbn($no_isbn));
     }
 
+    public function testValidateIsodate()
+    {
+        $iso_dates = array(
+            '1977-06-17',
+            '2000-06-17 06:15:12',
+            '1977',
+            '1977-06-17 00:00',
+            '1977-06-17 14:12:59',
+            '2009-05-19 14:39:22+0600'
+        );
+
+        foreach ($iso_dates as $date) {
+            $this->assertTrue($this->validator->isIsodate($date));
+        }
+
+        $no_iso_dates = array(
+            '17. Juni 1977',
+            '2000-16-37 06:15:12',
+            'test',
+            '0000-00-00 00:00',
+            '1977-06-17 44:81:99',
+            '2009-05-19 14:39:22+5234'
+        );
+
+        foreach ($no_iso_dates as $no_date) {
+            $this->assertFalse($this->validator->isIsodate($no_date));
+        }
+    }
+
 }

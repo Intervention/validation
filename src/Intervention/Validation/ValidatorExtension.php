@@ -36,4 +36,9 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return $this->validator->isIsbn($value);
     }
+
+    public function validateIsodate($attribute, $value, $parameters)
+    {
+        return $this->validator->isIsodate($value);
+    }
 }

@@ -6,6 +6,7 @@ return array(
     'bic' => 'Der Wert :attribute muss einen gültigen Business Identifier Code (BIC) enthalten.',
     'hexcolor' => 'Der Wert :attribute muss einen gültigen Hexadezimal Farbwert enthalten.',
     'creditcard' => 'Der Wert :attribute ist keine gültige Kreditkartennummer.',
-    'isbn' => 'Der Wert :attribute muss eine gültige International Standard Book Number (ISBN) enthalten.'
+    'isbn' => 'Der Wert :attribute muss eine gültige International Standard Book Number (ISBN) enthalten.',
+    'isodate' => 'Der Wert :attribute enthält kein gültiges Datum nach ISO 8601.'
     
 );

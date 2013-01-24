@@ -50,3 +50,7 @@ The field under validation must be a valid hexadecimal color code.
 ### isbn
 
 The field under validation must be a valid International Standard Book Number (ISBN).
+
+### isodate
+
+The field under validation must be a valid date in ISO 8601 format.
