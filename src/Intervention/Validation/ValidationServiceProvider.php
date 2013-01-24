@@ -34,13 +34,18 @@ class ValidationServiceProvider extends ServiceProvider {
 			$validator = new Factory($app['translator']);
 
 			$validator->resolver(function($translator, $data, $rules, $messages) {
+
+				// set the package validation error messages
+				$messages['iban'] = $translator->get('validation::validation.iban');
+				$messages['bic'] = $translator->get('validation::validation.bic');
+				$messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
+				$messages['creditcard'] = $translator->get('validation::validation.creditcard');
+
 				return new ValidatorExtension($translator, $data, $rules, $messages);
 			});	
 
 			return $validator;
 		});
-
-		
 	}
 
 	/**
