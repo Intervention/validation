@@ -34,13 +34,13 @@ class Validator
     public function isBic($value)
     {
         $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';       
-        return preg_match($pattern, $value);
+        return (boolean) preg_match($pattern, $value);
     }
 
     public function isHexcolor($value)
     {
         $pattern = '/^#?[a-fA-F0-9]{3,6}$/';
-        return preg_match($pattern, $value);
+        return (boolean) preg_match($pattern, $value);
     }
 
     public function isCreditcard($value)
