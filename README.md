@@ -27,9 +27,9 @@ Open your Laravel config file `config/app.php` and change the service provider f
     ),
   
 
-## Available Validation Rules for Laravel 4
+## Usage with Laravel 4
 
-The installed package provides the following additional validation rules including error messages.
+The installed package provides the following additional `validation rules` including their error messages.
 
 ### bic
 
@@ -54,3 +54,13 @@ The field under validation must be a valid International Standard Book Number (I
 ### isodate
 
 The field under validation must be a valid date in ISO 8601 format.
+
+
+## Usage outside of Laravel
+
+* Validator::isIban - Checks if given value is valid International Bank Account Number (IBAN).
+* Validator::isBic - Checks if given value is valid International Bank Account Number (IBAN).
+* Validator::isHexcolor - Checks if value is valid hexadecimal color code.
+* Validator::isCreditcard - Checks if value is valid creditcard number.
+* Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
+* Validator::isIsodate - Checks if given value is date in ISO 8601 format.

@@ -4,6 +4,12 @@ namespace Intervention\Validation;
 
 class Validator
 {
+    /**
+     * Checks if given value is valid International Bank Account Number (IBAN).
+     * 
+     * @param  mixed  $value
+     * @return boolean 
+     */
     public function isIban($value)
     {
         // build replacement arrays
@@ -31,18 +37,36 @@ class Validator
         return $tempcheckvalue == 1;
     }
 
+    /**
+     * Checks if given value is valid International Bank Account Number (IBAN).
+     * 
+     * @param  mixed  $value
+     * @return boolean       
+     */
     public function isBic($value)
     {
         $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';       
         return (boolean) preg_match($pattern, $value);
     }
 
+    /**
+     * Checks if value is valid hexadecimal color code.
+     * 
+     * @param  mixed  $value
+     * @return boolean        
+     */
     public function isHexcolor($value)
     {
         $pattern = '/^#?[a-fA-F0-9]{3,6}$/';
         return (boolean) preg_match($pattern, $value);
     }
 
+    /**
+     * Checks if value is valid creditcard number.
+     * 
+     * @param  mixed  $value 
+     * @return boolean        
+     */
     public function isCreditcard($value)
     {
         $length = strlen($value);
@@ -65,6 +89,13 @@ class Validator
         return ($mod == $value[$length - 1]);
     }
 
+
+    /**
+     * Checks if given value is valid International Standard Book Number (ISBN).
+     * 
+     * @param  mixed  $value
+     * @return boolean        
+     */
     public function isIsbn($value)
     {
         $value = str_replace(array(' ', '-', '.'), '', $value);
@@ -111,6 +142,12 @@ class Validator
         return false;
     }
 
+    /**
+     * Checks if given value is date in ISO 8601 format.
+     * 
+     * @param  mixed  $value 
+     * @return boolean        
+     */
     public function isIsodate($value)
     {
         $pattern = '/^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/';
