@@ -1,7 +1,6 @@
 {
     "name": "intervention/validation",
     "description": "Additional Validator Functions for the Laravel 4 Framework",
-    "version": "0.6.0",
     "keywords": ["validation", "Validator", "laravel"],
     "license": "MIT",
     "authors": [
