@@ -42,6 +42,7 @@ class ValidationServiceProvider extends ServiceProvider {
 				$messages['creditcard'] = $translator->get('validation::validation.creditcard');
 				$messages['isbn'] = $translator->get('validation::validation.isbn');
 				$messages['isodate'] = $translator->get('validation::validation.isodate');
+				$messages['username'] = $translator->get('validation::validation.username');
 
 				return new ValidatorExtension($translator, $data, $rules, $messages);
 			});	

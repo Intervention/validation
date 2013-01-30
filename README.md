@@ -55,6 +55,10 @@ The field under validation must be a valid International Standard Book Number (I
 
 The field under validation must be a valid date in ISO 8601 format.
 
+### username
+
+The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores and starting with a alphabetic character. 
+
 
 ## Usage outside of Laravel
 
@@ -64,3 +68,4 @@ The field under validation must be a valid date in ISO 8601 format.
 * Validator::isCreditcard - Checks if value is valid creditcard number.
 * Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
 * Validator::isIsodate - Checks if given value is date in ISO 8601 format.
+* Validator::isUsername - Checks if given value is a valid username

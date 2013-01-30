@@ -86,4 +86,45 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         }
     }
 
+    public function testValidateUsername()
+    {
+        $usernames = array(
+            'tester',
+            'test',
+            'test_',
+            'mr_freeze',
+            'r00t',
+            'The_quick_brown_foXXX',
+        );
+
+        foreach ($usernames as $name) {
+            $this->assertTrue($this->validator->isUsername($name));
+        }
+
+        $no_usernames = array(
+            'mr.freeze',
+            'mr freeze',
+            'mr-freeze',
+            '1337',
+            '-91819',
+            '&nbsp;',
+            '<html></html>',
+            '-_homer_-',
+            '_test_',
+            '04420',
+            '',
+            ' ',
+            'array()',
+            'x',
+            '$234_&',
+            '?test=1',
+            '€uro',
+            'SupersupersupersupersupersupersupersupersupersupersuperMan',
+        );
+
+        foreach ($no_usernames as $username) {
+            $this->assertFalse($this->validator->isUsername($username));
+        }
+    }
+
 }

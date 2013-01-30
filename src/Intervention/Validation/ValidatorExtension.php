@@ -79,4 +79,14 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return $this->validator->isIsodate($value);
     }
+
+    /**
+     * Provides 'username' validation rule for Laravel4
+     * 
+     * @return bool
+     */
+    public function validateUsername($attribute, $value, $parameters)
+    {
+        return $this->validator->isUsername($value);
+    }
 }
