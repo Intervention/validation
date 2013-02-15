@@ -1,4 +1,6 @@
-<?php namespace Intervention\Validation;
+<?php
+
+namespace Intervention\Validation;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Factory;
