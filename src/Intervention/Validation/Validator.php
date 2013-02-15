@@ -6,9 +6,9 @@ class Validator
 {
     /**
      * Checks if given value is valid International Bank Account Number (IBAN).
-     * 
+     *
      * @param  mixed  $value
-     * @return boolean 
+     * @return boolean
      */
     public function isIban($value)
     {
@@ -17,43 +17,43 @@ class Validator
         foreach (range(10, 35) as $tempvalue) {
             $iban_replace_values[] = strval($tempvalue);
         }
-    
+
         // prepare string
         $tempiban = strtoupper($value);
         $tempiban = str_replace(' ', '', $tempiban);
-    
+
         // build checksum
         $tempiban = substr($tempiban, 4).substr($tempiban, 0, 4);
         $tempiban = str_replace($iban_replace_chars, $iban_replace_values, $tempiban);
         $tempcheckvalue = intval(substr($tempiban, 0, 1));
-        
+
         for ($strcounter = 1; $strcounter < strlen($tempiban); $strcounter++) {
-            $tempcheckvalue *= 10; 
+            $tempcheckvalue *= 10;
             $tempcheckvalue += intval(substr($tempiban,$strcounter,1));
             $tempcheckvalue %= 97;
         }
-    
+
         // only modulo 1 is iban
         return $tempcheckvalue == 1;
     }
 
     /**
      * Checks if given value is valid International Bank Account Number (IBAN).
-     * 
+     *
      * @param  mixed  $value
-     * @return boolean       
+     * @return boolean
      */
     public function isBic($value)
     {
-        $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';       
+        $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';
         return (boolean) preg_match($pattern, $value);
     }
 
     /**
      * Checks if value is valid hexadecimal color code.
-     * 
+     *
      * @param  mixed  $value
-     * @return boolean        
+     * @return boolean
      */
     public function isHexcolor($value)
     {
@@ -63,9 +63,9 @@ class Validator
 
     /**
      * Checks if value is valid creditcard number.
-     * 
-     * @param  mixed  $value 
-     * @return boolean        
+     *
+     * @param  mixed  $value
+     * @return boolean
      */
     public function isCreditcard($value)
     {
@@ -92,9 +92,9 @@ class Validator
 
     /**
      * Checks if given value is valid International Standard Book Number (ISBN).
-     * 
+     *
      * @param  mixed  $value
-     * @return boolean        
+     * @return boolean
      */
     public function isIsbn($value)
     {
@@ -123,7 +123,7 @@ class Validator
             return ($mod == 0);
 
         } elseif ($length == 13) {
-            
+
             $sum = 0;
 
             $sum =  $value[0] + ($value[1] * 3) + $value[2] + ($value[3] * 3) +
@@ -144,9 +144,9 @@ class Validator
 
     /**
      * Checks if given value is date in ISO 8601 format.
-     * 
-     * @param  mixed  $value 
-     * @return boolean        
+     *
+     * @param  mixed  $value
+     * @return boolean
      */
     public function isIsodate($value)
     {
@@ -156,7 +156,7 @@ class Validator
 
     /**
      * Checks if value is Username
-     *        
+     *
      * @param  mixed  $value
      * @return boolean
      */

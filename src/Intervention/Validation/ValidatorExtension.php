@@ -12,9 +12,9 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Creates new instance of ValidatorExtension
-     * 
+     *
      */
-    public function __construct($translator, $data, $rules, $messages) 
+    public function __construct($translator, $data, $rules, $messages)
     {
         parent::__construct($translator, $data, $rules, $messages);
         $this->validator = new Validator;
@@ -22,7 +22,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Provides 'iban' validation rule for Laravel4
-     * 
+     *
      * @return bool
      */
     public function validateIban($attribute, $value, $parameters)
@@ -32,7 +32,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Proved 'bic' validation rule for Laravel4
-     * 
+     *
      * @return bool
      */
     public function validateBic($attribute, $value, $parameters)
@@ -42,7 +42,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Provides 'hexcolor' validation rule for Laravel4
-     * 
+     *
      * @return bool
      */
     public function validateHexcolor($attribute, $value, $parameters)
@@ -52,7 +52,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Provides 'creditcard' validation rule for Laravel4
-     * 
+     *
      * @return bool
      */
     public function validateCreditcard($attribute, $value, $parameters)
@@ -62,8 +62,8 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Provides 'isbn' validation rule for Laravel4
-     * 
-     * @return bool  
+     *
+     * @return bool
      */
     public function validateIsbn($attribute, $value, $parameters)
     {
@@ -82,7 +82,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
 
     /**
      * Provides 'username' validation rule for Laravel4
-     * 
+     *
      * @return bool
      */
     public function validateUsername($attribute, $value, $parameters)
