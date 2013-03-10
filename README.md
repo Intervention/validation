@@ -69,3 +69,7 @@ The field under validation must be a valid username with a minimum of 3 characte
 * Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
 * Validator::isIsodate - Checks if given value is date in ISO 8601 format.
 * Validator::isUsername - Checks if given value is a valid username
+
+## License
+
+Intervention Validation Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).
