@@ -32,6 +32,7 @@ class ValidationServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['validator'] = $this->app->share(function($app) {
+            
             $validator = new Factory($app['translator']);
 
             $validator->resolver(function($translator, $data, $rules, $messages) {
