@@ -16,7 +16,7 @@ Run Composer to update the new requirement.
 
 The Validation class is built to work with the Laravel 4 Framework. The integration is done in seconds.
 
-Open your Laravel config file `config/app.php` and change the service provider for validation in the `$providers` array from the original validation provider `'Illuminate\Validation\ValidationServiceProvider'` to the following:
+Open your Laravel config file `config/app.php` and add service provider in the `$providers` array:
     
     'providers' => array(
 

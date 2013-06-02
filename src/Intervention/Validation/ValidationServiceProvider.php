@@ -22,6 +22,21 @@ class ValidationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->package('intervention/validation');
+
+        // registering intervention validator extension
+        $this->app['validator']->resolver(function($translator, $data, $rules, $messages) {
+
+            // set the package validation error messages
+            $messages['iban'] = $translator->get('validation::validation.iban');
+            $messages['bic'] = $translator->get('validation::validation.bic');
+            $messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
+            $messages['creditcard'] = $translator->get('validation::validation.creditcard');
+            $messages['isbn'] = $translator->get('validation::validation.isbn');
+            $messages['isodate'] = $translator->get('validation::validation.isodate');
+            $messages['username'] = $translator->get('validation::validation.username');
+
+            return new ValidatorExtension($translator, $data, $rules, $messages);
+        });
     }
 
     /**
@@ -31,26 +46,7 @@ class ValidationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['validator'] = $this->app->share(function($app) {
-            
-            $validator = new Factory($app['translator']);
-
-            $validator->resolver(function($translator, $data, $rules, $messages) {
-
-                // set the package validation error messages
-                $messages['iban'] = $translator->get('validation::validation.iban');
-                $messages['bic'] = $translator->get('validation::validation.bic');
-                $messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
-                $messages['creditcard'] = $translator->get('validation::validation.creditcard');
-                $messages['isbn'] = $translator->get('validation::validation.isbn');
-                $messages['isodate'] = $translator->get('validation::validation.isodate');
-                $messages['username'] = $translator->get('validation::validation.username');
-
-                return new ValidatorExtension($translator, $data, $rules, $messages);
-            });
-
-            return $validator;
-        });
+        # code...
     }
 
     /**
