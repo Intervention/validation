@@ -10,7 +10,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isIban($value)
+    public static function isIban($value)
     {
         // build replacement arrays
         $iban_replace_chars = range('A', 'Z');
@@ -43,7 +43,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isBic($value)
+    public static function isBic($value)
     {
         $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';
         return (boolean) preg_match($pattern, $value);
@@ -55,7 +55,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isHexcolor($value)
+    public static function isHexcolor($value)
     {
         $pattern = '/^#?[a-fA-F0-9]{3,6}$/';
         return (boolean) preg_match($pattern, $value);
@@ -67,7 +67,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isCreditcard($value)
+    public static function isCreditcard($value)
     {
         $length = strlen($value);
 
@@ -96,7 +96,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isIsbn($value)
+    public static function isIsbn($value)
     {
         $value = str_replace(array(' ', '-', '.'), '', $value);
         $length = strlen($value);
@@ -148,7 +148,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isIsodate($value)
+    public static function isIsodate($value)
     {
         $pattern = '/^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/';
         return (boolean) preg_match($pattern, $value);
@@ -160,7 +160,7 @@ class Validator
      * @param  mixed  $value
      * @return boolean
      */
-    public function isUsername($value)
+    public static function isUsername($value)
     {
         // username consists of alpha-numeric (a-z, A-Z, 0-9), underscores
         // starts with a alpha letter
