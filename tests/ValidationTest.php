@@ -4,35 +4,28 @@ use Intervention\Validation\Validator;
 
 class ValidationTest extends PHPUnit_Framework_Testcase
 {
-    protected $validator;
-
-    public function setUp()
-    {
-        $this->validator = new Validator;
-    }
-
     public function testValidateIban()
     {
         $iban = 'DE12500105170648489890';
         $no_iban = 'DE21340155170648089890';
-        $this->assertTrue($this->validator->isIban($iban));
-        $this->assertFalse($this->validator->isIban($no_iban));
+        $this->assertTrue(Validator::isIban($iban));
+        $this->assertFalse(Validator::isIban($no_iban));
     }
 
     public function testValidateBic()
     {
         $bic = 'PBNKDEFF';
         $no_bic = 'ABNFDBF';
-        $this->assertTrue($this->validator->isBic($bic));
-        $this->assertFalse($this->validator->isBic($no_bic));
+        $this->assertTrue(Validator::isBic($bic));
+        $this->assertFalse(Validator::isBic($no_bic));
     }
 
     public function testValidateCreditcard()
     {
         $cc = '4444111122223333';
         $no_cc = '9182819264532375';
-        $this->assertTrue($this->validator->isCreditcard($cc));
-        $this->assertFalse($this->validator->isCreditcard($no_cc));
+        $this->assertTrue(Validator::isCreditcard($cc));
+        $this->assertFalse(Validator::isCreditcard($no_cc));
     }
 
     public function testValidateHexcolor()
@@ -40,9 +33,9 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         $hex1 = '#cccccc';
         $hex2 = 'b33517';
         $no_hex = 'x25s11';
-        $this->assertTrue($this->validator->isHexcolor($hex1));
-        $this->assertTrue($this->validator->isHexcolor($hex2));
-        $this->assertFalse($this->validator->isHexcolor($no_hex));
+        $this->assertTrue(Validator::isHexcolor($hex1));
+        $this->assertTrue(Validator::isHexcolor($hex2));
+        $this->assertFalse(Validator::isHexcolor($no_hex));
     }
 
     public function testValidateIsbn()
@@ -51,10 +44,10 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         $isbn2 = '978-3499255496';
         $isbn3 = '85-359-0277-5';
         $no_isbn = '123459181';
-        $this->assertTrue($this->validator->isIsbn($isbn1));
-        $this->assertTrue($this->validator->isIsbn($isbn2));
-        $this->assertTrue($this->validator->isIsbn($isbn3));
-        $this->assertFalse($this->validator->isIsbn($no_isbn));
+        $this->assertTrue(Validator::isIsbn($isbn1));
+        $this->assertTrue(Validator::isIsbn($isbn2));
+        $this->assertTrue(Validator::isIsbn($isbn3));
+        $this->assertFalse(Validator::isIsbn($no_isbn));
     }
 
     public function testValidateIsodate()
@@ -69,7 +62,7 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         );
 
         foreach ($iso_dates as $date) {
-            $this->assertTrue($this->validator->isIsodate($date));
+            $this->assertTrue(Validator::isIsodate($date));
         }
 
         $no_iso_dates = array(
@@ -82,7 +75,7 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         );
 
         foreach ($no_iso_dates as $no_date) {
-            $this->assertFalse($this->validator->isIsodate($no_date));
+            $this->assertFalse(Validator::isIsodate($no_date));
         }
     }
 
@@ -98,7 +91,7 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         );
 
         foreach ($usernames as $name) {
-            $this->assertTrue($this->validator->isUsername($name));
+            $this->assertTrue(Validator::isUsername($name));
         }
 
         $no_usernames = array(
@@ -123,7 +116,7 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         );
 
         foreach ($no_usernames as $username) {
-            $this->assertFalse($this->validator->isUsername($username));
+            $this->assertFalse(Validator::isUsername($username));
         }
     }
 
