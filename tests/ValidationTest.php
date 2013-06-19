@@ -120,4 +120,32 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         }
     }
 
+    public function testValidateHtmlclean()
+    {
+        // clean
+        $this->assertTrue(Validator::isHtmlclean('123456'));
+        $this->assertTrue(Validator::isHtmlclean('1+2=3'));
+        $this->assertTrue(Validator::isHtmlclean('The quick brown fox jumps over the lazy dog.'));
+        $this->assertTrue(Validator::isHtmlclean('>>>test'));
+        $this->assertTrue(Validator::isHtmlclean('>test'));
+        $this->assertTrue(Validator::isHtmlclean('test>'));
+        $this->assertTrue(Validator::isHtmlclean('attr="test"'));
+        $this->assertTrue(Validator::isHtmlclean('one < two'));
+        $this->assertTrue(Validator::isHtmlclean('two>one'));
+
+        // html
+        $this->assertFalse(Validator::isHtmlclean('The quick brown fox jumps <strong>over</strong> the lazy dog.'));
+        $this->assertFalse(Validator::isHtmlclean('<html>'));
+        $this->assertFalse(Validator::isHtmlclean('<HTML>test</HTML>'));
+        $this->assertFalse(Validator::isHtmlclean('<html attr="test">'));
+        $this->assertFalse(Validator::isHtmlclean('Test</p>'));
+        $this->assertFalse(Validator::isHtmlclean('Test</>'));
+        $this->assertFalse(Validator::isHtmlclean('Test<>'));
+        $this->assertFalse(Validator::isHtmlclean('<0>'));
+        $this->assertFalse(Validator::isHtmlclean('<>'));
+        $this->assertFalse(Validator::isHtmlclean('><'));
+        
+        
+    }
+
 }

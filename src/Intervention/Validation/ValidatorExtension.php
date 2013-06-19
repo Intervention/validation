@@ -82,4 +82,14 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return Validator::isUsername($value);
     }
+
+    /**
+     * Provides 'htmlclean' validation rule for Laravel 4
+     *
+     * @return bool
+     */
+    public function validateHtmlclean($attribute, $value, $parameters)
+    {
+        return Validator::isHtmlclean($value);
+    }
 }

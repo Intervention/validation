@@ -168,4 +168,15 @@ class Validator
         $pattern = '/^[a-z][a-z\d_]{2,20}$/i';
         return (boolean) preg_match($pattern, $value);
     }
+
+    /**
+     * Checks if value is free of HTML code
+     *
+     * @param  mixed  $value
+     * @return boolean
+     */
+    public static function isHtmlclean($value)
+    {
+        return (strip_tags($value) == $value);
+    }
 }

@@ -8,6 +8,7 @@ return array(
     'creditcard' => 'Der Wert :attribute ist keine gültige Kreditkartennummer.',
     'isbn' => 'Der Wert :attribute muss eine gültige International Standard Book Number (ISBN) enthalten.',
     'isodate' => 'Der Wert :attribute enthält kein gültiges Datum nach ISO 8601.',
-    'username' => 'Der Wert :attribute enthält keinen gültigen Benutzernamen.'
+    'username' => 'Der Wert :attribute enthält keinen gültigen Benutzernamen.',
+    'htmlclean' => 'Der Wert :attribute enthält nicht erlaubten HTML Code.'
 
 );
