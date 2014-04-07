@@ -148,4 +148,56 @@ class ValidationTest extends PHPUnit_Framework_Testcase
         
     }
 
+    public function testValidatePassword()
+    {
+        $good = array(
+            'BcD3#2',
+            'BcD3?2',
+            'b1xo$S',
+            'P0rßche',
+            'Ada59926835096|70074c3d7814a506d',
+            'ES6]Jascha',
+            'y0mAma!',
+            '2&c5DSo',
+            'PW3n_9B,{)Jj[\'Z}oe[[n.W',
+            '<Br0wn>'
+        );
+
+        $bad = array(
+            '',
+            ' ',
+            '          ',
+            1,
+            'abc',
+            'abcdef',
+            'abcdef1',
+            'abcdef1#',
+            '1234567',
+            'BcD32',
+            '2&c5dso',
+            'G&cadO',
+            'x1cAdO',
+            'x%adO',
+            '<br0wn>',
+            '&nbsp;',
+            'bcd3_2',
+            'b1Xo$',
+            'b1xo$s',
+            'Porsche',
+            'test',
+            'f&casDSo',
+            'ada59926835096a70074c3d7814a506d',
+            'identyowehowedeiwckeudepbetyeuw',
+            'Ada59926835096|70074c3d7814a506dAda59926835096|70074c3d7814a506dX'
+        );
+
+        foreach ($good as $password) {
+            $this->assertTrue(Validator::isPassword($password));
+        }
+
+        foreach ($bad as $password) {
+            $this->assertFalse(Validator::isPassword($password));
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ return array(
     'isbn' => ':attribute must be a valid International Standard Book Number (ISBN).',
     'isodate' => 'The value :attribute must be a valid date in ISO 8601 format.',
     'username' => 'The value :attribute must be a valid username.',
-    'htmlclean' => 'The value :attribute contains forbidden HTML code.'
+    'htmlclean' => 'The value :attribute contains forbidden HTML code.',
+    'password' => ':attribute must contain 6 to 64 characters including at least one digit, one upper case letter, one lower case letter and one special symbol.'
 
 );

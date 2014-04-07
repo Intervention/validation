@@ -92,4 +92,14 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return Validator::isHtmlclean($value);
     }
+
+    /**
+     * Provides 'password' validation rule for Laravel 4
+     *
+     * @return bool
+     */
+    public function validatePassword($attribute, $value, $parameters)
+    {
+        return Validator::isPassword($value);
+    }
 }

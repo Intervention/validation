@@ -179,4 +179,16 @@ class Validator
     {
         return (strip_tags($value) == $value);
     }
+
+    /**
+     * Checks if password has certain strength
+     *
+     * @param  mixed $value
+     * @return boolean
+     */
+    public static function isPassword($value)
+    {
+        $pattern = "/^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,64})$/";
+        return (boolean) preg_match($pattern, $value);
+    }
 }
