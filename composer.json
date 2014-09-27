@@ -16,8 +16,8 @@
         "illuminate/validation": "~4|~5"
     },
     "autoload": {
-        "psr-0": {
-            "Intervention\\Validation": "src/"
+        "psr-4": {
+            "Intervention\\Validation\\": "src/Intervention/Validation"
         }
     },
     "minimum-stability": "dev"
