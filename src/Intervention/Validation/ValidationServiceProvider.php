@@ -3,7 +3,6 @@
 namespace Intervention\Validation;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Validation\Factory;
 
 class ValidationServiceProvider extends ServiceProvider
 {
@@ -15,30 +14,33 @@ class ValidationServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Actual provider
+     *
+     * @var \Illuminate\Support\ServiceProvider
+     */
+    protected $provider;
+
+    /**
+     * Create a new service provider instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @return void
+     */
+    public function __construct($app)
+    {
+        parent::__construct($app);
+
+        $this->provider = $this->getProvider();
+    }
+
+    /**
      * Bootstrap the application events.
      *
      * @return void
      */
     public function boot()
     {
-        $this->package('intervention/validation');
-
-        // registering intervention validator extension
-        $this->app['validator']->resolver(function($translator, $data, $rules, $messages) {
-
-            // set the package validation error messages
-            $messages['iban'] = $translator->get('validation::validation.iban');
-            $messages['bic'] = $translator->get('validation::validation.bic');
-            $messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
-            $messages['creditcard'] = $translator->get('validation::validation.creditcard');
-            $messages['isbn'] = $translator->get('validation::validation.isbn');
-            $messages['isodate'] = $translator->get('validation::validation.isodate');
-            $messages['username'] = $translator->get('validation::validation.username');
-            $messages['htmlclean'] = $translator->get('validation::validation.htmlclean');
-            $messages['password'] = $translator->get('validation::validation.password');
-
-            return new ValidatorExtension($translator, $data, $rules, $messages);
-        });
+        $this->provider->boot();
     }
 
     /**
@@ -48,7 +50,23 @@ class ValidationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        # code...
+        $this->provider->register();
+    }
+
+    /**
+     * Return ServiceProvider according to Laravel version
+     *
+     * @return \Intervention\Image\Provider\ProviderInterface
+     */
+    private function getProvider()
+    {
+        $app = $this->app;
+        $version = intval($app::VERSION);
+        $provider = sprintf(
+            '\Intervention\Validation\ValidationServiceProviderLaravel%d', $version
+        );
+
+        return new $provider($app);
     }
 
     /**
@@ -60,5 +78,4 @@ class ValidationServiceProvider extends ServiceProvider
     {
         return array('validator');
     }
-
 }
