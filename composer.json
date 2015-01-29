@@ -1,7 +1,7 @@
 {
     "name": "intervention/validation",
-    "description": "Additional Validator Functions for the Laravel 4 Framework",
-    "keywords": ["validation", "Validator", "laravel"],
+    "description": "Additional Validator Functions for the Laravel Framework",
+    "keywords": ["validation", "Validator", "laravel", "bic", "iban", "creditcard", "isbn"],
     "license": "MIT",
     "authors": [
         {
