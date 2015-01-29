@@ -1,20 +1,16 @@
 # Intervention Validation Class
 
-Extension for the Laravel 4 validation class
+Extension for the Laravel validation class
 
 ## Installation
 
 You can install this package quick and easy with Composer.
 
-Require the package via Composer in your `composer.json`.
+Require the package via Composer:
 
-    "intervention/validation": "dev-master"
+    $ composer require intervention/validation
 
-Run Composer to update the new requirement.
-
-    $ composer update
-
-The Validation class is built to work with the Laravel 4 Framework. The integration is done in seconds.
+The Validation class is built to work with the Laravel Framework. The integration is done in seconds.
 
 Open your Laravel config file `config/app.php` and add service provider in the `$providers` array:
     
@@ -27,7 +23,7 @@ Open your Laravel config file `config/app.php` and add service provider in the `
     ),
   
 
-## Usage with Laravel 4
+## Usage with Laravel
 
 The installed package provides the following additional `validation rules` including their error messages.
 
