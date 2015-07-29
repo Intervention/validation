@@ -21,20 +21,15 @@ class ValidationServiceProviderLaravel5 extends ServiceProvider
         );
 
         // registering intervention validator extension
-        $this->app['validator']->resolver(function($translator, $data, $rules, $messages) {
+        $this->app['validator']->resolver(function($translator, $data, $rules, $messages, $customAttributes) {
 
-            // set the package validation error messages
-            $messages['iban'] = $translator->get('validation::validation.iban');
-            $messages['bic'] = $translator->get('validation::validation.bic');
-            $messages['hexcolor'] = $translator->get('validation::validation.hexcolor');
-            $messages['creditcard'] = $translator->get('validation::validation.creditcard');
-            $messages['isbn'] = $translator->get('validation::validation.isbn');
-            $messages['isodate'] = $translator->get('validation::validation.isodate');
-            $messages['username'] = $translator->get('validation::validation.username');
-            $messages['htmlclean'] = $translator->get('validation::validation.htmlclean');
-            $messages['password'] = $translator->get('validation::validation.password');
+            // set the validation error messages
+            foreach (get_class_methods('Intervention\Validation\Validator') as $method) {
+                $key = $this->getTranslationKeyFromMethodName($method);
+                $messages[$key] = $this->getErrorMessage($translator, $messages, $key);
+            }
 
-            return new ValidatorExtension($translator, $data, $rules, $messages);
+            return new ValidatorExtension($translator, $data, $rules, $messages, $customAttributes);
         });
     }
 
@@ -46,5 +41,38 @@ class ValidationServiceProviderLaravel5 extends ServiceProvider
     public function register()
     {
         # code...
+    }
+
+    /**
+     * Return the matching error message for the key
+     *
+     * @param  string $key
+     * @return string
+     */
+    private function getErrorMessage($translator, $messages, $key)
+    {
+        // return error messages passed directly to the validator
+        if (isset($messages[$key])) {
+            return $messages[$key];
+        }
+
+        // return error message from validation translation file
+        if ($translator->has("validation.{$key}")) {
+            return $translator->get("validation.{$key}");
+        }
+
+        // return packages default message
+        return $translator->get("validation::validation.{$key}");
+    }
+
+    /**
+     * Return translation key for correspondent method name
+     *
+     * @param  string $name
+     * @return string
+     */
+    private function getTranslationKeyFromMethodName($name)
+    {
+        return strtolower(substr($name, 2));
     }
 }
