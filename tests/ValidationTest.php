@@ -2,7 +2,7 @@
 
 use Intervention\Validation\Validator;
 
-class ValidationTest extends PHPUnit_Framework_Testcase
+class ValidationTest extends PHPUnit_Framework_TestCase
 {
     public function testValidateIban()
     {
