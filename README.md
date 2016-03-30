@@ -77,7 +77,7 @@ Or add your custom messages directly to the validator like [described in the doc
 ## Usage outside of Laravel
 
 * Validator::isIban - Checks if given value is valid International Bank Account Number (IBAN).
-* Validator::isBic - Checks if given value is valid International Bank Account Number (IBAN).
+* Validator::isBic - Checks if given value is valid Bank Identifier Code (BIC).
 * Validator::isHexcolor - Checks if value is valid hexadecimal color code.
 * Validator::isCreditcard - Checks if value is valid creditcard number.
 * Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
