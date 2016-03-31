@@ -2,7 +2,7 @@
 
 return [
     'iban' => 'Le champ :attribute doit être un code banque international valide (IBAN).',
-    'bic' => 'Le champ :attribute n\'est pas un un code valide.',
+    'bic' => 'Le champ :attribute n\'est pas un code valide.',
     'hexcolor' => 'Le champ :attribute doit être un code couleur hexadécimal valide.',
     'creditcard' => 'Le champ :attribute doit être un numéro de carte de crédit valide.',
     'isbn' => 'L\':attribute doit être un ISBN valide.',
