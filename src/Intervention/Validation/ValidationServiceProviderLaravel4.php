@@ -20,6 +20,7 @@ class ValidationServiceProviderLaravel4 extends ServiceProvider
         $this->app['validator']->resolver(function($translator, $data, $rules, $messages) {
 
             // set the package validation error messages
+            $messages['isin'] = $translator->get('validation::validation.isin');
             $messages['iban'] = $translator->get('validation::validation.iban');
             $messages['bic'] = $translator->get('validation::validation.bic');
             $messages['hexcolor'] = $translator->get('validation::validation.hexcolor');

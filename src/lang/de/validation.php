@@ -2,6 +2,7 @@
 
 return array(
 
+    'isin' => 'Der Wert :attribute ist keine International Securities Identification Number (ISIN).',
     'iban' => 'Der Wert :attribute ist keine International Bank Account Number (IBAN).',
     'bic' => 'Der Wert :attribute muss einen gültigen Business Identifier Code (BIC) enthalten.',
     'hexcolor' => 'Der Wert :attribute muss einen gültigen Hexadezimal Farbwert enthalten.',

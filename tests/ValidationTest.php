@@ -4,6 +4,19 @@ use Intervention\Validation\Validator;
 
 class ValidationTest extends PHPUnit_Framework_TestCase
 {
+    public function testValidateIsin()
+    {
+        $isin = 'US0378331005';
+        $no_isin = 'ZA9382189201';
+        $this->assertTrue(Validator::isIsin($isin));
+        $this->assertFalse(Validator::isIsin($no_isin));
+
+        $isin = 'DE0005810055';
+        $no_isin = 'DE0005810058';
+        $this->assertTrue(Validator::isIsin($isin));
+        $this->assertFalse(Validator::isIsin($no_isin));
+    }
+
     public function testValidateIban()
     {
         $iban = 'DE12500105170648489890';

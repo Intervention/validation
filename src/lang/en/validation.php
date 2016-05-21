@@ -2,6 +2,7 @@
 
 return array(
 
+    'isin' => 'The :attribute must be a valid International Securities Identification Number (ISIN).',
     'iban' => 'The :attribute must be a valid International Bank Account Number (IBAN).',
     'bic' => 'The :attribute is not a valid Business Identifier Code (BIC).',
     'hexcolor' => 'The :attribute must be a valid hexadecimal color code.',

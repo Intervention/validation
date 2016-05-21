@@ -14,6 +14,16 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
+     * Provides 'isin' validation rule for Laravel4
+     *
+     * @return bool
+     */
+    public function validateIsin($attribute, $value, $parameters)
+    {
+        return Validator::isIsin($value);
+    }
+
+    /**
      * Provides 'iban' validation rule for Laravel4
      *
      * @return bool

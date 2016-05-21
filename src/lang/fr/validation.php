@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'iban' => 'Le champ :attribute doit être un International Securities Identification Number (ISIN).',
     'iban' => 'Le champ :attribute doit être un code banque international valide (IBAN).',
     'bic' => 'Le champ :attribute n\'est pas un code valide.',
     'hexcolor' => 'Le champ :attribute doit être un code couleur hexadécimal valide.',
