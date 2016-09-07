@@ -8,9 +8,9 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
      * Creates new instance of ValidatorExtension
      *
      */
-    public function __construct($translator, $data, $rules, $messages)
+    public function __construct($translator, $data, $rules, $messages, $customAttributes)
     {
-        parent::__construct($translator, $data, $rules, $messages);
+        parent::__construct($translator, $data, $rules, $messages, $customAttributes);
     }
 
     /**
