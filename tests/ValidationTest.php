@@ -234,6 +234,5 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isAlphaSpace('abc-abc'));
         $this->assertFalse(Validator::isAlphaSpace('foo?'));
         $this->assertFalse(Validator::isAlphaSpace('😂'));
-        $this->assertFalse(Validator::isAlphaSpace(' '));
     }
 }

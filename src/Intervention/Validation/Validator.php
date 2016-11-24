@@ -362,13 +362,12 @@ class Validator
 
     /**
      * Checks if value only has alphabetic characters and/or spaces
-     * but not only spaces.
      *
      * @param  mixed  $value
      * @return boolean
      */
     public static function isAlphaSpace($value)
     {
-        return (bool) preg_match('/^[\pL]+$/u', str_replace(' ', '', $value));
+        return (bool) preg_match('/^[\pL\s]+$/u', $value);
     }
 }
