@@ -359,4 +359,16 @@ class Validator
         $pattern = "/^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,64})$/";
         return (boolean) preg_match($pattern, $value);
     }
+
+    /**
+     * Checks if value only has alphabetic characters and/or spaces
+     * but not only spaces.
+     *
+     * @param  mixed  $value
+     * @return boolean
+     */
+    public static function isAlphaSpace($value)
+    {
+        return (bool) preg_match('/^[\pL]+$/u', str_replace(' ', '', $value));
+    }
 }

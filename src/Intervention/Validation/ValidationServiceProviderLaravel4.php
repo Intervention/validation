@@ -30,6 +30,7 @@ class ValidationServiceProviderLaravel4 extends ServiceProvider
             $messages['username'] = $translator->get('validation::validation.username');
             $messages['htmlclean'] = $translator->get('validation::validation.htmlclean');
             $messages['password'] = $translator->get('validation::validation.password');
+            $messages['alpha_space'] = $translator->get('validation::validation.alpha_space');
 
             return new ValidatorExtension($translator, $data, $rules, $messages, $customAttributes);
         });

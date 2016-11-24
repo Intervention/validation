@@ -14,7 +14,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'isin' validation rule for Laravel4
+     * Provides 'isin' validation rule for Laravel
      *
      * @return bool
      */
@@ -24,7 +24,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'iban' validation rule for Laravel4
+     * Provides 'iban' validation rule for Laravel
      *
      * @return bool
      */
@@ -34,7 +34,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Proved 'bic' validation rule for Laravel4
+     * Proved 'bic' validation rule for Laravel
      *
      * @return bool
      */
@@ -44,7 +44,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'hexcolor' validation rule for Laravel4
+     * Provides 'hexcolor' validation rule for Laravel
      *
      * @return bool
      */
@@ -54,7 +54,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'creditcard' validation rule for Laravel4
+     * Provides 'creditcard' validation rule for Laravel
      *
      * @return bool
      */
@@ -64,7 +64,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'isbn' validation rule for Laravel4
+     * Provides 'isbn' validation rule for Laravel
      *
      * @return bool
      */
@@ -74,7 +74,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'isoddate' validation rule for Laravel4
+     * Provides 'isoddate' validation rule for Laravel
      *
      * @return bool
      */
@@ -84,7 +84,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'username' validation rule for Laravel4
+     * Provides 'username' validation rule for Laravel
      *
      * @return bool
      */
@@ -94,7 +94,7 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'htmlclean' validation rule for Laravel 4
+     * Provides 'htmlclean' validation rule for Laravel
      *
      * @return bool
      */
@@ -104,12 +104,22 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'password' validation rule for Laravel 4
+     * Provides 'password' validation rule for Laravel
      *
      * @return bool
      */
     public function validatePassword($attribute, $value, $parameters)
     {
         return Validator::isPassword($value);
+    }
+
+    /**
+     * Provides 'password' validation rule for Laravel
+     *
+     * @return bool
+     */
+    public function validateAlphaSpace($attribute, $value, $parameters)
+    {
+        return Validator::isAlphaSpace($value);
     }
 }
