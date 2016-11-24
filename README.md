@@ -69,7 +69,7 @@ Checks for valid password with a minimum of 6 characters and maximum of 64 chara
 
 ### alpha_space
 
-The field under validation must contain only alphabetic characters and spaces but not only spaces.
+The field under validation must contain only alphabetic characters and spaces.
 
 ## Changing the error messages:
 
@@ -94,7 +94,7 @@ Or add your custom messages directly to the validator like [described in the doc
 * Validator::isUsername - Checks if given value is a valid username.
 * Validator::isHtmlclean - Checks if given value contains html free content.
 * Validator::isPassword - Checks if the given value contains 6 to 64 characters, including at least one digit, one upper case letter, one lower case letter and one special symbol.
-* Validator::isAlphaSpace - Checks if given value contains only alphabetic characters and spaces but not only spaces.
+* Validator::isAlphaSpace - Checks if given value contains only alphabetic characters and spaces.
 
 ## License
 
