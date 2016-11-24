@@ -72,6 +72,6 @@ class ValidationServiceProviderLaravel5 extends ServiceProvider
      */
     private function getTranslationKeyFromMethodName($name)
     {
-        return strtolower(substr($name, 2));
+        return snake_case(substr($name, 2));
     }
 }
