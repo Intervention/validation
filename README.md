@@ -67,6 +67,10 @@ The field under validation must be free of any html code.
 
 Checks for valid password with a minimum of 6 characters and maximum of 64 characters, containing at least one digit, one upper case letter, one lower case letter and one special symbol.
 
+### alpha_space
+
+The field under validation must contain only alphabetic characters and spaces but not only spaces.
+
 ## Changing the error messages:
 
 Add the corresponding key to `/resources/lang/<language>/validation.php` like this:
@@ -90,6 +94,7 @@ Or add your custom messages directly to the validator like [described in the doc
 * Validator::isUsername - Checks if given value is a valid username.
 * Validator::isHtmlclean - Checks if given value contains html free content.
 * Validator::isPassword - Checks if the given value contains 6 to 64 characters, including at least one digit, one upper case letter, one lower case letter and one special symbol.
+* Validator::isAlphaSpace - Checks if given value contains only alphabetic characters and spaces but not only spaces.
 
 ## License
 
