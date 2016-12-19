@@ -235,4 +235,27 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isAlphaSpace('foo?'));
         $this->assertFalse(Validator::isAlphaSpace('😂'));
     }
+
+    public function testValidateDomainname()
+    {
+        $this->assertTrue(Validator::isDomainname('foo.bar'));
+        $this->assertTrue(Validator::isDomainname('foo.k12'));
+        $this->assertTrue(Validator::isDomainname('foo.photography'));
+        $this->assertTrue(Validator::isDomainname('foo.bar.baz'));
+        $this->assertTrue(Validator::isDomainname('foo-foo.foo-bar.baz'));
+        $this->assertTrue(Validator::isDomainname('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar'));
+        $this->assertTrue(Validator::isDomainname('bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'));
+
+        $this->assertFalse(Validator::isDomainname('foo'));
+        $this->assertFalse(Validator::isDomainname('foo..'));
+        $this->assertFalse(Validator::isDomainname('foo.bar-'));
+        $this->assertFalse(Validator::isDomainname('-foo.bar'));
+        $this->assertFalse(Validator::isDomainname('foo-.bar'));
+        $this->assertFalse(Validator::isDomainname('foo.-.bar'));
+        $this->assertFalse(Validator::isDomainname('foo.foo_bar.bar'));
+        $this->assertFalse(Validator::isDomainname('foo.123'));
+        $this->assertFalse(Validator::isDomainname('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar'));
+        $this->assertFalse(Validator::isDomainname('bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'));
+        $this->assertFalse(Validator::isDomainname('xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx'));
+    }
 }

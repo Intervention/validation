@@ -114,12 +114,17 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     }
 
     /**
-     * Provides 'password' validation rule for Laravel
+     * Provides 'alpha_space' validation rule for Laravel
      *
      * @return bool
      */
     public function validateAlphaSpace($attribute, $value, $parameters)
     {
         return Validator::isAlphaSpace($value);
+    }
+
+    public function validateDomainname($attribute, $value, $parameters)
+    {
+        return Validator::isDomainname($value);
     }
 }

@@ -370,4 +370,21 @@ class Validator
     {
         return (bool) preg_match('/^[\pL\s]+$/u', $value);
     }
+
+    /**
+     * Checks if value is domainname
+     *
+     * @param  mixed  $value
+     * @return boolean
+     */
+    public static function isDomainname($value)
+    {
+        if (strlen($value) > 253) {
+            return false;
+        }
+
+        $pattern = "/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/";
+
+        return (boolean) preg_match($pattern, $value);
+    }
 }
