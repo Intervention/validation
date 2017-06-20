@@ -28,7 +28,7 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $no_iban = 'GR82 WEST 1234 5698 7654 32';
         $this->assertTrue(Validator::isIban($iban));
         $this->assertFalse(Validator::isIban($no_iban));
-        
+
         $no_iban = '5070081';
         $this->assertFalse(Validator::isIban($no_iban));
     }
@@ -165,8 +165,8 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isHtmlclean('<0>'));
         $this->assertFalse(Validator::isHtmlclean('<>'));
         $this->assertFalse(Validator::isHtmlclean('><'));
-        
-        
+
+
     }
 
     public function testValidatePassword()
@@ -257,5 +257,13 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isDomainname('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar'));
         $this->assertFalse(Validator::isDomainname('bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'));
         $this->assertFalse(Validator::isDomainname('xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx'));
+    }
+
+    public function testValidateEmptyWith()
+    {
+        $this->assertTrue(Validator::isEmptyWith('foo', []));
+        $this->assertTrue(Validator::isEmptyWith('', ['foo']));
+
+        $this->assertFalse(Validator::isEmptyWith('foo', ['bar']));
     }
 }

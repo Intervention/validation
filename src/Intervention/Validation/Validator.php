@@ -387,4 +387,17 @@ class Validator
 
         return (boolean) preg_match($pattern, $value);
     }
+
+    public static function isEmptyWith($value, $values)
+    {
+        if (strlen($value) === 0) {
+            return true;
+        }
+
+        $values = array_filter($values, function ($item) {
+            return strlen($item) > 0;
+        });
+
+        return empty($values);
+    }
 }
