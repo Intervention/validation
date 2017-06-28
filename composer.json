@@ -23,5 +23,12 @@
             "Intervention\\Validation\\": "src/Intervention/Validation"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Intervention\\Validation\\ValidationServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable"
 }
