@@ -225,7 +225,7 @@ class Validator
      */
     public static function isHexcolor($value)
     {
-        $pattern = '/^#?[a-fA-F0-9]{3,6}$/';
+        $pattern = '/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/';
         return (boolean) preg_match($pattern, $value);
     }
 

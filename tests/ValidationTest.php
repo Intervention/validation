@@ -51,12 +51,19 @@ class ValidationTest extends PHPUnit_Framework_TestCase
 
     public function testValidateHexcolor()
     {
-        $hex1 = '#cccccc';
-        $hex2 = 'b33517';
-        $no_hex = 'x25s11';
-        $this->assertTrue(Validator::isHexcolor($hex1));
-        $this->assertTrue(Validator::isHexcolor($hex2));
-        $this->assertFalse(Validator::isHexcolor($no_hex));
+        // hex
+        $this->assertTrue(Validator::isHexcolor('#cccccc'));
+        $this->assertTrue(Validator::isHexcolor('b33517'));
+        $this->assertTrue(Validator::isHexcolor('#ccc'));
+        $this->assertTrue(Validator::isHexcolor('abc'));
+
+        // no hex
+        $this->assertFalse(Validator::isHexcolor('x25s11'));
+        $this->assertFalse(Validator::isHexcolor('ffff'));
+        $this->assertFalse(Validator::isHexcolor('#ffff'));
+        $this->assertFalse(Validator::isHexcolor('ff'));
+        $this->assertFalse(Validator::isHexcolor('#'));
+        $this->assertFalse(Validator::isHexcolor(null));
     }
 
     public function testValidateIsbn()
