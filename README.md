@@ -75,6 +75,10 @@ The field under validation must contain only alphabetic characters and spaces.
 
 The given field must be a well formed domainname.
 
+### empty_with:foo,bar,...
+
+Either the field under validation must be empty, or all of the other specified fields.
+
 ## Changing the error messages:
 
 Add the corresponding key to `/resources/lang/<language>/validation.php` like this:

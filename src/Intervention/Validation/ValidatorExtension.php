@@ -127,4 +127,20 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return Validator::isDomainname($value);
     }
+
+    /**
+     * Provides 'empty_with' validation rule for Laravel
+     *
+     * @return bool
+     */
+    public function validateEmptyWith($attribute, $value, $parameters)
+    {
+        $values = [];
+
+        foreach ($parameters as $parameter) {
+            $values[] = $this->getValue($parameter);
+        }
+
+        return Validator::isEmptyWith($value, $values);
+    }
 }

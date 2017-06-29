@@ -14,5 +14,6 @@ return array(
     'password' => ':attribute must contain 6 to 64 characters including at least one digit, one upper case letter, one lower case letter and one special symbol.',
     'alpha_space' => ':attribute must contain only alphabetic characters and spaces.',
     'domainname' => ':attribute must be a well formed domainname.',
+    'empty_with' => 'Either :attribute or the other fields must be filled, not all fields.',
 
 );
