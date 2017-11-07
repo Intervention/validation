@@ -280,9 +280,9 @@ class ValidationTest extends PHPUnit_Framework_TestCase
 
     public function testValidateEmptyWith()
     {
-        $this->assertTrue(Validator::isEmptyWith('foo', []));
-        $this->assertTrue(Validator::isEmptyWith('', ['foo']));
+        $this->assertTrue(Validator::isEmptyWith('foo', array()));
+        $this->assertTrue(Validator::isEmptyWith('', array('foo')));
 
-        $this->assertFalse(Validator::isEmptyWith('foo', ['bar']));
+        $this->assertFalse(Validator::isEmptyWith('foo', array('bar')));
     }
 }
