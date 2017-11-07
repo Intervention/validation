@@ -15,4 +15,10 @@
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./src/Intervention/Validation/Validator.php</directory>
+        </whitelist>
+    </filter>
 </phpunit>
