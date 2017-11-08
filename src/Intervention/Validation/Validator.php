@@ -13,7 +13,7 @@ class Validator
      */
     public static function isIsin($value)
     {
-        $chars = [
+        $chars = array(
              10 => 'A',
              11 => 'B',
              12 => 'C',
@@ -40,15 +40,15 @@ class Validator
              33 => 'X',
              34 => 'Y',
              35 => 'Z',
-        ];
+        );
 
         $checkdigit = substr($value, -1);
 
         $value = substr($value, 0, -1);
         $value = str_replace($chars, array_keys($chars), $value);
 
-        $g1 = [];
-        $g2 = [];
+        $g1 = array();
+        $g2 = array();
 
         foreach (str_split($value) as $key => $num) {
             if ($key % 2 == 0) {
