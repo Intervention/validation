@@ -49,6 +49,12 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isCreditcard($no_cc));
     }
 
+    public function testValidateCreditcardWithValueLenthIsInvalid()
+    {
+        $invalid = '123';
+        $this->assertFalse(Validator::isCreditcard($invalid));
+    }
+
     public function testValidateHexcolor()
     {
         // hex
@@ -76,6 +82,12 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(Validator::isIsbn($isbn2));
         $this->assertTrue(Validator::isIsbn($isbn3));
         $this->assertFalse(Validator::isIsbn($no_isbn));
+    }
+
+    public function testValidateIsbnWithValueIsNotNumeric()
+    {
+        $invalid = 'invalidxxx';
+        $this->assertFalse(Validator::isIsbn($invalid));
     }
 
     public function testValidateIsodate()
@@ -268,9 +280,9 @@ class ValidationTest extends PHPUnit_Framework_TestCase
 
     public function testValidateEmptyWith()
     {
-        $this->assertTrue(Validator::isEmptyWith('foo', []));
-        $this->assertTrue(Validator::isEmptyWith('', ['foo']));
+        $this->assertTrue(Validator::isEmptyWith('foo', array()));
+        $this->assertTrue(Validator::isEmptyWith('', array('foo')));
 
-        $this->assertFalse(Validator::isEmptyWith('foo', ['bar']));
+        $this->assertFalse(Validator::isEmptyWith('foo', array('bar')));
     }
 }
