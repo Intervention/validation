@@ -25,7 +25,8 @@ Open your Laravel config file `config/app.php` and add service provider in the `
         'Intervention\Validation\ValidationServiceProvider'
 
     ),
-  
+
+If you use Laravel 5.5+, then you may skip this step as Laravel's Package Auto-Discovery will include this package automatically.
 
 ## Usage with Laravel
 
