@@ -184,8 +184,6 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isHtmlclean('<0>'));
         $this->assertFalse(Validator::isHtmlclean('<>'));
         $this->assertFalse(Validator::isHtmlclean('><'));
-
-
     }
 
     public function testValidatePassword()

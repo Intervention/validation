@@ -63,7 +63,8 @@ class ValidationServiceProvider extends ServiceProvider
         $app = $this->app;
         $version = intval($app::VERSION);
         $provider = sprintf(
-            '\Intervention\Validation\ValidationServiceProviderLaravel%d', $version
+            '\Intervention\Validation\ValidationServiceProviderLaravel%d',
+            $version
         );
 
         return new $provider($app);

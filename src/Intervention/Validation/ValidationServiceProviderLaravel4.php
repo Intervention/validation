@@ -17,7 +17,7 @@ class ValidationServiceProviderLaravel4 extends ServiceProvider
         $this->package('intervention/validation');
 
         // registering intervention validator extension
-        $this->app['validator']->resolver(function($translator, $data, $rules, $messages, $customAttributes) {
+        $this->app['validator']->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
 
             // set the package validation error messages
             $messages['isin'] = $translator->get('validation::validation.isin');

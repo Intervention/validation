@@ -15,5 +15,4 @@ return array(
     'alpha_space' => ':attribute mag alleen uit letters en spaties bestaan.',
     'domainname' => ':attribute moet een geldige domeinnaam zijn.',
     'empty_with' => ':attribute of de andere velden moeten ingevuld zijn, niet alle velden.',
-
 );

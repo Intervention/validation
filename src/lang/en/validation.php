@@ -15,5 +15,4 @@ return array(
     'alpha_space' => ':attribute must contain only alphabetic characters and spaces.',
     'domainname' => ':attribute must be a well formed domainname.',
     'empty_with' => 'Either :attribute or the other fields must be filled, not all fields.',
-
 );

@@ -5,8 +5,8 @@ namespace Intervention\Validation;
 class Validator
 {
     /**
-     * Checks if given value is 
-     * International Securities Identification Number (ISIN) 
+     * Checks if given value is
+     * International Securities Identification Number (ISIN)
      *
      * @param  mixed  $value
      * @return boolean
@@ -271,8 +271,7 @@ class Validator
         $checkdigit = substr($value, -1);
 
         if ($length == 10) {
-
-            if ( ! is_numeric(substr($value, -10, 9))) {
+            if (! is_numeric(substr($value, -10, 9))) {
                 return false;
             }
 
@@ -289,9 +288,7 @@ class Validator
             $mod = $sum % 11;
 
             return ($mod == 0);
-
         } elseif ($length == 13) {
-
             $sum = 0;
 
             $sum =  $value[0] + ($value[1] * 3) + $value[2] + ($value[3] * 3) +
@@ -304,7 +301,6 @@ class Validator
             $correct_checkdigit = ($correct_checkdigit == "10") ? "0" : $correct_checkdigit;
 
             return ($checkdigit == $correct_checkdigit);
-
         }
 
         return false;

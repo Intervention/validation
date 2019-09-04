@@ -20,7 +20,7 @@ class ValidationServiceProviderLaravel5 extends ServiceProvider
         );
 
         // registering intervention validator extension
-        $this->app['validator']->resolver(function($translator, $data, $rules, $messages, $customAttributes) {
+        $this->app['validator']->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
 
             // set the validation error messages
             foreach (get_class_methods('Intervention\Validation\Validator') as $method) {
