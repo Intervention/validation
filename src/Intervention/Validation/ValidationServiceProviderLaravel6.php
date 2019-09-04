@@ -3,6 +3,7 @@
 namespace Intervention\Validation;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class ValidationServiceProviderLaravel6 extends ServiceProvider
 {
@@ -72,6 +73,6 @@ class ValidationServiceProviderLaravel6 extends ServiceProvider
      */
     private function getTranslationKeyFromMethodName($name)
     {
-        return snake_case(substr($name, 2));
+        return Str::snake(substr($name, 2));
     }
 }
