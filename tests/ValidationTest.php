@@ -1,8 +1,11 @@
 <?php
 
-use Intervention\Validation\Validator;
+namespace Intervention\Validation\Test;
 
-class ValidationTest extends PHPUnit_Framework_TestCase
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class ValidationTest extends TestCase
 {
     public function testValidateIsin()
     {
