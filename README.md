@@ -56,33 +56,17 @@ The field under validation must be a valid hexadecimal color code.
 
 The field under validation must be a valid International Standard Book Number (ISBN).
 
-### isodate
-
-The field under validation must be a valid date in ISO 8601 format.
-
 ### username
 
-The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores and starting with a alphabetic character. 
+The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
 
 ### htmlclean
 
 The field under validation must be free of any html code.
 
-### password
-
-Checks for valid password with a minimum of 6 characters and maximum of 64 characters, containing at least one digit, one upper case letter, one lower case letter and one special symbol.
-
-### alpha_space
-
-The field under validation must contain only alphabetic characters and spaces.
-
 ### domainname
 
 The given field must be a well formed domainname.
-
-### empty_with:foo,bar,...
-
-Either the field under validation must be empty, or all of the other specified fields.
 
 ## Changing the error messages:
 
@@ -96,6 +80,11 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 Or add your custom messages directly to the validator like [described in the docs](http://laravel.com/docs/5.1/validation#custom-error-messages).
 
 ## Usage outside of Laravel
+
+// $validator = Validator::make(new Iban)->validate($input);
+// $validator = Validator::isIban($input);
+// $validator = (new Validator(new Iban))->validate($input);
+
 
 * Validator::isIban - Checks if given value is valid International Bank Account Number (IBAN).
 * Validator::isIsin - Checks if given value is valid International Securities Identification Number (ISIN).
