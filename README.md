@@ -1,4 +1,4 @@
-# Intervention Validation Class
+# Intervention Validation
 
 Intervention Validation is an extension library for Laravel's own validation system. The package adds rules to validate data like IBAN, BIC, ISBN, creditcard numbers and more.
 
@@ -14,6 +14,8 @@ Require the package via Composer:
 
     $ composer require intervention/validation
 
+### Laravel integration (optional)
+
 The Validation class is built to work with the Laravel Framework. The integration is done in seconds.
 
 Open your Laravel config file `config/app.php` and add service provider in the `$providers` array:
@@ -28,47 +30,56 @@ Open your Laravel config file `config/app.php` and add service provider in the `
 
 If you use Laravel 5.5+, then you may skip this step as Laravel's Package Auto-Discovery will include this package automatically.
 
+## Usage
+
+```php
+use Intervention\Validation\Validator;
+use Intervention\Validation\Rules\HexColor;
+
+// create validator (for HexColor)
+$validator = new Validator(new HexColor);
+
+// validate against given values
+$valid = $validator->validate('#ccc'); // true
+$valid = $validator->validate('www'); // false
+```
+
+## Static Usage
+
+```php
+use Intervention\Validation\Validator;
+use Intervention\Validation\Rules\HexColor;
+
+// create validator statically
+$valid = Validator::make(new HexColor)->validate('ccc') // true
+$valid = Validator::make(new HexColor)->validate('#www') // false
+```
+
+## Static dynamic call Usage
+
+```php
+use Intervention\Validation\Validator;
+use Intervention\Validation\Rules\HexColor;
+
+// call validation rule directly via static method
+$valid = Validator::isHexColor('#ccc') // true
+$valid = Validator::isHexColor('#www') // false
+```
+
 ## Usage with Laravel
 
-The installed package provides the following additional `validation rules` including their error messages.
+The installed package provides additional `validation rules` including their error messages.
 
-### bic
+```php
+use Illuminate\Support\Facades\Validator;
 
-Checks for a valid Business Identifier Code (BIC).
+$validator = Validator::make($request->all(), [
+    'color' => 'required|hexcolor',
+    'number' => 'iban',
+]);
+```
 
-### iban
-
-Checks for a valid International Bank Account Number (IBAN).
-
-### isin
-
-Checks for a valid International Securities Identification Number (ISIN).
-
-### creditcard
-
-The given field must be a valid creditcard number.
-
-### hexcolor
-
-The field under validation must be a valid hexadecimal color code.
-
-### isbn
-
-The field under validation must be a valid International Standard Book Number (ISBN).
-
-### username
-
-The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
-
-### htmlclean
-
-The field under validation must be free of any html code.
-
-### domainname
-
-The given field must be a well formed domainname.
-
-## Changing the error messages:
+### Changing the error messages:
 
 Add the corresponding key to `/resources/lang/<language>/validation.php` like this:
 
@@ -77,27 +88,47 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 'iban' => 'Please enter IBAN number!',
 ```
 
-Or add your custom messages directly to the validator like [described in the docs](http://laravel.com/docs/5.1/validation#custom-error-messages).
+Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/6.x/validation#custom-error-messages).
 
-## Usage outside of Laravel
+## Available Rules
 
-// $validator = Validator::make(new Iban)->validate($input);
-// $validator = Validator::isIban($input);
-// $validator = (new Validator(new Iban))->validate($input);
+The following validation rules are available.
 
+### bic (Intervention\Validation\Rules\Bic)
 
-* Validator::isIban - Checks if given value is valid International Bank Account Number (IBAN).
-* Validator::isIsin - Checks if given value is valid International Securities Identification Number (ISIN).
-* Validator::isBic - Checks if given value is valid Bank Identifier Code (BIC).
-* Validator::isHexcolor - Checks if value is valid hexadecimal color code.
-* Validator::isCreditcard - Checks if value is valid creditcard number.
-* Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
-* Validator::isIsodate - Checks if given value is date in ISO 8601 format.
-* Validator::isUsername - Checks if given value is a valid username.
-* Validator::isHtmlclean - Checks if given value contains html free content.
-* Validator::isPassword - Checks if the given value contains 6 to 64 characters, including at least one digit, one upper case letter, one lower case letter and one special symbol.
-* Validator::isAlphaSpace - Checks if given value contains only alphabetic characters and spaces.
-* Validator::isDomainname - Checks if given value is a domainname.
+Checks for a valid Business Identifier Code (BIC).
+
+### iban (Intervention\Validation\Rules\Iban)
+
+Checks for a valid International Bank Account Number (IBAN).
+
+### isin (Intervention\Validation\Rules\Isin)
+
+Checks for a valid International Securities Identification Number (ISIN).
+
+### creditcard (Intervention\Validation\Rules\Creditcard)
+
+The given field must be a valid creditcard number.
+
+### hexcolor (Intervention\Validation\Rules\HexColor)
+
+The field under validation must be a valid hexadecimal color code.
+
+### isbn (Intervention\Validation\Rules\Isbn)
+
+The field under validation must be a valid International Standard Book Number (ISBN).
+
+### username (Intervention\Validation\Rules\Username)
+
+The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
+
+### htmlclean (Intervention\Validation\Rules\HtmlClean)
+
+The field under validation must be free of any html code.
+
+### domainname (Intervention\Validation\Rules\Domainname)
+
+The given field must be a well formed domainname.
 
 ## License
 
