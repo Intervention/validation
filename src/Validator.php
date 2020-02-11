@@ -57,7 +57,7 @@ class Validator
     {
         $value = isset($arguments[0]) ? $arguments[0] : null;
 
-        return self::getRuleByCall($name, $value)->isValid();
+        return self::getRuleByCall($name)->setValue($value)->isValid();
     }
 
     /**
@@ -66,7 +66,7 @@ class Validator
      * @param  string $call
      * @return AbstractRule
      */
-    private static function getRuleByCall($call, $value): AbstractRule
+    private static function getRuleByCall($call): AbstractRule
     {
         $classname = sprintf('Intervention\Validation\Rules\%s', substr($call, 2));
         
@@ -77,6 +77,6 @@ class Validator
             );
         }
         
-        return new $classname($value);
+        return new $classname;
     }
 }
