@@ -17,7 +17,7 @@ class BicTest extends TestCase
 
     public function testInvalid()
     {
-        $values = ['ABNFDBF', 'GR82WEST', '5070081'];
+        $values = ['ABNFDBF', 'GR82WEST', '5070081', 'DEUTDBBER'];
         foreach ($values as $value) {
             $this->assertFalse((new Bic($value))->isValid());
         }
