@@ -1,11 +1,10 @@
 language: php
 
-dist: 'precise'
+dist: 'trusty'
 
 php:
   - '7.2'
   - '7.3'
-  - '7.4'
 
 cache:
   directories:
@@ -14,8 +13,4 @@ cache:
 install:
   - composer install
 
-script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-after_success:
-  - travis_retry vendor/bin/coveralls -v
+script: vendor/bin/phpunit
