@@ -14,14 +14,19 @@ class Creditcard extends AbstractStringRule
     public function isValid()
     {
         $value = $this->getValue();
-        $length = strlen($value);
 
-        if ($length < 13 || $length > 19) {
+        if (! $this->hasValidLength($value)) {
             return false;
         }
 
+        return $this->checksumMatches($value, $this->getChecksum($value));
+    }
+
+    private function getChecksum($value)
+    {
         $sum = 0;
         $weight = 2;
+        $length = strlen($value);
 
         for ($i = $length - 2; $i >= 0; $i--) {
             $digit = $weight * $value[$i];
@@ -29,8 +34,20 @@ class Creditcard extends AbstractStringRule
             $weight = $weight % 2 + 1;
         }
 
-        $mod = (10 - $sum % 10) % 10;
+        return $sum;
+    }
+
+    private function checksumMatches($value, $checksum)
+    {
+        $length = strlen($value);
+        $mod = (10 - $checksum % 10) % 10;
+
 
         return ($mod == $value[$length - 1]);
+    }
+
+    private function hasValidLength($value)
+    {
+        return (strlen($value) >= 13 || strlen($value) <= 19);
     }
 }
