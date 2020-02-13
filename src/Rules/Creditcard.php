@@ -35,9 +35,13 @@ class Creditcard extends AbstractStringRule
         $length = strlen($value);
 
         for ($i = $length - 2; $i >= 0; $i--) {
-            $digit = $weight * $value[$i];
-            $sum += floor($digit / 10) + $digit % 10;
-            $weight = $weight % 2 + 1;
+            if (is_numeric($value[$i])) {
+                $digit = $weight * $value[$i];
+                $sum += floor($digit / 10) + $digit % 10;
+                $weight = $weight % 2 + 1;
+            } else {
+                return -1;
+            }
         }
 
         return $sum;
