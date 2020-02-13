@@ -16,19 +16,7 @@ Require the package via Composer:
 
 ### Laravel integration (optional)
 
-The Validation class is built to work with the Laravel Framework. The integration is done in seconds.
-
-Open your Laravel config file `config/app.php` and add service provider in the `$providers` array:
-    
-    'providers' => array(
-
-        ...
-
-        'Intervention\Validation\ValidationServiceProvider'
-
-    ),
-
-If you use Laravel 5.5+, then you may skip this step as Laravel's Package Auto-Discovery will include this package automatically.
+The Validation library is built to work with the Laravel Framework (>=5.5). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation.
 
 ## Usage
 
