@@ -71,6 +71,6 @@ class Creditcard extends AbstractStringRule
      */
     private function hasValidLength($value)
     {
-        return (strlen($value) >= 13 || strlen($value) <= 19);
+        return (strlen($value) >= 13 && strlen($value) <= 19);
     }
 }
