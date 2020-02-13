@@ -4,6 +4,7 @@ namespace Intervention\Validation;
 
 use Illuminate\Validation\Validator as IlluminateValidator;
 use BadMethodCallException;
+use Exception;
 
 class ValidationExtension extends IlluminateValidator
 {
@@ -25,10 +26,17 @@ class ValidationExtension extends IlluminateValidator
      */
     public function __call($name, $arguments)
     {
-        $value = data_get($arguments, 1);
-        $rule = $this->invokeRule($this->getRuleClassnameByMethodName($name));
+        try {
+            // try to invoke rule
+            $rule = $this->invokeRule(
+                $this->getRuleClassnameByMethodName($name)
+            );
+        } catch (Exception $e) {
+            // if intervention/validation don't has rule, call regular validator
+            return call_user_func_array(['parent', $name], $arguments);
+        }
         
-        return Validator::make($rule)->validate($value);
+        return Validator::make($rule)->validate(data_get($arguments, 1));
     }
 
     /**
