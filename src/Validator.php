@@ -24,6 +24,28 @@ class Validator
     }
 
     /**
+     * Overwrite current rule
+     *
+     * @param AbstractRule $rule
+     */
+    public function setRule(AbstractRule $rule): Validator
+    {
+        $this->rule = $rule;
+
+        return $this;
+    }
+
+    /**
+     * Return current rule
+     *
+     * @return AbstractRule
+     */
+    public function getRule(): AbstractRule
+    {
+        return $this->rule;
+    }
+
+    /**
      * Static constructor
      *
      * @param  AbstractRule $classname

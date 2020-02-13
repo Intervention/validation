@@ -30,6 +30,13 @@ $validator = new Validator(new HexColor);
 // validate against given values
 $valid = $validator->validate('#ccc'); // true
 $valid = $validator->validate('www'); // false
+
+// change the validation rule
+$validator->setRule(new Domainname);
+
+// validate other rules
+$valid = $validator->validate('foo.com'); // true
+$valid = $validator->validate('?'); // false
 ```
 
 ## Static Usage

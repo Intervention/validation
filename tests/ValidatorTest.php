@@ -4,6 +4,7 @@ namespace Intervention\Validation\Test;
 
 use Intervention\Validation\AbstractRule;
 use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Rules\Iban;
 use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Error\Error;
@@ -40,5 +41,15 @@ class ValidatorTest extends TestCase
     {
         $this->expectException(Error::class);
         $this->assertTrue(Validator::isNonExisting('#cccccc'));
+    }
+
+    public function testSetGetRule()
+    {
+        $validator = new Validator(new HexColor);
+        $this->assertInstanceOf(HexColor::class, $validator->getRule());
+
+        $result = $validator->setRule(new Iban);
+        $this->assertInstanceOf(Validator::class, $result);
+        $this->assertInstanceOf(Iban::class, $validator->getRule());
     }
 }
