@@ -17,7 +17,7 @@ class IsbnTest extends TestCase
 
     public function testInvalid()
     {
-        $values = ['123459181', '12', '123'];
+        $values = ['123459181', '12', '123', 'ABC'];
         foreach ($values as $value) {
             $this->assertFalse((new Isbn($value))->isValid());
         }

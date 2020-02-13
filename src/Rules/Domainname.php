@@ -15,12 +15,10 @@ class Domainname extends AbstractRegexRule
      */
     public function isValid()
     {
-        $result = parent::isValid();
-
         if (strlen($this->getValue()) > 253) {
             return false;
         }
 
-        return $result;
+        return parent::isValid();
     }
 }
