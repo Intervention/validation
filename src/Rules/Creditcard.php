@@ -52,7 +52,7 @@ class Creditcard extends AbstractStringRule
      *
      * @param  mixed  $value
      * @param  string $checksum
-     * @return boolean          
+     * @return boolean
      */
     private function checksumMatches($value, $checksum)
     {

@@ -103,34 +103,46 @@ class Iban extends AbstractStringRule
      */
     public function isValid()
     {
-        // build replacement arrays
-        $iban_replace_chars = range('A', 'Z');
-        foreach (range(10, 35) as $tempvalue) {
-            $iban_replace_values[] = strval($tempvalue);
+        $iban = $this->getValue();
+
+        // check iban length and checksum
+        return $this->hasValidLength($iban) && $this->getChecksum($iban) === 1;
+    }
+
+    /**
+     * Prepare given value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return str_replace(' ', '', strtoupper(parent::getValue()));
+    }
+
+    /**
+     * Calculate checksum of iban
+     *
+     * @param  string $iban
+     * @return int
+     */
+    private function getChecksum($iban)
+    {
+        $iban = substr($iban, 4).substr($iban, 0, 4);
+        $iban = str_replace(
+            $this->getReplacementsChars(),
+            $this->getReplacementsValues(),
+            $iban
+        );
+
+        $checksum = intval(substr($iban, 0, 1));
+
+        for ($strcounter = 1; $strcounter < strlen($iban); $strcounter++) {
+            $checksum *= 10;
+            $checksum += intval(substr($iban, $strcounter, 1));
+            $checksum %= 97;
         }
 
-        // prepare string
-        $tempiban = strtoupper($this->getValue());
-        $tempiban = str_replace(' ', '', $tempiban);
-
-        // check iban length
-        if ($this->getIbanLength($tempiban) != strlen($tempiban)) {
-            return false;
-        }
-
-        // build checksum
-        $tempiban = substr($tempiban, 4).substr($tempiban, 0, 4);
-        $tempiban = str_replace($iban_replace_chars, $iban_replace_values, $tempiban);
-        $tempcheckvalue = intval(substr($tempiban, 0, 1));
-
-        for ($strcounter = 1; $strcounter < strlen($tempiban); $strcounter++) {
-            $tempcheckvalue *= 10;
-            $tempcheckvalue += intval(substr($tempiban, $strcounter, 1));
-            $tempcheckvalue %= 97;
-        }
-
-        // only modulo 1 is iban
-        return $tempcheckvalue == 1;
+        return $checksum; // only 1 is iban
     }
 
     /**
@@ -139,10 +151,36 @@ class Iban extends AbstractStringRule
      * @param  string $iban
      * @return integer
      */
-    private function getIbanLength($iban)
+    private function getDesignatedIbanLength($iban)
     {
         $countrycode = substr($iban, 0, 2);
 
         return isset($this->lengths[$countrycode]) ? $this->lengths[$countrycode] : false;
+    }
+
+    /**
+     * Determine if given iban has the proper length
+     *
+     * @param  string  $value
+     * @return boolean
+     */
+    private function hasValidLength($iban)
+    {
+        return $this->getDesignatedIbanLength($iban) == strlen($iban);
+    }
+
+    private function getReplacementsChars()
+    {
+        return range('A', 'Z');
+    }
+
+    private function getReplacementsValues()
+    {
+        $values = [];
+        foreach (range(10, 35) as $value) {
+            $values[] = strval($value);
+        }
+
+        return $values;
     }
 }
