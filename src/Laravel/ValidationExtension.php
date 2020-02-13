@@ -51,7 +51,7 @@ class ValidationExtension extends IlluminateValidator
     {
         preg_match("/^validate((?P<rule>[a-zA-Z]+))$/", $name, $matches);
 
-        return __NAMESPACE__ . "\\Rules\\" . data_get($matches, 'rule');
+        return 'Intervention\\Validation\\Rules\\' . data_get($matches, 'rule');
     }
 
     /**
