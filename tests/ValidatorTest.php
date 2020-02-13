@@ -30,6 +30,8 @@ class ValidatorTest extends TestCase
         $validator = Validator::make(new HexColor);
         $this->assertIsBool($validator->validate('#ccc'));
         $this->assertIsBool($validator->validate('xxx'));
+        $this->assertTrue($validator->validate('#ccc'));
+        $this->assertFalse($validator->validate('xxx'));
     }
 
     public function testDynamicStaticCallValid()
