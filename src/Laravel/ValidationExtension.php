@@ -5,6 +5,7 @@ namespace Intervention\Validation\Laravel;
 use BadMethodCallException;
 use Exception;
 use Illuminate\Validation\Validator as IlluminateValidator;
+use Intervention\Validation\AbstractRule;
 use Intervention\Validation\Validator;
 
 class ValidationExtension extends IlluminateValidator
