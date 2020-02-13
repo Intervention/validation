@@ -37,6 +37,7 @@ class ValidationExtension extends IlluminateValidator
             return call_user_func_array(['parent', $name], $arguments);
         }
         
+        // do the validation work, first argument is value
         return Validator::make($rule)->validate(data_get($arguments, 1));
     }
 
