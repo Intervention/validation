@@ -1,10 +1,11 @@
 <?php
 
-namespace Intervention\Validation;
+namespace Intervention\Validation\Laravel;
 
-use Illuminate\Validation\Validator as IlluminateValidator;
 use BadMethodCallException;
 use Exception;
+use Illuminate\Validation\Validator as IlluminateValidator;
+use Intervention\Validation\Validator;
 
 class ValidationExtension extends IlluminateValidator
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Validation;
+namespace Intervention\Validation\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;

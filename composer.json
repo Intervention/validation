@@ -31,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Intervention\\Validation\\ValidationServiceProvider"
+                "Intervention\\Validation\\Laravel\\ValidationServiceProvider"
             ]
         }
     },
