@@ -16,7 +16,7 @@ class ValidationServiceProvider extends ServiceProvider
     {
         // load translation files
         $this->loadTranslationsFrom(
-            __DIR__.'/lang',
+            __DIR__.'/../lang',
             'validation'
         );
 
@@ -48,7 +48,7 @@ class ValidationServiceProvider extends ServiceProvider
      */
     private function getRuleClassnames()
     {
-        $files = array_diff(scandir(__DIR__ . '/Rules'), ['.', '..']);
+        $files = array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']);
 
         return array_map(function ($filename) {
             return substr($filename, 0, -4);
