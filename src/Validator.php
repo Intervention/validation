@@ -65,7 +65,7 @@ class Validator
      */
     public function validate($value)
     {
-        return $this->rule->isValid($value);
+        return $this->rule->setValue($value)->isValid();
     }
 
     /**
