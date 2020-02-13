@@ -22,6 +22,12 @@ class Creditcard extends AbstractStringRule
         return $this->checksumMatches($value, $this->getChecksum($value));
     }
 
+    /**
+     * Calculate and return checksum from given creditcard number
+     *
+     * @param  mixed $value
+     * @return int
+     */
     private function getChecksum($value)
     {
         $sum = 0;
@@ -37,6 +43,13 @@ class Creditcard extends AbstractStringRule
         return $sum;
     }
 
+    /**
+     * Determines if checksum matches to the given creditcard number
+     *
+     * @param  mixed  $value
+     * @param  string $checksum
+     * @return boolean          
+     */
     private function checksumMatches($value, $checksum)
     {
         $length = strlen($value);
@@ -46,6 +59,12 @@ class Creditcard extends AbstractStringRule
         return ($mod == $value[$length - 1]);
     }
 
+    /**
+     * Check if the given value has the proper length for creditcards
+     *
+     * @param  mixed  $value
+     * @return boolean
+     */
     private function hasValidLength($value)
     {
         return (strlen($value) >= 13 || strlen($value) <= 19);
