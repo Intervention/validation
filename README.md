@@ -125,6 +125,10 @@ The field under validation must be free of any html code.
 
 The given field must be a well formed domainname.
 
+### imei (Intervention\Validation\Rules\Imei)
+
+The given field must be a International Mobile Equipment Identity (IMEI).
+
 ## License
 
 Intervention Validation Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).
