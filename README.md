@@ -137,7 +137,7 @@ The given field must be a International Mobile Equipment Identity (IMEI).
 
 The field under validation must be a media access control address (MAC address).
 
-### slug (Intervention\Validation\Rules\Slug) - TODO
+### slug (Intervention\Validation\Rules\Slug)
 
 The field under validation must be a user- and SEO-friendly short text.
 
