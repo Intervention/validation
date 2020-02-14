@@ -133,6 +133,14 @@ The given field must be a International Mobile Equipment Identity (IMEI).
 
 The field under validation must be a media access control address (MAC address).
 
+### slug (Intervention\Validation\Rules\Slug) - TODO
+
+The field under validation must be a user- and SEO-friendly short text.
+
+### semver (Intervention\Validation\Rules\SemVer)
+
+The given field must be a valid version numbers using Semantic Versioning.
+
 ## License
 
 Intervention Validation Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).
