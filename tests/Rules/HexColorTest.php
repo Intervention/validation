@@ -3,24 +3,29 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\HexColor;
-use Intervention\Validation\Validator;
-use PHPUnit\Framework\TestCase;
 
-class HexColorTest extends TestCase
+class HexColorTest extends AbstractRuleTestCase
 {
-    public function testValid()
-    {
-        $values = ['#cccccc', 'b33517', '#ccc', 'ccc', 'abc'];
-        foreach ($values as $value) {
-            $this->assertTrue((new HexColor($value))->isValid());
-        }
-    }
+    /**
+     * Valid values
+     *
+     * @var array
+     */
+    protected $valid = [
+        '#cccccc', 'b33517', '#ccc', 'ccc', 'abc'
+    ];
 
-    public function testInvalid()
+    /**
+     * Invalid values
+     *
+     * @var array
+     */
+    protected $invalid = [
+        'x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true, []
+    ];
+
+    public function getRuleClassname()
     {
-        $values = ['x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true, []];
-        foreach ($values as $value) {
-            $this->assertFalse((new HexColor($value))->isValid());
-        }
+        return HexColor::class;
     }
 }

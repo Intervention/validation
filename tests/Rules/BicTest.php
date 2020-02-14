@@ -3,23 +3,33 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Bic;
-use PHPUnit\Framework\TestCase;
 
-class BicTest extends TestCase
+class BicTest extends AbstractRuleTestCase
 {
-    public function testValid()
-    {
-        $values = ['PBNKDEFF', 'NOLADE21SHO'];
-        foreach ($values as $value) {
-            $this->assertTrue((new Bic($value))->isValid());
-        }
-    }
+    /**
+     * Valid values
+     *
+     * @var array
+     */
+    protected $valid = [
+        'PBNKDEFF',
+        'NOLADE21SHO',
+    ];
 
-    public function testInvalid()
+    /**
+     * Invalid values
+     *
+     * @var array
+     */
+    protected $invalid = [
+        'ABNFDBF',
+        'GR82WEST',
+        '5070081',
+        'DEUTDBBER'
+    ];
+
+    public function getRuleClassname()
     {
-        $values = ['ABNFDBF', 'GR82WEST', '5070081', 'DEUTDBBER'];
-        foreach ($values as $value) {
-            $this->assertFalse((new Bic($value))->isValid());
-        }
+        return Bic::class;
     }
 }

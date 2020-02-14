@@ -3,23 +3,31 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Isin;
-use PHPUnit\Framework\TestCase;
 
-class IsinTest extends TestCase
+class IsinTest extends AbstractRuleTestCase
 {
-    public function testValid()
-    {
-        $values = ['US0378331005', 'DE0005810055'];
-        foreach ($values as $value) {
-            $this->assertTrue((new Isin($value))->isValid());
-        }
-    }
+    /**
+     * Valid values
+     *
+     * @var array
+     */
+    protected $valid = [
+        'US0378331005',
+        'DE0005810055'
+    ];
 
-    public function testInvalid()
+    /**
+     * Invalid values
+     *
+     * @var array
+     */
+    protected $invalid = [
+        'DE0005810058',
+        'ZA9382189201'
+    ];
+
+    public function getRuleClassname()
     {
-        $values = ['DE0005810058', 'ZA9382189201'];
-        foreach ($values as $value) {
-            $this->assertFalse((new Isin($value))->isValid());
-        }
+        return Isin::class;
     }
 }
