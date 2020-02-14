@@ -28,6 +28,11 @@ abstract class AbstractRuleTestCase extends TestCase
      */
     protected $classname;
 
+    /**
+     * Return the classname of tested rule
+     *
+     * @return string
+     */
     abstract public function getRuleClassname();
 
     /**
@@ -40,7 +45,7 @@ abstract class AbstractRuleTestCase extends TestCase
 
     public function testValid()
     {
-        foreach ($this->getValidValues() as $value) {
+        foreach ($this->valid as $value) {
             $this->assertTrue((new $this->classname($value))->isValid());
         }
     }
@@ -48,18 +53,8 @@ abstract class AbstractRuleTestCase extends TestCase
     public function testInvalid()
     {
 
-        foreach ($this->getInvalidValues() as $value) {
+        foreach ($this->invalid as $value) {
             $this->assertFalse((new $this->classname($value))->isValid());
         }
-    }
-
-    protected function getValidValues()
-    {
-        return $this->valid;
-    }
-
-    protected function getInvalidValues()
-    {
-        return $this->invalid;
     }
 }
