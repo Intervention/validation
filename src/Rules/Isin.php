@@ -6,6 +6,11 @@ use Intervention\Validation\AbstractStringRule;
 
 class Isin extends AbstractStringRule
 {
+    /**
+     * Chars to calculate checksum
+     *
+     * @var array
+     */
     private $chars = [
         10 => 'A',
         11 => 'B',
@@ -42,8 +47,26 @@ class Isin extends AbstractStringRule
      */
     public function isValid()
     {
-        $checkdigit = substr($this->getValue(), -1);
+        return $this->getCheckDigit() == $this->getChecksum();
+    }
 
+    /**
+     * Return check digit of current value
+     *
+     * @return int
+     */
+    private function getCheckDigit()
+    {
+        return substr($this->getValue(), -1);
+    }
+
+    /**
+     * Get checksum of current value
+     *
+     * @return int
+     */
+    private function getChecksum()
+    {
         $value = substr($this->getValue(), 0, -1);
         $value = str_replace($this->chars, array_keys($this->chars), $value);
 
@@ -66,6 +89,6 @@ class Isin extends AbstractStringRule
         $checksum = 10 - ($checksum % 10);
         $checksum = $checksum % 10;
 
-        return $checksum == $checkdigit;
+        return $checksum;
     }
 }
