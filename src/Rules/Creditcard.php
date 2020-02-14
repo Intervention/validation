@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Intervention\Validation\AbstractLuhnRule;
 
-class Creditcard extends AbstractStringRule
+class Creditcard extends AbstractLuhnRule
 {
     /**
      * Determine if current value is valid
@@ -13,54 +13,7 @@ class Creditcard extends AbstractStringRule
      */
     public function isValid()
     {
-        $value = $this->getValue();
-
-        if (! $this->hasValidLength($value)) {
-            return false;
-        }
-
-        return $this->checksumMatches($value, $this->getChecksum($value));
-    }
-
-    /**
-     * Calculate and return checksum from given creditcard number
-     *
-     * @param  mixed $value
-     * @return int
-     */
-    private function getChecksum($value)
-    {
-        $sum = 0;
-        $weight = 2;
-        $length = strlen($value);
-
-        for ($i = $length - 2; $i >= 0; $i--) {
-            if (is_numeric($value[$i])) {
-                $digit = $weight * $value[$i];
-                $sum += floor($digit / 10) + $digit % 10;
-                $weight = $weight % 2 + 1;
-            } else {
-                return -1;
-            }
-        }
-
-        return $sum;
-    }
-
-    /**
-     * Determines if checksum matches to the given creditcard number
-     *
-     * @param  mixed  $value
-     * @param  string $checksum
-     * @return boolean
-     */
-    private function checksumMatches($value, $checksum)
-    {
-        $length = strlen($value);
-        $mod = (10 - $checksum % 10) % 10;
-
-
-        return ($mod == $value[$length - 1]);
+        return $this->hasValidLength() && parent::isValid();
     }
 
     /**
@@ -69,8 +22,8 @@ class Creditcard extends AbstractStringRule
      * @param  mixed  $value
      * @return boolean
      */
-    private function hasValidLength($value)
+    private function hasValidLength()
     {
-        return (strlen($value) >= 13 && strlen($value) <= 19);
+        return (strlen($this->getValue()) >= 13 && strlen($this->getValue()) <= 19);
     }
 }
