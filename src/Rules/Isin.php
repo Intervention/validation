@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Intervention\Validation\AbstractLuhnRule;
 
-class Isin extends AbstractStringRule
+class Isin extends AbstractLuhnRule
 {
     /**
      * Chars to calculate checksum
@@ -40,55 +40,39 @@ class Isin extends AbstractStringRule
         35 => 'Z',
     ];
 
-    /**
-     * Determine if current value is valid
-     *
-     * @return boolean
-     */
-    public function isValid()
-    {
-        return $this->getCheckDigit() == $this->getChecksum();
+    public function getValue()
+    {        
+        return $this->replaceChars($this->getValueWithoutLastDigit()) . $this->getLastDigit();
     }
 
     /**
-     * Return check digit of current value
+     * Replace chars in given value with corresponding numbers
      *
-     * @return int
+     * @param  string $value
+     * @return string
      */
-    private function getCheckDigit()
+    private function replaceChars($value)
     {
-        return substr($this->getValue(), -1);
+        return str_replace($this->chars, array_keys($this->chars), $value);
     }
 
     /**
-     * Get checksum of current value
+     * Return value without last digit
      *
-     * @return int
+     * @return string
      */
-    private function getChecksum()
+    private function getValueWithoutLastDigit()
     {
-        $value = substr($this->getValue(), 0, -1);
-        $value = str_replace($this->chars, array_keys($this->chars), $value);
+        return substr(parent::getValue(), 0, -1);
+    }
 
-        $g1 = [];
-        $g2 = [];
-
-        foreach (str_split($value) as $key => $num) {
-            if ($key % 2 == 0) {
-                $g1[] = intval($num);
-            } else {
-                $g2[] = intval($num);
-            }
-        }
-
-        foreach ($g1 as $key => $num) {
-            $g1[$key] = $num * 2;
-        }
-
-        $checksum = array_sum(str_split(implode('', $g1).implode('', $g2)));
-        $checksum = 10 - ($checksum % 10);
-        $checksum = $checksum % 10;
-
-        return $checksum;
+    /**
+     * Return last digit of current value
+     *
+     * @return string
+     */
+    private function getLastDigit()
+    {
+        return substr(parent::getValue(), -1);
     }
 }

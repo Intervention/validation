@@ -19,7 +19,6 @@ class Creditcard extends AbstractLuhnRule
     /**
      * Check if the given value has the proper length for creditcards
      *
-     * @param  mixed  $value
      * @return boolean
      */
     private function hasValidLength()

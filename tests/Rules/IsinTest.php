@@ -23,7 +23,9 @@ class IsinTest extends AbstractRuleTestCase
      */
     protected $invalid = [
         'DE0005810058',
-        'ZA9382189201'
+        'ZA9382189201',
+        'x',
+        // ' ',
     ];
 
     public function getRuleClassname()

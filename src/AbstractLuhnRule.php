@@ -4,47 +4,44 @@ namespace Intervention\Validation;
 
 abstract class AbstractLuhnRule extends AbstractStringRule
 {
+    /**
+     * Determine if current value has correct Luhn checksum
+     *
+     * @return boolean
+     */
     public function isValid()
     {
-        return $this->checksumMatches($this->getChecksum());
+        return $this->checksumMatches();
     }
 
     /**
-     * Calculate and return Luhn checksum
+     * Determine if the checksum of the current value is valid
+     *
+     * @return boolean
+     */
+    protected function checksumMatches()
+    {
+        return $this->getChecksum() % 10 === 0;
+    }
+
+    /**
+     * Calculate checksum of current value
      *
      * @return int
      */
-    private function getChecksum()
+    protected function getChecksum()
     {
-        $sum = 0;
-        $weight = 2;
-        $length = strlen($this->getValue());
+        $checksum = 0;
+        $reverse = strrev($this->getValue());
 
-        for ($i = $length - 2; $i >= 0; $i--) {
-            if (is_numeric($this->getValue()[$i])) {
-                $digit = $weight * $this->getValue()[$i];
-                $sum += floor($digit / 10) + $digit % 10;
-                $weight = $weight % 2 + 1;
+        foreach (str_split($reverse) as $num => $digit) {
+            if (is_numeric($digit)) {
+                $checksum += $num & 1 ? ($digit > 4 ? $digit * 2 - 9 : $digit * 2) : $digit;
             } else {
                 return -1;
             }
         }
 
-        return $sum;
-    }
-
-    /**
-     * Determines if Luhn checksum matches to the current value
-     *
-     * @param  string $checksum
-     * @return boolean
-     */
-    private function checksumMatches($checksum)
-    {
-        $length = strlen($this->getValue());
-        $mod = (10 - $checksum % 10) % 10;
-
-
-        return ($mod == $this->getValue()[$length - 1]);
+        return $checksum;
     }
 }
