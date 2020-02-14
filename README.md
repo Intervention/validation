@@ -34,7 +34,7 @@ $valid = $validator->validate('www'); // false
 // change the validation rule
 $validator->setRule(new Domainname);
 
-// validate other rules
+// now validate new rule domainname
 $valid = $validator->validate('foo.com'); // true
 $valid = $validator->validate('?'); // false
 ```
