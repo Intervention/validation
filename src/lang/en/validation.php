@@ -11,4 +11,8 @@ return [
     'htmlclean' => 'The value :attribute contains forbidden HTML code.',
     'domainname' => ':attribute must be a well formed domainname.',
     'jwt' => 'The value :attribute does not correspond to the JSON Web Token Format',
+    'imei' => 'The value :attribute must be a valid Mobile Equipment Identity (IMEI).',
+    'macaddress' => 'The value :attribute is no valid MAC address.',
+    'slug' => 'The value :attribute is no SEO-friendly short text.',
+    'semver' => 'The value :attribute is no version number using Semantic Versioning.',
 ];

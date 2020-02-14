@@ -11,4 +11,8 @@ return [
     'htmlclean' => ':attribute bevat verboden HTML code.',
     'domainname' => ':attribute moet een geldige domeinnaam zijn.',
     'jwt' => 'De waarde :attribute komt niet overeen met het JSON Web Token formaat',
+    'imei' => 'De waarde :attribute moet een geldige Mobile Equipment Identity (IMEI) zijn.',
+    'macaddress' => 'De waarde :attribute is geen geldig MAC-adres.',
+    'slug' => ': attribute is geen SEO-vriendelijke korte tekst.',
+    'semver' => ':attribute is geen versienummer dat Semantic Versioning gebruikt.',
 ];

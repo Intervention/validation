@@ -125,6 +125,10 @@ The field under validation must be free of any html code.
 
 The given field must be a well formed domainname.
 
+### jwt (Intervention\Validation\Rules\Jwt)
+
+The given value must be a in format of a JSON Web Token.
+
 ### imei (Intervention\Validation\Rules\Imei)
 
 The given field must be a International Mobile Equipment Identity (IMEI).
