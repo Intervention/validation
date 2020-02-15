@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractLuhnRule;
-
-class Isin extends AbstractLuhnRule
+class Isin extends Luhn
 {
     /**
      * Chars to calculate checksum

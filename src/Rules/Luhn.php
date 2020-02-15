@@ -1,8 +1,10 @@
 <?php
 
-namespace Intervention\Validation;
+namespace Intervention\Validation\Rules;
 
-abstract class AbstractLuhnRule extends AbstractStringRule
+use Intervention\Validation\AbstractStringRule;
+
+class Luhn extends AbstractStringRule
 {
     /**
      * Determine if current value has correct Luhn checksum

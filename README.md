@@ -145,6 +145,10 @@ The field under validation must be a user- and SEO-friendly short text.
 
 The given field must be a valid version numbers using Semantic Versioning.
 
+### luhn (Intervention\Validation\Rules\Luhn)
+
+The given value must verify against its included Luhn algorithm check digit.
+
 ## License
 
 Intervention Validation Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).

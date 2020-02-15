@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractLuhnRule;
-
-class Creditcard extends AbstractLuhnRule
+class Creditcard extends Luhn
 {
     /**
      * Determine if current value is valid

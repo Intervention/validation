@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractLuhnRule;
-
-class Imei extends AbstractLuhnRule
+class Imei extends Luhn
 {
     /**
      * Determine if current value is a valid IMEI
