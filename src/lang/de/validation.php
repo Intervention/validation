@@ -16,4 +16,5 @@ return [
     'slug' => 'Der Wert :attribute ist kein suchmaschinenfreundlicher Kurzname.',
     'semver' => 'Der Wert :attribute ist keine Versionsnummer im Sinne der Semantic Versioning Spezifikation.',
     'luhn' => 'Der Wert :attribute kann nicht nach dem Luhn-Algorithmus verifiziert werden.',
+    'base64' => 'Der Wert :attribute ist nicht nach dem Base64 Verfahren kodiert.',
 ];

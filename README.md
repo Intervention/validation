@@ -89,6 +89,10 @@ Or add your custom messages directly to the validator like [described in the doc
 
 The following validation rules are available.
 
+### base64 (Intervention\Validation\Rules\Base64)
+
+Checks if given value is Base64 encoded.
+
 ### bic (Intervention\Validation\Rules\Bic)
 
 Checks for a valid Business Identifier Code (BIC).

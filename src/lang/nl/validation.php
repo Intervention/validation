@@ -16,4 +16,5 @@ return [
     'slug' => ': attribute is geen SEO-vriendelijke korte tekst.',
     'semver' => ':attribute is geen versienummer dat Semantic Versioning gebruikt.',
     'luhn' => 'De waarde :attribute kan niet worden geverifieerd met behulp van het Luhn-algoritme.',
+    'base64' => 'De waarde :attribute is niet gecodeerd met de Base64-methode.',
 ];
