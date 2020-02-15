@@ -38,10 +38,9 @@ class ValidationTest extends TestCase
 
     public function testValidateBic()
     {
-        $bic = 'PBNKDEFF';
-        $no_bic = 'ABNFDBF';
-        $this->assertTrue(Validator::isBic($bic));
-        $this->assertFalse(Validator::isBic($no_bic));
+        $this->assertTrue(Validator::isBic('PBNKDEFF'));
+        $this->assertFalse(Validator::isBic('ABNFDBF'));
+        $this->assertFalse(Validator::isBic('DEUTDBBER'));
     }
 
     public function testValidateCreditcard()

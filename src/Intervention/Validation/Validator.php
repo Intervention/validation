@@ -213,7 +213,7 @@ class Validator
      */
     public static function isBic($value)
     {
-        $pattern = '/^[A-Za-z]{4,} ?[A-Za-z]{2,} ?[A-Za-z0-9]{2,} ?([A-Za-z0-9]{3,})?$/';
+        $pattern = '/^[A-Za-z]{4} ?[A-Za-z]{2} ?[A-Za-z0-9]{2} ?([A-Za-z0-9]{3})?$/';
         return (boolean) preg_match($pattern, $value);
     }
 
