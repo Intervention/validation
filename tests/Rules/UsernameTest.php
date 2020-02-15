@@ -12,8 +12,8 @@ class UsernameTest extends AbstractRuleTestCase
     protected $valid = [
         'tom',
         'tester',
-        'test',
-        'test_',
+        'test12',
+        't-e-s-t',
         'mr_freeze',
         'mr-freeze',
         'r00t',
@@ -27,6 +27,14 @@ class UsernameTest extends AbstractRuleTestCase
      */
     protected $invalid = [
         'mr',
+        'homer-',
+        '-homer',
+        'homer_',
+        '_homer',
+        '_homer_',
+        '1homer',
+        ' homer',
+        'o__o',
         'mr.freeze',
         'mr freeze',
         '-mr-freeze',
@@ -46,6 +54,8 @@ class UsernameTest extends AbstractRuleTestCase
         '?test=1',
         '€uro',
         'theQuickBrownFoxJumps',
-        'SupersupersupersupersupersupersupersupersupersupersuperMan',
+        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        'ⓣⓔⓢⓣ',
+        '𝒕𝒆𝒔𝒕',
     ];
 }

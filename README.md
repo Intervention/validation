@@ -147,7 +147,7 @@ The field under validation must be a user- and SEO-friendly short text.
 
 ### username (Intervention\Validation\Rules\Username)
 
-The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
+The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
 
 
 ## License
