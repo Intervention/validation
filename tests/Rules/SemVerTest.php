@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\SemVer;
-
 class SemVerTest extends AbstractRuleTestCase
 {
     /**
@@ -41,9 +39,4 @@ class SemVerTest extends AbstractRuleTestCase
         '10.0.0.beta',
         'foo',
     ];
-
-    public function getRuleClassname()
-    {
-        return SemVer::class;
-    }
 }

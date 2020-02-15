@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Isin;
-
 class IsinTest extends AbstractRuleTestCase
 {
     /**
@@ -27,9 +25,4 @@ class IsinTest extends AbstractRuleTestCase
         'x',
         // ' ',
     ];
-
-    public function getRuleClassname()
-    {
-        return Isin::class;
-    }
 }

@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Isbn;
-
 class IsbnTest extends AbstractRuleTestCase
 {
     /**
@@ -28,9 +26,4 @@ class IsbnTest extends AbstractRuleTestCase
         '123',
         'ABC'
     ];
-
-    public function getRuleClassname()
-    {
-        return Isbn::class;
-    }
 }

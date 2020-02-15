@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Creditcard;
-
 class CreditcardTest extends AbstractRuleTestCase
 {
     /**
@@ -27,9 +25,4 @@ class CreditcardTest extends AbstractRuleTestCase
         'xxxxxxxxxxxxxxxx',
         '4444111I22223333',
     ];
-
-    public function getRuleClassname()
-    {
-        return Creditcard::class;
-    }
 }

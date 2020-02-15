@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Slug;
-
 class SlugTest extends AbstractRuleTestCase
 {
     /**
@@ -45,9 +43,4 @@ class SlugTest extends AbstractRuleTestCase
         '?',
         'föö',
     ];
-
-    public function getRuleClassname()
-    {
-        return Slug::class;
-    }
 }

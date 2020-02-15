@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\MacAddress;
-
 class MacAddressTest extends AbstractRuleTestCase
 {
     /**
@@ -40,9 +38,4 @@ class MacAddressTest extends AbstractRuleTestCase
         '',
         false,
     ];
-
-    public function getRuleClassname()
-    {
-        return MacAddress::class;
-    }
 }

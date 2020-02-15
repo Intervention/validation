@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Username;
-
 class UsernameTest extends AbstractRuleTestCase
 {
     /**
@@ -50,9 +48,4 @@ class UsernameTest extends AbstractRuleTestCase
         'theQuickBrownFoxJumps',
         'SupersupersupersupersupersupersupersupersupersupersuperMan',
     ];
-
-    public function getRuleClassname()
-    {
-        return Username::class;
-    }
 }

@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Luhn;
-
 class LuhnTest extends AbstractRuleTestCase
 {
     /**
@@ -29,9 +27,4 @@ class LuhnTest extends AbstractRuleTestCase
         'xxxxxxxxxxxxxxxx',
         '4444111I22223333',
     ];
-
-    public function getRuleClassname()
-    {
-        return Luhn::class;
-    }
 }

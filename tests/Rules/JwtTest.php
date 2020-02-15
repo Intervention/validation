@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Jwt;
-
 class JwtTest extends AbstractRuleTestCase
 {
     /**
@@ -36,9 +34,4 @@ class JwtTest extends AbstractRuleTestCase
             '...',        
             '.-.-.',        
     ];
-
-    public function getRuleClassname()
-    {
-        return Jwt::class;
-    }
 }

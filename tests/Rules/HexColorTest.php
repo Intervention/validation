@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\HexColor;
-
 class HexColorTest extends AbstractRuleTestCase
 {
     /**
@@ -23,9 +21,4 @@ class HexColorTest extends AbstractRuleTestCase
     protected $invalid = [
         'x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true, []
     ];
-
-    public function getRuleClassname()
-    {
-        return HexColor::class;
-    }
 }

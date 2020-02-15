@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Iban;
-
 class IbanTest extends AbstractRuleTestCase
 {
     /**
@@ -26,9 +24,4 @@ class IbanTest extends AbstractRuleTestCase
         'GR82 WEST 1234 5698 7654 32',
         '5070081',
     ];
-
-    public function getRuleClassname()
-    {
-        return Iban::class;
-    }
 }

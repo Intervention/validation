@@ -4,6 +4,7 @@ namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Bic;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 abstract class AbstractRuleTestCase extends TestCase
 {
@@ -29,18 +30,24 @@ abstract class AbstractRuleTestCase extends TestCase
     protected $classname;
 
     /**
-     * Return the classname of tested rule
-     *
-     * @return string
-     */
-    abstract public function getRuleClassname();
-
-    /**
      * Setup test
      */
     protected function setUp(): void
     {
-        $this->classname = $this->getRuleClassname();
+        $this->classname = $this->getRuleClassName();
+    }
+
+    /**
+     * Return class name of currently tested rule
+     *
+     * @return string
+     */
+    protected function getRuleClassName()
+    {
+        $class = (new ReflectionClass($this))->getShortName();
+        $class = str_replace('Test', '', $class);
+
+        return "\\Intervention\\Validation\\Rules\\" . $class;
     }
 
     public function testValid()

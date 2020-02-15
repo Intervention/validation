@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\HtmlClean;
-
 class HtmlCleanTest extends AbstractRuleTestCase
 {
     /**
@@ -40,9 +38,4 @@ class HtmlCleanTest extends AbstractRuleTestCase
         '<>',
         '><',
     ];
-
-    public function getRuleClassname()
-    {
-        return HtmlClean::class;
-    }
 }

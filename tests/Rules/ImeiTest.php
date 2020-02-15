@@ -2,8 +2,6 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\Imei;
-
 class ImeiTest extends AbstractRuleTestCase
 {
     /**
@@ -33,9 +31,4 @@ class ImeiTest extends AbstractRuleTestCase
         'ABCDEFGHIJKLMNO',
         '4444111122223333',
     ];
-
-    public function getRuleClassname()
-    {
-        return Imei::class;
-    }
 }
