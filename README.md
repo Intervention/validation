@@ -78,7 +78,7 @@ $validator = Validator::make($request->all(), [
 
 Add the corresponding key to `/resources/lang/<language>/validation.php` like this:
 
-```
+```php
 // example
 'iban' => 'Please enter IBAN number!',
 ```
@@ -93,62 +93,63 @@ The following validation rules are available.
 
 Checks for a valid Business Identifier Code (BIC).
 
-### iban (Intervention\Validation\Rules\Iban)
-
-Checks for a valid International Bank Account Number (IBAN).
-
-### isin (Intervention\Validation\Rules\Isin)
-
-Checks for a valid International Securities Identification Number (ISIN).
-
 ### creditcard (Intervention\Validation\Rules\Creditcard)
 
 The given field must be a valid creditcard number.
-
-### hexcolor (Intervention\Validation\Rules\HexColor)
-
-The field under validation must be a valid hexadecimal color code.
-
-### isbn (Intervention\Validation\Rules\Isbn)
-
-The field under validation must be a valid International Standard Book Number (ISBN).
-
-### username (Intervention\Validation\Rules\Username)
-
-The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
-
-### htmlclean (Intervention\Validation\Rules\HtmlClean)
-
-The field under validation must be free of any html code.
 
 ### domainname (Intervention\Validation\Rules\Domainname)
 
 The given field must be a well formed domainname.
 
-### jwt (Intervention\Validation\Rules\Jwt)
+### hexcolor (Intervention\Validation\Rules\HexColor)
 
-The given value must be a in format of a JSON Web Token.
+The field under validation must be a valid hexadecimal color code.
+
+### htmlclean (Intervention\Validation\Rules\HtmlClean)
+
+The field under validation must be free of any html code.
+
+### iban (Intervention\Validation\Rules\Iban)
+
+Checks for a valid International Bank Account Number (IBAN).
 
 ### imei (Intervention\Validation\Rules\Imei)
 
 The given field must be a International Mobile Equipment Identity (IMEI).
 
-### macaddress (Intervention\Validation\Rules\MacAddress)
+### isbn (Intervention\Validation\Rules\Isbn)
 
-The field under validation must be a media access control address (MAC address).
+The field under validation must be a valid International Standard Book Number (ISBN).
 
-### slug (Intervention\Validation\Rules\Slug)
+### isin (Intervention\Validation\Rules\Isin)
 
-The field under validation must be a user- and SEO-friendly short text.
+Checks for a valid International Securities Identification Number (ISIN).
 
-### semver (Intervention\Validation\Rules\SemVer)
+### jwt (Intervention\Validation\Rules\Jwt)
 
-The given field must be a valid version numbers using Semantic Versioning.
+The given value must be a in format of a JSON Web Token.
 
 ### luhn (Intervention\Validation\Rules\Luhn)
 
 The given value must verify against its included Luhn algorithm check digit.
 
+### macaddress (Intervention\Validation\Rules\MacAddress)
+
+The field under validation must be a media access control address (MAC address).
+
+### semver (Intervention\Validation\Rules\SemVer)
+
+The given field must be a valid version numbers using Semantic Versioning.
+
+### slug (Intervention\Validation\Rules\Slug)
+
+The field under validation must be a user- and SEO-friendly short text.
+
+### username (Intervention\Validation\Rules\Username)
+
+The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. 
+
+
 ## License
 
-Intervention Validation Class is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+Intervention Validation is licensed under the [MIT License](http://opensource.org/licenses/MIT).
