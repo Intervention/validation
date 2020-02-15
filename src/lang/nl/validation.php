@@ -15,4 +15,5 @@ return [
     'macaddress' => 'De waarde :attribute is geen geldig MAC-adres.',
     'slug' => ': attribute is geen SEO-vriendelijke korte tekst.',
     'semver' => ':attribute is geen versienummer dat Semantic Versioning gebruikt.',
+    'luhn' => 'De waarde :attribute kan niet worden geverifieerd met behulp van het Luhn-algoritme.',
 ];

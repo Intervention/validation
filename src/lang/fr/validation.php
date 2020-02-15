@@ -15,4 +15,5 @@ return [
     'macaddress' => 'La valeur :attribute n\'est pas une adresse MAC valide.',
     'slug' => 'La valeur :attribute n\'est pas un court texte convivial pour le référencement.',
     'semver' => 'La valeur :attribute n\'est pas un numéro de version utilisant le versionnage sémantique.',
+    'luhn' => 'La valeur :attribute ne peut pas être vérifiée à l\'aide de l\'algorithme de Luhn',
 ];

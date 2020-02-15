@@ -15,4 +15,5 @@ return [
     'macaddress' => 'The value :attribute is no valid MAC address.',
     'slug' => 'The value :attribute is no SEO-friendly short text.',
     'semver' => 'The value :attribute is no version number using Semantic Versioning.',
+    'luhn' => 'The value :attribute cannot be verified using the Luhn algorithm.',
 ];
