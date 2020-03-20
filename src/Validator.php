@@ -2,21 +2,19 @@
 
 namespace Intervention\Validation;
 
-use Intervention\Validation\AbstractRule;
-
 class Validator
 {
     /**
      * Current rule
      *
-     * @var Rules\AbstractRule
+     * @var AbstractRule
      */
     protected $rule;
 
     /**
      * Create new instance
      *
-     * @param mixed $value
+     * @param AbstractRule $rule
      */
     public function __construct(AbstractRule $rule)
     {
@@ -48,8 +46,7 @@ class Validator
     /**
      * Static constructor
      *
-     * @param  AbstractRule $classname
-     * @param  mixed        $value
+     * @param  AbstractRule $rule
      * @return self
      */
     public static function make(AbstractRule $rule): Validator

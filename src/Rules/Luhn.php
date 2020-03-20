@@ -38,7 +38,7 @@ class Luhn extends AbstractStringRule
 
         foreach (str_split($reverse) as $num => $digit) {
             if (is_numeric($digit)) {
-                $checksum += $num & 1 ? ($digit > 4 ? $digit * 2 - 9 : $digit * 2) : $digit;
+                $checksum += $num & 1 ? ($digit > 4 ? (int) $digit * 2 - 9 : (int) $digit * 2) : $digit;
             } else {
                 return -1;
             }

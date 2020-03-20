@@ -161,7 +161,7 @@ class Iban extends AbstractStringRule
     /**
      * Determine if given iban has the proper length
      *
-     * @param  string  $value
+     * @param  string  $iban
      * @return boolean
      */
     private function hasValidLength($iban)

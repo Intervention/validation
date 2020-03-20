@@ -46,7 +46,7 @@ class ValidationExtension extends IlluminateValidator
      * Return validation rule classname by given method name
      *
      * @param  string $name
-     * @return AbstractRule
+     * @return string
      */
     private function getRuleClassnameByMethodName($name): string
     {

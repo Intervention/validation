@@ -80,9 +80,9 @@ class ValidationServiceProvider extends ServiceProvider
     /**
      * Attach error message for given rule classname to messages array
      *
-     * @param  array                             &$messages
+     * @param  array                             $messages
      * @param  string                            $classname
-     * @param  Illuminate\Translation\Translator $translator
+     * @param  \Illuminate\Translation\Translator $translator
      * @return void
      */
     private function attachErrorMessage(&$messages, $classname, $translator)

@@ -83,7 +83,7 @@ class Domainname extends AbstractStringRule
     /**
      * Determine if given value is valud NR-LDH label
      *
-     * @param  string  $string
+     * @param  string  $value
      * @return boolean
      */
     private function isValidNrLdhLabel(string $value): bool
