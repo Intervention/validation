@@ -43,17 +43,7 @@ class Domainname extends AbstractStringRule
      */
     private function getLabels(): array
     {
-        return explode('.', $this->getValue());
-    }
-
-    /**
-     * Get value to validate
-     *
-     * @return mixed
-     */
-    protected function getValue()
-    {
-        return idn_to_ascii(parent::getValue(), IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        return explode('.', $this->idnToAscii(parent::getValue()));
     }
 
     /**
@@ -77,7 +67,7 @@ class Domainname extends AbstractStringRule
      */
     private function isValidALabel(string $value): bool
     {
-        return substr($value, 0, 4) === 'xn--' && idn_to_utf8($value) !== false;
+        return substr($value, 0, 4) === 'xn--' && $this->idnToUtf8($value) !== false;
     }
 
     /**
@@ -104,5 +94,27 @@ class Domainname extends AbstractStringRule
         }
 
         return (bool) preg_match("/^[a-z]{2,63}$/i", $value);
+    }
+
+    /**
+     * Wrapper method for idn_to_utf8 call
+     *
+     * @param  string $domain
+     * @return string
+     */
+    private function idnToUtf8(string $domain): string
+    {
+        return idn_to_utf8($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+    }
+
+    /**
+     * Wrapper method for idn_to_ascii call
+     *
+     * @param  string $domain
+     * @return string
+     */
+    private function idnToAscii(string $domain): string
+    {
+        return idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
     }
 }
