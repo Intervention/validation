@@ -43,7 +43,17 @@ class Domainname extends AbstractStringRule
      */
     private function getLabels(): array
     {
-        return explode('.', idn_to_ascii(parent::getValue()));
+        return explode('.', $this->getValue());
+    }
+
+    /**
+     * Get value to validate
+     *
+     * @return mixed
+     */
+    protected function getValue()
+    {
+        return idn_to_ascii(parent::getValue(), IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
     }
 
     /**
