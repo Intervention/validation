@@ -101,7 +101,7 @@ class Iban extends AbstractStringRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         $iban = $this->getValue();
 
@@ -114,7 +114,7 @@ class Iban extends AbstractStringRule
      *
      * @return string
      */
-    public function getValue()
+    protected function getValue()
     {
         return str_replace(' ', '', strtoupper(parent::getValue()));
     }

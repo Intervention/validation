@@ -11,7 +11,7 @@ class Luhn extends AbstractStringRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return $this->checksumMatches();
     }
@@ -21,7 +21,7 @@ class Luhn extends AbstractStringRule
      *
      * @return boolean
      */
-    protected function checksumMatches()
+    protected function checksumMatches(): bool
     {
         return $this->getChecksum() % 10 === 0;
     }
@@ -31,7 +31,7 @@ class Luhn extends AbstractStringRule
      *
      * @return int
      */
-    protected function getChecksum()
+    protected function getChecksum(): int
     {
         $checksum = 0;
         $reverse = strrev($this->getValue());

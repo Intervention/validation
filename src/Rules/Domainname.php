@@ -13,7 +13,7 @@ class Domainname extends AbstractRegexRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         if (strlen($this->getValue()) > 253) {
             return false;

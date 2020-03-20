@@ -38,8 +38,13 @@ class Isin extends Luhn
         35 => 'Z',
     ];
 
-    public function getValue()
-    {        
+    /**
+     * Get value to check against
+     *
+     * @return string
+     */
+    protected function getValue()
+    {
         return $this->replaceChars($this->getValueWithoutLastDigit()) . $this->getLastDigit();
     }
 

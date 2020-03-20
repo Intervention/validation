@@ -7,7 +7,7 @@ use Intervention\Validation\AbstractRegexRule;
 class MacAddress extends AbstractRegexRule
 {
     /**
-     * Mac Adress pattern
+     * Mac Adress regex pattern
      *
      * @var string
      */
@@ -18,7 +18,7 @@ class MacAddress extends AbstractRegexRule
      *
      * @return string
      */
-    public function getValue()
+    protected function getValue(): string
     {
         return preg_replace("/[\. :-]/i", '', parent::getValue());
     }

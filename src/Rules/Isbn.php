@@ -11,7 +11,7 @@ class Isbn extends AbstractStringRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         switch (strlen($this->getValue())) {
             case 10:
@@ -83,7 +83,7 @@ class Isbn extends AbstractStringRule
      *
      * @return string
      */
-    public function getValue()
+    protected function getValue()
     {
         return preg_replace("/[^0-9x]/i", '', parent::getValue());
     }

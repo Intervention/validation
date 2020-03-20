@@ -11,7 +11,7 @@ class HtmlClean extends AbstractStringRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return (strip_tags($this->getValue()) == $this->getValue());
     }

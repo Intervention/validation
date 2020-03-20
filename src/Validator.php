@@ -63,7 +63,7 @@ class Validator
      * @param  mixed $value
      * @return boolean
      */
-    public function validate($value)
+    public function validate($value): bool
     {
         return $this->rule->setValue($value)->isValid();
     }
@@ -75,7 +75,7 @@ class Validator
      * @param  array  $arguments
      * @return boolean
      */
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, array $arguments): bool
     {
         $value = isset($arguments[0]) ? $arguments[0] : null;
 
@@ -88,7 +88,7 @@ class Validator
      * @param  string $call
      * @return AbstractRule
      */
-    private static function getRuleByCall($call): AbstractRule
+    private static function getRuleByCall(string $call): AbstractRule
     {
         $classname = sprintf('Intervention\Validation\Rules\%s', substr($call, 2));
         

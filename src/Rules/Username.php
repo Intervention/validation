@@ -23,7 +23,7 @@ class Username extends AbstractRegexRule
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return $this->hasValidLength() && parent::isValid();
     }
@@ -33,7 +33,7 @@ class Username extends AbstractRegexRule
      *
      * @return boolean
      */
-    private function hasValidLength()
+    private function hasValidLength(): bool
     {
         return (strlen($this->getValue()) >= 3 && strlen($this->getValue()) <= 20);
     }

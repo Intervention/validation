@@ -16,7 +16,7 @@ abstract class AbstractRule
      *
      * @return boolean
      */
-    abstract public function isValid();
+    abstract public function isValid(): bool;
 
     /**
      * Create new instance
@@ -33,7 +33,7 @@ abstract class AbstractRule
      *
      * @return mixed
      */
-    public function getValue()
+    protected function getValue()
     {
         return $this->value;
     }
@@ -43,7 +43,7 @@ abstract class AbstractRule
      *
      * @param mixed $value
      */
-    public function setValue($value)
+    public function setValue($value): AbstractRule
     {
         $this->value = $value;
 
