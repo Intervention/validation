@@ -13,22 +13,22 @@ class Domainname extends AbstractStringRule
      */
     public function isValid(): bool
     {
-        $labels = $this->getLabels(); // get labels
-        $tld = end($labels); // most right label is tld
+        $labels = $this->getLabels(); // get labels of domainname
+        $tld = end($labels); // most right label of domainname is tld
 
-        // min. 2 labels
+        // domain must have 2 labels minimum
         if (count($labels) <= 1) {
             return false;
         }
 
-        // validate each label
+        // each label must be valid
         foreach ($labels as $label) {
             if (! $this->isValidLabel($label)) {
                 return false;
             }
         }
 
-        // validate tld
+        // tld must be valid
         if (! $this->isValidTld($tld)) {
             return false;
         }
