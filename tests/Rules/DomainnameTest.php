@@ -50,6 +50,8 @@ class DomainnameTest extends AbstractRuleTestCase
         'foo.f',
         'foo.com.',
         'foo.k12',
+        'foo.123',
+        'foo.foo_bar.bar',
         'foo.bar-',
         '-foo.bar',
         'foo-.bar',
