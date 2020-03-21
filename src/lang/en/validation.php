@@ -17,4 +17,5 @@ return [
     'semver' => 'The value :attribute is no version number using Semantic Versioning.',
     'luhn' => 'The value :attribute cannot be verified using the Luhn algorithm.',
     'base64' => 'The value :attribute is not Base64 encoded.',
+    'issn' => 'The value :attribute must be a valid International Standard Serial Number (ISSN).',
 ];

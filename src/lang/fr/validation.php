@@ -17,4 +17,5 @@ return [
     'semver' => 'La valeur :attribute n\'est pas un numéro de version utilisant le versionnage sémantique.',
     'luhn' => 'La valeur :attribute ne peut pas être vérifiée à l\'aide de l\'algorithme de Luhn.',
     'base64' => 'La valeur :attribute n\'est pas codée à l\'aide de la méthode Base64.',
+    'issn' => 'La valeur :attribute doit être une Numéro international normalisé des publications en série (ISSN) valide.',
 ];
