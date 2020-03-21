@@ -129,6 +129,10 @@ The field under validation must be a valid International Standard Book Number (I
 
 Checks for a valid International Securities Identification Number (ISIN).
 
+### issn (Intervention\Validation\Rules\Issn)
+
+Checks for a valid International Standard Serial Number (ISSN).
+
 ### jwt (Intervention\Validation\Rules\Jwt)
 
 The given value must be a in format of a JSON Web Token.
