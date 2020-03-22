@@ -88,9 +88,9 @@ class Validator
     public static function __callStatic(string $name, array $arguments): bool
     {
         $value = isset($arguments[0]) ? $arguments[0] : null;
-        $rule = self::getRuleByCall($name)->setValue($value);
+        self::$rule = self::getRuleByCall($name)->setValue($value);
 
-        return self::getReturnValueByCall($name, $rule);
+        return self::getReturnValueByCall($name);
     }
 
     /**
@@ -105,7 +105,7 @@ class Validator
         
         if (! class_exists($class)) {
             trigger_error(
-                "Error: Call to undefined method ".self::class."::".$class,
+                "Error: Call to undefined method ".$call,
                 E_USER_ERROR
             );
         }
@@ -117,15 +117,14 @@ class Validator
      * Get return value by static call name (is<RuleName> or assert<RuleName>)
      *
      * @param  string       $call
-     * @param  AbstractRule $rule
      * @return bool
      */
-    private static function getReturnValueByCall(string $call, AbstractRule $rule): bool
+    private static function getReturnValueByCall(string $call): bool
     {
-        $valid = $rule->isValid();
+        $valid = self::$rule->isValid();
 
         if ($valid === false && self::parseCall($call)['type'] === 'assert') {
-            self::throwInvalidException($rule->getValue());
+            self::throwInvalidException(self::$rule->getValue());
         }
 
         return $valid;
@@ -139,11 +138,18 @@ class Validator
      */
     private static function parseCall(string $call): array
     {
-        preg_match("/^(?P<type>is|assert)(?P<rule>.*)$/", $call, $matches);
+        $result = (bool) preg_match("/^(?P<type>is|assert)(?P<rule>.*)$/", $call, $matches);
+
+        if ($result === false) {
+            trigger_error(
+                "Error: Call to undefined method ".$call,
+                E_USER_ERROR
+            );
+        }
 
         return [
-            'type' => isset($matches['type']) ? $matches['type'] : null,
-            'rule' => isset($matches['rule']) ? $matches['rule'] : null,
+            'type' => $matches['type'],
+            'rule' => $matches['rule'],
         ];
     }
 
@@ -155,8 +161,10 @@ class Validator
      */
     private static function throwInvalidException($value): void
     {
+        $rulename = is_a(self::$rule, AbstractRule::class) ? get_class(self::$rule) : 'Unknown';
+
         throw new Exception\ValidationException(
-            sprintf('Error validating value (%s) against rule "%s"', $value, get_class(self::$rule))
+            sprintf('Error validating value (%s) against rule "%s"', $value, $rulename)
         );
     }
 }

@@ -75,6 +75,12 @@ class ValidatorTest extends TestCase
         $this->assertTrue(Validator::assertNonExisting('#cccccc'));
     }
 
+    public function testNonExistingStaticCallType()
+    {
+        $this->expectException(Error::class);
+        $this->assertTrue(Validator::fooHexColor('#cccccc'));
+    }
+
     public function testSetGetRule()
     {
         $validator = new Validator(new HexColor);

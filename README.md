@@ -80,7 +80,7 @@ $valid = Validator::isHexColor('#www'); // false
 
 // throw exceptions on invalid data
 try {
-    Validator::assertHexColor('foo')
+    Validator::assertHexColor('foo');
 } catch (ValidationException $e) {
     echo $e->getMessage();
 }
