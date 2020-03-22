@@ -4,7 +4,7 @@ namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
 
-class Uppercase extends AbstractRegexRule
+class UpperCase extends AbstractRegexRule
 {
     /**
      * Regular expression pattern for UPPER CASE string
