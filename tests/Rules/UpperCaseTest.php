@@ -2,7 +2,7 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class UppercaseTest extends AbstractRuleTestCase
+class UpperCaseTest extends AbstractRuleTestCase
 {
     /**
      * Valid values
