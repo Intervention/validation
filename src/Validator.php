@@ -9,7 +9,7 @@ class Validator
      *
      * @var AbstractRule
      */
-    protected static $rule;
+    protected $rule;
 
     /**
      * Create new instance
@@ -18,7 +18,7 @@ class Validator
      */
     public function __construct(AbstractRule $rule)
     {
-        self::$rule = $rule;
+        $this->rule = $rule;
     }
 
     /**
@@ -28,7 +28,7 @@ class Validator
      */
     public function setRule(AbstractRule $rule): Validator
     {
-        self::$rule = $rule;
+        $this->rule = $rule;
 
         return $this;
     }
@@ -40,7 +40,7 @@ class Validator
      */
     public function getRule(): AbstractRule
     {
-        return self::$rule;
+        return $this->rule;
     }
 
     /**
@@ -62,7 +62,7 @@ class Validator
      */
     public function validate($value): bool
     {
-        return self::$rule->setValue($value)->isValid();
+        return $this->rule->setValue($value)->isValid();
     }
 
     /**
@@ -73,8 +73,14 @@ class Validator
      */
     public function assert($value): void
     {
-        if (false === $this->validate($value)) {
-            $this->throwInvalidException($value);
+        if (! $this->validate($value)) {
+            throw new Exception\ValidationException(
+                sprintf(
+                    'Error validating value (%s) against rule "%s"',
+                    $value,
+                    get_class($this->rule)
+                )
+            );
         }
     }
 
@@ -87,84 +93,6 @@ class Validator
      */
     public static function __callStatic(string $name, array $arguments): bool
     {
-        $value = isset($arguments[0]) ? $arguments[0] : null;
-        self::$rule = self::getRuleByCall($name)->setValue($value);
-
-        return self::getReturnValueByCall($name);
-    }
-
-    /**
-     * Return rule object by given static call name
-     *
-     * @param  string $call
-     * @return AbstractRule
-     */
-    private static function getRuleByCall(string $call): AbstractRule
-    {
-        $class = sprintf('Intervention\Validation\Rules\%s', self::parseCall($call)['rule']);
-        
-        if (! class_exists($class)) {
-            trigger_error(
-                "Error: Call to undefined method ".$call,
-                E_USER_ERROR
-            );
-        }
-        
-        return new $class;
-    }
-
-    /**
-     * Get return value by static call name (is<RuleName> or assert<RuleName>)
-     *
-     * @param  string       $call
-     * @return bool
-     */
-    private static function getReturnValueByCall(string $call): bool
-    {
-        $valid = self::$rule->isValid();
-
-        if ($valid === false && self::parseCall($call)['type'] === 'assert') {
-            self::throwInvalidException(self::$rule->getValue());
-        }
-
-        return $valid;
-    }
-
-    /**
-     * Parse type (is|assert) and rule name out of given call name
-     *
-     * @param  string $call
-     * @return array
-     */
-    private static function parseCall(string $call): array
-    {
-        $result = (bool) preg_match("/^(?P<type>is|assert)(?P<rule>.*)$/", $call, $matches);
-
-        if ($result === false) {
-            trigger_error(
-                "Error: Call to undefined method ".$call,
-                E_USER_ERROR
-            );
-        }
-
-        return [
-            'type' => $matches['type'],
-            'rule' => $matches['rule'],
-        ];
-    }
-
-    /**
-     * Throw invalid validation exception
-     *
-     * @param  mixed $value
-     * @return void
-     */
-    private static function throwInvalidException($value): void
-    {
-        $rulename = is_a(self::$rule, AbstractRule::class) ? get_class(self::$rule) : 'Unknown';
-
-        throw new Exception\ValidationException(
-            sprintf('Error validating value (%s) against rule "%s"', $value, $rulename)
-        );
+        return (new CallDelegator($name, $arguments))->getReturnValue();
     }
 }
