@@ -3,11 +3,12 @@
 namespace Intervention\Validation\Test;
 
 use Intervention\Validation\AbstractRule;
+use Intervention\Validation\Exception\ValidationException;
 use Intervention\Validation\Rules\HexColor;
 use Intervention\Validation\Rules\Iban;
 use Intervention\Validation\Validator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Error\Error;
+use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
@@ -34,15 +35,44 @@ class ValidatorTest extends TestCase
         $this->assertFalse($validator->validate('xxx'));
     }
 
-    public function testDynamicStaticCallValid()
+    public function testAssert()
+    {
+        $validator = Validator::make(new HexColor);
+        $this->expectException(ValidationException::class);
+        $validator->assert('foo');
+    }
+
+    public function testDynamicStaticIsValid()
     {
         $this->assertTrue(Validator::isHexColor('#cccccc'));
     }
 
-    public function testDynamicStaticCallInvalid()
+    public function testDynamicStaticIsInvalid()
+    {
+        $this->assertFalse(Validator::isHexColor('foo'));
+    }
+
+    public function testDynamicStaticIsNonExisting()
     {
         $this->expectException(Error::class);
         $this->assertTrue(Validator::isNonExisting('#cccccc'));
+    }
+
+    public function testDynamicStaticAssertValid()
+    {
+        $this->assertTrue(Validator::assertHexColor('#cccccc'));
+    }
+
+    public function testDynamicStaticAssertInvalid()
+    {
+        $this->expectException(ValidationException::class);
+        $this->assertFalse(Validator::assertHexColor('foo'));
+    }
+
+    public function testDynamicStaticAssertNonExisting()
+    {
+        $this->expectException(Error::class);
+        $this->assertTrue(Validator::assertNonExisting('#cccccc'));
     }
 
     public function testSetGetRule()

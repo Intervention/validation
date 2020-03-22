@@ -37,6 +37,14 @@ $validator->setRule(new Domainname);
 // now validate new rule domainname
 $valid = $validator->validate('foo.com'); // true
 $valid = $validator->validate('?'); // false
+
+// validator can also throw exceptions on invalid data. 
+// just call assert() instead of validate().
+try {
+    $validator->assert('foobar');
+} catch (\Intervention\Validation\Exception $e) {
+    echo $e->getMessage();
+}
 ```
 
 ## Static Usage
@@ -59,6 +67,13 @@ use Intervention\Validation\Rules\HexColor;
 // call validation rule directly via static method
 $valid = Validator::isHexColor('#ccc') // true
 $valid = Validator::isHexColor('#www') // false
+
+// throw exceptions on invalid data
+try {
+    Validator::assertHexColor('foo')
+} catch (\Intervention\Validation\Exception $e) {
+    echo $e->getMessage();
+}
 ```
 
 ## Usage with Laravel
