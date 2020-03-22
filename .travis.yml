@@ -16,5 +16,4 @@ install:
 
 script: 
   - vendor/bin/phpunit
-  - vendor/bin/phpstan clear-result-cache
   - vendor/bin/phpstan analyze --no-progress --level=5 src/
