@@ -43,7 +43,7 @@ class Isin extends Luhn
      *
      * @return string
      */
-    protected function getValue()
+    public function getValue()
     {
         return $this->replaceChars($this->getValueWithoutLastDigit()) . $this->getLastDigit();
     }

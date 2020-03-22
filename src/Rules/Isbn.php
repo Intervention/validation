@@ -83,7 +83,7 @@ class Isbn extends AbstractStringRule
      *
      * @return string
      */
-    protected function getValue()
+    public function getValue()
     {
         return preg_replace("/[^0-9x]/i", '', parent::getValue());
     }

@@ -18,7 +18,7 @@ class MacAddress extends AbstractRegexRule
      *
      * @return string
      */
-    protected function getValue(): string
+    public function getValue(): string
     {
         return preg_replace("/[\. :-]/i", '', parent::getValue());
     }

@@ -33,7 +33,7 @@ abstract class AbstractRule
      *
      * @return mixed
      */
-    protected function getValue()
+    public function getValue()
     {
         return $this->value;
     }

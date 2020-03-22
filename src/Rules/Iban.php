@@ -114,7 +114,7 @@ class Iban extends AbstractStringRule
      *
      * @return string
      */
-    protected function getValue()
+    public function getValue()
     {
         return str_replace(' ', '', strtoupper(parent::getValue()));
     }

@@ -9,7 +9,7 @@ abstract class AbstractStringRule extends AbstractRule
      *
      * @return mixed
      */
-    protected function getValue()
+    public function getValue()
     {
         return @strval(parent::getValue());
     }
