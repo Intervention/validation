@@ -18,4 +18,10 @@ return [
     'luhn' => 'De waarde :attribute kan niet worden geverifieerd met behulp van het Luhn-algoritme.',
     'base64' => 'De waarde :attribute is niet gecodeerd met de Base64-methode.',
     'issn' => 'De waarde :attribute moet een geldige International Standard Serial Number (ISSN) zijn.',
+    'lowercase' => 'De inhoud :attribute mag alleen bestaan uit kleine letters.',
+    'uppercase' => 'De inhoud :attribute mag alleen bestaan uit hoofdletters.',
+    'titlecase' => 'Alle woorden uit :attribute moeten beginnen met hoofdletters.',
+    'snakecase' => 'De inhoud :attribute moet zijn opgemaakt in Snake case.',
+    'kebabcase' => 'De inhoud :attribute moet worden opgemaakt in Kebab case.',
+    'camelcase' => 'De inhoud :attribute moet worden opgemaakt in Camel case.',
 ];

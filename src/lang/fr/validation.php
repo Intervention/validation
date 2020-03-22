@@ -18,4 +18,10 @@ return [
     'luhn' => 'La valeur :attribute ne peut pas être vérifiée à l\'aide de l\'algorithme de Luhn.',
     'base64' => 'La valeur :attribute n\'est pas codée à l\'aide de la méthode Base64.',
     'issn' => 'La valeur :attribute doit être une Numéro international normalisé des publications en série (ISSN) valide.',
+    'lowercase' => 'Le contenu :attribute ne peut être composé que de lettres minuscules.',
+    'uppercase' => 'Le contenu :attribute ne peut être composé que de lettres majuscules.',
+    'titlecase' => 'Tous les mots de :attribute doivent commencer par des majuscules.',
+    'snakecase' => 'Le contenu :attribute doit être formaté dans Snake case.',
+    'kebabcase' => 'Le contenu :attribute doit être formaté dans Kebab case.',
+    'camelcase' => 'Le contenu :attribute doit être formaté dans Camel case.',
 ];

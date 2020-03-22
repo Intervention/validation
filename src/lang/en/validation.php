@@ -18,4 +18,10 @@ return [
     'luhn' => 'The value :attribute cannot be verified using the Luhn algorithm.',
     'base64' => 'The value :attribute is not Base64 encoded.',
     'issn' => 'The value :attribute must be a valid International Standard Serial Number (ISSN).',
+    'lowercase' => 'The content :attribute may only consist of lowercase letters.',
+    'uppercase' => 'The content :attribute may only consist of uppercase letters.',
+    'titlecase' => 'All words from :attribute must begin with capital letters.',
+    'snakecase' => 'The content :attribute must be formatted in Snake case.',
+    'kebabcase' => 'The content :attribute must be formatted in Kebab case.',
+    'camelcase' => 'The content :attribute must be formatted in Camel case.',
 ];

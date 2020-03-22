@@ -122,6 +122,10 @@ Checks if given value is Base64 encoded.
 
 Checks for a valid Business Identifier Code (BIC).
 
+### camelcase (Intervention\Validation\Rules\CamelCase)
+
+The given field must be a formated in Camel case.
+
 ### creditcard (Intervention\Validation\Rules\Creditcard)
 
 The given field must be a valid creditcard number.
@@ -162,6 +166,14 @@ Checks for a valid International Standard Serial Number (ISSN).
 
 The given value must be a in format of a JSON Web Token.
 
+### kebabcase (Intervention\Validation\Rules\KebabCase)
+
+The given value must be formated in Kebab case.
+
+### lowercase (Intervention\Validation\Rules\LowerCase)
+
+The given value must be all lower case letters.
+
 ### luhn (Intervention\Validation\Rules\Luhn)
 
 The given value must verify against its included Luhn algorithm check digit.
@@ -177,6 +189,18 @@ The given field must be a valid version numbers using Semantic Versioning.
 ### slug (Intervention\Validation\Rules\Slug)
 
 The field under validation must be a user- and SEO-friendly short text.
+
+### snakecase (Intervention\Validation\Rules\SnakeCase)
+
+The field under validation must formated as Snake case text.
+
+### titlecase (Intervention\Validation\Rules\TitleCase)
+
+The field under validation must formated in Title case.
+
+### uppercase (Intervention\Validation\Rules\UpperCase)
+
+The field under validation must be all upper case.
 
 ### username (Intervention\Validation\Rules\Username)
 
