@@ -23,6 +23,7 @@ The Validation library is built to work with the Laravel Framework (>=5.5). It c
 ```php
 use Intervention\Validation\Validator;
 use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Exception\ValidationException;
 
 // create validator (for HexColor)
 $validator = new Validator(new HexColor);
@@ -42,7 +43,7 @@ $valid = $validator->validate('?'); // false
 // just call assert() instead of validate().
 try {
     $validator->assert('foobar');
-} catch (\Intervention\Validation\Exception $e) {
+} catch (ValidationException $e) {
     echo $e->getMessage();
 }
 ```
@@ -52,10 +53,18 @@ try {
 ```php
 use Intervention\Validation\Validator;
 use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Exception\ValidationException;
 
 // create validator statically
-$valid = Validator::make(new HexColor)->validate('ccc') // true
-$valid = Validator::make(new HexColor)->validate('#www') // false
+$valid = Validator::make(new HexColor)->validate('ccc'); // true
+$valid = Validator::make(new HexColor)->validate('#www'); // false
+
+// throw exceptions on invalid data instead of returning boolean
+try {
+    Validator::make(new HexColor)->assert('www');
+} catch (ValidationException $e) {
+    echo $e->getMessage();
+}
 ```
 
 ## Static dynamic call Usage
@@ -63,15 +72,16 @@ $valid = Validator::make(new HexColor)->validate('#www') // false
 ```php
 use Intervention\Validation\Validator;
 use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Exception\ValidationException;
 
 // call validation rule directly via static method
-$valid = Validator::isHexColor('#ccc') // true
-$valid = Validator::isHexColor('#www') // false
+$valid = Validator::isHexColor('#ccc'); // true
+$valid = Validator::isHexColor('#www'); // false
 
 // throw exceptions on invalid data
 try {
     Validator::assertHexColor('foo')
-} catch (\Intervention\Validation\Exception $e) {
+} catch (ValidationException $e) {
     echo $e->getMessage();
 }
 ```
