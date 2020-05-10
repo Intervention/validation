@@ -127,7 +127,7 @@ class Iban extends AbstractStringRule
      */
     private function getChecksum($iban)
     {
-        $iban = substr($iban, 4).substr($iban, 0, 4);
+        $iban = substr($iban, 4) . substr($iban, 0, 4);
         $iban = str_replace(
             $this->getReplacementsChars(),
             $this->getReplacementsValues(),

@@ -40,6 +40,6 @@ class TitleCase extends AbstractStringRule
      */
     private function isValidWord(string $word): bool
     {
-        return (boolean) preg_match("/^[\p{Lu}0-9]/u", $word);
+        return (bool) preg_match("/^[\p{Lu}0-9]/u", $word);
     }
 }

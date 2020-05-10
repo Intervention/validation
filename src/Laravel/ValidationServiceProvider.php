@@ -16,7 +16,7 @@ class ValidationServiceProvider extends ServiceProvider
     {
         // load translation files
         $this->loadTranslationsFrom(
-            __DIR__.'/../lang',
+            __DIR__ . '/../lang',
             'validation'
         );
 

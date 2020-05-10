@@ -85,7 +85,7 @@ class CallDelegator
         
         if (! class_exists($classname)) {
             trigger_error(
-                "Error: Unable to create not existing rule (".$classname.")",
+                "Error: Unable to create not existing rule (" . $classname . ")",
                 E_USER_ERROR
             );
         }
@@ -106,7 +106,7 @@ class CallDelegator
 
         if ($result === false) {
             trigger_error(
-                "Error: Call to undefined method ".$this->name,
+                "Error: Call to undefined method " . $this->name,
                 E_USER_ERROR
             );
         }

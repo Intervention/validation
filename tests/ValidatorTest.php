@@ -28,7 +28,7 @@ class ValidatorTest extends TestCase
 
     public function testValidate()
     {
-        $validator = Validator::make(new HexColor);
+        $validator = Validator::make(new HexColor());
         $this->assertIsBool($validator->validate('#ccc'));
         $this->assertIsBool($validator->validate('xxx'));
         $this->assertTrue($validator->validate('#ccc'));
@@ -37,7 +37,7 @@ class ValidatorTest extends TestCase
 
     public function testAssert()
     {
-        $validator = Validator::make(new HexColor);
+        $validator = Validator::make(new HexColor());
         $this->expectException(ValidationException::class);
         $validator->assert('foo');
     }
@@ -83,10 +83,10 @@ class ValidatorTest extends TestCase
 
     public function testSetGetRule()
     {
-        $validator = new Validator(new HexColor);
+        $validator = new Validator(new HexColor());
         $this->assertInstanceOf(HexColor::class, $validator->getRule());
 
-        $result = $validator->setRule(new Iban);
+        $result = $validator->setRule(new Iban());
         $this->assertInstanceOf(Validator::class, $result);
         $this->assertInstanceOf(Iban::class, $validator->getRule());
     }

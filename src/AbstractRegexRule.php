@@ -18,6 +18,6 @@ abstract class AbstractRegexRule extends AbstractStringRule
      */
     public function isValid(): bool
     {
-        return (boolean) preg_match($this->pattern, $this->getValue());
+        return (bool) preg_match($this->pattern, $this->getValue());
     }
 }

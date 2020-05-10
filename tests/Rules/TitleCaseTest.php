@@ -40,5 +40,6 @@ class TitleCaseTest extends AbstractRuleTestCase
         'Foo bar baz',
         '-fooBar',
         '-fooBar-',
+        'The quick brown fox jumps over the lazy dog.',
     ];
 }

@@ -65,10 +65,10 @@ class ValidationExtension extends IlluminateValidator
     {
         if (! class_exists($classname)) {
             throw new BadMethodCallException(
-                "Validation rule (".$classname.") does not exist."
+                "Validation rule (" . $classname . ") does not exist."
             );
         }
 
-        return new $classname;
+        return new $classname();
     }
 }
