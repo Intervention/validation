@@ -2,14 +2,27 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractRegexRule;
+use Intervention\Validation\AbstractStringRule;
 
-class LowerCase extends AbstractRegexRule
+class LowerCase extends AbstractStringRule
 {
     /**
-     * Regular expression pattern for lower case string
+     * Determine if value is lowercase
      *
-     * @var string
+     * @return boolean
      */
-    protected $pattern = "/^\p{Ll}+$/u";
+    public function isValid(): bool
+    {
+        return $this->getValue() === $this->getLowerCaseValue();
+    }
+
+    /**
+     * Return value as lowercase
+     *
+     * @return string
+     */
+    private function getLowerCaseValue(): string
+    {
+        return mb_strtolower($this->getValue(), mb_detect_encoding($this->getValue()));
+    }
 }

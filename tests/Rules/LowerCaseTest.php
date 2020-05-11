@@ -15,6 +15,14 @@ class LowerCaseTest extends AbstractRuleTestCase
         'ß',
         'êçã',
         'valid',
+        'foo bar',
+        'foo-bar',
+        '!',
+        '?',
+        '9',
+        '#',
+        '',
+        ' ',
     ];
 
     /**
@@ -23,19 +31,11 @@ class LowerCaseTest extends AbstractRuleTestCase
      * @var array
      */
     protected $invalid = [
-        '',
-        ' ',
         'A',
         'ABC',
         'Ä',
         'ÄÖÜ',
         'VALID',
-        'foo bar',
-        'foo-bar',
         'ÇÃÊ',
-        '!',
-        '?',
-        '9',
-        '#',
     ];
 }
