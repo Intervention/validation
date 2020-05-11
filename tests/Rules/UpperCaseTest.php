@@ -16,6 +16,17 @@ class UpperCaseTest extends AbstractRuleTestCase
         'ÄÖÜ',
         'VALID',
         'ÇÃÊ',
+        '',
+        ' ',
+        '123',
+        'A1',
+        '_',
+        '!',
+        'A-B',
+        'A B',
+        '?',
+        '#',
+        'FOO BAR',
     ];
 
     /**
@@ -24,19 +35,10 @@ class UpperCaseTest extends AbstractRuleTestCase
      * @var array
      */
     protected $invalid = [
-        '',
-        ' ',
         'a',
+        'foo bar',
+        'fooß',
         'abc',
-        '123',
-        'A1',
-        '_',
-        '!',
-        'A-B',
-        'A B',
-        '?',
         'äöü',
-        '#',
-        'ß',
     ];
 }

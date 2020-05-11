@@ -2,14 +2,27 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractRegexRule;
+use Intervention\Validation\AbstractStringRule;
 
-class UpperCase extends AbstractRegexRule
+class UpperCase extends AbstractStringRule
 {
     /**
-     * Regular expression pattern for UPPER CASE string
+     * Determine if value is uppercase
      *
-     * @var string
+     * @return boolean
      */
-    protected $pattern = "/^\p{Lu}+$/u";
+    public function isValid(): bool
+    {
+        return $this->getValue() === $this->getUpperCaseValue();
+    }
+
+    /**
+     * Return value as uppercase
+     *
+     * @return string
+     */
+    private function getUpperCaseValue(): string
+    {
+        return mb_strtoupper($this->getValue(), mb_detect_encoding($this->getValue()));
+    }
 }
