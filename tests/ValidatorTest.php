@@ -4,7 +4,7 @@ namespace Intervention\Validation\Test;
 
 use Intervention\Validation\AbstractRule;
 use Intervention\Validation\Exception\ValidationException;
-use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Rules\Hexcolor;
 use Intervention\Validation\Rules\Iban;
 use Intervention\Validation\Validator;
 use PHPUnit\Framework\Error\Error;
@@ -28,7 +28,7 @@ class ValidatorTest extends TestCase
 
     public function testValidate()
     {
-        $validator = Validator::make(new HexColor());
+        $validator = Validator::make(new Hexcolor());
         $this->assertIsBool($validator->validate('#ccc'));
         $this->assertIsBool($validator->validate('xxx'));
         $this->assertTrue($validator->validate('#ccc'));
@@ -37,7 +37,7 @@ class ValidatorTest extends TestCase
 
     public function testAssert()
     {
-        $validator = Validator::make(new HexColor());
+        $validator = Validator::make(new Hexcolor());
         $this->expectException(ValidationException::class);
         $validator->assert('foo');
     }
