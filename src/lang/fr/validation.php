@@ -20,8 +20,8 @@ return [
     'issn' => 'La valeur :attribute doit être un numéro ISSN valide.',
     'lowercase' => 'Le champ :attribute ne doit pas comporter de lettres majuscules.',
     'uppercase' => 'Le champ :attribute ne doit pas comporter de lettres minuscules.',
-    'titlecase' => 'Le champ :attribute doit être formatté en "Title Case" : mots composés de caractères alphanumériques, commençant chacun par une lettre majuscule, séparés par des espaces.',
-    'snakecase' => 'Le champ :attribute doit être formatté en "snake_case" : mots composés de lettres minuscules, séparés par des tirets bas.',
-    'kebabcase' => 'Le champ :attribute doit être formatté en "kebab-case" : mots composés de lettres minuscules, séparés par des tirets.',
-    'camelcase' => 'Le champ :attribute doit être formatté en "CamelCase" : mots composés de lettres minuscules commençant chacun par une lettre majuscule, liés les uns aux autres sans espace.',
+    'titlecase' => 'Le champ :attribute doit être formaté en "Title Case" : mots composés de caractères alphanumériques, commençant chacun par une lettre majuscule, séparés par des espaces.',
+    'snakecase' => 'Le champ :attribute doit être formaté en "snake_case" : mots composés de lettres minuscules, séparés par des tirets bas.',
+    'kebabcase' => 'Le champ :attribute doit être formaté en "kebab-case" : mots composés de lettres minuscules, séparés par des tirets.',
+    'camelcase' => 'Le champ :attribute doit être formaté en "CamelCase" : mots composés de lettres minuscules commençant chacun par une lettre majuscule, liés les uns aux autres sans espace.',
 ];
