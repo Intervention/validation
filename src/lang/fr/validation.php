@@ -13,7 +13,7 @@ return [
     'jwt' => 'La valeur :attribute ne correspond pas au format JSON Web Token.',
     'imei' => 'La valeur :attribute doit être une code IMEI valide.',
     'macaddress' => 'La valeur :attribute doit être une adresse MAC valide.',
-    'slug' => 'Le champ ::attribute doit respecter le format de paramètre d\'URL optimisé pour le SEO : mots séparés par des tirets.',
+    'slug' => 'Le champ ::attribute doit respecter le format de paramètre d\'URL optimisé pour le SEO : caractères alphanumériques et tirets.',
     'semver' => 'La champ :attribute doit être un numéro de version respectant la norme de gestion sémantique de version.',
     'luhn' => 'Le champ :attribute n\'est pas vérifié par l\'algorithme de Luhn.',
     'base64' => 'Le champ :attribute doit être un code Base64 valide.',
