@@ -7,7 +7,7 @@ return [
     'hexcolor' => 'Le champ :attribute doit être un code couleur hexadécimal valide.',
     'creditcard' => 'Le champ :attribute doit être un numéro de carte de crédit valide.',
     'isbn' => 'Le champ :attribute doit être un numéro ISBN valide.',
-    'username' => 'La valeur de :attribute doit être un pseudonyme valide : chaine alphanumérique entre 3 et 20 caractères, débutant obligatoirement par une lettre et acceptant les tirets et tirets bas.',
+    'username' => 'La valeur de :attribute doit être un pseudonyme valide : chaine alphanumérique entre 3 et 20 caractères, débutant obligatoirement par une lettre, acceptant les tirets et tirets bas.',
     'htmlclean' => 'La valeur de :attribute ne doit pas contenir de code HTML.',
     'domainname' => ':attribute doit être un nom de domaine valide.',
     'jwt' => 'La valeur :attribute ne correspond pas au format JSON Web Token.',
