@@ -353,7 +353,7 @@ class Validator
      */
     public static function isPassword($value)
     {
-        $pattern = "/^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,64})$/";
+        $pattern = "/^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,64})$/";
         return (boolean) preg_match($pattern, $value);
     }
 

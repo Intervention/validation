@@ -210,7 +210,8 @@ class ValidationTest extends TestCase
             'y0mAma!',
             '2&c5DSo',
             'PW3n_9B,{)Jj[\'Z}oe[[n.W',
-            '<Br0wn>'
+            '<Br0wn>',
+            'Pass_w0rd'
         );
 
         $bad = array(
