@@ -53,7 +53,7 @@ abstract class AbstractRuleTestCase extends TestCase
     public function testValid()
     {
         foreach ($this->valid as $value) {
-            $this->assertTrue((new $this->classname($value))->isValid(), $value);
+            $this->assertTrue((new $this->classname($value))->isValid(), (string) $value);
         }
     }
 
@@ -61,7 +61,7 @@ abstract class AbstractRuleTestCase extends TestCase
     {
 
         foreach ($this->invalid as $value) {
-            $this->assertFalse((new $this->classname($value))->isValid(), $value);
+            $this->assertFalse((new $this->classname($value))->isValid(), (string) $value);
         }
     }
 }
