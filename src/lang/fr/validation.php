@@ -24,4 +24,5 @@ return [
     'snakecase' => 'Le champ :attribute doit être formaté en "snake_case" : mots composés de lettres minuscules, séparés par des tirets bas.',
     'kebabcase' => 'Le champ :attribute doit être formaté en "kebab-case" : mots composés de lettres minuscules, séparés par des tirets.',
     'camelcase' => 'Le champ :attribute doit être formaté en "CamelCase" : mots composés de lettres minuscules commençant chacun par une lettre majuscule, liés les uns aux autres sans espace.',
+    'cidr' => 'Le champ :attribute doit être un format CIDR valide.',
 ];
