@@ -24,4 +24,5 @@ return [
     'kebabcase' => ':attribute tulee olla käytetty kebab case kirjoitusasua.',
     'snakecase' => ':attribute tulee olla käytetty snake case kirjoitusasua.',
     'camelcase' => ':attribute tulee olla käytetty camel case kirjoitusasua.',
+    'cidr' => ':attribute tulee olla kelvollinen CIDR muoto.'
 ];
