@@ -24,4 +24,5 @@ return [
     'snakecase' => 'Isi :attribute harus berupa format Snake case.',
     'kebabcase' => 'Isi :attribute harus berupa format Kebab case.',
     'camelcase' => 'Isi :attribute harus berupa format Camel case.',
+    'cidr' => ':attribute harus berupa format CIDR yang valid.',
 ];
