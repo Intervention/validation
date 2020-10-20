@@ -24,5 +24,5 @@ return [
     'snakecase' => 'De inhoud :attribute moet zijn opgemaakt in Snake case.',
     'kebabcase' => 'De inhoud :attribute moet worden opgemaakt in Kebab case.',
     'camelcase' => 'De inhoud :attribute moet worden opgemaakt in Camel case.',
-    'cidr' => ':attribute moet een geldig CIDR notatie zijn',
+    'cidr' => ':attribute moet een geldig CIDR notatie zijn.',
 ];
