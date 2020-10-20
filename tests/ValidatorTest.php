@@ -7,7 +7,6 @@ use Intervention\Validation\Exception\ValidationException;
 use Intervention\Validation\Rules\Hexcolor;
 use Intervention\Validation\Rules\Iban;
 use Intervention\Validation\Validator;
-use PHPUnit\Framework\Error\Error;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
@@ -54,7 +53,7 @@ class ValidatorTest extends TestCase
 
     public function testDynamicStaticIsNonExisting()
     {
-        $this->expectException(Error::class);
+        $this->expectError();
         $this->assertTrue(Validator::isNonExisting('#cccccc'));
     }
 
@@ -71,13 +70,13 @@ class ValidatorTest extends TestCase
 
     public function testDynamicStaticAssertNonExisting()
     {
-        $this->expectException(Error::class);
+        $this->expectError();
         $this->assertTrue(Validator::assertNonExisting('#cccccc'));
     }
 
     public function testNonExistingStaticCallType()
     {
-        $this->expectException(Error::class);
+        $this->expectError();
         $this->assertTrue(Validator::fooHexColor('#cccccc'));
     }
 
