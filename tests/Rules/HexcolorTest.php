@@ -19,6 +19,6 @@ class HexcolorTest extends AbstractRuleTestCase
      * @var array
      */
     protected $invalid = [
-        'x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true, []
+        'x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true
     ];
 }
