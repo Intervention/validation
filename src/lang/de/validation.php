@@ -24,5 +24,5 @@ return [
     'snakecase' => 'Der Inhalt :attribute muss in Snake Case formatiert sein.',
     'kebabcase' => 'Der Inhalt :attribute muss in Kebab Case formatiert sein.',
     'camelcase' => 'Der Inhalt :attribute muss in Camel Case formatiert sein.',
-    'cidr' => ':attribute ist keine CIDR format.',
+    'cidr' => ':attribute ist keine gültige CIDR Notation.',
 ];
