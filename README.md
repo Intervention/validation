@@ -126,6 +126,10 @@ Checks for a valid Business Identifier Code (BIC).
 
 The given field must be a formated in Camel case.
 
+### cidr (Intervention\Validation\Rules\Cidr)
+
+Check if the value is a Classless Inter-Domain Routing notation (CIDR).
+
 ### creditcard (Intervention\Validation\Rules\Creditcard)
 
 The given field must be a valid creditcard number.
