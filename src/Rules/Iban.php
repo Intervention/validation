@@ -93,7 +93,8 @@ class Iban extends AbstractStringRule
         'ML' => 28,
         'MZ' => 25,
         'SN' => 28,
-        'UA' => 29
+        'UA' => 29,
+        'EG' => 29,
     ];
 
     /**
