@@ -3,7 +3,6 @@
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
-use DateTime;
 
 class Date extends AbstractRegexRule
 {
