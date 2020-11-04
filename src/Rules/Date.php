@@ -18,11 +18,11 @@ class Date extends AbstractRegexRule
             return false;
         }
         
-        return strtotime($this->getValue()) ? true : false;
+        return strtotime($this->getValue());
     }
 
     /**
-     * Determine which character separation is used
+     * Determine if the format is valid
      *
      * @return string
      */
