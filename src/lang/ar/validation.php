@@ -6,7 +6,7 @@ return [
     'bic' => '.(BIC) ليس رمز معرف تجاري صالحًا :attribute',
     'hexcolor' => '.رمزً لونياً سداسيً عشرياً صالحاً :attribute يجب أن يكون',
     'creditcard' => '.رقمً صالحاً لبطاقة الائتمان :attribute يجب أن يكون',
-    'bic' => '.(ISBN) رقم كتاب معياري دولياً صالحاً :attribute يجب أن يكون',
+    'isbn' => '.(ISBN) رقم كتاب معياري دولياً صالحاً :attribute يجب أن يكون',
     'username' => '.اسم مستخدم صالحاً :attribute يجب أن يكون',
     'htmlclean' => '.ممنوع HTML تحتوي على كود :attribute قيمة',
     'domainname' => '.يجب ان يكون اسم نطاق صحيح :attribute',
