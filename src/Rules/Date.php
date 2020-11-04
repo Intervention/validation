@@ -22,7 +22,7 @@ class Date extends AbstractRegexRule
     }
 
     /**
-     * Determine which character separation is used
+     * Determine if the format is valid
      *
      * @return string
      */
