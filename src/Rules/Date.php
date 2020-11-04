@@ -18,7 +18,7 @@ class Date extends AbstractRegexRule
             return false;
         }
         
-        return strtotime($this->getValue()) ? true : false;
+        return strtotime($this->getValue());
     }
 
     /**
