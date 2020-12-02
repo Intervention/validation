@@ -52,6 +52,7 @@ class Iban extends AbstractStringRule
         'LI' => 21,
         'LT' => 20,
         'LU' => 20,
+        'MA' => 28,
         'MK' => 19,
         'MT' => 31,
         'MR' => 27,
