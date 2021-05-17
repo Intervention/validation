@@ -21,7 +21,7 @@ class Iban extends AbstractStringRule
         'BA' => 20,
         'BR' => 29,
         'BG' => 22,
-        'CR' => 21,
+        'CR' => 22,
         'HR' => 21,
         'CY' => 28,
         'CZ' => 24,
