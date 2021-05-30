@@ -92,10 +92,12 @@ The installed package provides additional `validation rules` including their err
 
 ```php
 use Illuminate\Support\Facades\Validator;
+use Intervention\Validation\Rules\Creditcard;
 
 $validator = Validator::make($request->all(), [
     'color' => 'required|hexcolor',
     'number' => 'iban',
+    'ccnumber' => new Creditcard(), // passing rules as objects is also possible
 ]);
 ```
 
