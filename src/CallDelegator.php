@@ -48,7 +48,7 @@ class CallDelegator
     public function getRule(): AbstractRule
     {
         $classname = $this->getRuleClassname();
-        
+
         return new $classname($this->getValue());
     }
 

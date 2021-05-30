@@ -37,7 +37,7 @@ class Cidr extends AbstractStringRule
         if ($sCidr[1] < 0 || $sCidr[1] > 32) {
             return false;
         }
-        
+
         return true;
     }
 }

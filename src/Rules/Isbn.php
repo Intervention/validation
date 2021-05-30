@@ -16,7 +16,7 @@ class Isbn extends AbstractStringRule
         switch (strlen($this->getValue())) {
             case 10:
                 return $this->shortChecksumMatches();
-            
+
             case 13:
                 return $this->longChecksumMatches();
         }

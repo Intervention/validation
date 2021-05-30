@@ -25,7 +25,7 @@ class ValidationServiceProvider extends ServiceProvider
             foreach ($this->getRuleClassnames() as $classname) {
                 $this->attachErrorMessage($messages, $classname, $translator);
             }
-            
+
             // add validator extension, to resolve custom rules
             return new ValidationExtension($translator, $data, $rules, $messages, $customAttributes);
         });

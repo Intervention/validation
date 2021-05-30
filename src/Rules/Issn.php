@@ -61,7 +61,7 @@ class Issn extends AbstractRegexRule
     private function parseChecksum(): int
     {
         $last = substr($this->getValue(), -1);
-        
+
         return strtolower($last) === 'x' ? 10 : intval($last);
     }
 }

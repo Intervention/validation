@@ -37,7 +37,7 @@ class ValidationExtension extends IlluminateValidator
             // if intervention/validation don't has rule, call regular validator
             return call_user_func_array(['parent', $name], $arguments);
         }
-        
+
         // do the validation work, first argument is value
         return Validator::make($rule)->validate(data_get($arguments, 1));
     }
