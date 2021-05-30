@@ -24,4 +24,5 @@ return [
     'kebabcase' => '.Kebabcase في حالة :attribute يجب تنسيق قيمة',
     'camelcase' => '.Camelcase في حالة :attribute يجب تنسيق قيمة',
     'cidr' => '.صالحاً CIDR تدوين :attribute يجب أن يكون',
+    'dataurl' => 'يجب أن يكون :attribute data url صالحًا',
 ];

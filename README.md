@@ -134,6 +134,10 @@ Check if the value is a [Classless Inter-Domain Routing](https://en.wikipedia.or
 
 The given field must be a valid [creditcard number](https://en.wikipedia.org/wiki/Payment_card_number).
 
+### data url (Intervention\Validation\Rules\DataUrl)
+
+The given field must be a valid [data url](https://en.wikipedia.org/wiki/Data_URI_scheme).
+
 ### domainname (Intervention\Validation\Rules\Domainname)
 
 The given field must be a well formed [domainname](https://en.wikipedia.org/wiki/Domain_name).

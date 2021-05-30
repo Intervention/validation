@@ -25,4 +25,5 @@ return [
     'snakecase' => ':attribute tulee olla käytetty snake case kirjoitusasua.',
     'camelcase' => ':attribute tulee olla käytetty camel case kirjoitusasua.',
     'cidr' => ':attribute tulee olla kelvollinen CIDR muoto.'
+    'dataurl' => ':attribute on oltava kelvollinen data-URL.'
 ];

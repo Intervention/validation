@@ -25,4 +25,5 @@ return [
     'kebabcase' => 'Der Inhalt :attribute muss in Kebab Case formatiert sein.',
     'camelcase' => 'Der Inhalt :attribute muss in Camel Case formatiert sein.',
     'cidr' => ':attribute ist keine gültige CIDR Notation.',
+    'dataurl' => ':attribute ist keine gültige Data-URL.',
 ];

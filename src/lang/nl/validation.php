@@ -25,4 +25,5 @@ return [
     'kebabcase' => 'De inhoud :attribute moet worden opgemaakt in Kebab case.',
     'camelcase' => 'De inhoud :attribute moet worden opgemaakt in Camel case.',
     'cidr' => ':attribute moet een geldig CIDR notatie zijn.',
+    'dataurl' => ':attribuut moet een geldige Data-URL zijn.',
 ];
