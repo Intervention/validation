@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class LuhnTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'luhn';
+
+    /**
      * Valid values
      *
      * @var array

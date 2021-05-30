@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class CamelcaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'camelcase';
+
+    /**
      * Valid values
      *
      * @var array

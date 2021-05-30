@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class DomainnameTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'domainname';
+
+    /**
      * Valid values
      *
      * @var array

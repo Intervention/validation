@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class IsbnTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'isbn';
+
+    /**
      * Valid values
      *
      * @var array

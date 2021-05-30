@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class KebabcaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'kebabcase';
+
+    /**
      * Valid values
      *
      * @var array

@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class DataUrlTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'dataurl';
+
+    /**
      * Valid values
      *
      * @var array

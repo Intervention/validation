@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class CreditcardTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'creditcard';
+
+    /**
      * Valid values
      *
      * @var array

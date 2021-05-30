@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class UsernameTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'username';
+
+    /**
      * Valid values
      *
      * @var array

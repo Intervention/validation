@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class IssnTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'issn';
+
+    /**
      * Valid values
      *
      * @var array

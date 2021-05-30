@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class IbanTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'iban';
+
+    /**
      * Valid values
      *
      * @var array

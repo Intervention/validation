@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class SemverTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'semver';
+
+    /**
      * Valid values
      *
      * @var array

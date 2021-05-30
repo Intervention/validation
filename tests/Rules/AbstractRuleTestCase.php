@@ -9,6 +9,11 @@ use ReflectionClass;
 abstract class AbstractRuleTestCase extends TestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol;
+
+    /**
      * Valid values
      *
      * @var array
@@ -63,5 +68,11 @@ abstract class AbstractRuleTestCase extends TestCase
         foreach ($this->invalid as $value) {
             $this->assertFalse((new $this->classname($value))->isValid(), (string) $value);
         }
+    }
+
+    public function testToString()
+    {
+        $rule = new $this->classname();
+        $this->assertEquals($this->symbol, (string) $rule);
     }
 }

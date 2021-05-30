@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class SnakecaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'snakecase';
+
+    /**
      * Valid values
      *
      * @var array

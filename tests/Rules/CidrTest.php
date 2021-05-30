@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class CidrTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'cidr';
+
+    /**
      * Valid values
      *
      * @var array

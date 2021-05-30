@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class LowercaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'lowercase';
+
+    /**
      * Valid values
      *
      * @var array

@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class MacaddressTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'macaddress';
+
+    /**
      * Valid values
      *
      * @var array

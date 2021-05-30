@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class BicTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'bic';
+
+    /**
      * Valid values
      *
      * @var array

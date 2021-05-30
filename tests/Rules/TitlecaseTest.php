@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class TitlecaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'titlecase';
+
+    /**
      * Valid values
      *
      * @var array

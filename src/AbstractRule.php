@@ -2,6 +2,8 @@
 
 namespace Intervention\Validation;
 
+use Exception;
+
 abstract class AbstractRule
 {
     /**
@@ -48,5 +50,32 @@ abstract class AbstractRule
         $this->value = $value;
 
         return $this;
+    }
+
+    /**
+     * Resolve validation rule symbol
+     *
+     * @return string
+     */
+    protected function resolveSymbol(): string
+    {
+        preg_match("/(?P<name>[a-z0-9]+)$/i", get_class($this), $matches);
+        if (! isset($matches['name'])) {
+            throw new Exception(
+                'Validation rule symbol can not be resolved (' . get_class($this) . ').'
+            );
+        }
+
+        return strtolower($matches['name']);
+    }
+
+    /**
+     * Cast to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->resolveSymbol();
     }
 }

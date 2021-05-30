@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class HtmlcleanTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'htmlclean';
+
+    /**
      * Valid values
      *
      * @var array

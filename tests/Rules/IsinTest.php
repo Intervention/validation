@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class IsinTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'isin';
+
+    /**
      * Valid values
      *
      * @var array

@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class ImeiTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'imei';
+
+    /**
      * Valid values
      *
      * @var array

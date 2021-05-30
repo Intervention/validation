@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class SlugTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'slug';
+
+    /**
      * Valid values
      *
      * @var array

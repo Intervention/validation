@@ -2,8 +2,15 @@
 
 namespace Intervention\Validation\Test\Rules;
 
+use Intervention\Validation\Rules\Base64;
+
 class Base64Test extends AbstractRuleTestCase
 {
+    /**
+     * Rule symbol
+     */
+    public $symbol = 'base64';
+
     /**
      * Valid values
      *

@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class UppercaseTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'uppercase';
+
+    /**
      * Valid values
      *
      * @var array

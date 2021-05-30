@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class JwtTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'jwt';
+
+    /**
      * Valid values
      *
      * @var array

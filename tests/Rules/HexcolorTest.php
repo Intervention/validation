@@ -5,6 +5,11 @@ namespace Intervention\Validation\Test\Rules;
 class HexcolorTest extends AbstractRuleTestCase
 {
     /**
+     * Rule symbol
+     */
+    public $symbol = 'hexcolor';
+
+    /**
      * Valid values
      *
      * @var array
