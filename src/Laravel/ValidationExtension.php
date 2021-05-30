@@ -50,7 +50,7 @@ class ValidationExtension extends IlluminateValidator
      */
     private function getRuleClassnameByMethodName($name): string
     {
-        preg_match("/^validate((?P<rule>[a-zA-Z]+))$/", $name, $matches);
+        preg_match("/^validate((?P<rule>[a-zA-Z0-9]+))$/", $name, $matches);
 
         return 'Intervention\\Validation\\Rules\\' . data_get($matches, 'rule');
     }
