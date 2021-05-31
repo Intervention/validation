@@ -3,7 +3,7 @@
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Rules\Base64;
 
 class DataUrl extends AbstractRegexRule
 {
@@ -27,10 +27,21 @@ class DataUrl extends AbstractRegexRule
         }
 
         if ($info->isBase64Encoded()) {
-            return Validator::isBase64($info->data());
+            return $this->base64DataValidator($info->data())->isValid();
         }
 
         return true;
+    }
+
+    /**
+     * Validate base64 encoded data
+     *
+     * @param  mixed $input
+     * @return Base64
+     */
+    protected function base64DataValidator($input): Base64
+    {
+        return new Base64($input);
     }
 
     /**

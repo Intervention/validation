@@ -44,5 +44,6 @@ class DataUrlTest extends AbstractRuleTestCase
         'data:;base64,VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
         'data:image/jpeg;base64,VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
         'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=',
+        'data:text;base64,SGVsbG8sIFdvcmxkIQ=='
     ];
 }
