@@ -208,6 +208,10 @@ The field under validation must formated as [Snake case](https://en.wikipedia.or
 
 The field under validation must formated in [Title case](https://en.wikipedia.org/wiki/Title_case).
 
+### ulid (Intervention\Validation\Rules\Ulid)
+
+The given field must be a valid [Universally Unique Lexicographically Sortable Identifier](https://github.com/ulid/spec).
+
 ### uppercase (Intervention\Validation\Rules\UpperCase)
 
 The field under validation must be all upper case.
@@ -215,7 +219,6 @@ The field under validation must be all upper case.
 ### username (Intervention\Validation\Rules\Username)
 
 The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
-
 
 ## License
 
