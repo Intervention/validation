@@ -26,4 +26,5 @@ return [
     'camelcase' => ':attribute tulee olla käytetty camel case kirjoitusasua.',
     'cidr' => ':attribute tulee olla kelvollinen CIDR muoto.',
     'dataurl' => ':attribute on oltava kelvollinen data-URL.',
+    'ulid' => ':attribute on oltava kelvollinen ULID.',
 ];

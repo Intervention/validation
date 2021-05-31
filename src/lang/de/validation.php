@@ -26,4 +26,5 @@ return [
     'camelcase' => 'Der Inhalt :attribute muss in Camel Case formatiert sein.',
     'cidr' => ':attribute ist keine gültige CIDR Notation.',
     'dataurl' => ':attribute ist keine gültige Data-URL.',
+    'ulid' => ':attribute ist keine gültige ULID.',
 ];

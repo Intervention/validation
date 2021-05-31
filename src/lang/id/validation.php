@@ -26,4 +26,5 @@ return [
     'camelcase' => 'Isi :attribute harus berupa format Camel case.',
     'cidr' => ':attribute harus berupa format CIDR yang valid.',
     'dataurl' => ':attribute harus berupa url data yang valid.',
+    'ulid' => ':attribute harus berupa format ULID yang valid.',
 ];

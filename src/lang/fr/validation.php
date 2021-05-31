@@ -26,4 +26,5 @@ return [
     'camelcase' => 'Le champ :attribute doit être formaté en "CamelCase" : mots composés de lettres minuscules commençant chacun par une lettre majuscule, liés les uns aux autres sans espace.',
     'cidr' => 'Le champ :attribute doit être un format CIDR valide.',
     'dataurl' => 'Le :attribute doit être un Data URL valide.',
+    'ulid' => 'Le :attribute doit être un ULID valide.',
 ];
