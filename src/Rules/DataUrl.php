@@ -3,6 +3,7 @@
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
+use Intervention\Validation\Validator;
 
 class DataUrl extends AbstractRegexRule
 {
@@ -20,13 +21,13 @@ class DataUrl extends AbstractRegexRule
      */
     public function isValid(): bool
     {
-        if (! parent::isValid()) {
+        $info = $this->dataUrlInfo();
+        if (! $info->isValid()) {
             return false;
         }
 
-        $info = $this->dataUrlInfo();
         if ($info->isBase64Encoded()) {
-            return (new Base64($info->data()))->isValid();
+            return Validator::isBase64($info->data());
         }
 
         return true;
@@ -39,15 +40,22 @@ class DataUrl extends AbstractRegexRule
      */
     protected function dataUrlInfo(): object
     {
-        preg_match($this->pattern, $this->getValue(), $matches);
+        $result = preg_match($this->pattern, $this->getValue(), $matches);
 
-        return new class ($matches)
+        return new class ($matches, $result)
         {
             private $matches;
+            private $result;
 
-            public function __construct($matches)
+            public function __construct($matches, $result)
             {
                 $this->matches = $matches;
+                $this->result = $result;
+            }
+
+            public function isValid(): bool
+            {
+                return (bool) $this->result;
             }
 
             public function mediaType(): ?string

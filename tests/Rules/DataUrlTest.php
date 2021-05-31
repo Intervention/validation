@@ -26,6 +26,9 @@ class DataUrlTest extends AbstractRuleTestCase
         'data:text/plain;charset=US-ASCII,foobar',
         'data:text/plain,foobar',
         'data:,VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
+        'data:,Hello%2C%20World%21',
+        'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==',
+        'data:text/html,<script>alert(\'hi\');</script>',
     ];
 
     /**
