@@ -148,6 +148,10 @@ The given field must be a well formed [domainname](https://en.wikipedia.org/wiki
 
 Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number) (EAN-8 and EAN-13).
 
+### gtin (Intervention\Validation\Rules\Gtin)
+
+Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number) (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
+
 ### hexcolor (Intervention\Validation\Rules\HexColor)
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors).

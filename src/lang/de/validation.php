@@ -28,4 +28,5 @@ return [
     'dataurl' => ':attribute ist keine gültige Data-URL.',
     'ulid' => ':attribute ist keine gültige ULID.',
     'ean' => 'Der Wert :attribute ist keine gültige European Article Number (EAN).',
+    'gtin' => 'Der Wert :attribute ist keine gültige Global Trade Item Number (GTIN).',
 ];

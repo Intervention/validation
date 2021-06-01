@@ -28,4 +28,5 @@ return [
     'dataurl' => 'Le :attribute doit être un Data URL valide.',
     'ulid' => 'Le :attribute doit être un ULID valide.',
     'ean' => 'Le :attribute doit être un EAN valide.',
+    'gtin' => 'Le :attribute doit être un GTIN valide.',
 ];

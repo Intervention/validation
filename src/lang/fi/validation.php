@@ -28,4 +28,5 @@ return [
     'dataurl' => ':attribute on oltava kelvollinen data-URL.',
     'ulid' => ':attribute on oltava kelvollinen ULID.',
     'ean' => ':attribute on oltava kelvollinen EAN.',
+    'gtin' => ':attribute on oltava kelvollinen GTIN.',
 ];

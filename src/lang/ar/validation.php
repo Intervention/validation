@@ -27,4 +27,5 @@ return [
     'dataurl' => 'يجب أن يكون :attribute data url صالحًا',
     'ulid' => 'يجب أن يكون :attribute ULID صالحًا',
     'ean' => 'يجب أن يكون :attribute EAN صالحًا',
+    'gtin' => 'يجب أن يكون :attribute GTIN صالحًا',
 ];
