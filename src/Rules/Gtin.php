@@ -11,47 +11,43 @@ class Gtin extends Ean
      */
     public function isValid(): bool
     {
+        // GTIN-14 or GTIN-12 must be 14 or 12 chars including indicator digit and must have matching checksum
+        $valid = $this->hasGtinLength() && $this->hasValidIndicatorDigit() && $this->gtinChecksumMatches();
+
         // GTIN-13, GTIN-8 is the same as EAN-13 and EAN-8
-        if (in_array(strlen($this->getValue()), [8, 13])) {
-            return parent::checksumMatches();
-        }
+        return parent::isValid() || ($valid);
+    }
 
-        // GTIN-14 must be 14 chars including indicator digit and must have matching checksum
-        if (strlen($this->getValue()) === 14 && is_numeric(substr($this->getValue(), 0, 1))) {
-            return $this->gtin14ChecksumMatches();
-        }
+    /**
+     * Determine if current value has valid indicator digit
+     *
+     * @return boolean
+     */
+    protected function hasValidIndicatorDigit(): bool
+    {
+        return is_numeric(substr($this->getValue(), 0, 1));
+    }
 
-        // GTIN-12 must be 12 chars including indicator digit and must have matching checksum
-        if (strlen($this->getValue()) === 12 && is_numeric(substr($this->getValue(), 0, 1))) {
-            return $this->gtin12ChecksumMatches();
-        }
-
-        return false;
+    /**
+     * Determine if current value has length of GTIN-12 or GTIN-14
+     *
+     * @return boolean
+     */
+    protected function hasGtinLength(): bool
+    {
+        return in_array(strlen($this->getValue()), [12, 14]);
     }
 
     /**
      * Try to calculate the modulo checksum of a
-     * current value as GTIN-14.
+     * current value as GTIN.
      *
      * @return bool
      */
-    protected function gtin14ChecksumMatches(): bool
+    protected function gtinChecksumMatches(): bool
     {
         $data = substr($this->getValue(), 1); // strip indicator digit
 
-        return parent::getModuloChecksum($data) === intval(substr($this->getValue(), -1));
-    }
-
-    /**
-     * Try to calculate the modulo checksum of a
-     * current value as GTIN-12.
-     *
-     * @return bool
-     */
-    protected function gtin12ChecksumMatches(): bool
-    {
-        $data = substr($this->getValue(), 1); // strip indicator digit
-
-        return parent::getModuloChecksum($data) === intval(substr($this->getValue(), -1));
+        return parent::getModuloChecksum($data) === parent::getValueChecksum();
     }
 }

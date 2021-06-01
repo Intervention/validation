@@ -13,11 +13,17 @@ class Ean extends AbstractStringRule
      */
     public function isValid(): bool
     {
-        if (in_array(strlen($this->getValue()), [8, 13])) {
-            return $this->checksumMatches();
-        }
+        return $this->hasEanLength() && $this->checksumMatches();
+    }
 
-        return false;
+    /**
+     * Determine if the current value has the lenghts of EAN-8 or EAN-13
+     *
+     * @return boolean
+     */
+    public function hasEanLength(): bool
+    {
+        return in_array(strlen($this->getValue()), [8, 13]);
     }
 
     /**
@@ -28,7 +34,17 @@ class Ean extends AbstractStringRule
      */
     protected function checksumMatches(): bool
     {
-        return $this->getModuloChecksum($this->getValue()) === intval(substr($this->getValue(), -1));
+        return $this->getModuloChecksum($this->getValue()) === $this->getValueChecksum();
+    }
+
+    /**
+     * Get the checksum of the current value
+     *
+     * @return int
+     */
+    protected function getValueChecksum(): int
+    {
+        return intval(substr($this->getValue(), -1));
     }
 
     /**
