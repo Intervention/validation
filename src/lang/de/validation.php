@@ -27,4 +27,5 @@ return [
     'cidr' => ':attribute ist keine gültige CIDR Notation.',
     'dataurl' => ':attribute ist keine gültige Data-URL.',
     'ulid' => ':attribute ist keine gültige ULID.',
+    'ean' => 'Der Wert :attribute ist keine gültige European Article Number (EAN).',
 ];

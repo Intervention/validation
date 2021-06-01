@@ -27,4 +27,5 @@ return [
     'cidr' => 'Le champ :attribute doit être un format CIDR valide.',
     'dataurl' => 'Le :attribute doit être un Data URL valide.',
     'ulid' => 'Le :attribute doit être un ULID valide.',
+    'ean' => 'Le :attribute doit être un EAN valide.',
 ];

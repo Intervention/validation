@@ -27,4 +27,5 @@ return [
     'cidr' => ':attribute moet een geldig CIDR notatie zijn.',
     'dataurl' => ':attribuut moet een geldige Data-URL zijn.',
     'ulid' => 'De waarde :attribute is geen geldig ULID.',
+    'ean' => 'De waarde :attribute is geen geldig European Article Number (EAN).',
 ];

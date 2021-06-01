@@ -144,6 +144,10 @@ The given field must be a valid [data url](https://en.wikipedia.org/wiki/Data_UR
 
 The given field must be a well formed [domainname](https://en.wikipedia.org/wiki/Domain_name).
 
+### ean (Intervention\Validation\Rules\Ean)
+
+Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number) (EAN-8 and EAN-13).
+
 ### hexcolor (Intervention\Validation\Rules\HexColor)
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors).

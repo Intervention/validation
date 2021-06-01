@@ -26,4 +26,5 @@ return [
     'cidr' => '.صالحاً CIDR تدوين :attribute يجب أن يكون',
     'dataurl' => 'يجب أن يكون :attribute data url صالحًا',
     'ulid' => 'يجب أن يكون :attribute ULID صالحًا',
+    'ean' => 'يجب أن يكون :attribute EAN صالحًا',
 ];
