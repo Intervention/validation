@@ -3,7 +3,6 @@
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
-use Intervention\Validation\Rules\Base64;
 
 class DataUrl extends AbstractRegexRule
 {
@@ -26,11 +25,20 @@ class DataUrl extends AbstractRegexRule
             return false;
         }
 
+        if (!empty($info->mediaType()) && !$this->mimeTypeValidator($info->mediaType())->isValid()) {
+            return false;
+        }
+
         if ($info->isBase64Encoded()) {
             return $this->base64DataValidator($info->data())->isValid();
         }
 
         return true;
+    }
+
+    public function mimeTypeValidator($input): MimeType
+    {
+        return new MimeType($input);
     }
 
     /**

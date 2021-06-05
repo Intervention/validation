@@ -41,6 +41,7 @@ class DataUrlTest extends AbstractRuleTestCase
         'bar',
         'data:',
         'data:;base64,foo',
+        'data:foo/plain,foobar',
         'data:;base64,VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
         'data:image/jpeg;base64,VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
         'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=',
