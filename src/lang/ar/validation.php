@@ -28,4 +28,5 @@ return [
     'ulid' => 'يجب أن يكون :attribute ULID صالحًا',
     'ean' => 'يجب أن يكون :attribute EAN صالحًا',
     'gtin' => 'يجب أن يكون :attribute GTIN صالحًا',
+    'mimetype' => 'يجب أن يكون :attribute Mime type صالحًا',
 ];

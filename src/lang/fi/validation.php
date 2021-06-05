@@ -29,4 +29,5 @@ return [
     'ulid' => ':attribute on oltava kelvollinen ULID.',
     'ean' => ':attribute on oltava kelvollinen EAN.',
     'gtin' => ':attribute on oltava kelvollinen GTIN.',
+    'mimetype' => ':attribute on oltava kelvollinen Mime type.',
 ];

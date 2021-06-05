@@ -200,6 +200,10 @@ The given value must verify against its included [Luhn algorithm](https://en.wik
 
 The field under validation must be a [media access control address](https://en.wikipedia.org/wiki/MAC_address) (MAC address).
 
+### mimetype (Intervention\Validation\Rules\MimeType)
+
+Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media type).
+
 ### semver (Intervention\Validation\Rules\SemVer)
 
 The given field must be a valid version numbers using [Semantic Versioning](https://semver.org/).
