@@ -82,7 +82,7 @@ class CallDelegator
     private function getRuleClassname(): string
     {
         $classname = sprintf('Intervention\Validation\Rules\%s', $this->parse('rule'));
-        
+
         if (! class_exists($classname)) {
             trigger_error(
                 "Error: Unable to create not existing rule (" . $classname . ")",
