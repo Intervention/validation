@@ -93,6 +93,6 @@ class Validator
      */
     public static function __callStatic(string $name, array $arguments): bool
     {
-        return (new CallDelegator($name, $arguments))->getReturnValue();
+        return (new CallDelegator($name, $arguments))->getRuleReturnValue();
     }
 }

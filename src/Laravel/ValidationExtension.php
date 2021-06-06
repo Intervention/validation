@@ -28,18 +28,22 @@ class ValidationExtension extends IlluminateValidator
      */
     public function __call($name, $arguments)
     {
+        $value = data_get($arguments, 1);
+        $attributes = data_get($arguments, 2);
+
         try {
             // try to invoke rule
             $rule = $this->invokeRule(
-                $this->getRuleClassnameByMethodName($name)
+                $this->getRuleClassnameByMethodName($name),
+                $attributes
             );
         } catch (Exception $e) {
             // if intervention/validation don't has rule, call regular validator
             return call_user_func_array(['parent', $name], $arguments);
         }
 
-        // do the validation work, first argument is value
-        return Validator::make($rule)->validate(data_get($arguments, 1));
+        // do the validation work
+        return Validator::make($rule)->validate($value);
     }
 
     /**
@@ -59,9 +63,10 @@ class ValidationExtension extends IlluminateValidator
      * Invoke new rule object
      *
      * @param  string $classname
+     * @param  array  $attributes
      * @return AbstractRule
      */
-    private function invokeRule($classname): AbstractRule
+    private function invokeRule($classname, $attributes = []): AbstractRule
     {
         if (! class_exists($classname)) {
             throw new BadMethodCallException(
@@ -69,6 +74,6 @@ class ValidationExtension extends IlluminateValidator
             );
         }
 
-        return new $classname();
+        return new $classname(null, $attributes);
     }
 }

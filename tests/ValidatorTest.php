@@ -51,6 +51,16 @@ class ValidatorTest extends TestCase
         $this->assertFalse(Validator::isHexColor('foo'));
     }
 
+    public function testDynamicStaticIsValidWithAttributes()
+    {
+        $this->assertTrue(Validator::isHexColor('#cccccc', 6));
+    }
+
+    public function testDynamicStaticIsInvalidWithAttributes()
+    {
+        $this->assertFalse(Validator::isHexColor('#cccccc', 3));
+    }
+
     public function testDynamicStaticIsNonExisting()
     {
         $this->expectError();

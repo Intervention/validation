@@ -14,6 +14,13 @@ abstract class AbstractRule
     private $value;
 
     /**
+     * Validation option attributes
+     *
+     * @var array
+     */
+    private $attributes;
+
+    /**
      * Determine if current value is valid
      *
      * @return boolean
@@ -25,9 +32,10 @@ abstract class AbstractRule
      *
      * @param mixed $value
      */
-    public function __construct($value = null)
+    public function __construct($value = null, $attributes = [])
     {
         $this->value = $value;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -48,6 +56,43 @@ abstract class AbstractRule
     public function setValue($value): AbstractRule
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Return current attributes
+     *
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Return specific attribute
+     *
+     * @param  mixed $key
+     * @return mixed
+     */
+    public function getAttribute($key)
+    {
+        if (! array_key_exists($key, $this->attributes)) {
+            return null;
+        }
+
+        return $this->attributes[$key];
+    }
+
+    /**
+     * Set current value
+     *
+     * @param mixed $value
+     */
+    public function setAttributes(array $attributes): AbstractRule
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }
