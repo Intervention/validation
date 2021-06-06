@@ -35,9 +35,22 @@ class CallDelegator
      *
      * @return mixed
      */
-    public function getValue()
+    public function getRuleValue()
     {
         return isset($this->arguments[0]) ? $this->arguments[0] : null;
+    }
+
+    /**
+     * Get rule option attribtues
+     *
+     * @return array
+     */
+    public function getRuleAttributes(): array
+    {
+        $attributes = $this->arguments;
+        array_shift($attributes);
+
+        return $attributes;
     }
 
     /**
@@ -49,7 +62,7 @@ class CallDelegator
     {
         $classname = $this->getRuleClassname();
 
-        return new $classname($this->getValue());
+        return new $classname($this->getRuleValue(), $this->getRuleAttributes());
     }
 
     /**
@@ -57,7 +70,7 @@ class CallDelegator
      *
      * @return bool
      */
-    public function getReturnValue(): bool
+    public function getRuleReturnValue(): bool
     {
         $valid = $this->getRule()->isValid();
 
@@ -65,7 +78,7 @@ class CallDelegator
             throw new Exception\ValidationException(
                 sprintf(
                     'Error validating value (%s) against rule "%s"',
-                    $this->getValue(),
+                    $this->getRuleValue(),
                     $this->getRuleClassname()
                 )
             );
