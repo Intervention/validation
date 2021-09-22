@@ -2,28 +2,84 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class HexcolorTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Hexcolor;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class HexcolorTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'hexcolor';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Hexcolor()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
     /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '#cccccc', 'b33517', '#ccc', 'ccc', 'abc'
-    ];
+     * @dataProvider dataProviderShort
+    */
+    public function testValidationShort($result, $value)
+    {
+        $validator = new Validator([new Hexcolor(3)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
     /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        'x25s11', 'ffff', '#ffff', 'ff', '#', null, false, true
-    ];
+     * @dataProvider dataProviderLong
+    */
+    public function testValidationLong($result, $value)
+    {
+        $validator = new Validator([new Hexcolor(6)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    public function dataProvider()
+    {
+        return [
+            [true, '#cccccc'],
+            [true, 'b33517'],
+            [true, '#ccc'],
+            [true, 'ccc'],
+            [true, 'abc'],
+            [false, 'x25s11'],
+            [false, 'ffff'],
+            [false, '#ffff'],
+            [false, 'ff'],
+            [false, '#'],
+        ];
+    }
+
+    public function dataProviderShort()
+    {
+        return [
+            [false, '#cccccc'],
+            [false, 'b33517'],
+            [true, '#ccc'],
+            [true, 'ccc'],
+            [true, 'abc'],
+            [false, 'x25s11'],
+            [false, 'ffff'],
+            [false, '#ffff'],
+            [false, 'ff'],
+            [false, '#'],
+        ];
+    }
+
+    public function dataProviderLong()
+    {
+        return [
+            [true, '#cccccc'],
+            [true, 'b33517'],
+            [false, '#ccc'],
+            [false, 'ccc'],
+            [false, 'abc'],
+            [false, 'x25s11'],
+            [false, 'ffff'],
+            [false, '#ffff'],
+            [false, 'ff'],
+            [false, '#'],
+        ];
+    }
 }

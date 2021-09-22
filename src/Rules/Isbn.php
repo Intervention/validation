@@ -2,26 +2,68 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Isbn extends AbstractStringRule
+class Isbn implements Rule
 {
     /**
-     * Determine if current value is valid
+     * Determine if rule should check length (EAN8 or EAN13)
      *
-     * @return boolean
+     * @var array
      */
-    public function isValid(): bool
+    protected $lengths = [
+        10,
+        13,
+    ];
+
+    /**
+     * Create a new rule instance.
+     *
+     * @param  int  $length
+     * @return void
+     */
+    public function __construct(?int $length = null)
     {
-        switch (strlen($this->getValue())) {
+        if (is_int($length)) {
+            $this->lengths = [$length];
+        }
+    }
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        // normalize value
+        $value = preg_replace("/[^0-9x]/i", '', $value);
+
+        if (! $this->hasAllowedLength($value)) {
+            return false;
+        }
+
+        switch (strlen($value)) {
             case 10:
-                return $this->shortChecksumMatches();
+                return $this->shortChecksumMatches($value);
 
             case 13:
-                return $this->longChecksumMatches();
+                return $this->longChecksumMatches($value);
         }
 
         return false;
+    }
+
+    /**
+     * Determine if the current value has an allowed length
+     *
+     * @return boolean
+     */
+    public function hasAllowedLength($value): bool
+    {
+        return in_array(strlen($value), $this->lengths);
     }
 
     /**
@@ -29,9 +71,9 @@ class Isbn extends AbstractStringRule
      *
      * @return bool
      */
-    private function shortChecksumMatches()
+    private function shortChecksumMatches($value)
     {
-        return $this->getShortChecksum() % 11 === 0;
+        return $this->getShortChecksum($value) % 11 === 0;
     }
 
     /**
@@ -39,11 +81,11 @@ class Isbn extends AbstractStringRule
      *
      * @return int
      */
-    private function getShortChecksum()
+    private function getShortChecksum($value)
     {
         $checksum = 0;
         $multiplier = 10;
-        foreach (str_split($this->getValue()) as $digit) {
+        foreach (str_split($value) as $digit) {
             $digit = strtolower($digit) == 'x' ? 10 : intval($digit);
             $checksum += $digit * $multiplier;
             $multiplier--;
@@ -57,9 +99,9 @@ class Isbn extends AbstractStringRule
      *
      * @return bool
      */
-    private function longChecksumMatches()
+    private function longChecksumMatches($value)
     {
-        return $this->getLongChecksum() % 10 === 0;
+        return $this->getLongChecksum($value) % 10 === 0;
     }
 
     /**
@@ -67,10 +109,10 @@ class Isbn extends AbstractStringRule
      *
      * @return int
      */
-    private function getLongChecksum()
+    private function getLongChecksum($value)
     {
         $checksum = 0;
-        foreach (str_split($this->getValue()) as $num => $digit) {
+        foreach (str_split($value) as $num => $digit) {
             $multiplier = $num % 2 ? 3 : 1;
             $checksum += intval($digit) * $multiplier;
         }
@@ -79,12 +121,12 @@ class Isbn extends AbstractStringRule
     }
 
     /**
-     * Prepare value to validate
+     * Get the validation error message.
      *
      * @return string
      */
-    public function getValue()
+    public function message()
     {
-        return preg_replace("/[^0-9x]/i", '', parent::getValue());
+        return 'fails';
     }
 }

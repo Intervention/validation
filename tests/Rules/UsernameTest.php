@@ -2,65 +2,61 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class UsernameTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Username;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class UsernameTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'username';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Username()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'tom',
-        'tester',
-        'test12',
-        't-e-s-t',
-        'mr_freeze',
-        'mr-freeze',
-        'r00t',
-        'theQuickBrownFoxJump',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        'mr',
-        'homer-',
-        '-homer',
-        'homer_',
-        '_homer',
-        '_homer_',
-        '1homer',
-        ' homer',
-        'o__o',
-        'mr.freeze',
-        'mr freeze',
-        '-mr-freeze',
-        '1337',
-        '-91819',
-        '&nbsp;',
-        '<html></html>',
-        '-_homer_-',
-        '1mo',
-        '_test_',
-        '04420',
-        '',
-        ' ',
-        'array()',
-        'x',
-        '$234_&',
-        '?test=1',
-        '€uro',
-        'theQuickBrownFoxJumps',
-        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        'ⓣⓔⓢⓣ',
-        '𝒕𝒆𝒔𝒕',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'tom'],
+            [true, 'tester'],
+            [true, 'test12'],
+            [true, 't-e-s-t'],
+            [true, 'mr_freeze'],
+            [true, 'mr-freeze'],
+            [true, 'r00t'],
+            [true, 'theQuickBrownFoxJump'],
+            [true, 'mr'],
+            [true, 'x'],
+            [true, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'],
+            [true, 'theQuickBrownFoxJumps'],
+            [false, 'homer-'],
+            [false, '-homer'],
+            [false, 'homer_'],
+            [false, '_homer'],
+            [false, '_homer_'],
+            [false, '1homer'],
+            [false, ' homer'],
+            [false, 'o__o'],
+            [false, 'mr.freeze'],
+            [false, 'mr freeze'],
+            [false, '-mr-freeze'],
+            [false, '1337'],
+            [false, '-91819'],
+            [false, '&nbsp;'],
+            [false, '<html></html>'],
+            [false, '-_homer_-'],
+            [false, '1mo'],
+            [false, '_test_'],
+            [false, '04420'],
+            [false, 'array()'],
+            [false, '$234_&'],
+            [false, '?test=1'],
+            [false, '€uro'],
+            [false, 'ⓣⓔⓢⓣ'],
+            [false, '𝒕𝒆𝒔𝒕'],
+        ];
+    }
 }

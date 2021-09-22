@@ -2,48 +2,45 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class UppercaseTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Uppercase;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class UppercaseTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'uppercase';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Uppercase()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'A',
-        'ABC',
-        'Ä',
-        'ÄÖÜ',
-        'VALID',
-        'ÇÃÊ',
-        '',
-        ' ',
-        '123',
-        'A1',
-        '_',
-        '!',
-        'A-B',
-        'A B',
-        '?',
-        '#',
-        'FOO BAR',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        'a',
-        'foo bar',
-        'fooß',
-        'abc',
-        'äöü',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'A'],
+            [true, 'ABC'],
+            [true, 'Ä'],
+            [true, 'ÄÖÜ'],
+            [true, 'VALID'],
+            [true, 'ÇÃÊ'],
+            [true, '123'],
+            [true, 'A1'],
+            [true, '_'],
+            [true, '!'],
+            [true, 'A-B'],
+            [true, 'A B'],
+            [true, '?'],
+            [true, '#'],
+            [true, 'FOO BAR'],
+            [false, 'a'],
+            [false, 'foo bar'],
+            [false, 'fooß'],
+            [false, 'abc'],
+            [false, 'äöü'],
+            [false, '(a)'],
+        ];
+    }
 }

@@ -2,42 +2,33 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class IssnTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Issn;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class IssnTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'issn';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Issn()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '2049-3630',
-        // '2434-561X',
-        // '1476-4687',
-        // '0317-8471',
-        // '1234-5679',
-        // '1982-047x',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        ' ',
-        '0317-8472',
-        '1982047x',
-        'DE0005810058',
-        'ZA9382189201',
-        '2434-561Y',
-        '2434561X',
-        'foo',
-        '1234-1234',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, '2049-3630'],
+            [false, '0317-8472'],
+            [false, '1982047x'],
+            [false, 'DE0005810058'],
+            [false, 'ZA9382189201'],
+            [false, '2434-561Y'],
+            [false, '2434561X'],
+            [false, 'foo'],
+            [false, '1234-1234'],
+        ];
+    }
 }

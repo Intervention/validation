@@ -2,17 +2,29 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Base64 extends AbstractStringRule
+class Base64 implements Rule
 {
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return base64_encode(base64_decode($this->getValue(), true)) === $this->getValue();
+        return base64_encode(base64_decode($value, true)) === $value;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

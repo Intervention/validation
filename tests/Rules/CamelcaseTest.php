@@ -2,43 +2,39 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class CamelcaseTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Camelcase;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class CamelcaseTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'camelcase';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Camelcase()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'foo',
-        'Foo',
-        'fooBar',
-        'fooBarBaz',
-        'fooBarBâz',
-        'fOo',
-        'PostScript',
-        'iPhone',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        ' ',
-        'foobaR',
-        'FoobaR',
-        'FOo',
-        'FOO',
-        'fo0bar',
-        '-fooBar',
-        '-fooBar-',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'foo'],
+            [true, 'Foo'],
+            [true, 'fooBar'],
+            [true, 'fooBarBaz'],
+            [true, 'fooBarBâz'],
+            [true, 'fOo'],
+            [true, 'PostScript'],
+            [true, 'iPhone'],
+            [false, 'foobaR'],
+            [false, 'FoobaR'],
+            [false, 'FOo'],
+            [false, 'FOO'],
+            [false, 'fo0bar'],
+            [false, '-fooBar'],
+            [false, '-fooBar-'],
+        ];
+    }
 }

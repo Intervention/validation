@@ -2,6 +2,8 @@
 
 namespace Intervention\Validation;
 
+use Illuminate\Contracts\Validation\Rule;
+
 class CallDelegator
 {
     /**
@@ -30,27 +32,25 @@ class CallDelegator
         $this->arguments = $arguments;
     }
 
+    public function getAction(): string
+    {
+        switch ($this->parse('action')) {
+            case 'assert':
+                return 'assert';
+
+            default:
+                return 'validate';
+        }
+    }
+
     /**
      * Get value to validate
      *
      * @return mixed
      */
-    public function getRuleValue()
+    public function getValue()
     {
         return isset($this->arguments[0]) ? $this->arguments[0] : null;
-    }
-
-    /**
-     * Get rule option attribtues
-     *
-     * @return array
-     */
-    public function getRuleAttributes(): array
-    {
-        $attributes = $this->arguments;
-        array_shift($attributes);
-
-        return $attributes;
     }
 
     /**
@@ -58,33 +58,24 @@ class CallDelegator
      *
      * @return AbstractRule
      */
-    public function getRule(): AbstractRule
+    public function getRule(): Rule
     {
         $classname = $this->getRuleClassname();
 
-        return new $classname($this->getRuleValue(), $this->getRuleAttributes());
+        return new $classname(...$this->getValidationAttributes());
     }
 
     /**
-     * Get return value of current validation rule
+     * Get rule option attribtues
      *
-     * @return bool
+     * @return array
      */
-    public function getRuleReturnValue(): bool
+    protected function getValidationAttributes(): array
     {
-        $valid = $this->getRule()->isValid();
+        $attributes = $this->arguments;
+        array_shift($attributes);
 
-        if ($valid === false && self::parse('type') === 'assert') {
-            throw new Exception\ValidationException(
-                sprintf(
-                    'Error validating value (%s) against rule "%s"',
-                    $this->getRuleValue(),
-                    $this->getRuleClassname()
-                )
-            );
-        }
-
-        return $valid;
+        return $attributes;
     }
 
     /**
@@ -97,9 +88,8 @@ class CallDelegator
         $classname = sprintf('Intervention\Validation\Rules\%s', $this->parse('rule'));
 
         if (! class_exists($classname)) {
-            trigger_error(
-                "Error: Unable to create not existing rule (" . $classname . ")",
-                E_USER_ERROR
+            throw new NotExistingRuleException(
+                "Error: Unable to create not existing rule (" . $classname . ")"
             );
         }
 
@@ -114,7 +104,7 @@ class CallDelegator
      */
     protected function parse(string $key): ?string
     {
-        $pattern = "/^(?P<type>is|assert)(?P<rule>.*)$/";
+        $pattern = "/^(?P<action>is|assert)(?P<rule>.*)$/";
         $result = (bool) preg_match($pattern, $this->name, $matches);
 
         if ($result === false) {

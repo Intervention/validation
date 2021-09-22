@@ -2,17 +2,29 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Htmlclean extends AbstractStringRule
+class Htmlclean implements Rule
 {
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return (strip_tags($this->getValue()) == $this->getValue());
+        return (strip_tags($value) == $value);
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

@@ -2,14 +2,23 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Camelcase extends AbstractRegexRule
+class Camelcase extends AbstractRegexRule implements Rule
 {
+    protected function pattern(): string
+    {
+        return "/^(?:\p{Lu}?\p{Ll}+)(?:\p{Lu}\p{Ll}+)*$/u";
+    }
+
     /**
-     * Regular expression pattern for upper or lower camelCase string
+     * Get the validation error message.
      *
-     * @var string
+     * @return string
      */
-    protected $pattern = "/^(?:\p{Lu}?\p{Ll}+)(?:\p{Lu}\p{Ll}+)*$/u";
+    public function message()
+    {
+        return 'fails';
+    }
 }

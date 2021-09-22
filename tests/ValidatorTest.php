@@ -13,100 +13,51 @@ class ValidatorTest extends TestCase
 {
     public function testConstructor()
     {
-        $rule = $this->getMockForAbstractClass(AbstractRule::class);
-        $validator = new Validator($rule);
+        $validator = new Validator([]);
         $this->assertInstanceOf(Validator::class, $validator);
     }
 
     public function testMake()
     {
-        $rule = $this->getMockForAbstractClass(AbstractRule::class);
-        $validator = Validator::make($rule);
+        $validator = Validator::make([]);
         $this->assertInstanceOf(Validator::class, $validator);
+    }
+
+    public function testSetRules()
+    {
+        $validator = new Validator([new Iban()]);
+        $this->assertFalse($validator->validate('ccc'));
+        $validator->setRules([new Hexcolor()]);
+        $this->assertTrue($validator->validate('ccc'));
     }
 
     public function testValidate()
     {
-        $validator = Validator::make(new Hexcolor());
-        $this->assertIsBool($validator->validate('#ccc'));
-        $this->assertIsBool($validator->validate('xxx'));
-        $this->assertTrue($validator->validate('#ccc'));
-        $this->assertFalse($validator->validate('xxx'));
+        $validator = new Validator([]);
+        $this->assertIsBool($validator->validate('foo'));
+        $this->assertIsBool($validator->validate('bar'));
     }
 
     public function testAssert()
     {
-        $validator = Validator::make(new Hexcolor());
+        $validator = new Validator([new Hexcolor()]);
         $this->expectException(ValidationException::class);
         $validator->assert('foo');
     }
 
-    public function testDynamicStaticIsValid()
+    public function testDynamicStaticValidateValid()
     {
         $this->assertTrue(Validator::isHexColor('#cccccc'));
     }
 
-    public function testDynamicStaticIsInvalid()
+    public function testDynamicStaticValidateInvalid()
     {
         $this->assertFalse(Validator::isHexColor('foo'));
     }
 
-    public function testDynamicStaticIsValidWithAttributes()
-    {
-        $this->assertTrue(Validator::isHexColor('#cccccc', 6));
-        $this->assertTrue(Validator::isHexColor('#cccccc', '6'));
-        $this->assertTrue(Validator::isHexColor('cccccc', 6));
-        $this->assertTrue(Validator::isHexColor('cccccc', '6'));
-        $this->assertTrue(Validator::isHexColor('#ccc', 3));
-        $this->assertTrue(Validator::isHexColor('#ccc', '3'));
-        $this->assertTrue(Validator::isHexColor('ccc', 3));
-        $this->assertTrue(Validator::isHexColor('ccc', '3'));
-    }
-
-    public function testDynamicStaticIsInvalidWithAttributes()
-    {
-        $this->assertFalse(Validator::isHexColor('#cccccc', 3));
-        $this->assertFalse(Validator::isHexColor('#cccccc', '3'));
-        $this->assertFalse(Validator::isHexColor('cccccc', 3));
-        $this->assertFalse(Validator::isHexColor('cccccc', '3'));
-    }
-
-    public function testDynamicStaticIsNonExisting()
-    {
-        $this->expectError();
-        $this->assertTrue(Validator::isNonExisting('#cccccc'));
-    }
-
-    public function testDynamicStaticAssertValid()
-    {
-        $this->assertTrue(Validator::assertHexColor('#cccccc'));
-    }
-
-    public function testDynamicStaticAssertInvalid()
+    public function testDynamicStaticAssert()
     {
         $this->expectException(ValidationException::class);
-        $this->assertFalse(Validator::assertHexColor('foo'));
-    }
-
-    public function testDynamicStaticAssertNonExisting()
-    {
-        $this->expectError();
-        $this->assertTrue(Validator::assertNonExisting('#cccccc'));
-    }
-
-    public function testNonExistingStaticCallType()
-    {
-        $this->expectError();
-        $this->assertTrue(Validator::fooHexColor('#cccccc'));
-    }
-
-    public function testSetGetRule()
-    {
-        $validator = new Validator(new HexColor());
-        $this->assertInstanceOf(HexColor::class, $validator->getRule());
-
-        $result = $validator->setRule(new Iban());
-        $this->assertInstanceOf(Validator::class, $result);
-        $this->assertInstanceOf(Iban::class, $validator->getRule());
+        Validator::assertHexColor('foo');
     }
 }

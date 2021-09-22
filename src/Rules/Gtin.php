@@ -2,20 +2,46 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
+
 class Gtin extends Ean
 {
     /**
-     * Determine if current input is valid
+     * Determine if rule should check length (EAN8 or EAN13)
      *
-     * @return boolean
+     * @var array
      */
-    public function isValid(): bool
+    protected $lengths = [
+        8,
+        12,
+        13,
+        14,
+    ];
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
     {
         // GTIN-14 or GTIN-12 must be 14 or 12 chars including indicator digit and must have matching checksum
-        $valid = $this->hasGtinLength() && $this->hasValidIndicatorDigit() && $this->gtinChecksumMatches();
+        $valid = $this->hasAllowedLength($value) && $this->hasValidIndicatorDigit($value) && $this->gtinChecksumMatches($value);
 
         // GTIN-13, GTIN-8 is the same as EAN-13 and EAN-8
-        return parent::isValid() || ($valid);
+        return parent::passes($attribute, $value) || ($valid);
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 
     /**
@@ -23,19 +49,9 @@ class Gtin extends Ean
      *
      * @return boolean
      */
-    protected function hasValidIndicatorDigit(): bool
+    protected function hasValidIndicatorDigit($value): bool
     {
-        return is_numeric(substr($this->getValue(), 0, 1));
-    }
-
-    /**
-     * Determine if current value has length of GTIN-12 or GTIN-14
-     *
-     * @return boolean
-     */
-    protected function hasGtinLength(): bool
-    {
-        return in_array(strlen($this->getValue()), [12, 14]);
+        return is_numeric(substr($value, 0, 1));
     }
 
     /**
@@ -44,10 +60,10 @@ class Gtin extends Ean
      *
      * @return bool
      */
-    protected function gtinChecksumMatches(): bool
+    protected function gtinChecksumMatches($value): bool
     {
-        $data = substr($this->getValue(), 1); // strip indicator digit
+        $data = substr($value, 1); // strip indicator digit
 
-        return parent::getModuloChecksum($data) === parent::getValueChecksum();
+        return parent::getModuloChecksum($data) === parent::getValueChecksum($data);
     }
 }

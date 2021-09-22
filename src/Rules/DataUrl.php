@@ -2,54 +2,56 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractRegexRule;
+use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\Traits\CanValidate;
 
-class DataUrl extends AbstractRegexRule
+class DataUrl implements Rule
 {
-    /**
-     * Data url pattern
-     *
-     * @var string
-     */
-    protected $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
+    use CanValidate;
 
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        $info = $this->dataUrlInfo();
+        $info = $this->dataUrlInfo($value);
         if (! $info->isValid()) {
             return false;
         }
 
-        if (!empty($info->mediaType()) && !$this->mimeTypeValidator($info->mediaType())->isValid()) {
+        if ($info->hasMediaType() && !$this->isValidMimeType($info->mediaType())) {
             return false;
         }
 
         if ($info->isBase64Encoded()) {
-            return $this->base64DataValidator($info->data())->isValid();
+            return $this->isValidBase64EncodedValue($info->data());
         }
 
         return true;
     }
 
-    public function mimeTypeValidator($input): MimeType
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
     {
-        return new MimeType($input);
+        return 'fails';
     }
 
-    /**
-     * Validate base64 encoded data
-     *
-     * @param  mixed $input
-     * @return Base64
-     */
-    protected function base64DataValidator($input): Base64
+    protected function isValidMimeType($value): bool
     {
-        return new Base64($input);
+        return $this->isValid($value, ['required', new MimeType()]);
+    }
+
+    protected function isValidBase64EncodedValue($value): bool
+    {
+        return $this->isValid($value, ['required', new Base64()]);
     }
 
     /**
@@ -57,9 +59,10 @@ class DataUrl extends AbstractRegexRule
      *
      * @return object
      */
-    protected function dataUrlInfo(): object
+    protected function dataUrlInfo($value): object
     {
-        $result = preg_match($this->pattern, $this->getValue(), $matches);
+        $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
+        $result = preg_match($pattern, $value, $matches);
 
         return new class ($matches, $result)
         {
@@ -84,6 +87,11 @@ class DataUrl extends AbstractRegexRule
                 }
 
                 return null;
+            }
+
+            public function hasMediaType(): bool
+            {
+                return !empty($this->mediaType());
             }
 
             public function parameters(): array

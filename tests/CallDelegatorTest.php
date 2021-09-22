@@ -6,6 +6,7 @@ use Intervention\Validation\AbstractRule;
 use Intervention\Validation\CallDelegator;
 use Intervention\Validation\Exception\ValidationException;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Contracts\Validation\Rule;
 
 class CallDelegatorTest extends TestCase
 {
@@ -15,22 +16,25 @@ class CallDelegatorTest extends TestCase
         $this->assertInstanceOf(CallDelegator::class, $delegator);
     }
 
-    public function testGetRuleValue()
+    public function testGetValue()
     {
         $delegator = new CallDelegator('foo', ['bar', 'baz', 'test']);
-        $this->assertEquals('bar', $delegator->getRuleValue());
-    }
-
-    public function testGetRuleAttributes()
-    {
-        $delegator = new CallDelegator('isHexColor', ['bar', 'baz', 'test', 1, 2, 3]);
-        $this->assertEquals(['baz', 'test', 1, 2, 3], $delegator->getRuleAttributes());
+        $this->assertEquals('bar', $delegator->getValue());
     }
 
     public function testGetRule()
     {
-        $delegator = new CallDelegator('isHexColor', ['bar', 'baz', 'test']);
-        $this->assertInstanceOf(AbstractRule::class, $delegator->getRule());
+        $delegator = new CallDelegator('isHexcolor', ['foo', 3]);
+        $this->assertInstanceOf(Rule::class, $delegator->getRule());
+    }
+
+    public function testGetAction()
+    {
+        $delegator = new CallDelegator('isHexColor', []);
+        $this->assertEquals('validate', $delegator->getAction());
+
+        $delegator = new CallDelegator('assertHexColor', []);
+        $this->assertEquals('assert', $delegator->getAction());
     }
 
     public function testGetRuleNonExisting()
@@ -38,20 +42,5 @@ class CallDelegatorTest extends TestCase
         $this->expectError();
         $delegator = new CallDelegator('foo', ['bar', 'baz', 'test']);
         $delegator->getRule();
-    }
-
-    public function testGetRuleReturnValueBoolean()
-    {
-        $delegator = new CallDelegator('isHexColor', ['ccc']);
-        $this->assertTrue($delegator->getRuleReturnValue());
-        $delegator = new CallDelegator('isHexColor', ['xxx']);
-        $this->assertFalse($delegator->getRuleReturnValue());
-    }
-
-    public function testGetRuleReturnValueException()
-    {
-        $this->expectException(ValidationException::class);
-        $delegator = new CallDelegator('assertHexColor', ['xxx']);
-        $delegator->getRuleReturnValue();
     }
 }

@@ -2,14 +2,23 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
 class Jwt extends AbstractRegexRule
 {
+    protected function pattern(): string
+    {
+        return "/^[a-zA-Z0-9-_]+\.[a-zA-Z0-9-_]+\.[a-zA-Z0-9-_]+$/";
+    }
+
     /**
-     * Regular expression pattern of JWT
+     * Get the validation error message.
      *
-     * @var string
+     * @return string
      */
-    protected $pattern = "/^[a-zA-Z0-9-_]+\.[a-zA-Z0-9-_]+\.[a-zA-Z0-9-_]+$/";
+    public function message()
+    {
+        return 'fails';
+    }
 }

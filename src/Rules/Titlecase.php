@@ -2,18 +2,20 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Titlecase extends AbstractStringRule
+class Titlecase implements Rule
 {
     /**
-     * Determine if current value is valid Title Case
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        foreach ($this->getWords() as $word) {
+        foreach ($this->getWords($value) as $word) {
             if (! $this->isValidWord($word)) {
                 return false;
             }
@@ -27,9 +29,9 @@ class Titlecase extends AbstractStringRule
      *
      * @return array
      */
-    private function getWords(): array
+    private function getWords($value): array
     {
-        return explode(" ", parent::getValue());
+        return explode(" ", $value);
     }
 
     /**
@@ -41,5 +43,15 @@ class Titlecase extends AbstractStringRule
     private function isValidWord(string $word): bool
     {
         return (bool) preg_match("/^[\p{Lu}0-9]/u", $word);
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

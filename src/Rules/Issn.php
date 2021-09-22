@@ -2,26 +2,20 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Issn extends AbstractRegexRule
+class Issn extends AbstractRegexRule implements Rule
 {
-    /**
-     * Regular expression pattern for ISSN
-     *
-     * @var string
-     */
-    protected $pattern = "/^[0-9]{4}-[0-9]{3}[0-9xX]$/";
 
-    /**
-     * Determine if current value is valid ISSN
-     * Check regex pattern and checksum
-     *
-     * @return bool
-     */
-    public function isValid(): bool
+    protected function pattern(): string
     {
-        return parent::isValid() && $this->checkSumMatches();
+        return "/^[0-9]{4}-[0-9]{3}[0-9xX]$/";
+    }
+
+    public function passes($attribute, $value)
+    {
+        return parent::passes($attribute, $value) && $this->checkSumMatches($value);
     }
 
     /**
@@ -29,9 +23,9 @@ class Issn extends AbstractRegexRule
      *
      * @return bool
      */
-    private function checkSumMatches(): bool
+    private function checkSumMatches($value): bool
     {
-        return $this->calculateChecksum() === $this->parseChecksum();
+        return $this->calculateChecksum($value) === $this->parseChecksum($value);
     }
 
     /**
@@ -39,10 +33,10 @@ class Issn extends AbstractRegexRule
      *
      * @return int
      */
-    private function calculateChecksum(): int
+    private function calculateChecksum($value): int
     {
         $checksum = 0;
-        $issn_numbers = str_replace('-', '', $this->getValue());
+        $issn_numbers = str_replace('-', '', $value);
 
         foreach (range(8, 2) as $num => $multiplicator) {
             $checksum += $issn_numbers[$num] * $multiplicator;
@@ -58,10 +52,20 @@ class Issn extends AbstractRegexRule
      *
      * @return int
      */
-    private function parseChecksum(): int
+    private function parseChecksum($value): int
     {
-        $last = substr($this->getValue(), -1);
+        $last = substr($value, -1);
 
         return strtolower($last) === 'x' ? 10 : intval($last);
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

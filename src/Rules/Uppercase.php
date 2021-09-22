@@ -2,18 +2,20 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Uppercase extends AbstractStringRule
+class Uppercase implements Rule
 {
     /**
-     * Determine if value is uppercase
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return $this->getValue() === $this->getUpperCaseValue();
+        return $value === $this->getUpperCaseValue($value);
     }
 
     /**
@@ -21,8 +23,18 @@ class Uppercase extends AbstractStringRule
      *
      * @return string
      */
-    private function getUpperCaseValue(): string
+    private function getUpperCaseValue($value): string
     {
-        return mb_strtoupper($this->getValue(), mb_detect_encoding($this->getValue()));
+        return mb_strtoupper($value, mb_detect_encoding($value));
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

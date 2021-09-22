@@ -2,79 +2,74 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class DomainnameTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Domainname;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class DomainnameTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'domainname';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Domainname()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'foo.com',
-        'foo.de',
-        'foo.photography',
-        'hüte.de',
-        'www.hüte.de',
-        'WWW.HÜTE.DE',
-        'googĺe.com',
-        'www.googĺe.com',
-        'fußball.example',
-        'ñandú.example',
-        'xn--4gbrim.xn----ymcbaaajlc6dj7bxne2c.xn--wgbh1c.org',
-        'déjà.vu.example',
-        'foo.bar.baz',
-        'foo-foo.foo-bar.baz',
-        'xn--dmin-moa0i.example',
-        'nic.vermögensberater',
-        'xn--fsqu00a.xn--0zwm56d',
-        'موقع.وزارة-الاتصالات.مصر',
-        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar',
-        'bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        '63-characters-is-the-longest-possible-domain-name-for-a-website.com',
-        '0-WH-AO14-0.COM-com.net',
-        'foo.LU',
-        'g.cn',
-        't.co',
-        '0.com',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        ' ',
-        'foo',
-        'foo.f',
-        'foo.com.',
-        'foo.k12',
-        'foo.123',
-        'foo.foo_bar.bar',
-        'foo.bar-',
-        '-foo.bar',
-        'foo-.bar',
-        'foo.-.bar',
-        'foo.-bar',
-        'foo.bar-',
-        'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar',
-        'bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        ' . ',
-        '/././',
-        '----',
-        '?',
-        "\n",
-        '29383',
-        'x.x.x.x.x.x',
-        '127.0.0.1',
-        '0.0.0',
-        'foo.123',
-        'mandrill._domainkey.mailchimp.com',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'foo.com'],
+            [true, 'foo.de'],
+            [true, 'foo.photography'],
+            [true, 'hüte.de'],
+            [true, 'www.hüte.de'],
+            [true, 'WWW.HÜTE.DE'],
+            [true, 'googĺe.com'],
+            [true, 'www.googĺe.com'],
+            [true, 'fußball.example'],
+            [true, 'ñandú.example'],
+            [true, 'xn--4gbrim.xn----ymcbaaajlc6dj7bxne2c.xn--wgbh1c.org'],
+            [true, 'déjà.vu.example'],
+            [true, 'foo.bar.baz'],
+            [true, 'foo-foo.foo-bar.baz'],
+            [true, 'xn--dmin-moa0i.example'],
+            [true, 'nic.vermögensberater'],
+            [true, 'xn--fsqu00a.xn--0zwm56d'],
+            [true, 'موقع.وزارة-الاتصالات.مصر'],
+            [true, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar'],
+            [true, 'bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'],
+            [true, '63-characters-is-the-longest-possible-domain-name-for-a-website.com'],
+            [true, '0-WH-AO14-0.COM-com.net'],
+            [true, 'foo.LU'],
+            [true, 'g.cn'],
+            [true, 't.co'],
+            [true, '0.com'],
+            [false, 'foo'],
+            [false, 'foo.f'],
+            [false, 'foo.com.'],
+            [false, 'foo.k12'],
+            [false, 'foo.123'],
+            [false, 'foo.foo_bar.bar'],
+            [false, 'foo.bar-'],
+            [false, '-foo.bar'],
+            [false, 'foo-.bar'],
+            [false, 'foo.-.bar'],
+            [false, 'foo.-bar'],
+            [false, 'foo.bar-'],
+            [false, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.bar'],
+            [false, 'bar.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'],
+            [false, ' . '],
+            [false, '/././'],
+            [false, '----'],
+            [false, '?'],
+            [false, '29383'],
+            [false, 'x.x.x.x.x.x'],
+            [false, '127.0.0.1'],
+            [false, '0.0.0'],
+            [false, 'foo.123'],
+            [false, 'mandrill._domainkey.mailchimp.com'],
+        ];
+    }
 }

@@ -2,32 +2,30 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class CreditcardTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Creditcard;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class CreditcardTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'creditcard';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Creditcard()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '4444111122223333',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '9182819264532375',
-        '12',
-        '5555111122223333',
-        'xxxxxxxxxxxxxxxx',
-        '4444111I22223333',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, '4444111122223333'],
+            [false, '9182819264532375'],
+            [false, '12'],
+            [false, '5555111122223333'],
+            [false, 'xxxxxxxxxxxxxxxx'],
+            [false, '4444111I22223333'],
+        ];
+    }
 }

@@ -2,18 +2,20 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Domainname extends AbstractStringRule
+class Domainname implements Rule
 {
     /**
-     * Determine if current input is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        $labels = $this->getLabels(); // get labels of domainname
+        $labels = $this->getLabels($value); // get labels of domainname
         $tld = end($labels); // most right label of domainname is tld
 
         // domain must have 2 labels minimum
@@ -37,13 +39,23 @@ class Domainname extends AbstractStringRule
     }
 
     /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
+    }
+
+    /**
      * Get all labels of domainname
      *
      * @return array
      */
-    private function getLabels(): array
+    private function getLabels($value): array
     {
-        return explode('.', $this->idnToAscii(parent::getValue()));
+        return explode('.', $this->idnToAscii($value));
     }
 
     /**

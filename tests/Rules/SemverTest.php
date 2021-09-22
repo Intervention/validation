@@ -2,46 +2,44 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class SemverTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Semver;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class SemverTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'semver';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Semver()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '1.0.0',
-        '0.0.0',
-        '3.2.1',
-        '1.0.0-alpha',
-        '1.0.0-alpha.1',
-        '1.0.0-alpha1',
-        '1.0.0-1',
-        '1.0.0-0.3.7',
-        '1.0.0-x.7.z.92',
-        '1.0.0+20130313144700',
-        '1.0.0-beta+exp.sha.5114f85',
-        '1000.1000.1000',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '1',
-        '1.0',
-        'v1.0.0',
-        '1.0.0.0',
-        'x.x.x',
-        '1.x.x',
-        '10.0.0.beta',
-        'foo',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, '1.0.0'],
+            [true, '0.0.0'],
+            [true, '3.2.1'],
+            [true, '1.0.0-alpha'],
+            [true, '1.0.0-alpha.1'],
+            [true, '1.0.0-alpha1'],
+            [true, '1.0.0-1'],
+            [true, '1.0.0-0.3.7'],
+            [true, '1.0.0-x.7.z.92'],
+            [true, '1.0.0+20130313144700'],
+            [true, '1.0.0-beta+exp.sha.5114f85'],
+            [true, '1000.1000.1000'],
+            [false, '1'],
+            [false, '1.0'],
+            [false, 'v1.0.0'],
+            [false, '1.0.0.0'],
+            [false, 'x.x.x'],
+            [false, '1.x.x'],
+            [false, '10.0.0.beta'],
+            [false, 'foo'],
+        ];
+    }
 }

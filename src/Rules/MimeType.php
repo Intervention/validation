@@ -2,14 +2,23 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class MimeType extends AbstractRegexRule
+class MimeType extends AbstractRegexRule implements Rule
 {
+    protected function pattern(): string
+    {
+        return "/^(multipart|application|audio|image|message|multipart|text|video|font|example|model)\/([-+.\w]+)$/i";
+    }
+
     /**
-     * Regular expression pattern for RGB hex color
+     * Get the validation error message.
      *
-     * @var string
+     * @return string
      */
-    protected $pattern = "/^(multipart|application|audio|image|message|multipart|text|video|font|example|model)\/([-+.\w]+)$/i";
+    public function message()
+    {
+        return 'fails';
+    }
 }

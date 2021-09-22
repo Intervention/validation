@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Iban extends AbstractStringRule
+class Iban implements Rule
 {
     /**
      * IBAN lengths for countries
@@ -120,26 +120,19 @@ class Iban extends AbstractStringRule
     ];
 
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        $iban = $this->getValue();
+        // normalize value
+        $value = str_replace(' ', '', strtoupper($value));
 
         // check iban length and checksum
-        return $this->hasValidLength($iban) && $this->getChecksum($iban) === 1;
-    }
-
-    /**
-     * Prepare given value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return str_replace(' ', '', strtoupper(parent::getValue()));
+        return $this->hasValidLength($value) && $this->getChecksum($value) === 1;
     }
 
     /**
@@ -205,5 +198,15 @@ class Iban extends AbstractStringRule
         }
 
         return $values;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

@@ -2,43 +2,40 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class MimeTypeTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\MimeType;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class MimeTypeTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'mimetype';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new MimeType()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'application/pdf',
-        'application/zip',
-        'image/jpeg',
-        'image/svg+xml',
-        'multipart/form-data',
-        'application/octet-stream',
-        'font/woff',
-        'model/vrml',
-        'video/mp4',
-        'audio/mpeg',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        'foo/bar',
-        'foo/jpeg',
-        '/foo',
-        'image',
-        'foo',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'application/pdf'],
+            [true, 'application/zip'],
+            [true, 'image/jpeg'],
+            [true, 'image/svg+xml'],
+            [true, 'multipart/form-data'],
+            [true, 'application/octet-stream'],
+            [true, 'font/woff'],
+            [true, 'model/vrml'],
+            [true, 'video/mp4'],
+            [true, 'audio/mpeg'],
+            [true, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+            [false, 'foo/bar'],
+            [false, 'foo/jpeg'],
+            [false, '/foo'],
+            [false, 'image'],
+            [false, 'foo'],
+        ];
+    }
 }

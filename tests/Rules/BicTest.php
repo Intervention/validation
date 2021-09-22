@@ -2,32 +2,32 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class BicTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Bic;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class BicTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'bic';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Bic()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'PBNKDEFF',
-        'NOLADE21SHO',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        'ABNFDBF',
-        'GR82WEST',
-        '5070081',
-        'DEUTDBBER'
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'PBNKDEFF'],
+            [true, 'NOLADE21SHO'],
+            [false, 'foobar'],
+            [false, 'xxx'],
+            [false, 'ABNFDBF'],
+            [false, 'GR82WEST'],
+            [false, '5070081'],
+            [false, 'DEUTDBBER'],
+        ];
+    }
 }

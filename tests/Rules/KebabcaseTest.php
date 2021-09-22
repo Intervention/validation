@@ -2,39 +2,35 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class KebabcaseTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Kebabcase;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class KebabcaseTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'kebabcase';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Kebabcase()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        'foo',
-        'foo-bar',
-        'foo-bar-baz',
-        'foo-bar-bâz',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        ' ',
-        'foo_bar',
-        'foo-',
-        '-foo',
-        '-foo-',
-        'fooBar',
-        'Foo-bar',
-        'foo-baR',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, 'foo'],
+            [true, 'foo-bar'],
+            [true, 'foo-bar-baz'],
+            [true, 'foo-bar-bâz'],
+            [false, 'foo_bar'],
+            [false, 'foo-'],
+            [false, '-foo'],
+            [false, '-foo-'],
+            [false, 'fooBar'],
+            [false, 'Foo-bar'],
+            [false, 'foo-baR'],
+        ];
+    }
 }

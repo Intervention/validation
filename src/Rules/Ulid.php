@@ -2,30 +2,30 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
-use Intervention\Validation\Rules\Base64;
 
-class Ulid extends AbstractRegexRule
+class Ulid extends AbstractRegexRule implements Rule
 {
-    /**
-     * Data url pattern
-     *
-     * @var string
-     */
-    protected $pattern = "/^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{10}[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{16}$/i";
+    protected function pattern(): string
+    {
+        return "/^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{10}[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{16}$/i";
+    }
 
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        if (! parent::isValid()) {
+        if (! parent::passes($attribute, $value)) {
             return false;
         }
 
-        if ($this->ulidTooLarge()) {
+        if ($this->ulidTooLarge($value)) {
             return false;
         }
 
@@ -37,8 +37,18 @@ class Ulid extends AbstractRegexRule
      *
      * @return bool
      */
-    protected function ulidTooLarge(): bool
+    protected function ulidTooLarge($value): bool
     {
-        return $this->getValue()[0] > 7;
+        return intval($value[0]) > 7;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

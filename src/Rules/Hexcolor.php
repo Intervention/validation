@@ -7,33 +7,66 @@ use Intervention\Validation\AbstractRegexRule;
 class Hexcolor extends AbstractRegexRule
 {
     /**
-     * Regular expression pattern for RGB hex color
+     * Allowed lengths of hexcolor
      *
-     * @var string
+     * @var array
      */
-    protected $pattern = "/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/";
+    protected $lengths = [
+        3,
+        6,
+    ];
 
     /**
-     * Determine if validation was successful
+     * Create a new rule instance.
      *
-     * @return boolean
+     * @param  int  $length
+     * @return void
      */
-    public function isValid(): bool
+    public function __construct(?int $length = null)
     {
-        if ($this->hasLengthAttribute() && !$this->hasCorrectLength()) {
+        if (is_int($length)) {
+            $this->lengths = [$length];
+        }
+    }
+
+    protected function pattern(): string
+    {
+        return "/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/";
+    }
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        if (! $this->hasAllowedLength($value)) {
             return false;
         }
 
-        return parent::isValid();
+        return parent::passes($attribute, $value);
     }
 
-    protected function hasLengthAttribute(): bool
+    /**
+     * Determine if the current value has the lenghts of EAN-8 or EAN-13
+     *
+     * @return boolean
+     */
+    public function hasAllowedLength($value): bool
     {
-        return is_numeric($this->getAttribute(0));
+        return in_array(strlen(trim($value, '#')), $this->lengths);
     }
 
-    protected function hasCorrectLength(): bool
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
     {
-        return strlen(trim($this->getValue(), '#')) === intval($this->getAttribute(0));
+        return 'fails';
     }
 }

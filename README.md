@@ -25,15 +25,15 @@ use Intervention\Validation\Validator;
 use Intervention\Validation\Rules\HexColor;
 use Intervention\Validation\Exception\ValidationException;
 
-// create validator (for HexColor)
-$validator = new Validator(new HexColor);
+// create validator with rules
+$validator = new Validator(['required', new HexColor(3)]);
 
 // validate against given values
 $valid = $validator->validate('#ccc'); // true
 $valid = $validator->validate('www'); // false
 
-// change the validation rule
-$validator->setRule(new Domainname);
+// change the validation rules
+$validator->setRules([new Domainname]);
 
 // now validate new rule domainname
 $valid = $validator->validate('foo.com'); // true
@@ -56,12 +56,12 @@ use Intervention\Validation\Rules\HexColor;
 use Intervention\Validation\Exception\ValidationException;
 
 // create validator statically
-$valid = Validator::make(new HexColor)->validate('ccc'); // true
-$valid = Validator::make(new HexColor)->validate('#www'); // false
+$valid = Validator::make([new HexColor])->validate('ccc'); // true
+$valid = Validator::make([new HexColor])->validate('#www'); // false
 
 // throw exceptions on invalid data instead of returning boolean
 try {
-    Validator::make(new HexColor)->assert('www');
+    Validator::make([new HexColor])->assert('www');
 } catch (ValidationException $e) {
     echo $e->getMessage();
 }

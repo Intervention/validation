@@ -2,73 +2,63 @@
 
 namespace Intervention\Validation;
 
+use Illuminate\Container\Container;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
+use Illuminate\Validation\Factory;
+use Intervention\Validation\Validator;
+
 class Validator
 {
-    /**
-     * Current rule
-     *
-     * @var AbstractRule
-     */
-    protected $rule;
+    protected $rules = [];
 
-    /**
-     * Create new instance
-     *
-     * @param AbstractRule $rule
-     */
-    public function __construct(AbstractRule $rule)
+    public function __construct(array $rules)
     {
-        $this->rule = $rule;
+        $this->rules = $rules;
     }
 
     /**
-     * Overwrite current rule
+     * Static factory method
      *
-     * @param AbstractRule $rule
+     * @param  array  $rules
+     * @return Validator
      */
-    public function setRule(AbstractRule $rule): Validator
+    public static function make(array $rules): self
     {
-        $this->rule = $rule;
+        return new self($rules);
+    }
+
+    /**
+     * Set set of rules to validate against
+     *
+     * @param array $rules
+     */
+    public function setRules(array $rules): self
+    {
+        $this->rules = $rules;
 
         return $this;
     }
 
     /**
-     * Return current rule
+     * Determine if the given value is valid for the current rules
      *
-     * @return AbstractRule
-     */
-    public function getRule(): AbstractRule
-    {
-        return $this->rule;
-    }
-
-    /**
-     * Static constructor
-     *
-     * @param  AbstractRule $rule
-     * @return self
-     */
-    public static function make(AbstractRule $rule): Validator
-    {
-        return new self($rule);
-    }
-
-    /**
-     * Validate given value against current rule
-     *
-     * @param  mixed $value
-     * @return boolean
+     * @param  string $value
+     * @return bool
      */
     public function validate($value): bool
     {
-        return $this->rule->setValue($value)->isValid();
+        $data = ['value' => $value];
+        $rules = ['value' => $this->rules];
+
+        return $this->validation()->make($data, $rules)->passes();
     }
 
     /**
-     * Throw exception if value does not validate
+     * Throw exception if the given value is not valid
      *
-     * @param  mixed $value
+     * @param  string $value
      * @return void
      */
     public function assert($value): void
@@ -76,12 +66,25 @@ class Validator
         if (! $this->validate($value)) {
             throw new Exception\ValidationException(
                 sprintf(
-                    'Error validating value (%s) against rule "%s"',
-                    $value,
-                    get_class($this->rule)
+                    'Error validating value (%s)',
+                    $value
                 )
             );
         }
+    }
+
+    /**
+     * Create validation engine
+     *
+     * @return Illuminate\Validation\Factory
+     */
+    protected function validation(): Factory
+    {
+        $loader = new FileLoader(new Filesystem(), 'lang');
+        $translator = new Translator($loader, 'en');
+        $validation = new Factory($translator, new Container());
+
+        return $validation;
     }
 
     /**
@@ -93,6 +96,9 @@ class Validator
      */
     public static function __callStatic(string $name, array $arguments): bool
     {
-        return (new CallDelegator($name, $arguments))->getRuleReturnValue();
+        $delegation = (new CallDelegator($name, $arguments));
+        $rules = ['required', $delegation->getRule()];
+
+        return call_user_func_array([new self($rules), $delegation->getAction()], [$delegation->getValue()]);
     }
 }

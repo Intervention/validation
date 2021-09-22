@@ -2,14 +2,23 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Slug extends AbstractRegexRule
+class Slug extends AbstractRegexRule implements Rule
 {
+    protected function pattern(): string
+    {
+        return "/^[a-z0-9]+(?:-[a-z0-9]+)*$/i";
+    }
+
     /**
-     * Regular expression pattern of a user- and SEO-friendly short text
+     * Get the validation error message.
      *
-     * @var string
+     * @return string
      */
-    protected $pattern = "/^[a-z0-9]+(?:-[a-z0-9]+)*$/i";
+    public function message()
+    {
+        return 'fails';
+    }
 }

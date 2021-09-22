@@ -2,49 +2,194 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class GtinTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Gtin;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class GtinTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'gtin';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Gtin()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
     /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '4012345678901',
-        '0712345678911',
-        '5901234123457',
-        '40123455',
-        '96385074',
-        '65833254',
-        '00123456000018',
-        '012345678905',
-        '012345000041',
-        '012345000058',
-    ];
+     * @dataProvider dataProviderGtin8
+    */
+    public function testValidationGtin8($result, $value)
+    {
+        $validator = new Validator([new Gtin(8)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
     /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '',
-        'foo',
-        '0000000000000',
-        '0000000000001',
-        'FFFFFFFFFFFFF',
-        'FFFFFFFFFFFF0',
-        '4012345678903',
-        '1xxxxxxxxxxx0',
-        '4012342678901',
-        '07123456789110712345678911',
-        '10123455',
-        '40113455',
-        '012341000058',
-    ];
+     * @dataProvider dataProviderGtin12
+    */
+    public function testValidationGtin12($result, $value)
+    {
+        $validator = new Validator([new Gtin(12)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    /**
+     * @dataProvider dataProviderGtin13
+    */
+    public function testValidationGtin13($result, $value)
+    {
+        $validator = new Validator([new Gtin(13)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    /**
+     * @dataProvider dataProviderGtin14
+    */
+    public function testValidationGtin14($result, $value)
+    {
+        $validator = new Validator([new Gtin(14)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    public function dataProvider()
+    {
+        return [
+            [true, '4012345678901'],
+            [true, '0712345678911'],
+            [true, '5901234123457'],
+            [true, '40123455'],
+            [true, '96385074'],
+            [true, '65833254'],
+            [true, '00123456000018'],
+            [true, '012345678905'],
+            [true, '012345000041'],
+            [true, '012345000058'],
+            [false, 'foo'],
+            [false, '0000000000000'],
+            [false, '0000000000001'],
+            [false, 'FFFFFFFFFFFFF'],
+            [false, 'FFFFFFFFFFFF0'],
+            [false, '4012345678903'],
+            [false, '1xxxxxxxxxxx0'],
+            [false, '4012342678901'],
+            [false, '07123456789110712345678911'],
+            [false, '10123455'],
+            [false, '40113455'],
+            [false, '012341000058'],
+        ];
+    }
+
+    public function dataProviderGtin8()
+    {
+        return [
+            [false, '4012345678901'],
+            [false, '0712345678911'],
+            [false, '5901234123457'],
+            [true, '40123455'],
+            [true, '96385074'],
+            [true, '65833254'],
+            [false, '00123456000018'],
+            [false, '012345678905'],
+            [false, '012345000041'],
+            [false, '012345000058'],
+            [false, 'foo'],
+            [false, '0000000000000'],
+            [false, '0000000000001'],
+            [false, 'FFFFFFFFFFFFF'],
+            [false, 'FFFFFFFFFFFF0'],
+            [false, '4012345678903'],
+            [false, '1xxxxxxxxxxx0'],
+            [false, '4012342678901'],
+            [false, '07123456789110712345678911'],
+            [false, '10123455'],
+            [false, '40113455'],
+            [false, '012341000058'],
+        ];
+    }
+
+    public function dataProviderGtin12()
+    {
+        return [
+            [false, '4012345678901'],
+            [false, '0712345678911'],
+            [false, '5901234123457'],
+            [false, '40123455'],
+            [false, '96385074'],
+            [false, '65833254'],
+            [false, '00123456000018'],
+            [true, '012345678905'],
+            [true, '012345000041'],
+            [true, '012345000058'],
+            [false, 'foo'],
+            [false, '0000000000000'],
+            [false, '0000000000001'],
+            [false, 'FFFFFFFFFFFFF'],
+            [false, 'FFFFFFFFFFFF0'],
+            [false, '4012345678903'],
+            [false, '1xxxxxxxxxxx0'],
+            [false, '4012342678901'],
+            [false, '07123456789110712345678911'],
+            [false, '10123455'],
+            [false, '40113455'],
+            [false, '012341000058'],
+        ];
+    }
+
+    public function dataProviderGtin13()
+    {
+        return [
+            [true, '4012345678901'],
+            [true, '0712345678911'],
+            [true, '5901234123457'],
+            [false, '40123455'],
+            [false, '96385074'],
+            [false, '65833254'],
+            [false, '00123456000018'],
+            [false, '012345678905'],
+            [false, '012345000041'],
+            [false, '012345000058'],
+            [false, 'foo'],
+            [false, '0000000000000'],
+            [false, '0000000000001'],
+            [false, 'FFFFFFFFFFFFF'],
+            [false, 'FFFFFFFFFFFF0'],
+            [false, '4012345678903'],
+            [false, '1xxxxxxxxxxx0'],
+            [false, '4012342678901'],
+            [false, '07123456789110712345678911'],
+            [false, '10123455'],
+            [false, '40113455'],
+            [false, '012341000058'],
+        ];
+    }
+
+    public function dataProviderGtin14()
+    {
+        return [
+            [false, '4012345678901'],
+            [false, '0712345678911'],
+            [false, '5901234123457'],
+            [false, '40123455'],
+            [false, '96385074'],
+            [false, '65833254'],
+            [true, '00123456000018'],
+            [false, '012345678905'],
+            [false, '012345000041'],
+            [false, '012345000058'],
+            [false, 'foo'],
+            [false, '0000000000000'],
+            [false, '0000000000001'],
+            [false, 'FFFFFFFFFFFFF'],
+            [false, 'FFFFFFFFFFFF0'],
+            [false, '4012345678903'],
+            [false, '1xxxxxxxxxxx0'],
+            [false, '4012342678901'],
+            [false, '07123456789110712345678911'],
+            [false, '10123455'],
+            [false, '40113455'],
+            [false, '012341000058'],
+        ];
+    }
 }

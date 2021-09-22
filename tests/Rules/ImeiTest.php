@@ -2,38 +2,36 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-class ImeiTest extends AbstractRuleTestCase
+use Intervention\Validation\Rules\Imei;
+use Intervention\Validation\Validator;
+use PHPUnit\Framework\TestCase;
+
+class ImeiTest extends TestCase
 {
     /**
-     * Rule symbol
-     */
-    public $symbol = 'imei';
+     * @dataProvider dataProvider
+    */
+    public function testValidation($result, $value)
+    {
+        $validator = new Validator([new Imei()]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
 
-    /**
-     * Valid values
-     *
-     * @var array
-     */
-    protected $valid = [
-        '355689070069001',
-        '861536030196001',
-        '357631050052050',
-        '357503040704274',
-    ];
-
-    /**
-     * Invalid values
-     *
-     * @var array
-     */
-    protected $invalid = [
-        '1',
-        '123',
-        '355689070069000',
-        '011536020196001',
-        '352192973771959',
-        '111111111111111',
-        'ABCDEFGHIJKLMNO',
-        '4444111122223333',
-    ];
+    public function dataProvider()
+    {
+        return [
+            [true, '355689070069001'],
+            [true, '861536030196001'],
+            [true, '357631050052050'],
+            [true, '357503040704274'],
+            [false, '1'],
+            [false, '123'],
+            [false, '355689070069000'],
+            [false, '011536020196001'],
+            [false, '352192973771959'],
+            [false, '111111111111111'],
+            [false, 'ABCDEFGHIJKLMNO'],
+            [false, '4444111122223333'],
+        ];
+    }
 }

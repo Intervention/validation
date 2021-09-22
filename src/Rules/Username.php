@@ -2,9 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Username extends AbstractRegexRule
+class Username extends AbstractRegexRule implements Rule
 {
     /**
      * Pattern for "valid" username
@@ -12,29 +13,21 @@ class Username extends AbstractRegexRule
      *  - starts with an letter (alpha)
      *  - underscores and minus are not allowed at the beginning or end
      *  - multiple underscores and minus are not allowed (-- or _____)
-     *  - minimum of 3 character and maximum of 20 characters
      *
      * @var string
      */
-    protected $pattern = "/^[a-z][a-z0-9]*(?:[_\-][a-z0-9]+)*$/i";
-
-    /**
-     * Determine if current value is valid
-     *
-     * @return boolean
-     */
-    public function isValid(): bool
+    protected function pattern(): string
     {
-        return $this->hasValidLength() && parent::isValid();
+        return "/^[a-z][a-z0-9]*(?:[_\-][a-z0-9]+)*$/i";
     }
 
     /**
-     * Check if the given value has the proper length
+     * Get the validation error message.
      *
-     * @return boolean
+     * @return string
      */
-    private function hasValidLength(): bool
+    public function message()
     {
-        return (strlen($this->getValue()) >= 3 && strlen($this->getValue()) <= 20);
+        return 'fails';
     }
 }

@@ -2,14 +2,23 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
 class Kebabcase extends AbstractRegexRule
 {
+    protected function pattern(): string
+    {
+        return "/^(?:\p{Ll}+\-)*\p{Ll}+$/u";
+    }
+
     /**
-     * Regular expression pattern for kebab-case string
+     * Get the validation error message.
      *
-     * @var string
+     * @return string
      */
-    protected $pattern = "/^(?:\p{Ll}+\-)*\p{Ll}+$/u";
+    public function message()
+    {
+        return 'fails';
+    }
 }

@@ -2,6 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRegexRule;
+
 class Isin extends Luhn
 {
     /**
@@ -39,13 +42,25 @@ class Isin extends Luhn
     ];
 
     /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return parent::passes($attribute, $this->normalize($value));
+    }
+
+    /**
      * Get value to check against
      *
      * @return string
      */
-    public function getValue()
+    public function normalize($value)
     {
-        return $this->replaceChars($this->getValueWithoutLastDigit()) . $this->getLastDigit();
+        return $this->replaceChars($this->getValueWithoutLastDigit($value)) . $this->getLastDigit($value);
     }
 
     /**
@@ -64,9 +79,9 @@ class Isin extends Luhn
      *
      * @return string
      */
-    private function getValueWithoutLastDigit()
+    private function getValueWithoutLastDigit($value)
     {
-        return substr(parent::getValue(), 0, -1);
+        return substr($value, 0, -1);
     }
 
     /**
@@ -74,8 +89,8 @@ class Isin extends Luhn
      *
      * @return string
      */
-    private function getLastDigit()
+    private function getLastDigit($value)
     {
-        return substr(parent::getValue(), -1);
+        return substr($value, -1);
     }
 }

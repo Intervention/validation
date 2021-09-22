@@ -2,39 +2,43 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Luhn extends AbstractStringRule
+class Luhn implements Rule
 {
     /**
-     * Determine if current value has correct Luhn checksum
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return $this->checksumMatches();
+        return $this->checksumIsValid($this->getChecksum($value));
     }
 
     /**
-     * Determine if the checksum of the current value is valid
+     * Determine if the given checksum is valid
      *
-     * @return boolean
+     * @param  [type] $value
+     * @return bool
      */
-    protected function checksumMatches(): bool
+    protected function checksumIsValid($checksum): bool
     {
-        return $this->getChecksum() % 10 === 0;
+        return $checksum % 10 === 0;
     }
 
     /**
-     * Calculate checksum of current value
+     * Calculate checksum for the given value
      *
+     * @param  mixed $value
      * @return int
      */
-    protected function getChecksum(): int
+    protected function getChecksum($value): int
     {
         $checksum = 0;
-        $reverse = strrev($this->getValue());
+        $reverse = strrev($value);
 
         foreach (str_split($reverse) as $num => $digit) {
             if (is_numeric($digit)) {
@@ -45,5 +49,15 @@ class Luhn extends AbstractStringRule
         }
 
         return $checksum;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

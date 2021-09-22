@@ -2,18 +2,20 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Lowercase extends AbstractStringRule
+class Lowercase implements Rule
 {
     /**
-     * Determine if value is lowercase
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return $this->getValue() === $this->getLowerCaseValue();
+        return $value === $this->getLowerCaseValue($value);
     }
 
     /**
@@ -21,8 +23,18 @@ class Lowercase extends AbstractStringRule
      *
      * @return string
      */
-    private function getLowerCaseValue(): string
+    private function getLowerCaseValue($value): string
     {
-        return mb_strtolower($this->getValue(), mb_detect_encoding($this->getValue()));
+        return mb_strtolower($value, mb_detect_encoding($value));
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

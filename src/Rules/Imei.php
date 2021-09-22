@@ -5,13 +5,15 @@ namespace Intervention\Validation\Rules;
 class Imei extends Luhn
 {
     /**
-     * Determine if current value is a valid IMEI
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return $this->hasValidLength() && parent::isValid();
+        return $this->hasValidLength($value) && parent::passes($attribute, $value);
     }
 
     /**
@@ -19,8 +21,18 @@ class Imei extends Luhn
      *
      * @return boolean
      */
-    private function hasValidLength()
+    private function hasValidLength($value): bool
     {
-        return strlen($this->getValue()) == 15;
+        return strlen($value) === 15;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

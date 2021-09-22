@@ -2,18 +2,43 @@
 
 namespace Intervention\Validation\Rules;
 
-use Intervention\Validation\AbstractStringRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Ean extends AbstractStringRule
+class Ean implements Rule
 {
     /**
-     * Determine if current input is valid
+     * Determine if rule should check length (EAN8 or EAN13)
      *
-     * @return boolean
+     * @var array
      */
-    public function isValid(): bool
+    protected $lengths = [
+        8,
+        13,
+    ];
+
+    /**
+     * Create a new rule instance.
+     *
+     * @param  int  $length
+     * @return void
+     */
+    public function __construct(?int $length = null)
     {
-        return $this->hasEanLength() && $this->checksumMatches();
+        if (is_int($length)) {
+            $this->lengths = [$length];
+        }
+    }
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return $this->hasAllowedLength($value) && $this->checksumMatches($value);
     }
 
     /**
@@ -21,9 +46,9 @@ class Ean extends AbstractStringRule
      *
      * @return boolean
      */
-    public function hasEanLength(): bool
+    public function hasAllowedLength($value): bool
     {
-        return in_array(strlen($this->getValue()), [8, 13]);
+        return in_array(strlen($value), $this->lengths);
     }
 
     /**
@@ -32,9 +57,9 @@ class Ean extends AbstractStringRule
      *
      * @return bool
      */
-    protected function checksumMatches(): bool
+    protected function checksumMatches($value): bool
     {
-        return $this->getModuloChecksum($this->getValue()) === $this->getValueChecksum();
+        return $this->getModuloChecksum($value) === $this->getValueChecksum($value);
     }
 
     /**
@@ -42,9 +67,9 @@ class Ean extends AbstractStringRule
      *
      * @return int
      */
-    protected function getValueChecksum(): int
+    protected function getValueChecksum($value): int
     {
-        return intval(substr($this->getValue(), -1));
+        return intval(substr($value, -1));
     }
 
     /**
@@ -62,5 +87,15 @@ class Ean extends AbstractStringRule
         }
 
         return 10 - $checksum % 10;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'fails';
     }
 }

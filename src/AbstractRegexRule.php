@@ -2,22 +2,26 @@
 
 namespace Intervention\Validation;
 
-abstract class AbstractRegexRule extends AbstractStringRule
+use Illuminate\Contracts\Validation\Rule;
+
+abstract class AbstractRegexRule implements Rule
 {
     /**
      * REGEX pattern of rule
      *
      * @var string
      */
-    protected $pattern;
+    abstract protected function pattern(): string;
 
     /**
-     * Determine if current value is valid
+     * Determine if the validation rule passes.
      *
-     * @return boolean
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
      */
-    public function isValid(): bool
+    public function passes($attribute, $value)
     {
-        return (bool) preg_match($this->pattern, $this->getValue());
+        return (bool) preg_match($this->pattern(), $value);
     }
 }
