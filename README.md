@@ -16,7 +16,7 @@ Require the package via Composer:
 
 ### Laravel integration (optional)
 
-The Validation library is built to work with the Laravel Framework (>=5.5). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation.
+The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation.
 
 ## Usage
 
@@ -95,9 +95,10 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Validation\Rules\Creditcard;
 
 $validator = Validator::make($request->all(), [
-    'color' => 'required|hexcolor',
+    'ccnumber' => 'required|creditcard',
     'number' => 'iban',
-    'ccnumber' => new Creditcard(), // passing rules as objects is also possible
+    'color' => new Hexcolor(3), // passing rules as objects is also possible
+    'name' => ['required', 'min:3', 'max:20', new Username()], // combining rules works as well
 ]);
 ```
 
@@ -110,7 +111,7 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 'iban' => 'Please enter IBAN number!',
 ```
 
-Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/6.x/validation#custom-error-messages).
+Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/8.x/validation#manual-customizing-the-error-messages).
 
 ## Available Rules
 
@@ -230,7 +231,7 @@ The field under validation must be all upper case.
 
 ### username (Intervention\Validation\Rules\Username)
 
-The field under validation must be a valid username with a minimum of 3 characters and maximum of 20 characters. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
+The field under validation must be a valid username. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
 
 ## License
 
