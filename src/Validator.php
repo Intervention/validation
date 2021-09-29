@@ -76,7 +76,7 @@ class Validator
     /**
      * Create validation engine
      *
-     * @return Illuminate\Validation\Factory
+     * @return \Illuminate\Validation\Factory
      */
     protected function validation(): Factory
     {

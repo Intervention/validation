@@ -3,6 +3,7 @@
 namespace Intervention\Validation;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\Exception\NotExistingRuleException;
 
 class CallDelegator
 {
@@ -56,7 +57,7 @@ class CallDelegator
     /**
      * Get validation rule from current call
      *
-     * @return AbstractRule
+     * @return Rule
      */
     public function getRule(): Rule
     {

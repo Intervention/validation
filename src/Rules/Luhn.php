@@ -21,7 +21,7 @@ class Luhn implements Rule
     /**
      * Determine if the given checksum is valid
      *
-     * @param  [type] $value
+     * @param  mixed $checksum
      * @return bool
      */
     protected function checksumIsValid($checksum): bool
