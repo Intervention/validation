@@ -7,6 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
+use Illuminate\Validation\Validator as IlluminateValidator;
 use Intervention\Validation\Validator;
 
 class Validator
@@ -52,7 +53,7 @@ class Validator
         $data = ['value' => $value];
         $rules = ['value' => $this->rules];
 
-        return $this->validation()->make($data, $rules)->passes();
+        return $this->validation($data, $rules)->passes();
     }
 
     /**
@@ -76,15 +77,15 @@ class Validator
     /**
      * Create validation engine
      *
-     * @return \Illuminate\Validation\Factory
+     * @return IlluminateValidator
      */
-    protected function validation(): Factory
+    protected function validation($data, $rules): IlluminateValidator
     {
         $loader = new FileLoader(new Filesystem(), 'lang');
         $translator = new Translator($loader, 'en');
         $validation = new Factory($translator, new Container());
 
-        return $validation;
+        return $validation->make($data, $rules);
     }
 
     /**
