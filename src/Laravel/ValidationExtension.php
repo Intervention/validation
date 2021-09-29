@@ -5,7 +5,7 @@ namespace Intervention\Validation\Laravel;
 use BadMethodCallException;
 use Exception;
 use Illuminate\Validation\Validator as IlluminateValidator;
-use Intervention\Validation\AbstractRule;
+use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\Validator;
 
 class ValidationExtension extends IlluminateValidator
@@ -31,7 +31,8 @@ class ValidationExtension extends IlluminateValidator
         try {
             // try to invoke rule
             $rule = $this->invokeRule(
-                $this->getRuleClassnameByMethodName($name)
+                $this->getRuleClassnameByMethodName($name),
+                data_get($arguments, 2)
             );
         } catch (Exception $e) {
             // if intervention/validation don't has rule, call regular validator
@@ -39,7 +40,7 @@ class ValidationExtension extends IlluminateValidator
         }
 
         // do the validation work, first argument is value
-        return Validator::make($rule)->validate(data_get($arguments, 1));
+        return Validator::make([$rule])->validate(data_get($arguments, 1));
     }
 
     /**
@@ -59,9 +60,9 @@ class ValidationExtension extends IlluminateValidator
      * Invoke new rule object
      *
      * @param  string $classname
-     * @return AbstractRule
+     * @return Rule
      */
-    private function invokeRule($classname): AbstractRule
+    private function invokeRule($classname, $arguments): Rule
     {
         if (! class_exists($classname)) {
             throw new BadMethodCallException(
@@ -69,6 +70,6 @@ class ValidationExtension extends IlluminateValidator
             );
         }
 
-        return new $classname();
+        return new $classname(...$arguments);
     }
 }
