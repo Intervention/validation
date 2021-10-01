@@ -145,17 +145,17 @@ The given field must be a valid [data url](https://en.wikipedia.org/wiki/Data_UR
 
 The given field must be a well formed [domainname](https://en.wikipedia.org/wiki/Domain_name).
 
-### ean (Intervention\Validation\Rules\Ean)
+### ean:length (Intervention\Validation\Rules\Ean)
 
-Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number) (EAN-8 and EAN-13).
+Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number). Set optional length (8 or 13) to check only for EAN-8 or EAN-13.
 
-### gtin (Intervention\Validation\Rules\Gtin)
+### gtin:length (Intervention\Validation\Rules\Gtin)
 
-Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number) (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
+Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number). Set optional length (8, 12, 13 or 14) to check only for certain types (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
 
-### hexcolor (Intervention\Validation\Rules\HexColor)
+### hexcolor:length (Intervention\Validation\Rules\HexColor)
 
-The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors).
+The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). Define length of 3 or 6 to check only for shorthand or full hexadecimal form.
 
 ### htmlclean (Intervention\Validation\Rules\HtmlClean)
 
@@ -169,9 +169,9 @@ Checks for a valid [International Bank Account Number](https://en.wikipedia.org/
 
 The given field must be a [International Mobile Equipment Identity](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity) (IMEI).
 
-### isbn (Intervention\Validation\Rules\Isbn)
+### isbn:length (Intervention\Validation\Rules\Isbn)
 
-The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN).
+The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN). Optional length parameter to check only for ISBN-10 or ISBN-13.
 
 ### isin (Intervention\Validation\Rules\Isin)
 
