@@ -83,9 +83,12 @@ class Validator
     {
         $loader = new FileLoader(new Filesystem(), 'lang');
         $translator = new Translator($loader, 'en');
-        $validation = new Factory($translator, new Container());
+        $factory = new Factory($translator, new Container());
+        $factory->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
+            return new Laravel\Validator($translator, $data, $rules, $messages, $customAttributes);
+        });
 
-        return $validation->make($data, $rules);
+        return $factory->make($data, $rules);
     }
 
     /**

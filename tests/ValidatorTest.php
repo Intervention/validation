@@ -33,9 +33,21 @@ class ValidatorTest extends TestCase
 
     public function testValidate()
     {
-        $validator = new Validator([]);
-        $this->assertIsBool($validator->validate('foo'));
-        $this->assertIsBool($validator->validate('bar'));
+        $validator = new Validator([new Hexcolor()]);
+        $this->assertFalse($validator->validate('foo'));
+        $this->assertTrue($validator->validate('ccc'));
+
+        $validator = new Validator(['min:6', 'hexcolor']);
+        $this->assertFalse($validator->validate('ccc'));
+        $this->assertTrue($validator->validate('cccccc'));
+
+        $validator = new Validator(['hexcolor']);
+        $this->assertTrue($validator->validate('ccc'));
+        $this->assertTrue($validator->validate('cccccc'));
+
+        $validator = new Validator(['hexcolor:3']);
+        $this->assertTrue($validator->validate('ccc'));
+        $this->assertFalse($validator->validate('cccccc'));
     }
 
     public function testAssert()

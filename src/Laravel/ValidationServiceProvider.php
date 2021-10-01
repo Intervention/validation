@@ -27,7 +27,7 @@ class ValidationServiceProvider extends ServiceProvider
             }
 
             // add validator extension, to resolve custom rules
-            return new ValidationExtension($translator, $data, $rules, $messages, $customAttributes);
+            return new Validator($translator, $data, $rules, $messages, $customAttributes);
         });
     }
 

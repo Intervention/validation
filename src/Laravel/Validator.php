@@ -5,10 +5,10 @@ namespace Intervention\Validation\Laravel;
 use BadMethodCallException;
 use Exception;
 use Illuminate\Validation\Validator as IlluminateValidator;
+use Intervention\Validation\Validator as InterventionValidator;
 use Illuminate\Contracts\Validation\Rule;
-use Intervention\Validation\Validator;
 
-class ValidationExtension extends IlluminateValidator
+class Validator extends IlluminateValidator
 {
     /**
      * Creates new instance of ValidatorExtension
@@ -40,7 +40,7 @@ class ValidationExtension extends IlluminateValidator
         }
 
         // do the validation work, first argument is value
-        return Validator::make([$rule])->validate(data_get($arguments, 1));
+        return InterventionValidator::make([$rule])->validate(data_get($arguments, 1));
     }
 
     /**
