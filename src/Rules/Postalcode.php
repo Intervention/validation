@@ -3,33 +3,37 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\DataAwareRule;
 
-class Postalcode implements Rule
+class Postalcode implements Rule, DataAwareRule
 {
     /**
      * Field key for country to match postal code
      *
-     * @var ?string
+     * @var string
      */
     protected $country_field;
 
     /**
-     * Locale of postal code to check
+     * Data set used for validation
      *
-     * @var ?string
+     * @var array
      */
-    protected $locale;
+    protected $data;
 
     /**
      * Create a new rule instance
      *
      * @param string      $country_field
-     * @param string|null $locale
      */
-    public function __construct(?string $country_field, ?string $locale = null)
+    public function __construct(string $country_field)
     {
         $this->country_field = $country_field;
-        $this->locale = $locale;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 
     /**
@@ -58,6 +62,11 @@ class Postalcode implements Rule
         return 'fails';
     }
 
+    protected function getLocaleFromData(): string
+    {
+        return $this->data[$this->country_field];
+    }
+
     /**
      * Return regex pattern for postal code of current locale
      *
@@ -65,7 +74,7 @@ class Postalcode implements Rule
      */
     protected function getLocalePattern(): ?string
     {
-        switch (strtolower($this->locale)) {
+        switch (strtolower($this->getLocaleFromData())) {
             case 'dz':
             case 'as':
             case 'ad':
