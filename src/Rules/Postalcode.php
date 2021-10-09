@@ -10,9 +10,16 @@ class Postalcode implements Rule, DataAwareRule
     /**
      * Field key for country to match postal code
      *
-     * @var string
+     * @var ?string
      */
-    protected $country_field;
+    protected $locale;
+
+    /**
+     * Reference key to get locale from data
+     *
+     * @var ?string
+     */
+    protected $reference;
 
     /**
      * Data set used for validation
@@ -24,16 +31,36 @@ class Postalcode implements Rule, DataAwareRule
     /**
      * Create a new rule instance
      *
-     * @param string      $country_field
+     * @param string $locale
      */
-    public function __construct(string $country_field)
+    public function __construct(?string $locale = null)
     {
-        $this->country_field = $country_field;
+        $this->locale = $locale;
     }
 
+    /**
+     * Set data
+     *
+     * @param array $data
+     */
     public function setData($data)
     {
         $this->data = $data;
+    }
+
+    public static function reference(string $reference): self
+    {
+        $rule = new self();
+        $rule->reference = $reference;
+
+        return $rule;
+    }
+
+    public static function locale($locale): self
+    {
+        $locale = is_callable($locale) ? $locale() : $locale;
+
+        return new self($locale);
     }
 
     /**
@@ -52,6 +79,17 @@ class Postalcode implements Rule, DataAwareRule
         return false;
     }
 
+    protected function getLocale(): ?string
+    {
+        if (empty($this->locale)) {
+            if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
+                return $this->data[$this->reference];
+            }
+        }
+
+        return $this->locale;
+    }
+
     /**
      * Get the validation error message.
      *
@@ -62,11 +100,6 @@ class Postalcode implements Rule, DataAwareRule
         return 'fails';
     }
 
-    protected function getLocaleFromData(): string
-    {
-        return $this->data[$this->country_field];
-    }
-
     /**
      * Return regex pattern for postal code of current locale
      *
@@ -74,7 +107,7 @@ class Postalcode implements Rule, DataAwareRule
      */
     protected function getLocalePattern(): ?string
     {
-        switch (strtolower($this->getLocaleFromData())) {
+        switch (strtolower($this->getLocale())) {
             case 'dz':
             case 'as':
             case 'ad':

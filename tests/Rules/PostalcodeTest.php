@@ -11,9 +11,29 @@ class PostalcodeTest extends TestCase
     /**
      * @dataProvider dataProvider
     */
-    public function testValidation($result, $locale, $value)
+    public function testValidationConstructor($result, $locale, $value)
     {
-        $validator = new Validator([new Postalcode(null, $locale)]);
+        $validator = new Validator([new Postalcode($locale)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    /**
+     * @dataProvider dataProvider
+    */
+    public function testValidationStatic($result, $locale, $value)
+    {
+        $validator = new Validator([Postalcode::locale($locale)]);
+        $this->assertEquals($result, $validator->validate($value));
+    }
+
+    /**
+     * @dataProvider dataProvider
+    */
+    public function testValidationStaticCallback($result, $locale, $value)
+    {
+        $validator = new Validator([Postalcode::locale(function () use ($locale) {
+            return $locale;
+        })]);
         $this->assertEquals($result, $validator->validate($value));
     }
 
