@@ -18,6 +18,8 @@ Require the package via Composer:
 
 The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages.
 
+**Make sure to pass any of the additional validation rules as objects and not as strings.** 
+
 ```php
 use Illuminate\Support\Facades\Validator;
 use Intervention\Validation\Rules\Creditcard;
