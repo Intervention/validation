@@ -130,7 +130,7 @@ None
 
 ---
 
-### ean:length 
+### ean
 
 Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number).
 
@@ -144,7 +144,7 @@ Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
 ---
 
-### gtin:length 
+### gtin
 
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
 
@@ -158,7 +158,7 @@ Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-1
 
 ---
 
-### hexcolor:length 
+### hexcolor
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
 
@@ -208,7 +208,7 @@ None
 
 ---
 
-### isbn:length 
+### isbn
 
 The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN).
 
