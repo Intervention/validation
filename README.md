@@ -16,9 +16,7 @@ Require the package via Composer:
 
 ## Laravel integration
 
-The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation.
-
-The installed package provides additional `validation rules` including their error messages.
+The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages.
 
 ```php
 use Illuminate\Support\Facades\Validator;
