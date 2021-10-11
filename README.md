@@ -92,9 +92,8 @@ The field under validation must be a well formed [domainname](https://en.wikiped
 
 Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number).
 
-```
-public Intervention\Validation\Rules\Ean::__construct()
-```
+    public Intervention\Validation\Rules\Ean::__construct()
+
 ### Parameters
 
 **length**
@@ -106,7 +105,6 @@ Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
 
     public Intervention\Validation\Rules\Gtin::__construct()
-
 ### Parameters
 
 **length**
@@ -118,7 +116,6 @@ Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-1
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
 
     public Intervention\Validation\Rules\HexColor::__construct(?int $length = null)
-
 ### Parameters
 
 **length**
@@ -148,7 +145,6 @@ The field under validation must be a [International Mobile Equipment Identity](h
 The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN).
 
     public Intervention\Validation\Rules\Isbn::__construct(?int $length = null)
-
 ### Parameters
 
 **length**
