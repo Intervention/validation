@@ -95,7 +95,6 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 ```
 public Intervention\Validation\Rules\Ean::__construct()
 ```
-
 ### Parameters
 
 **length**
