@@ -22,4 +22,4 @@ jobs:
       - name: run phpunit
         run: vendor/bin/phpunit
       - name: run phpstan
-        run: vendor/bin/phpstan analyze --no-progress --level=5 src/
+        run: vendor/bin/phpstan analyze --no-progress --autoload-file=tests/phpstan/bootstrap.php --level=5 src/

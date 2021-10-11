@@ -43,10 +43,13 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
      * Set data
      *
      * @param array $data
+     * @return self
      */
     public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
 
     public static function reference(string $reference): self
