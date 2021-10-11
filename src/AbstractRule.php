@@ -23,9 +23,18 @@ abstract class AbstractRule
      */
     public function message()
     {
-        $key = 'validation::validation.' . $this->shortname();
+        // try key for application custom translation
+        $key = 'validation.' . $this->shortname();
+
         if (function_exists('trans')) {
-            return trans($key);
+            // if message is same as key, there is no
+            // tranlation so we will use internal
+            $message = trans($key);
+            if ($message === $key) {
+                return trans('validation::' . $key);
+            }
+
+            return $message;
         }
 
         return $key;
