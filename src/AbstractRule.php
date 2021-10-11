@@ -24,10 +24,10 @@ abstract class AbstractRule
     public function message()
     {
         $key = 'validation::validation.' . $this->shortname();
-        if (! function_exists('trans')) {
-            return $key;
+        if (function_exists('trans')) {
+            return trans($key);
         }
 
-        return trans($key);
+        return $key;
     }
 }
