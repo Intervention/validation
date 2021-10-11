@@ -11,14 +11,4 @@ class Snakecase extends AbstractRegexRule implements Rule
     {
         return "/^(?:\p{Ll}+_)*\p{Ll}+$/u";
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

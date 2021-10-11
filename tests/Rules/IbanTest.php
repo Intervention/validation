@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Iban;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class IbanTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Iban()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Iban()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

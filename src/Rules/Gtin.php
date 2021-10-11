@@ -4,7 +4,7 @@ namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Gtin extends Ean
+class Gtin extends Ean implements Rule
 {
     /**
      * Determine if rule should check length (EAN8 or EAN13)
@@ -32,16 +32,6 @@ class Gtin extends Ean
 
         // GTIN-13, GTIN-8 is the same as EAN-13 and EAN-8
         return parent::passes($attribute, $value) || ($valid);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 
     /**

@@ -3,18 +3,21 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Camelcase;
+use Intervention\Validation\Traits\CanValidate;
 use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class CamelcaseTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Camelcase()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Camelcase()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

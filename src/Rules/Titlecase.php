@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Titlecase implements Rule
+class Titlecase extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -43,15 +44,5 @@ class Titlecase implements Rule
     private function isValidWord(string $word): bool
     {
         return (bool) preg_match("/^[\p{Lu}0-9]/u", $word);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

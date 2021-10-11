@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Uppercase implements Rule
+class Uppercase extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -26,15 +27,5 @@ class Uppercase implements Rule
     private function getUpperCaseValue($value): string
     {
         return mb_strtoupper($value, mb_detect_encoding($value));
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

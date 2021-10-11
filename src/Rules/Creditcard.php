@@ -2,7 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-class Creditcard extends Luhn
+use Illuminate\Contracts\Validation\Rule;
+
+class Creditcard extends Luhn implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -24,15 +26,5 @@ class Creditcard extends Luhn
     private function hasValidLength($value): bool
     {
         return (strlen($value) >= 13 && strlen($value) <= 19);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

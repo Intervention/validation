@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Issn;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class IssnTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Issn()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Issn()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

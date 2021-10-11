@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Ean implements Rule
+class Ean extends AbstractRule implements Rule
 {
     /**
      * Determine if rule should check length (EAN8 or EAN13)
@@ -87,15 +88,5 @@ class Ean implements Rule
         }
 
         return 10 - $checksum % 10;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

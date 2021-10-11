@@ -11,14 +11,4 @@ class MimeType extends AbstractRegexRule implements Rule
     {
         return "/^(multipart|application|audio|image|message|multipart|text|video|font|example|model)\/([-+.\w]+)$/i";
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

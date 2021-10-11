@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Postalcode;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class PostalcodeTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidationConstructor($result, $locale, $value)
     {
-        $validator = new Validator([new Postalcode($locale)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Postalcode($locale)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -22,8 +24,8 @@ class PostalcodeTest extends TestCase
     */
     public function testValidationStatic($result, $locale, $value)
     {
-        $validator = new Validator([Postalcode::locale($locale)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::locale($locale)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -31,10 +33,11 @@ class PostalcodeTest extends TestCase
     */
     public function testValidationStaticCallback($result, $locale, $value)
     {
-        $validator = new Validator([Postalcode::locale(function () use ($locale) {
+
+        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::locale(function () use ($locale) {
             return $locale;
-        })]);
-        $this->assertEquals($result, $validator->validate($value));
+        })]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

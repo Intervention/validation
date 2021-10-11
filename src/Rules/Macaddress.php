@@ -25,14 +25,4 @@ class Macaddress extends AbstractRegexRule implements Rule
 
         return parent::passes($attribute, $value);
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

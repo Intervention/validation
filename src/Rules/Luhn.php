@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Luhn implements Rule
+class Luhn extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -49,15 +50,5 @@ class Luhn implements Rule
         }
 
         return $checksum;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

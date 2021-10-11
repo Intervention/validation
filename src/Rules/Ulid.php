@@ -41,14 +41,4 @@ class Ulid extends AbstractRegexRule implements Rule
     {
         return intval($value[0]) > 7;
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

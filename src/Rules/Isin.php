@@ -5,7 +5,7 @@ namespace Intervention\Validation\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Isin extends Luhn
+class Isin extends Luhn implements Rule
 {
     /**
      * Chars to calculate checksum

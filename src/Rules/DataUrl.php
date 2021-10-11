@@ -3,9 +3,10 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 use Intervention\Validation\Traits\CanValidate;
 
-class DataUrl implements Rule
+class DataUrl extends AbstractRule implements Rule
 {
     use CanValidate;
 
@@ -34,24 +35,14 @@ class DataUrl implements Rule
         return true;
     }
 
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
-
     protected function isValidMimeType($value): bool
     {
-        return $this->isValid($value, ['required', new MimeType()]);
+        return $this->getValidator(['value' => $value], ['value' => ['required', new MimeType()]])->passes();
     }
 
     protected function isValidBase64EncodedValue($value): bool
     {
-        return $this->isValid($value, ['required', new Base64()]);
+        return $this->getValidator(['value' => $value], ['value' => ['required', new Base64()]])->passes();
     }
 
     /**

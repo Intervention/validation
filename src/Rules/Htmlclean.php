@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Htmlclean implements Rule
+class Htmlclean extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -16,15 +17,5 @@ class Htmlclean implements Rule
     public function passes($attribute, $value)
     {
         return (strip_tags($value) == $value);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

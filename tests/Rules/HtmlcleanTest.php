@@ -3,18 +3,21 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Htmlclean;
+use Intervention\Validation\Traits\CanValidate;
 use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class HtmlcleanTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Htmlclean()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Htmlclean()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

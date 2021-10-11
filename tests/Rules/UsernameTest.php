@@ -3,18 +3,21 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Username;
+use Intervention\Validation\Traits\CanValidate;
 use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class UsernameTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Username()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Username()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

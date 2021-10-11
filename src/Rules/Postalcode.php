@@ -2,10 +2,11 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Contracts\Validation\DataAwareRule;
+use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Postalcode implements Rule, DataAwareRule
+class Postalcode extends AbstractRule implements Rule, DataAwareRule
 {
     /**
      * Field key for country to match postal code
@@ -88,16 +89,6 @@ class Postalcode implements Rule, DataAwareRule
         }
 
         return $this->locale;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 
     /**

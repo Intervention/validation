@@ -2,7 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-class Imei extends Luhn
+use Illuminate\Contracts\Validation\Rule;
+
+class Imei extends Luhn implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -24,15 +26,5 @@ class Imei extends Luhn
     private function hasValidLength($value): bool
     {
         return strlen($value) === 15;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

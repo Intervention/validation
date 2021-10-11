@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation;
 
-use Illuminate\Contracts\Validation\Rule;
-
-abstract class AbstractRegexRule implements Rule
+abstract class AbstractRegexRule extends AbstractRule
 {
     /**
      * REGEX pattern of rule

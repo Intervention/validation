@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Iban implements Rule
+class Iban extends AbstractRule implements Rule
 {
     /**
      * IBAN lengths for countries
@@ -198,15 +199,5 @@ class Iban implements Rule
         }
 
         return $values;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Base64 implements Rule
+class Base64 extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -16,15 +17,5 @@ class Base64 implements Rule
     public function passes($attribute, $value)
     {
         return base64_encode(base64_decode($value, true)) === $value;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

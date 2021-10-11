@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Hexcolor;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class HexcolorTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Hexcolor()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -22,8 +24,8 @@ class HexcolorTest extends TestCase
     */
     public function testValidationShort($result, $value)
     {
-        $validator = new Validator([new Hexcolor(3)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor(3)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -31,8 +33,8 @@ class HexcolorTest extends TestCase
     */
     public function testValidationLong($result, $value)
     {
-        $validator = new Validator([new Hexcolor(6)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor(6)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

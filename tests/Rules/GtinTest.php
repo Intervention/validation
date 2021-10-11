@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Gtin;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class GtinTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Gtin()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -22,8 +24,8 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin8($result, $value)
     {
-        $validator = new Validator([new Gtin(8)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(8)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -31,8 +33,8 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin12($result, $value)
     {
-        $validator = new Validator([new Gtin(12)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(12)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -40,8 +42,8 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin13($result, $value)
     {
-        $validator = new Validator([new Gtin(13)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(13)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -49,8 +51,8 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin14($result, $value)
     {
-        $validator = new Validator([new Gtin(14)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(14)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

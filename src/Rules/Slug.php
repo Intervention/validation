@@ -11,14 +11,4 @@ class Slug extends AbstractRegexRule implements Rule
     {
         return "/^[a-z0-9]+(?:-[a-z0-9]+)*$/i";
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

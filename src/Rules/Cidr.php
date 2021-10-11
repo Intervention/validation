@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Cidr implements Rule
+class Cidr extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -41,15 +42,5 @@ class Cidr implements Rule
         }
 
         return true;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

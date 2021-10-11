@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Hexcolor extends AbstractRegexRule
+class Hexcolor extends AbstractRegexRule implements Rule
 {
     /**
      * Allowed lengths of hexcolor
@@ -58,15 +59,5 @@ class Hexcolor extends AbstractRegexRule
     public function hasAllowedLength($value): bool
     {
         return in_array(strlen(trim($value, '#')), $this->lengths);
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 }

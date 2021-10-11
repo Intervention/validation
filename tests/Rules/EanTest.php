@@ -3,18 +3,20 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Ean;
-use Intervention\Validation\Validator;
+use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class EanTest extends TestCase
 {
+    use CanValidate;
+
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = new Validator([new Ean()]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Ean()]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -22,8 +24,8 @@ class EanTest extends TestCase
     */
     public function testValidationEan13($result, $value)
     {
-        $validator = new Validator([new Ean(13)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Ean(13)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -31,8 +33,8 @@ class EanTest extends TestCase
     */
     public function testValidationEan8($result, $value)
     {
-        $validator = new Validator([new Ean(8)]);
-        $this->assertEquals($result, $validator->validate($value));
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Ean(8)]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

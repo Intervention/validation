@@ -3,8 +3,9 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Intervention\Validation\AbstractRule;
 
-class Domainname implements Rule
+class Domainname extends AbstractRule implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -36,16 +37,6 @@ class Domainname implements Rule
         }
 
         return true;
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
     }
 
     /**

@@ -20,14 +20,4 @@ class Username extends AbstractRegexRule implements Rule
     {
         return "/^[a-z][a-z0-9]*(?:[_\-][a-z0-9]+)*$/i";
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }

@@ -58,14 +58,4 @@ class Issn extends AbstractRegexRule implements Rule
 
         return strtolower($last) === 'x' ? 10 : intval($last);
     }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return 'fails';
-    }
 }
