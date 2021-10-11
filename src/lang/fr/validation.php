@@ -29,4 +29,5 @@ return [
     'ulid' => 'Le :attribute doit être un ULID valide.',
     'ean' => 'Le :attribute doit être un EAN valide.',
     'gtin' => 'Le :attribute doit être un GTIN valide.',
+    'postalcode' => 'La valeur :attribut doit être un code postal valide.',
 ];

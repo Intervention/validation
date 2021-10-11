@@ -29,4 +29,5 @@ return [
     'ulid' => ':attribute harus berupa format ULID yang valid.',
     'ean' => ':attribute harus berupa format EAN yang valid.',
     'gtin' => ':attribute harus berupa format GTIN yang valid.',
+    'postalcode' => 'Nilai :attribute harus berupa kode pos yang valid.',
 ];

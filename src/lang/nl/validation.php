@@ -29,4 +29,5 @@ return [
     'ulid' => 'De waarde :attribute is geen geldig ULID.',
     'ean' => 'De waarde :attribute is geen geldig European Article Number (EAN).',
     'gtin' => 'De waarde :attribute is geen geldig Global Trade Item Number (GTIN).',
+    'postalcode' => 'De waarde :attribuut moet een geldige postcode zijn.',
 ];
