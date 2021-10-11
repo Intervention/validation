@@ -30,4 +30,5 @@ return [
     'ean' => ':attribute harus berupa format EAN yang valid.',
     'gtin' => ':attribute harus berupa format GTIN yang valid.',
     'postalcode' => 'Nilai :attribute harus berupa kode pos yang valid.',
+    'mimetype' => 'Nilai :attribute tidak berisi Jenis Media Internet yang valid (jenis MIME).',
 ];

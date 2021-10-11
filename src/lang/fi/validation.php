@@ -29,5 +29,6 @@ return [
     'ulid' => ':attribute on oltava kelvollinen ULID.',
     'ean' => ':attribute on oltava kelvollinen EAN.',
     'gtin' => ':attribute on oltava kelvollinen GTIN.',
-    'postalcode' => 'Arvo :attribuutin on oltava kelvollinen postinumero.',
+    'postalcode' => 'Arvo :attribute on oltava kelvollinen postinumero.',
+    'mimetype' => 'Arvo :attribute ei sisällä kelvollista Internet -mediatyyppiä (MIME-Type).',
 ];

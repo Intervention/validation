@@ -29,4 +29,6 @@ return [
     'ean' => 'يجب أن يكون :attribute EAN صالحًا',
     'gtin' => 'يجب أن يكون :attribute GTIN صالحًا',
     'postalcode' => 'يجب أن تكون القيمة :attribute رمزًا بريديًا صالحًا.',
+    'mimetype' => 'لا تحتوي القيمة :attribute على نوع وسائط إنترنت صالح (نوع MIME)',
+    'semver' => 'القيمة :attribute ليست رقم إصدار بمعنى مواصفات الإصدار الدلالية.',
 ];
