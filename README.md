@@ -78,9 +78,9 @@ The field under validation must be a valid [creditcard number](https://en.wikipe
 
 ## Data URI scheme
 
-The field under validation must be a valid [data url](https://en.wikipedia.org/wiki/Data_URI_scheme).
+The field under validation must be a valid [Data URI](https://en.wikipedia.org/wiki/Data_URI_scheme).
 
-    public Intervention\Validation\Rules\DataUrl::__construct()
+    public Intervention\Validation\Rules\DataUri::__construct()
 
 ## Domain name 
 

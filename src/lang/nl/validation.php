@@ -25,7 +25,7 @@ return [
     'kebabcase' => 'De inhoud :attribute moet worden opgemaakt in Kebab case.',
     'camelcase' => 'De inhoud :attribute moet worden opgemaakt in Camel case.',
     'cidr' => ':attribute moet een geldig CIDR notatie zijn.',
-    'dataurl' => ':attribuut moet een geldige Data-URL zijn.',
+    'datauri' => ':attribuut moet een geldige Data-URL zijn.',
     'ulid' => 'De waarde :attribute is geen geldig ULID.',
     'ean' => 'De waarde :attribute is geen geldig European Article Number (EAN).',
     'gtin' => 'De waarde :attribute is geen geldig Global Trade Item Number (GTIN).',

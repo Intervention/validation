@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Rule;
 use Intervention\Validation\AbstractRule;
 use Intervention\Validation\Traits\CanValidate;
 
-class DataUrl extends AbstractRule implements Rule
+class DataUri extends AbstractRule implements Rule
 {
     use CanValidate;
 
@@ -19,7 +19,7 @@ class DataUrl extends AbstractRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $info = $this->dataUrlInfo($value);
+        $info = $this->dataUriInfo($value);
         if (! $info->isValid()) {
             return false;
         }
@@ -50,7 +50,7 @@ class DataUrl extends AbstractRule implements Rule
      *
      * @return object
      */
-    protected function dataUrlInfo($value): object
+    protected function dataUriInfo($value): object
     {
         $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
         $result = preg_match($pattern, $value, $matches);

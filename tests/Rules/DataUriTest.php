@@ -2,11 +2,11 @@
 
 namespace Intervention\Validation\Test\Rules;
 
-use Intervention\Validation\Rules\DataUrl;
+use Intervention\Validation\Rules\DataUri;
 use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
-class DataUrlTest extends TestCase
+class DataUriTest extends TestCase
 {
     use CanValidate;
 
@@ -15,7 +15,7 @@ class DataUrlTest extends TestCase
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new DataUrl()]]);
+        $validator = $this->getValidator(['value' => $value], ['value' => [new DataUri()]]);
         $this->assertEquals($result, $validator->passes());
     }
 

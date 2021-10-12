@@ -24,7 +24,7 @@ return [
     'kebabcase' => '.Kebabcase في حالة :attribute يجب تنسيق قيمة',
     'camelcase' => '.Camelcase في حالة :attribute يجب تنسيق قيمة',
     'cidr' => '.صالحاً CIDR تدوين :attribute يجب أن يكون',
-    'dataurl' => 'يجب أن يكون :attribute data url صالحًا',
+    'datauri' => 'يجب أن يكون :attribute data url صالحًا',
     'ulid' => 'يجب أن يكون :attribute ULID صالحًا',
     'ean' => 'يجب أن يكون :attribute EAN صالحًا',
     'gtin' => 'يجب أن يكون :attribute GTIN صالحًا',
