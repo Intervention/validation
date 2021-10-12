@@ -11,7 +11,7 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
     /**
      * Country code to match postal code
      *
-     * @var ?string
+     * @var string
      */
     protected $countrycode;
 
@@ -247,12 +247,8 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
 
             case 'gb':
                 return "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i";
-
-            default:
-                $pattern = null;
-                break;
         }
 
-        return $pattern;
+        return null;
     }
 }
