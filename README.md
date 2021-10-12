@@ -62,7 +62,7 @@ Checks for a valid [Business Identifier Code](https://en.wikipedia.org/wiki/ISO_
 
 The field under validation must be a formated in [Camel case](https://en.wikipedia.org/wiki/Camel_case).
 
-    public Intervention\Validation\Rules\CamelCase::__construct()
+    public Intervention\Validation\Rules\Camelcase::__construct()
 
 ## Classless Inter-Domain Routing (CIDR) 
 
@@ -176,13 +176,13 @@ The given value must be a in format of a [JSON Web Token](https://en.wikipedia.o
 
 The given value must be formated in [Kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
 
-    public Intervention\Validation\Rules\KebabCase::__construct()
+    public Intervention\Validation\Rules\Kebabcase::__construct()
 
 ## Lower case string 
 
 The given value must be all lower case letters.
 
-    public Intervention\Validation\Rules\LowerCase::__construct()
+    public Intervention\Validation\Rules\Lowercase::__construct()
 
 ## Luhn algorithm
 
@@ -260,13 +260,13 @@ The field under validation must be a user- and [SEO-friendly short text](https:/
 
 The field under validation must formated as [Snake case](https://en.wikipedia.org/wiki/Snake_case) text.
 
-    public Intervention\Validation\Rules\SnakeCase::__construct()
+    public Intervention\Validation\Rules\Snakecase::__construct()
 
 ## Title case string
 
 The field under validation must formated in [Title case](https://en.wikipedia.org/wiki/Title_case).
 
-    public Intervention\Validation\Rules\TitleCase::__construct()
+    public Intervention\Validation\Rules\Titlecase::__construct()
 
 ## Universally Unique Lexicographically Sortable Identifier (ULID)
 
@@ -278,7 +278,7 @@ The field under validation must be a valid [Universally Unique Lexicographically
 
 The field under validation must be all upper case.
 
-    public Intervention\Validation\Rules\UpperCase::__construct()
+    public Intervention\Validation\Rules\Uppercase::__construct()
 
 ## Username
 
