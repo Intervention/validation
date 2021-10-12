@@ -214,14 +214,6 @@ The field under validation must be a [postal code](https://en.wikipedia.org/wiki
 
 Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
 
-### Example
-
-```php
-$validator = Validator::make($data, [
-    'postalcode' => ['required', new Postalcode('us')],
-]);
-```
-
     public static Intervention\Validation\Rules\Postalcode::countrycode(string $countrycode): Postalcode
 
 ### Parameters
@@ -229,14 +221,6 @@ $validator = Validator::make($data, [
 **countrycode**
 
 Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
-
-### Example
-
-```php
-$validator = Validator::make($data, [
-    'postalcode' => ['required', Postalcode::countrycode('de')],
-]);
-```
 
     public static Intervention\Validation\Rules\Postalcode::resolve(callable $callback): Postalcode
 
@@ -246,16 +230,6 @@ $validator = Validator::make($data, [
 
 Callback to resolve [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other source.
 
-### Example
-
-```php
-$validator = Validator::make($data, [
-    'postalcode' => ['required', Postalcode::resolve(function () use ($request) {
-        return $request->get('country');
-    })],
-]);
-```
-
     public static Intervention\Validation\Rules\Postalcode::reference(string $reference): Postalcode
 
 ### Parameters
@@ -263,15 +237,6 @@ $validator = Validator::make($data, [
 **reference**
 
 Reference key to get [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from data in validator.
-
-### Example
-
-```php
-$validator = Validator::make($data, [
-    'postalcode' => ['required', Postalcode::reference('countrycode')],
-    'countrycode' => ['required'],
-]);
-```
 
 ## Semantic Version Number
 
