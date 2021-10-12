@@ -94,7 +94,7 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 
     public Intervention\Validation\Rules\Ean::__construct(?int $length = null)
 
-### Parameters
+#### Parameters
 
 **length**
 
@@ -106,7 +106,7 @@ Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Glob
 
     public Intervention\Validation\Rules\Gtin::__construct(?int $length = null)
 
-### Parameters
+#### Parameters
 
 **length**
 
@@ -118,7 +118,7 @@ The field under validation must be a valid [hexadecimal color code](https://en.w
 
     public Intervention\Validation\Rules\HexColor::__construct(?int $length = null)
 
-### Parameters
+#### Parameters
 
 **length**
 
@@ -148,7 +148,7 @@ The field under validation must be a valid [International Standard Book Number](
 
     public Intervention\Validation\Rules\Isbn::__construct(?int $length = null)
 
-### Parameters
+#### Parameters
 
 **length**
 
@@ -208,35 +208,41 @@ The field under validation must be a [postal code](https://en.wikipedia.org/wiki
 
     public Intervention\Validation\Rules\Postalcode::__construct(string $countrycode)
 
-### Parameters
+#### Parameters
 
 **countrycode**
 
 Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
+
+### Postal Code (static instantiation)
 
     public static Intervention\Validation\Rules\Postalcode::countrycode(string $countrycode): Postalcode
 
-### Parameters
+#### Parameters
 
 **countrycode**
 
 Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
 
+### Postal Code (static instantiation with callback)
+
     public static Intervention\Validation\Rules\Postalcode::resolve(callable $callback): Postalcode
 
-### Parameters
+#### Parameters
 
 **callback**
 
 Callback to resolve [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other source.
 
+### Postal Code (static instantiation reference)
+
     public static Intervention\Validation\Rules\Postalcode::reference(string $reference): Postalcode
 
-### Parameters
+#### Parameters
 
 **reference**
 
-Reference key to get [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from data in validator.
+Reference key to get [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other data in validator.
 
 ## Semantic Version Number
 
