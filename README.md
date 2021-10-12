@@ -42,7 +42,7 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 ```
 Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/8.x/validation#manual-customizing-the-error-messages).
 
-## Available Rules
+# Available Rules
 
 The following validation rules are available with this package.
 
