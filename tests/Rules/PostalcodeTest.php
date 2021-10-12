@@ -13,29 +13,29 @@ class PostalcodeTest extends TestCase
     /**
      * @dataProvider dataProvider
     */
-    public function testValidationConstructor($result, $locale, $value)
+    public function testValidationConstructor($result, $countrycode, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Postalcode($locale)]]);
+        $validator = $this->getValidator(['value' => $value], ['value' => [new Postalcode($countrycode)]]);
         $this->assertEquals($result, $validator->passes());
     }
 
     /**
      * @dataProvider dataProvider
     */
-    public function testValidationStatic($result, $locale, $value)
+    public function testValidationStatic($result, $countrycode, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::locale($locale)]]);
+        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::countrycode($countrycode)]]);
         $this->assertEquals($result, $validator->passes());
     }
 
     /**
      * @dataProvider dataProvider
     */
-    public function testValidationStaticCallback($result, $locale, $value)
+    public function testValidationStaticCallback($result, $countrycode, $value)
     {
 
-        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::locale(function () use ($locale) {
-            return $locale;
+        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::resolve(function () use ($countrycode) {
+            return $countrycode;
         })]]);
         $this->assertEquals($result, $validator->passes());
     }
@@ -43,7 +43,7 @@ class PostalcodeTest extends TestCase
     public function dataProvider()
     {
         return [
-            [false, 'non-existing-locale', '0'],
+            [false, 'non-existing-country-code', '0'],
             [true, 'de', '44141'],
             [true, 'de', '25746'],
             [false, 'de', '2240'],

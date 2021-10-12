@@ -9,11 +9,11 @@ use Intervention\Validation\AbstractRule;
 class Postalcode extends AbstractRule implements Rule, DataAwareRule
 {
     /**
-     * Field key for country to match postal code
+     * Country code to match postal code
      *
      * @var ?string
      */
-    protected $locale;
+    protected $countrycode;
 
     /**
      * Reference key to get locale from data
@@ -32,11 +32,11 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
     /**
      * Create a new rule instance
      *
-     * @param string $locale
+     * @param string $countrycode
      */
-    public function __construct(?string $locale = null)
+    public function __construct(string $countrycode)
     {
-        $this->locale = $locale;
+        $this->countrycode = $countrycode;
     }
 
     /**
@@ -54,17 +54,20 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
 
     public static function reference(string $reference): self
     {
-        $rule = new self();
+        $rule = new self('');
         $rule->reference = $reference;
 
         return $rule;
     }
 
-    public static function locale($locale): self
+    public static function countrycode(string $countrycode): self
     {
-        $locale = is_callable($locale) ? $locale() : $locale;
+        return new self($countrycode);
+    }
 
-        return new self($locale);
+    public static function resolve(callable $callback): self
+    {
+        return new self($callback());
     }
 
     /**
@@ -76,32 +79,33 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
      */
     public function passes($attribute, $value)
     {
-        if ($pattern = $this->getLocalePattern()) {
+        if ($pattern = $this->getPattern()) {
             return (bool) preg_match($pattern, $value);
         }
 
         return false;
     }
 
-    protected function getLocale(): ?string
+    protected function getCountryCode(): ?string
     {
-        if (empty($this->locale)) {
+        if (empty($this->countrycode)) {
+            // return country code by reference
             if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
                 return $this->data[$this->reference];
             }
         }
 
-        return $this->locale;
+        return $this->countrycode;
     }
 
     /**
-     * Return regex pattern for postal code of current locale
+     * Return regex pattern for postal code of current country code
      *
      * @return ?string
      */
-    protected function getLocalePattern(): ?string
+    protected function getPattern(): ?string
     {
-        switch (strtolower($this->getLocale())) {
+        switch (strtolower($this->getCountryCode())) {
             case 'dz':
             case 'as':
             case 'ad':
