@@ -204,7 +204,7 @@ Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media 
 
 ## Postal Code
 
-The field under validation must be a [postal code](https://en.wikipedia.org/wiki/Postal_code).
+The field under validation must be a [postal code](https://en.wikipedia.org/wiki/Postal_code) of the given country.
 
     public Intervention\Validation\Rules\Postalcode::__construct(string $countrycode)
 
