@@ -234,7 +234,7 @@ Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
 
 Callback to resolve [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other source.
 
-### Postal Code (static instantiation reference)
+### Postal Code (static instantiation with reference)
 
     public static Intervention\Validation\Rules\Postalcode::reference(string $reference): Postalcode
 
