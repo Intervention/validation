@@ -33,7 +33,7 @@ class Validator
         $passes = self::make(['value' => $delegation->getValue()], ['value' => ['required', $rule]])->passes();
 
         if ($delegation->isAssertion() && $passes === false) {
-            throw new ValidationException('Failed asserting that value applies to rule "' . $rule::class . '".');
+            throw new ValidationException('Failed asserting that value applies to rule "' . get_class($rule) . '".');
         }
 
         return $passes;
