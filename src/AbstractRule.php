@@ -3,6 +3,9 @@
 namespace Intervention\Validation;
 
 use ReflectionClass;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
 
 abstract class AbstractRule
 {
@@ -37,6 +40,12 @@ abstract class AbstractRule
             return $message;
         }
 
-        return $key;
+        return $this->translatorInstance()->get($key);
+    }
+
+    protected function translatorInstance(): Translator
+    {
+        $loader = new FileLoader(new Filesystem(), __DIR__ . '/lang');
+        return new Translator($loader, 'en');
     }
 }
