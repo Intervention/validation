@@ -3,7 +3,7 @@
 namespace Intervention\Validation;
 
 use Illuminate\Contracts\Validation\Rule;
-use Intervention\Validation\Exception\NotExistingRuleException;
+use Intervention\Validation\Exceptions\NotExistingRuleException;
 
 class CallDelegator
 {
