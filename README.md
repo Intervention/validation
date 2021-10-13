@@ -49,7 +49,6 @@ It is also possible to use this library without the Laravel framework. You won't
 ```php
 use Intervention\Validation\Validator;
 use Intervention\Validation\Rules\Creditcard;
-use Intervention\Validation\Rules\Username;
 use Intervention\Validation\Exceptions\ValidationException;
 
 // use static factory method to create laravel validator
