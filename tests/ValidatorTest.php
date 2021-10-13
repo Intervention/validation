@@ -10,12 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
-    public function testConstructor()
-    {
-        $validator = new Validator();
-        $this->assertInstanceOf(Validator::class, $validator);
-    }
-
     public function testMake()
     {
         $validator = Validator::make([], []);

@@ -12,16 +12,9 @@ use Intervention\Validation\Exceptions\ValidationException;
 
 class Validator
 {
-    protected $factory;
-
-    public function __construct()
+    public static function make(array $data, array $rules, string $locale = 'en'): IlluminateValidator
     {
-        $this->factory = $this->factory();
-    }
-
-    public static function make(array $data, array $rules): IlluminateValidator
-    {
-        return (new self())->factory->make($data, $rules);
+        return self::factory($locale)->make($data, $rules);
     }
 
     /**
@@ -44,10 +37,10 @@ class Validator
         return $passes;
     }
 
-    protected function factory(): Factory
+    protected static function factory(string $locale): Factory
     {
         $loader = new FileLoader(new Filesystem(), __DIR__ . '/lang');
-        $translator = new Translator($loader, 'en');
+        $translator = new Translator($loader, $locale);
         $factory = new Factory($translator, new Container());
         $factory->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
             return new IlluminateValidator($translator, $data, $rules, $messages, $customAttributes);
