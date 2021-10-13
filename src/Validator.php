@@ -26,7 +26,7 @@ class Validator
      */
     public static function __callStatic(string $name, array $arguments): bool
     {
-        $delegation = (new CallDelegator($name, $arguments));
+        $delegation = new CallDelegator($name, $arguments);
         $rules = ['required', $delegation->getRule()];
         $passes = self::make(['value' => $delegation->getValue()], ['value' => $rules])->passes();
 
