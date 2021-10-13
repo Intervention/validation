@@ -95,7 +95,7 @@ class CallDelegator
 
         if (! class_exists($classname)) {
             throw new NotExistingRuleException(
-                "Error: Unable to create not existing rule (" . $classname . ")"
+                "Rule does not exist (" . $classname . ")"
             );
         }
 

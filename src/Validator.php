@@ -29,11 +29,11 @@ class Validator
     public static function __callStatic(string $name, array $arguments): bool
     {
         $delegation = new CallDelegator($name, $arguments);
-        $rules = ['required', $delegation->getRule()];
-        $passes = self::make(['value' => $delegation->getValue()], ['value' => $rules])->passes();
+        $rule = $delegation->getRule();
+        $passes = self::make(['value' => $delegation->getValue()], ['value' => ['required', $rule]])->passes();
 
         if ($delegation->isAssertion() && $passes === false) {
-            throw new ValidationException('Validation Error');
+            throw new ValidationException('Failed asserting that value applies to rule "' . $rule::class . '".');
         }
 
         return $passes;
