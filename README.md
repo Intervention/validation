@@ -18,8 +18,6 @@ Require the package via Composer:
 
 The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages.
 
-**Make sure to pass any of the additional validation rules as objects and not as strings.** 
-
 ```php
 use Illuminate\Support\Facades\Validator;
 use Intervention\Validation\Rules\Creditcard;
@@ -32,6 +30,8 @@ $validator = Validator::make($request->all(), [
 ]);
 ```
 
+**Make sure to pass any of the additional validation rules as objects and not as strings.** 
+
 ### Changing the error messages:
 
 Add the corresponding key to `/resources/lang/<language>/validation.php` like this:
@@ -41,6 +41,35 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 'iban' => 'Please enter IBAN number!',
 ```
 Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/8.x/validation#manual-customizing-the-error-messages).
+
+## Standalone usage
+
+It is also possible to use this library without the Laravel framework. You won't have the Laravel facades available, so make sure to use `Intervention\Validation\Validator` for your calls.
+
+```php
+use Intervention\Validation\Validator;
+use Intervention\Validation\Rules\Creditcard;
+use Intervention\Validation\Rules\Username;
+use Intervention\Validation\Exceptions\ValidationException;
+
+// use static factory method to create laravel validator
+$validator = Validator::make($request->all(), [
+    'ccnumber' => new Creditcard(),
+    'iban' => ['required', new Iban()],
+]);
+
+// validate single values by calling static methods
+$result = Validator::isHexcolor('foobar'); // false
+$result = Validator::isHexcolor('#ccc'); // true
+$result = Validator::isBic('foo'); // false
+
+// assert single values
+try {
+    Validator::assertHexcolor('foobar');
+} catch (ValidationException $e) {
+    $message = $e->getMessage();
+}
+```
 
 # Available Rules
 
