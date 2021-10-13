@@ -12,9 +12,11 @@ use Intervention\Validation\Exceptions\ValidationException;
 
 class Validator
 {
-    public static function make(array $data, array $rules, string $locale = 'en'): IlluminateValidator
+    use Traits\HasCurrentLocale;
+
+    public static function make(array $data, array $rules): IlluminateValidator
     {
-        return self::factory($locale)->make($data, $rules);
+        return self::factory()->make($data, $rules);
     }
 
     /**
@@ -37,10 +39,10 @@ class Validator
         return $passes;
     }
 
-    protected static function factory(string $locale): Factory
+    protected static function factory(): Factory
     {
         $loader = new FileLoader(new Filesystem(), __DIR__ . '/lang');
-        $translator = new Translator($loader, $locale);
+        $translator = new Translator($loader, self::getCurrentLocale());
         $factory = new Factory($translator, new Container());
         $factory->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
             return new IlluminateValidator($translator, $data, $rules, $messages, $customAttributes);

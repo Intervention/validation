@@ -9,6 +9,8 @@ use Illuminate\Translation\Translator;
 
 abstract class AbstractRule
 {
+    use Traits\HasCurrentLocale;
+
     /**
      * Return shortname of current rule
      *
@@ -46,6 +48,6 @@ abstract class AbstractRule
     protected function translatorInstance(): Translator
     {
         $loader = new FileLoader(new Filesystem(), __DIR__ . '/lang');
-        return new Translator($loader, 'en');
+        return new Translator($loader, self::getCurrentLocale());
     }
 }

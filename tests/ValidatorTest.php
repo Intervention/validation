@@ -38,8 +38,14 @@ class ValidatorTest extends TestCase
 
     public function testErrorMessages()
     {
+        locale_set_default('en');
         $validator = Validator::make(['value' => 'zzz'], ['value' => new Hexcolor()]);
         $message = 'The value must be a valid hexadecimal color code.';
+        $this->assertEquals($message, $validator->errors()->first('value'));
+
+        locale_set_default('de');
+        $validator = Validator::make(['value' => 'zzz'], ['value' => new Hexcolor()]);
+        $message = 'Der Wert value muss einen gültigen Hexadezimal Farbwert enthalten.';
         $this->assertEquals($message, $validator->errors()->first('value'));
     }
 }
