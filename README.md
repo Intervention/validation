@@ -16,7 +16,7 @@ Require the package via Composer:
 
 ## Laravel integration
 
-The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages.
+The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages, which can be used like Laravel's own validation rules.
 
 ```php
 use Illuminate\Support\Facades\Validator;
@@ -26,11 +26,10 @@ use Intervention\Validation\Rules\Username;
 
 $validator = Validator::make($request->all(), [
     'color' => new Hexcolor(3), // pass rule as object
-    'name' => ['required', 'min:3', 'max:20', new Username()], // combining rules works as well
+    'number' => ['required', 'creditcard'], // or pass rule as string
+    'name' => 'required|min:3|max:20|username', // combining rules works as well
 ]);
 ```
-
-**Make sure to pass any of the additional validation rules as objects and not as strings.** 
 
 ### Changing the error messages:
 
@@ -54,7 +53,8 @@ use Intervention\Validation\Exceptions\ValidationException;
 // use static factory method to create laravel validator
 $validator = Validator::make($request->all(), [
     'ccnumber' => new Creditcard(),
-    'iban' => ['required', new Iban()],
+    'iban' => ['required', 'iban'],
+    'color' => 'required|hexcolor:3',
 ]);
 
 // validate single values by calling static methods
