@@ -22,17 +22,17 @@ class ValidationServiceProvider extends ServiceProvider
         );
 
         // add rules to laravel validator
-        foreach ($this->getAdditionalRuleNames() as $shortname) {
+        foreach ($this->getAdditionalRuleNames() as $rulename) {
             $this->app['validator']->extend(
-                $shortname,
-                function ($attribute, $value, $parameters, $validator) use ($shortname) {
+                $rulename,
+                function ($attribute, $value, $parameters, $validator) use ($rulename) {
                     return forward_static_call(
-                        [Validator::class, 'is' . ucfirst($shortname)],
+                        [Validator::class, 'is' . ucfirst($rulename)],
                         $value,
                         data_get($parameters, 0)
                     );
                 },
-                $this->app['translator']->get('validation::validation.' . $shortname)
+                $this->getErrorMessage($rulename)
             );
         }
     }
@@ -47,6 +47,17 @@ class ValidationServiceProvider extends ServiceProvider
         return array_map(function ($filename) {
             return mb_strtolower(substr($filename, 0, -4));
         }, array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']));
+    }
+
+    /**
+     * Return error message of given rule shortname
+     *
+     * @param  string $rulename
+     * @return string
+     */
+    protected function getErrorMessage(string $rulename): string
+    {
+        return $this->app['translator']->get('validation::validation.' . $rulename);
     }
 
     /**
