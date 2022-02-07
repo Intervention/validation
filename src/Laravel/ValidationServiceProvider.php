@@ -22,7 +22,7 @@ class ValidationServiceProvider extends ServiceProvider
         );
 
         // add rules to laravel validator
-        foreach ($this->getAdditionalRuleNames() as $rulename) {
+        foreach (Validator::getRuleShortnames() as $rulename) {
             $this->app['validator']->extend(
                 $rulename,
                 function ($attribute, $value, $parameters, $validator) use ($rulename) {
@@ -35,18 +35,6 @@ class ValidationServiceProvider extends ServiceProvider
                 $this->getErrorMessage($rulename)
             );
         }
-    }
-
-    /**
-     * Get all intervention validation rules
-     *
-     * @return array
-     */
-    protected function getAdditionalRuleNames(): array
-    {
-        return array_map(function ($filename) {
-            return mb_strtolower(substr($filename, 0, -4));
-        }, array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']));
     }
 
     /**

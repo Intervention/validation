@@ -50,4 +50,11 @@ class Validator
 
         return $factory;
     }
+
+    public static function getRuleShortnames(): array
+    {
+        return array_map(function ($filename) {
+            return mb_strtolower(substr($filename, 0, -4));
+        }, array_diff(scandir(__DIR__ . '/Rules'), ['.', '..']));
+    }
 }
