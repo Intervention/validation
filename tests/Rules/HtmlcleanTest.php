@@ -18,6 +18,9 @@ class HtmlcleanTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Htmlclean()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['htmlclean']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

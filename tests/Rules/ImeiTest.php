@@ -17,6 +17,9 @@ class ImeiTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Imei()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['imei']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

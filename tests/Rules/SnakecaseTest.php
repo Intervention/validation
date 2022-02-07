@@ -17,6 +17,9 @@ class SnakecaseTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Snakecase()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['snakecase']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

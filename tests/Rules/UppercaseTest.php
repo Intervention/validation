@@ -17,6 +17,9 @@ class UppercaseTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Uppercase()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['uppercase']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

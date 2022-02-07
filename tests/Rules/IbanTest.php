@@ -17,6 +17,9 @@ class IbanTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Iban()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['iban']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

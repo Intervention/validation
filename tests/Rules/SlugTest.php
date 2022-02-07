@@ -17,6 +17,9 @@ class SlugTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Slug()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['slug']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

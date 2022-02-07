@@ -17,6 +17,9 @@ class SemverTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Semver()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['semver']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

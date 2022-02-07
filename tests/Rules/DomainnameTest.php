@@ -17,6 +17,9 @@ class DomainnameTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Domainname()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['domainname']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

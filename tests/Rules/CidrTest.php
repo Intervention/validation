@@ -17,6 +17,9 @@ class CidrTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Cidr()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['cidr']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

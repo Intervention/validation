@@ -18,6 +18,9 @@ class BicTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Bic()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['bic']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

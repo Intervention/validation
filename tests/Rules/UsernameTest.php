@@ -18,6 +18,9 @@ class UsernameTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Username()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['username']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

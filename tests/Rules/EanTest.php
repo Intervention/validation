@@ -17,6 +17,9 @@ class EanTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Ean()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['ean']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -26,6 +29,9 @@ class EanTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Ean(13)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['ean:13']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -34,6 +40,9 @@ class EanTest extends TestCase
     public function testValidationEan8($result, $value)
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Ean(8)]]);
+        $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['ean:8']]);
         $this->assertEquals($result, $validator->passes());
     }
 

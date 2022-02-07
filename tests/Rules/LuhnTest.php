@@ -17,6 +17,9 @@ class LuhnTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Luhn()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['luhn']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

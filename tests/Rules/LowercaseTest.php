@@ -17,6 +17,9 @@ class LowercaseTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Lowercase()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['lowercase']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

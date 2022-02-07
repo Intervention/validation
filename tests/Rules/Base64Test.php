@@ -18,6 +18,9 @@ class Base64Test extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Base64()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['base64']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

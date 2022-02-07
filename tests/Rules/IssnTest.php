@@ -17,6 +17,9 @@ class IssnTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Issn()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['issn']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

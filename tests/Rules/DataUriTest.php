@@ -17,6 +17,9 @@ class DataUriTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new DataUri()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['datauri']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

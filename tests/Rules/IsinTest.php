@@ -17,6 +17,9 @@ class IsinTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Isin()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['isin']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

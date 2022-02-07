@@ -17,6 +17,9 @@ class PostalcodeTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Postalcode($countrycode)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['postalcode:' . $countrycode]]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**

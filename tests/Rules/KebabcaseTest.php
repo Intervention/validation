@@ -17,6 +17,9 @@ class KebabcaseTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Kebabcase()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['kebabcase']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

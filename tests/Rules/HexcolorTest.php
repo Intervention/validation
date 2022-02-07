@@ -17,6 +17,9 @@ class HexcolorTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['hexcolor']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -26,6 +29,9 @@ class HexcolorTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor(3)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['hexcolor:3']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -34,6 +40,9 @@ class HexcolorTest extends TestCase
     public function testValidationLong($result, $value)
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Hexcolor(6)]]);
+        $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['hexcolor:6']]);
         $this->assertEquals($result, $validator->passes());
     }
 

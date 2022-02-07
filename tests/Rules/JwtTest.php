@@ -17,6 +17,9 @@ class JwtTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Jwt()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['jwt']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

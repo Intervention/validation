@@ -17,6 +17,9 @@ class GtinTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['gtin']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -25,6 +28,9 @@ class GtinTest extends TestCase
     public function testValidationGtin8($result, $value)
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(8)]]);
+        $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['gtin:8']]);
         $this->assertEquals($result, $validator->passes());
     }
 
@@ -35,6 +41,9 @@ class GtinTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(12)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['gtin:12']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -44,6 +53,9 @@ class GtinTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(13)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['gtin:13']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -52,6 +64,9 @@ class GtinTest extends TestCase
     public function testValidationGtin14($result, $value)
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Gtin(14)]]);
+        $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['gtin:14']]);
         $this->assertEquals($result, $validator->passes());
     }
 

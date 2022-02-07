@@ -17,6 +17,9 @@ class TitlecaseTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Titlecase()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['titlecase']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()

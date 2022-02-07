@@ -17,6 +17,9 @@ class IsbnTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -26,6 +29,9 @@ class IsbnTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn(10)]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn:10']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     /**
@@ -34,6 +40,9 @@ class IsbnTest extends TestCase
     public function testValidationLong($result, $value)
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn(13)]]);
+        $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn:13']]);
         $this->assertEquals($result, $validator->passes());
     }
 

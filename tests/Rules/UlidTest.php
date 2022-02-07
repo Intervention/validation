@@ -17,6 +17,9 @@ class UlidTest extends TestCase
     {
         $validator = $this->getValidator(['value' => $value], ['value' => [new Ulid()]]);
         $this->assertEquals($result, $validator->passes());
+
+        $validator = $this->getValidator(['value' => $value], ['value' => ['ulid']]);
+        $this->assertEquals($result, $validator->passes());
     }
 
     public function dataProvider()
