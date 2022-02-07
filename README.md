@@ -218,12 +218,6 @@ The given value must verify against its included [Luhn algorithm](https://en.wik
 
     public Intervention\Validation\Rules\Luhn::__construct()
 
-## MAC address 
-
-The field under validation must be a [media access control address](https://en.wikipedia.org/wiki/MAC_address) (MAC address).
-
-    public Intervention\Validation\Rules\MacAddress::__construct()
-
 ## Media (MIME) type
 
 Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media type).
