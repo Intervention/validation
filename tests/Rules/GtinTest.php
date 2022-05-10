@@ -73,6 +73,7 @@ class GtinTest extends TestCase
     public function dataProvider()
     {
         return [
+            [true, '9789510475270'],
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],
@@ -84,7 +85,6 @@ class GtinTest extends TestCase
             [true, '012345000041'],
             [true, '012345000058'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],
@@ -112,7 +112,6 @@ class GtinTest extends TestCase
             [false, '012345000041'],
             [false, '012345000058'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],
@@ -140,7 +139,6 @@ class GtinTest extends TestCase
             [true, '012345000041'],
             [true, '012345000058'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],
@@ -157,6 +155,7 @@ class GtinTest extends TestCase
     public function dataProviderGtin13()
     {
         return [
+            [true, '9789510475270'],
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],
@@ -168,7 +167,6 @@ class GtinTest extends TestCase
             [false, '012345000041'],
             [false, '012345000058'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],
@@ -196,7 +194,6 @@ class GtinTest extends TestCase
             [false, '012345000041'],
             [false, '012345000058'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],

@@ -49,6 +49,7 @@ class EanTest extends TestCase
     public function dataProvider()
     {
         return [
+            [true, '9789510475270'],
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],
@@ -56,7 +57,6 @@ class EanTest extends TestCase
             [true, '96385074'],
             [true, '65833254'],
             [false, 'foo'],
-            [false, '0000000000000'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
             [false, 'FFFFFFFFFFFF0'],
@@ -74,6 +74,7 @@ class EanTest extends TestCase
     public function dataProviderEan13()
     {
         return [
+            [true, '9789510475270'],
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],

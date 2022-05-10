@@ -39,7 +39,7 @@ class Ean extends AbstractRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $this->hasAllowedLength($value) && $this->checksumMatches($value);
+        return is_numeric($value) && $this->hasAllowedLength($value) && $this->checksumMatches($value);
     }
 
     /**
@@ -83,10 +83,17 @@ class Ean extends AbstractRule implements Rule
     {
         $checksum = 0;
         $chars = array_reverse(str_split(substr($value, 0, -1), 1));
+
         foreach ($chars as $key => $char) {
             $checksum += ($key % 2 === 1) ? intval($char) * 1 : intval($char) * 3;
         }
 
-        return 10 - $checksum % 10;
+        $remainder = $checksum % 10;
+
+        if ($remainder === 0) {
+            return 0;
+        }
+
+        return 10 - $remainder;
     }
 }

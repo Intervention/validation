@@ -28,7 +28,7 @@ class Gtin extends Ean implements Rule
     public function passes($attribute, $value)
     {
         // GTIN-14 or GTIN-12 must be 14 or 12 chars including indicator digit and must have matching checksum
-        $valid = $this->hasAllowedLength($value) && $this->hasValidIndicatorDigit($value) && $this->gtinChecksumMatches($value);
+        $valid = is_numeric($value) && $this->hasAllowedLength($value) && $this->hasValidIndicatorDigit($value) && $this->gtinChecksumMatches($value);
 
         // GTIN-13, GTIN-8 is the same as EAN-13 and EAN-8
         return parent::passes($attribute, $value) || ($valid);
@@ -53,7 +53,6 @@ class Gtin extends Ean implements Rule
     protected function gtinChecksumMatches($value): bool
     {
         $data = substr($value, 1); // strip indicator digit
-
         return parent::getModuloChecksum($data) === parent::getValueChecksum($data);
     }
 }
