@@ -66,6 +66,7 @@ class EanTest extends TestCase
             [false, '07123456789110712345678911'],
             [false, '10123455'],
             [false, '40113455'],
+            [false, '978-3499255496'],
             [false, '00123456000018'], // GTIN-14
             [false, '012345678905'], // GTIN-12
         ];

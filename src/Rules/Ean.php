@@ -8,7 +8,7 @@ use Intervention\Validation\AbstractRule;
 class Ean extends AbstractRule implements Rule
 {
     /**
-     * Determine if rule should check length (EAN8 or EAN13)
+     * Valid lengths
      *
      * @var array
      */
@@ -60,15 +60,15 @@ class Ean extends AbstractRule implements Rule
      */
     protected function checksumMatches($value): bool
     {
-        return $this->getModuloChecksum($value) === $this->getValueChecksum($value);
+        return $this->calculateChecksum($value) === $this->cutChecksum($value);
     }
 
     /**
-     * Get the checksum of the current value
+     * Cut out the checksum of the current value and return
      *
      * @return int
      */
-    protected function getValueChecksum($value): int
+    protected function cutChecksum($value): int
     {
         return intval(substr($value, -1));
     }
@@ -79,13 +79,16 @@ class Ean extends AbstractRule implements Rule
      * @param  mixed $value
      * @return int
      */
-    protected function getModuloChecksum($value): int
+    protected function calculateChecksum($value): int
     {
         $checksum = 0;
-        $chars = array_reverse(str_split(substr($value, 0, -1), 1));
+
+        // chars without check digit in reverse
+        $chars = array_reverse(str_split(substr($value, 0, -1)));
 
         foreach ($chars as $key => $char) {
-            $checksum += ($key % 2 === 1) ? intval($char) * 1 : intval($char) * 3;
+            $multiplier = $key % 2 ? 1 : 3;
+            $checksum += intval($char) * $multiplier;
         }
 
         $remainder = $checksum % 10;

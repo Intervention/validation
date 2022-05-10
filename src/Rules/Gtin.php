@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 class Gtin extends Ean implements Rule
 {
     /**
-     * Determine if rule should check length (EAN8 or EAN13)
+     * Valid lengths
      *
      * @var array
      */
@@ -21,38 +21,39 @@ class Gtin extends Ean implements Rule
     /**
      * Determine if the validation rule passes.
      *
+     * Value must be either GTIN-13 or GTIN-8, which is checked as EAN
+     * by parent class. Or value must be GTIN-14 or GTIN-12 which will
+     * be handled like this:
+     *
+     * - GTIN-14 will be checked as EAN-13 after cropping first char
+     * - GTIN-12 will be checked as EAN-13 after adding leading zero
+     *
      * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        // GTIN-14 or GTIN-12 must be 14 or 12 chars including indicator digit and must have matching checksum
-        $valid = is_numeric($value) && $this->hasAllowedLength($value) && $this->hasValidIndicatorDigit($value) && $this->gtinChecksumMatches($value);
+        if (!is_numeric($value)) {
+            return false;
+        }
 
-        // GTIN-13, GTIN-8 is the same as EAN-13 and EAN-8
-        return parent::passes($attribute, $value) || ($valid);
-    }
+        if (!$this->hasAllowedLength($value)) {
+            return false;
+        }
 
-    /**
-     * Determine if current value has valid indicator digit
-     *
-     * @return boolean
-     */
-    protected function hasValidIndicatorDigit($value): bool
-    {
-        return is_numeric(substr($value, 0, 1));
-    }
+        switch (strlen($value)) {
+            case 8:
+            case 13:
+                return parent::passes($attribute, $value);
 
-    /**
-     * Try to calculate the modulo checksum of a
-     * current value as GTIN.
-     *
-     * @return bool
-     */
-    protected function gtinChecksumMatches($value): bool
-    {
-        $data = substr($value, 1); // strip indicator digit
-        return parent::getModuloChecksum($data) === parent::getValueChecksum($data);
+            case 14:
+                return parent::checksumMatches(substr($value, 1));
+
+            case 12:
+                return parent::checksumMatches('0' . $value);
+        }
+
+        return false;
     }
 }

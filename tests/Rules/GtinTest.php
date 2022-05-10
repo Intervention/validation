@@ -95,6 +95,7 @@ class GtinTest extends TestCase
             [false, '10123455'],
             [false, '40113455'],
             [false, '012341000058'],
+            [false, '1012345678905'],
         ];
     }
 
@@ -138,6 +139,7 @@ class GtinTest extends TestCase
             [true, '012345678905'],
             [true, '012345000041'],
             [true, '012345000058'],
+            [true, '012345000058'],
             [false, 'foo'],
             [false, '0000000000001'],
             [false, 'FFFFFFFFFFFFF'],
@@ -149,6 +151,7 @@ class GtinTest extends TestCase
             [false, '10123455'],
             [false, '40113455'],
             [false, '012341000058'],
+            [true, '000040123455'],
         ];
     }
 
@@ -156,6 +159,7 @@ class GtinTest extends TestCase
     {
         return [
             [true, '9789510475270'],
+            [true, '0012345000058'],
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],
@@ -177,12 +181,16 @@ class GtinTest extends TestCase
             [false, '10123455'],
             [false, '40113455'],
             [false, '012341000058'],
+            [true, '0000040123455'],
+            [true, '0012345000058'],
         ];
     }
 
     public function dataProviderGtin14()
     {
         return [
+            [true, '00012345000058'],
+            [false, 'w0012345000058'],
             [false, '4012345678901'],
             [false, '0712345678911'],
             [false, '5901234123457'],
@@ -204,6 +212,9 @@ class GtinTest extends TestCase
             [false, '10123455'],
             [false, '40113455'],
             [false, '012341000058'],
+            [true, '00000040123455'],
+            [true, '00012345000058'],
+            [true, '05901234123457'],
         ];
     }
 }
