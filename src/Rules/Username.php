@@ -13,8 +13,6 @@ class Username extends AbstractRegexRule implements Rule
      *  - starts with an letter (alpha)
      *  - underscores and minus are not allowed at the beginning or end
      *  - multiple underscores and minus are not allowed (-- or _____)
-     *
-     * @var string
      */
     protected function pattern(): string
     {
