@@ -1,4 +1,4 @@
-name: build
+name: Tests
 
 on: [push]
 
@@ -7,19 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['7.4', '8.0']
-    name: Testing on PHP ${{ matrix.php-versions }}
+        php: ['7.4', '8.0', '8.1']
+    name: Testing on PHP ${{ matrix.php }}
     steps:
-      - uses: actions/checkout@v2
-      - name: setup
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php }}
           extensions: mbstring,bcmath
-          tools: phpunit,composer
-      - name: install deps
-        run: composer install -o -q
-      - name: run phpunit
+          tools: composer
+
+      - name: Install PHP dependencies
+        run: composer install -q
+
+      - name: Run phpunit
         run: vendor/bin/phpunit
-      - name: run phpstan
+
+      - name: Run phpstan
         run: vendor/bin/phpstan analyze --no-progress --autoload-file=tests/phpstan/bootstrap.php --level=5 src/
