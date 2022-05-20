@@ -1,6 +1,7 @@
 {
     "name": "intervention/validation",
     "description": "Additional validation rules for the Laravel framework",
+    "homepage": "https://validation.intervention.io/",
     "keywords": ["validation", "Validator", "laravel", "bic", "iban", "creditcard", "isbn", "ean", "gtin", "isin", "luhn", "base64", "data-url", "ulid"],
     "license": "MIT",
     "authors": [
