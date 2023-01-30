@@ -2,7 +2,22 @@
     "name": "intervention/validation",
     "description": "Additional validation rules for the Laravel framework",
     "homepage": "https://validation.intervention.io/",
-    "keywords": ["validation", "Validator", "laravel", "bic", "iban", "creditcard", "isbn", "ean", "gtin", "isin", "luhn", "base64", "data-url", "ulid"],
+    "keywords": [
+        "validation",
+        "Validator",
+        "laravel",
+        "bic",
+        "iban",
+        "creditcard",
+        "isbn",
+        "ean",
+        "gtin",
+        "isin",
+        "luhn",
+        "base64",
+        "data-url",
+        "ulid"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +28,7 @@
     ],
     "require": {
         "php": "^7.3|^7.4|^8.0",
-        "illuminate/validation": "~7|~8|~9"
+        "illuminate/validation": "~7|~8|~9|^10.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
