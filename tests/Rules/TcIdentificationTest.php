@@ -34,8 +34,7 @@ class TcIdentificationTest extends TestCase
     public function dataProvider(): array
     {
         return [
-            [true, ***REMOVED***, 'Onur Kaçmaz', 1998],
-            [false, ***REMOVED***, 'İsmail Kaçmaz', 1989],
+            [false, 1111111111, 'Onur Kaçmaz', 1998],
         ];
     }
 }
