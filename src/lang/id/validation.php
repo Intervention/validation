@@ -31,4 +31,5 @@ return [
     'gtin' => ':attribute harus berupa format GTIN yang valid.',
     'postalcode' => 'Nilai :attribute harus berupa kode pos yang valid.',
     'mimetype' => 'Nilai :attribute tidak berisi Jenis Media Internet yang valid (jenis MIME).',
+    'tcidentification' => 'Nilai :attribute harus berupa nomor identifikasi yang valid di Turki.',
 ];

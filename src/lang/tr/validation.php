@@ -31,4 +31,5 @@ return [
     'gtin' => ':attribute geçerli bir Genel Ürün Tanımlama Numarası (GTIN) değil.',
     'postalcode' => ':attribute geçerli bir posta kodu değil.',
     'mimetype' => ':attribute geçerli bir MIME türü değil.',
+    'tcidentification' => ':attribute geçerli bir T.C. Kimlik Numarası değil.',
 ];

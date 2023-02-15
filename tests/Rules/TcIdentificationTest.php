@@ -18,7 +18,7 @@ class TcIdentificationTest extends TestCase
         $validator = $this->getValidator(['value' => $value], ['value' => [new TcIdentification($tcIdentificationNumber, $fullName, $birthYear)]]);
         $this->assertEquals($result, $validator->passes());
 
-        $validator = $this->getValidator(['value' => $value], ['value' => ['tc_identification:' . $tcIdentificationNumber . ',' . $fullName . ',' . $birthYear]]);
+        $validator = $this->getValidator(['value' => $value], ['value' => ['tcidentification:' . $tcIdentificationNumber . ',' . $fullName . ',' . $birthYear]]);
         $this->assertEquals($result, $validator->passes());
     }
 

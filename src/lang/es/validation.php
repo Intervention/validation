@@ -31,4 +31,5 @@ return [
     'gtin' => ':attribute no es un número GTIN válido.',
     'postalcode' => 'El valor de :attribute debe ser un código postal válido.',
     'mimetype' => 'El valor de :attribute no contiene un tipo de media de internet (MIME-Type) válido.',
+    'tcidentification' => 'El valor de :attribute no es un número de identificación de ciudadano turco válido.',
 ];

@@ -308,6 +308,12 @@ The field under validation must be a valid username. Consisting of alpha-numeric
 
     public Intervention\Validation\Rules\Username::__construct()
 
+## Turkish Identification Number (TIN or TCKN)
+
+The field under validation must be a valid [TIN, TCKN](https://en.wikipedia.org/wiki/Turkish_Identification_Number). This field must be a length is max 11 and min 11 chars. This field must match with full name and birth year.
+
+    public Intervention\Validation\Rules\TcIdentification::__construct()
+
 ## License
 
 Intervention Validation is licensed under the [MIT License](http://opensource.org/licenses/MIT).

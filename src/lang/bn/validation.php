@@ -31,4 +31,5 @@ return [
     'gtin' => 'এই :attribute টি একটি বৈধ গ্লোবাল ট্রেড আইটেম নম্বর নয় (GTIN).',
     'postalcode' => 'এই :attribute টি একটি বৈধ পোস্টাল কোড হতে হবে.',
     'mimetype' => 'এই :attribute টিতে একটি বৈধ ইন্টারনেট মিডিয়া টাইপ নেই (MIME-Type).',
+    'tcidentification' => 'এই :attribute টি একটি বৈধ টার্কিশ নাগরিকতা পরিচয়পত্র নয়.',
 ];

@@ -31,4 +31,5 @@ return [
     'gtin' => ':attribute on oltava kelvollinen GTIN.',
     'postalcode' => 'Arvo :attribute on oltava kelvollinen postinumero.',
     'mimetype' => 'Arvo :attribute ei sisällä kelvollista Internet -mediatyyppiä (MIME-Type).',
+    'tcidentification' => 'Arvo :attribute on oltava kelvollinen tunniste Turkin kansalaisille.',
 ];
