@@ -312,7 +312,7 @@ The field under validation must be a valid username. Consisting of alpha-numeric
 
 The field under validation must be a valid [TIN, TCKN](https://en.wikipedia.org/wiki/Turkish_Identification_Number). This field must be a length is max 11 and min 11 chars. This field must match with full name and birth year.
 
-    public Intervention\Validation\Rules\TcIdentification::__construct()
+    public Intervention\Validation\Rules\TcIdentification::__construct(int $tcIdentificationNumber, string $fullName, int $birthYear)
 
 ## License
 
