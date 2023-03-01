@@ -7,7 +7,6 @@ use Intervention\Validation\AbstractRegexRule;
 
 class Issn extends AbstractRegexRule implements Rule
 {
-
     protected function pattern(): string
     {
         return "/^[0-9]{4}-[0-9]{3}[0-9xX]$/";
@@ -39,7 +38,7 @@ class Issn extends AbstractRegexRule implements Rule
         $issn_numbers = str_replace('-', '', $value);
 
         foreach (range(8, 2) as $num => $multiplicator) {
-            $checksum += $issn_numbers[$num] * $multiplicator;
+            $checksum += intval($issn_numbers[$num]) * $multiplicator;
         }
 
         $remainder = ($checksum % 11);
