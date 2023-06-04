@@ -70,53 +70,53 @@ try {
 }
 ```
 
-# Available Rules
+## Available Rules
 
 The following validation rules are available with this package.
 
-## Base64 encoded string
+### Base64 encoded string
 
 The field under validation must be [Base64 encoded](https://en.wikipedia.org/wiki/Base64).
 
     public Intervention\Validation\Rules\Base64::__construct()
 
-## Business Identifier Code (BIC)
+### Business Identifier Code (BIC)
 
 Checks for a valid [Business Identifier Code](https://en.wikipedia.org/wiki/ISO_9362) (BIC).
 
     public Intervention\Validation\Rules\Bic::__construct()
 
-## Camel case string
+### Camel case string
 
 The field under validation must be a formated in [Camel case](https://en.wikipedia.org/wiki/Camel_case).
 
     public Intervention\Validation\Rules\Camelcase::__construct()
 
-## Classless Inter-Domain Routing (CIDR) 
+### Classless Inter-Domain Routing (CIDR) 
 
 Check if the value is a [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (CIDR).
 
     public Intervention\Validation\Rules\Cidr::__construct()
 
-## Creditcard Number 
+### Creditcard Number 
 
 The field under validation must be a valid [creditcard number](https://en.wikipedia.org/wiki/Payment_card_number).
 
     public Intervention\Validation\Rules\Creditcard::__construct()
 
-## Data URI scheme
+### Data URI scheme
 
 The field under validation must be a valid [Data URI](https://en.wikipedia.org/wiki/Data_URI_scheme).
 
     public Intervention\Validation\Rules\DataUri::__construct()
 
-## Domain name 
+### Domain name 
 
 The field under validation must be a well formed [domainname](https://en.wikipedia.org/wiki/Domain_name).
 
     public Intervention\Validation\Rules\Domainname::__construct()
 
-## European Article Number (EAN)
+### European Article Number (EAN)
 
 Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number).
 
@@ -128,7 +128,7 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 
 Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
-## Global Trade Item Number (GTIN)
+### Global Trade Item Number (GTIN)
 
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
 
@@ -140,7 +140,7 @@ Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Glob
 
 Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
 
-## Hexadecimal color code
+### Hexadecimal color code
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
 
@@ -152,25 +152,25 @@ The field under validation must be a valid [hexadecimal color code](https://en.w
 
 Optional length as integer to check only for shorthand (3 characters) or full hexadecimal (6 characters) form.
 
-## Text without HTML
+### Text without HTML
 
 The field under validation must be free of any html code.
 
     public Intervention\Validation\Rules\HtmlClean::__construct()
 
-## International Bank Account Number (IBAN)
+### International Bank Account Number (IBAN)
 
 Checks for a valid [International Bank Account Number](https://en.wikipedia.org/wiki/International_Bank_Account_Number) (IBAN).
 
     public Intervention\Validation\Rules\Iban::__construct()
 
-## International Mobile Equipment Identity (IMEI) 
+### International Mobile Equipment Identity (IMEI) 
 
 The field under validation must be a [International Mobile Equipment Identity](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity) (IMEI).
 
     public Intervention\Validation\Rules\Imei::__construct()
 
-## International Standard Book Number (ISBN)
+### International Standard Book Number (ISBN)
 
 The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN).
 
@@ -182,49 +182,49 @@ The field under validation must be a valid [International Standard Book Number](
 
 Optional length parameter as integer to check only for ISBN-10 or ISBN-13.
 
-## International Securities Identification Number (ISIN) 
+### International Securities Identification Number (ISIN) 
 
 Checks for a valid [International Securities Identification Number](https://en.wikipedia.org/wiki/International_Securities_Identification_Number) (ISIN).
 
     public Intervention\Validation\Rules\Isin::__construct()
 
-## International Standard Serial Number (ISSN)
+### International Standard Serial Number (ISSN)
 
 Checks for a valid [International Standard Serial Number](https://en.wikipedia.org/wiki/International_Standard_Serial_Number) (ISSN).
 
     public Intervention\Validation\Rules\Issn::__construct()
 
-## JSON Web Token (JWT)
+### JSON Web Token (JWT)
 
 The given value must be a in format of a [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token).
 
     public Intervention\Validation\Rules\Jwt::__construct()
 
-## Kebab case string
+### Kebab case string
 
 The given value must be formated in [Kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
 
     public Intervention\Validation\Rules\Kebabcase::__construct()
 
-## Lower case string 
+### Lower case string 
 
 The given value must be all lower case letters.
 
     public Intervention\Validation\Rules\Lowercase::__construct()
 
-## Luhn algorithm
+### Luhn algorithm
 
 The given value must verify against its included [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm) check digit.
 
     public Intervention\Validation\Rules\Luhn::__construct()
 
-## Media (MIME) type
+### Media (MIME) type
 
 Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media type).
 
     public Intervention\Validation\Rules\MimeType::__construct()
 
-## Postal Code
+### Postal Code
 
 The field under validation must be a [postal code](https://en.wikipedia.org/wiki/Postal_code) of the given country.
 
@@ -266,47 +266,53 @@ Callback to resolve [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country
 
 Reference key to get [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other data in validator.
 
-## Semantic Version Number
+### Semantic Version Number
 
 The field under validation must be a valid version numbers using [Semantic Versioning](https://semver.org/).
 
     public Intervention\Validation\Rules\SemVer::__construct()
 
-## SEO-friendly short text (Slug)
+### SEO-friendly short text (Slug)
 
 The field under validation must be a user- and [SEO-friendly short text](https://en.wikipedia.org/wiki/Clean_URL#Slug).
 
     public Intervention\Validation\Rules\Slug::__construct()
 
-## Snake case string
+### Snake case string
 
 The field under validation must formated as [Snake case](https://en.wikipedia.org/wiki/Snake_case) text.
 
     public Intervention\Validation\Rules\Snakecase::__construct()
 
-## Title case string
+### Title case string
 
 The field under validation must formated in [Title case](https://en.wikipedia.org/wiki/Title_case).
 
     public Intervention\Validation\Rules\Titlecase::__construct()
 
-## Universally Unique Lexicographically Sortable Identifier (ULID)
+### Universally Unique Lexicographically Sortable Identifier (ULID)
 
 The field under validation must be a valid [Universally Unique Lexicographically Sortable Identifier](https://github.com/ulid/spec).
 
     public Intervention\Validation\Rules\Ulid::__construct()
 
-## Upper case string
+### Upper case string
 
 The field under validation must be all upper case.
 
     public Intervention\Validation\Rules\Uppercase::__construct()
 
-## Username
+### Username
 
 The field under validation must be a valid username. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
 
     public Intervention\Validation\Rules\Username::__construct()
+
+## Development & Testing
+
+With this package comes a Docker image to build a test suite container. To build this container you have to have Docker installed on your system. You can run all tests with this command.
+
+    $ docker-compose run --rm --build tests
 
 ## License
 
