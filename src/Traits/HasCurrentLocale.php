@@ -2,13 +2,6 @@
 
 namespace Intervention\Validation\Traits;
 
-use Illuminate\Container\Container;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Translation\FileLoader;
-use Illuminate\Translation\Translator;
-use Illuminate\Validation\Factory;
-use Illuminate\Validation\Validator;
-
 trait HasCurrentLocale
 {
     public static function getCurrentLocale(): string

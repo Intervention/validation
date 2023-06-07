@@ -3,7 +3,6 @@
 namespace Intervention\Validation\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Intervention\Validation\Validator;
 
 class ValidationServiceProvider extends ServiceProvider
