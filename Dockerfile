@@ -4,14 +4,17 @@ FROM php:8-cli
 #
 RUN apt update \
         && apt install -y \
+            git \
             libicu-dev \
             locales \
             locales-all \
+            libzip-dev \
         && docker-php-ext-install \
             intl \
             opcache \
             fileinfo \
             bcmath \
+            zip \
         && apt-get clean
 
 # install composer
