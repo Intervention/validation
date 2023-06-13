@@ -373,10 +373,10 @@ class PostalcodeTest extends TestCase
             [false, 'ma', '1234'],
             [false, 'ma', '123456'],
 
-            [true, 'nl', '1234'],
             [true, 'nl', '1234 AA'],
             [true, 'nl', '1234 aa'],
-            [false, 'nl', '1234AA'],
+            [true, 'nl', '1234AA'],
+            [false, 'nl', '1234'],
             [false, 'nl', '123 AA'],
             [false, 'nl', '1234 AAA'],
             [false, 'nl', '12345'],
