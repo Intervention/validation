@@ -179,7 +179,7 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
                 return "/^[0-9]{3}-[0-9]{4}$/";
 
             case 'nl':
-                return "/^[0-9]{4}( [a-z]{2})?$/i";
+                return "/^[0-9]{4}\s?[a-z]{2}$/i";
 
             case 'ar':
             case 'am':
