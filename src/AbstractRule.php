@@ -14,6 +14,14 @@ abstract class AbstractRule
 
     abstract public function passes(string $attribute, mixed $value): bool;
 
+    /**
+     * Laravel Framwork validation method
+     *
+     * @param string $attribute
+     * @param mixed $value
+     * @param Closure $fail
+     * @return void
+     */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (!$this->passes($attribute, $value)) {
