@@ -3,10 +3,10 @@
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\DataAwareRule;
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
 
-class Postalcode extends AbstractRule implements Rule, DataAwareRule
+class Postalcode extends AbstractRule implements ValidationRule, DataAwareRule
 {
     /**
      * Country code to match postal code
@@ -45,7 +45,7 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
      * @param array $data
      * @return self
      */
-    public function setData($data)
+    public function setData(array $data): static
     {
         $this->data = $data;
 
@@ -77,7 +77,7 @@ class Postalcode extends AbstractRule implements Rule, DataAwareRule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         if ($pattern = $this->getPattern()) {
             return (bool) preg_match($pattern, $value);

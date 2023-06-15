@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
 
-class Domainname extends AbstractRule implements Rule
+class Domainname extends AbstractRule implements ValidationRule
 {
     /**
      * Determine if the validation rule passes.
@@ -14,7 +14,7 @@ class Domainname extends AbstractRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         $labels = $this->getLabels($value); // get labels of domainname
         $tld = end($labels); // most right label of domainname is tld

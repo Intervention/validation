@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Username extends AbstractRegexRule implements Rule
+class Username extends AbstractRegexRule implements ValidationRule
 {
     /**
      * Pattern for "valid" username

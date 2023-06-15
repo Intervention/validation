@@ -3,6 +3,7 @@
 namespace Intervention\Validation;
 
 use ReflectionClass;
+use Closure;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
@@ -10,6 +11,15 @@ use Illuminate\Translation\Translator;
 abstract class AbstractRule
 {
     use Traits\HasCurrentLocale;
+
+    abstract public function passes(string $attribute, mixed $value): bool;
+
+    public function validate(string $attribute, mixed $value, Closure $fail): void
+    {
+        if (!$this->passes($attribute, $value)) {
+            $fail($this->message())->translate();
+        }
+    }
 
     /**
      * Return shortname of current rule

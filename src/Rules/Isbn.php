@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class Isbn extends Ean implements Rule
+class Isbn extends Ean implements ValidationRule
 {
     /**
      * Valid lengths
@@ -23,7 +23,7 @@ class Isbn extends Ean implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         // normalize value
         $value = preg_replace("/[^0-9x]/i", '', $value);

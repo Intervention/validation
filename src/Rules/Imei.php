@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class Imei extends Luhn implements Rule
+class Imei extends Luhn implements ValidationRule
 {
     /**
      * Determine if the validation rule passes.
@@ -13,7 +13,7 @@ class Imei extends Luhn implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         return $this->hasValidLength($value) && parent::passes($attribute, $value);
     }

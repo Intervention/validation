@@ -2,7 +2,7 @@
 
 namespace Intervention\Validation;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\Exceptions\NotExistingRuleException;
 
 class CallDelegator
@@ -62,9 +62,9 @@ class CallDelegator
     /**
      * Get validation rule from current call
      *
-     * @return Rule
+     * @return ValidationRule
      */
-    public function getRule(): Rule
+    public function getRule(): ValidationRule
     {
         $classname = $this->getRuleClassname();
 

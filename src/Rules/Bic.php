@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Bic extends AbstractRegexRule implements Rule
+class Bic extends AbstractRegexRule implements ValidationRule
 {
     protected function pattern(): string
     {

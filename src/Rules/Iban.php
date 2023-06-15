@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
 
-class Iban extends AbstractRule implements Rule
+class Iban extends AbstractRule implements ValidationRule
 {
     /**
      * IBAN lengths for countries
@@ -127,7 +127,7 @@ class Iban extends AbstractRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         // normalize value
         $value = str_replace(' ', '', strtoupper($value));

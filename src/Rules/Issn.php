@@ -2,17 +2,17 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Issn extends AbstractRegexRule implements Rule
+class Issn extends AbstractRegexRule implements ValidationRule
 {
     protected function pattern(): string
     {
         return "/^[0-9]{4}-[0-9]{3}[0-9xX]$/";
     }
 
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         return parent::passes($attribute, $value) && $this->checkSumMatches($value);
     }

@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
 
-class Uppercase extends AbstractRule implements Rule
+class Uppercase extends AbstractRule implements ValidationRule
 {
     /**
      * Determine if the validation rule passes.
@@ -14,7 +14,7 @@ class Uppercase extends AbstractRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         return $value === $this->getUpperCaseValue($value);
     }

@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Camelcase extends AbstractRegexRule implements Rule
+class Camelcase extends AbstractRegexRule implements ValidationRule
 {
     protected function pattern(): string
     {

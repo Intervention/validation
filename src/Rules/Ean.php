@@ -2,10 +2,10 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
 
-class Ean extends AbstractRule implements Rule
+class Ean extends AbstractRule implements ValidationRule
 {
     /**
      * Valid lengths
@@ -37,7 +37,7 @@ class Ean extends AbstractRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         return is_numeric($value) && $this->hasAllowedLength($value) && $this->checksumMatches($value);
     }

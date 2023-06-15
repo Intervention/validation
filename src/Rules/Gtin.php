@@ -2,9 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class Gtin extends Ean implements Rule
+class Gtin extends Ean implements ValidationRule
 {
     /**
      * Valid lengths
@@ -32,7 +32,7 @@ class Gtin extends Ean implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, mixed $value): bool
     {
         if (!is_numeric($value)) {
             return false;
