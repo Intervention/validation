@@ -48,6 +48,16 @@ class Validator
             return new IlluminateValidator($translator, $data, $rules, $messages, $customAttributes);
         });
 
+        foreach (self::getRuleShortnames() as $rulename) {
+            $factory->extend($rulename, function ($attribute, $value, $parameters, $validator) use ($rulename) {
+                return forward_static_call(
+                    [self::class, 'is' . ucfirst($rulename)],
+                    $value,
+                    data_get($parameters, 0)
+                );
+            });
+        }
+
         return $factory;
     }
 
