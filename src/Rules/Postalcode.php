@@ -43,7 +43,7 @@ class Postalcode extends AbstractRule implements ValidationRule, DataAwareRule
      * Set data
      *
      * @param array $data
-     * @return self
+     * @return static
      */
     public function setData(array $data): static
     {
