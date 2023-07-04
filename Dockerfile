@@ -1,7 +1,6 @@
 FROM php:8-cli
 
 # install dependencies
-#
 RUN apt update \
         && apt install -y \
             git \
@@ -18,5 +17,9 @@ RUN apt update \
         && apt-get clean
 
 # install composer
-#
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /project
+
+# run tests
+CMD composer install && ./vendor/bin/phpunit -vvv
