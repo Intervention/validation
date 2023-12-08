@@ -37,7 +37,7 @@ class Isbn extends Ean implements Rule
                 return $this->shortChecksumMatches($value);
 
             case 13:
-                return parent::checksumMatches($value); // isbn-13 is a subset of ean-13
+                return preg_match("/^(978|979)/", $value) && parent::checksumMatches($value); // isbn-13 is a subset of ean-13
         }
 
         return false;
