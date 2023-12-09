@@ -69,6 +69,7 @@ class IsbnTest extends TestCase
             [false, 'ABC'],
             [false, '978-0-306-40615-6'],
             [false, '99921-58-10-6'],
+            [false, '0123456789012'],
         ];
     }
 
@@ -122,6 +123,7 @@ class IsbnTest extends TestCase
             [false, 'ABC'],
             [false, '978-0-306-40615-6'],
             [false, '99921-58-10-6'],
+            [false, '0123456789012'],
         ];
     }
 }
