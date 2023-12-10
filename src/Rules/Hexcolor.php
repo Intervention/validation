@@ -14,7 +14,9 @@ class Hexcolor extends AbstractRegexRule implements ValidationRule
      */
     protected $lengths = [
         3,
+        4,
         6,
+        8,
     ];
 
     /**
@@ -32,7 +34,7 @@ class Hexcolor extends AbstractRegexRule implements ValidationRule
 
     protected function pattern(): string
     {
-        return "/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/";
+        return '/^#?(?P<hex>[a-f\d]{3}(?:[a-f\d]?|(?:[a-f\d]{3}(?:[a-f\d]{2})?)?)\b)$/i';
     }
 
     /**
@@ -44,7 +46,7 @@ class Hexcolor extends AbstractRegexRule implements ValidationRule
      */
     public function passes(string $attribute, mixed $value): bool
     {
-        if (! $this->hasAllowedLength($value)) {
+        if (!$this->hasAllowedLength($value)) {
             return false;
         }
 
@@ -52,7 +54,7 @@ class Hexcolor extends AbstractRegexRule implements ValidationRule
     }
 
     /**
-     * Determine if the current value has the lenghts of EAN-8 or EAN-13
+     * Determine if the current value has correct lenght
      *
      * @return boolean
      */
