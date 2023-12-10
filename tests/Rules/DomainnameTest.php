@@ -51,6 +51,7 @@ class DomainnameTest extends TestCase
             [true, 'g.cn'],
             [true, 't.co'],
             [true, '0.com'],
+            [true, 'இந்தியா.com'],
             [false, 'foo'],
             [false, 'foo.f'],
             [false, 'foo.com.'],
