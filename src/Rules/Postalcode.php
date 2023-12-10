@@ -19,7 +19,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @var array
      */
-    protected $data;
+    protected $data = [];
 
     /**
      * Create a new rule instance with allowed countrycodes
@@ -78,18 +78,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
         return false;
     }
 
-    protected function getCountryCodes(): array
-    {
-        if (count($this->countrycodes) == 0) {
-            // return country code by reference
-            if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
-                return $this->data[$this->reference];
-            }
-        }
-
-        return $this->countrycodes;
-    }
-
     /**
      * Return regex patterns for allowed country codes
      *
@@ -105,6 +93,18 @@ class Postalcode extends AbstractRule implements DataAwareRule
         return array_filter($patterns, function ($pattern) {
             return !is_null($pattern);
         });
+    }
+
+    protected function getCountryCodes(): array
+    {
+        if (count($this->countrycodes) == 0) {
+            // return country code by reference
+            if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
+                return [$this->data[$this->reference]];
+            }
+        }
+
+        return $this->countrycodes;
     }
 
     /**
