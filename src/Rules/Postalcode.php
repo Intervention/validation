@@ -45,7 +45,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
 
     public static function reference(string $reference): self
     {
-        $rule = new self([]);
+        $rule = new self();
         $rule->reference = $reference;
 
         return $rule;
@@ -54,11 +54,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
     public static function countrycode(string $countrycode): self
     {
         return new self([$countrycode]);
-    }
-
-    public static function resolve(callable $callback): self
-    {
-        return new self($callback());
     }
 
     /**
@@ -88,7 +83,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     {
         $patterns = array_map(function ($countrycode) {
             return $this->getPattern($countrycode);
-        }, $this->countrycodes);
+        }, $this->getCountryCodes());
 
         return array_filter($patterns, function ($pattern) {
             return !is_null($pattern);
