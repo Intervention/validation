@@ -97,7 +97,7 @@ The field under validation must be a well formed [domainname](https://en.wikiped
 
 Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/International_Article_Number).
 
-    public Intervention\Validation\Rules\Ean::__construct(?int $length = null)
+    public Intervention\Validation\Rules\Ean::__construct(array $lengths = [8, 13])
 
 #### Parameters
 
