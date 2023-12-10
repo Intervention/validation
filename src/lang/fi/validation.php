@@ -4,7 +4,7 @@ return [
     'isin' => ':attribute tulee olla kelvollinen International Securities Identification Number (ISIN).',
     'iban' => ':attribute tulee olla kelvollinen International Bank Account Number (IBAN).',
     'bic' => ':attribute tulee olla kelvollinen Business Identifier Code (BIC).',
-    'hexcolor' => ':attribute tulee olla kelvollinen heksadesimaali värikoodi.',
+    'hexadecimalcolor' => ':attribute tulee olla kelvollinen heksadesimaali värikoodi.',
     'creditcard' => ':attribute tulee olla kelvollinen luottokortin numero.',
     'isbn' => ':attribute tulee olla kelvollinen International Standard Book Number (ISBN).',
     'username' => ':attribute tulee olla kelvollinen käyttäjänimi.',

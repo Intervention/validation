@@ -4,7 +4,7 @@ return [
     'isin' => ':attribute moet een geldig International Securities Identification Number (ISIN) zijn.',
     'iban' => ':attribute moet een geldig International Bank Account Number (IBAN) zijn.',
     'bic' => ':attribute moet een geldig Business Identifier Code (BIC) zijn.',
-    'hexcolor' => ':attribute moet een geldige hexadecimale kleurcode zijn.',
+    'hexadecimalcolor' => ':attribute moet een geldige hexadecimale kleurcode zijn.',
     'creditcard' => ':attribute moet een geldig creditcardnummer zijn.',
     'isbn' => ':attribute moet een geldig International Standard Book Number (ISBN) zijn.',
     'username' => ':attribute moet een geldige gebruikersnaam zijn.',

@@ -21,11 +21,11 @@ The Validation library is built to work with the Laravel Framework (>=7). It com
 ```php
 use Illuminate\Support\Facades\Validator;
 use Intervention\Validation\Rules\Creditcard;
-use Intervention\Validation\Rules\HexColor;
+use Intervention\Validation\Rules\Hexadecimalcolor;
 use Intervention\Validation\Rules\Username;
 
 $validator = Validator::make($request->all(), [
-    'color' => new Hexcolor(3), // pass rule as object
+    'color' => new Hexadecimalcolor(3), // pass rule as object
     'number' => ['required', 'creditcard'], // or pass rule as string
     'name' => 'required|min:3|max:20|username', // combining rules works as well
 ]);
@@ -54,17 +54,17 @@ use Intervention\Validation\Exceptions\ValidationException;
 $validator = Validator::make($request->all(), [
     'ccnumber' => new Creditcard(),
     'iban' => ['required', 'iban'],
-    'color' => 'required|hexcolor:3',
+    'color' => 'required|hexadecimalcolor:3',
 ]);
 
 // validate single values by calling static methods
-$result = Validator::isHexcolor('foobar'); // false
-$result = Validator::isHexcolor('#ccc'); // true
+$result = Validator::isHexadecimalcolor('foobar'); // false
+$result = Validator::isHexadecimalcolor('#ccc'); // true
 $result = Validator::isBic('foo'); // false
 
 // assert single values
 try {
-    Validator::assertHexcolor('foobar');
+    Validator::assertHexadecimalcolor('foobar');
 } catch (ValidationException $e) {
     $message = $e->getMessage();
 }
@@ -144,13 +144,13 @@ Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-1
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
 
-    public Intervention\Validation\Rules\HexColor::__construct(?int $length = null)
+    public Intervention\Validation\Rules\Hexadecimalcolor::__construct(?int $length = null)
 
 #### Parameters
 
 **length**
 
-Optional length as integer to check only for shorthand (3 characters) or full hexadecimal (6 characters) form.
+Optional length as integer to check only for shorthand (3 or 4 characters) or full hexadecimal (6 or 8 characters) form.
 
 ### Text without HTML
 

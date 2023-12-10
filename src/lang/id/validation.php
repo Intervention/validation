@@ -4,7 +4,7 @@ return [
     'isin' => ':attribute harus berupa International Securities Identification Number (ISIN) yang valid.',
     'iban' => ':attribute harus berupa International Bank Account Number (IBAN) yang valid.',
     'bic' => ':attribute bukan Business Identifier Code (BIC) yang valid.',
-    'hexcolor' => ':attribute harus berupa kode warna hexadecimal yang valid.',
+    'hexadecimalcolor' => ':attribute harus berupa kode warna hexadecimal yang valid.',
     'creditcard' => ':attribute harus berupa nomor kartu kredit yang valid.',
     'isbn' => ':attribute harus berupa International Standard Book Number (ISBN) yang valid.',
     'username' => 'Nilai :attribute harus berupa username yang valid.',

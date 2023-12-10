@@ -4,7 +4,7 @@ return [
     'isin' => 'The :attribute must be a valid International Securities Identification Number (ISIN).',
     'iban' => 'The :attribute must be a valid International Bank Account Number (IBAN).',
     'bic' => 'The :attribute is not a valid Business Identifier Code (BIC).',
-    'hexcolor' => 'The :attribute must be a valid hexadecimal color code.',
+    'hexadecimalcolor' => 'The :attribute must be a valid hexadecimal color code.',
     'creditcard' => 'The :attribute must be a valid creditcard number.',
     'isbn' => ':attribute must be a valid International Standard Book Number (ISBN).',
     'username' => 'The value :attribute must be a valid username.',

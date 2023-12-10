@@ -7,12 +7,12 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory;
-use Illuminate\Validation\Validator;
+use Illuminate\Validation\Validator as IlluminateValidator;
 use Intervention\Validation\Validator as InterventionValidator;
 
 trait CanValidate
 {
-    public function getValidator($data, $rules)
+    public function getValidator($data, $rules): IlluminateValidator
     {
         $loader = new FileLoader(new Filesystem(), 'lang');
         $translator = new Translator($loader, 'en');
@@ -33,7 +33,7 @@ trait CanValidate
         }
 
         $factory->resolver(function ($translator, $data, $rules, $messages, $customAttributes) {
-            return new Validator($translator, $data, $rules, $messages, $customAttributes);
+            return new IlluminateValidator($translator, $data, $rules, $messages, $customAttributes);
         });
 
         return $factory->make($data, $rules);

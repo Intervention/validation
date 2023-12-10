@@ -5,7 +5,7 @@ namespace Intervention\Validation\Rules;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Hexcolor extends AbstractRegexRule implements ValidationRule
+class Hexadecimalcolor extends AbstractRegexRule implements ValidationRule
 {
     /**
      * Allowed lengths of hexcolor

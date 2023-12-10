@@ -4,7 +4,7 @@ return [
     'isin' => ':attribute debe ser un número ISIN válido',
     'iban' => ':attribute debe ser un número IBAN válido.',
     'bic' => ':attribute no es un código BIC válido.',
-    'hexcolor' => ':attribute debe ser un código de color hexadecimal válido.',
+    'hexadecimalcolor' => ':attribute debe ser un código de color hexadecimal válido.',
     'creditcard' => ':attribute debe ser un número de tarjeta de crédito válido.',
     'isbn' => ':attribute debe ser un código ISBN válido.',
     'username' => 'El valor de :attribute debe ser un nombre de usuario válido.',
