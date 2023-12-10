@@ -109,13 +109,13 @@ Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
 
-    public Intervention\Validation\Rules\Gtin::__construct(?int $length = null)
+    public Intervention\Validation\Rules\Gtin::__construct(array $lengths = [8, 12, 13, 14])
 
 #### Parameters
 
 **length**
 
-Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
+Optional array of allowed lengths to check only for certain types (GTIN-8, GTIN-12, GTIN-13 or GTIN-14).
 
 ### Hexadecimal color code
 
@@ -205,7 +205,7 @@ Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media 
 
 The field under validation must be a [postal code](https://en.wikipedia.org/wiki/Postal_code) of the given country.
 
-    public Intervention\Validation\Rules\Postalcode::__construct(array $countrycodes)
+    public Intervention\Validation\Rules\Postalcode::__construct(array $countrycodes = [])
 
 #### Parameters
 
