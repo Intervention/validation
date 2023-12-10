@@ -23,7 +23,7 @@ class ValidationServiceProvider extends ServiceProvider
         );
 
         // add rules to laravel validator
-        foreach (Validator::getRuleShortnames() as $rulename) {
+        foreach ($this->getRuleShortnames() as $rulename) {
             $this->app['validator']->extend(
                 $rulename,
                 function ($attribute, $value, $parameters, $validator) use ($rulename) {
@@ -52,6 +52,18 @@ class ValidationServiceProvider extends ServiceProvider
         }
 
         return new $classname(...$parameters);
+    }
+
+    /**
+     * List all shortnames of new rule objects
+     *
+     * @return array
+     */
+    private function getRuleShortnames(): array
+    {
+        return array_map(function ($filename) {
+            return mb_strtolower(substr($filename, 0, -4));
+        }, array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']));
     }
 
     /**
