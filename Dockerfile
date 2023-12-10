@@ -16,7 +16,7 @@ RUN composer install \
 # ##############################################
 # stage: testing
 # ##############################################
-FROM php:8-cli
+FROM php:8.1-cli
 
 # install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
