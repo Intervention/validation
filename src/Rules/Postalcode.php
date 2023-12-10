@@ -22,11 +22,11 @@ class Postalcode extends AbstractRule implements DataAwareRule
     protected $data;
 
     /**
-     * Create a new rule instance
+     * Create a new rule instance with allowed countrycodes
      *
      * @param string $countrycode
      */
-    public function __construct(protected string $countrycode)
+    public function __construct(protected array $countrycodes = [])
     {
     }
 
@@ -45,7 +45,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
 
     public static function reference(string $reference): self
     {
-        $rule = new self('');
+        $rule = new self([]);
         $rule->reference = $reference;
 
         return $rule;
@@ -53,7 +53,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
 
     public static function countrycode(string $countrycode): self
     {
-        return new self($countrycode);
+        return new self([$countrycode]);
     }
 
     public static function resolve(callable $callback): self
@@ -69,23 +69,42 @@ class Postalcode extends AbstractRule implements DataAwareRule
      */
     public function isValid(mixed $value): bool
     {
-        if ($pattern = $this->getPattern()) {
-            return (bool) preg_match($pattern, $value);
+        foreach ($this->getPatterns() as $pattern) {
+            if (preg_match($pattern, $value)) {
+                return true;
+            }
         }
 
         return false;
     }
 
-    protected function getCountryCode(): ?string
+    protected function getCountryCodes(): array
     {
-        if (empty($this->countrycode)) {
+        if (count($this->countrycodes) == 0) {
             // return country code by reference
             if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
                 return $this->data[$this->reference];
             }
         }
 
-        return $this->countrycode;
+        return $this->countrycodes;
+    }
+
+    /**
+     * Return regex patterns for allowed country codes
+     *
+     * @param  string $var
+     * @return array
+     */
+    protected function getPatterns(): array
+    {
+        $patterns = array_map(function ($countrycode) {
+            return $this->getPattern($countrycode);
+        }, $this->countrycodes);
+
+        return array_filter($patterns, function ($pattern) {
+            return !is_null($pattern);
+        });
     }
 
     /**
@@ -93,9 +112,9 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return ?string
      */
-    protected function getPattern(): ?string
+    protected function getPattern(string $countrycode): ?string
     {
-        switch (strtolower($this->getCountryCode())) {
+        switch (strtolower($countrycode)) {
             case 'dz':
             case 'as':
             case 'ad':

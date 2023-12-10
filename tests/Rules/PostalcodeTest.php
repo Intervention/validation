@@ -12,7 +12,7 @@ class PostalcodeTest extends TestCase
     */
     public function testValidationConstructor($result, $countrycode, $value)
     {
-        $valid = (new Postalcode($countrycode))->isValid($value);
+        $valid = (new Postalcode([$countrycode]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
