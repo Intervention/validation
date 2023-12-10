@@ -16,7 +16,11 @@ Require the package via Composer:
 
 ## Laravel integration
 
-The Validation library is built to work with the Laravel Framework (>=7). It comes with a service provider, which will be discovered automatically and registers the validation rules into your installation. The package provides 30 additional validation rules including error messages, which can be used like Laravel's own validation rules.
+The Validation library is built to work with the Laravel Framework (>=10). It
+comes with a service provider, which will be discovered automatically and
+registers the validation rules into your installation. The package provides 30
+additional validation rules including multi language error messages, which can
+be used like Laravel's own validation rules.
 
 ```php
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +29,7 @@ use Intervention\Validation\Rules\Hexadecimalcolor;
 use Intervention\Validation\Rules\Username;
 
 $validator = Validator::make($request->all(), [
-    'color' => new Hexadecimalcolor(3), // pass rule as object
+    'color' => new Hexadecimalcolor([3, 6]), // pass rule as object
     'number' => ['required', 'creditcard'], // or pass rule as string
     'name' => 'required|min:3|max:20|username', // combining rules works as well
 ]);
@@ -39,36 +43,7 @@ Add the corresponding key to `/resources/lang/<language>/validation.php` like th
 // example
 'iban' => 'Please enter IBAN number!',
 ```
-Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/8.x/validation#manual-customizing-the-error-messages).
-
-## Standalone usage
-
-It is also possible to use this library without the Laravel framework. You won't have the Laravel facades available, so make sure to use `Intervention\Validation\Validator` for your calls.
-
-```php
-use Intervention\Validation\Validator;
-use Intervention\Validation\Rules\Creditcard;
-use Intervention\Validation\Exceptions\ValidationException;
-
-// use static factory method to create laravel validator
-$validator = Validator::make($request->all(), [
-    'ccnumber' => new Creditcard(),
-    'iban' => ['required', 'iban'],
-    'color' => 'required|hexadecimalcolor:3',
-]);
-
-// validate single values by calling static methods
-$result = Validator::isHexadecimalcolor('foobar'); // false
-$result = Validator::isHexadecimalcolor('#ccc'); // true
-$result = Validator::isBic('foo'); // false
-
-// assert single values
-try {
-    Validator::assertHexadecimalcolor('foobar');
-} catch (ValidationException $e) {
-    $message = $e->getMessage();
-}
-```
+Or add your custom messages directly to the validator like [described in the docs](https://laravel.com/docs/10.x/validation#manual-customizing-the-error-messages).
 
 ## Available Rules
 
@@ -144,7 +119,7 @@ Optional integer length to check only for certain types (GTIN-8, GTIN-12, GTIN-1
 
 The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
 
-    public Intervention\Validation\Rules\Hexadecimalcolor::__construct(?int $length = null)
+    public Intervention\Validation\Rules\Hexadecimalcolor::__construct(array $lengths = [3, 4, 6, 8])
 
 #### Parameters
 
@@ -174,7 +149,7 @@ The field under validation must be a [International Mobile Equipment Identity](h
 
 The field under validation must be a valid [International Standard Book Number](https://en.wikipedia.org/wiki/International_Standard_Book_Number) (ISBN).
 
-    public Intervention\Validation\Rules\Isbn::__construct(?int $length = null)
+    public Intervention\Validation\Rules\Isbn::__construct(array $lengths = [10, 13])
 
 #### Parameters
 
