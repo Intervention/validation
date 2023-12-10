@@ -8,40 +8,23 @@ use Intervention\Validation\Exceptions\NotExistingRuleException;
 class CallDelegator
 {
     /**
-     * Name of called method
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * Arguments of called method
-     *
-     * @var array
-     */
-    protected $arguments;
-
-    /**
      * Create new instance
      *
      * @param string $name
      * @param array  $arguments
      */
-    public function __construct(string $name, array $arguments)
-    {
-        $this->name = $name;
-        $this->arguments = $arguments;
+    public function __construct(
+        protected string $name,
+        protected array $arguments,
+    ) {
     }
 
     protected function getAction(): string
     {
-        switch ($this->parse('action')) {
-            case 'assert':
-                return 'assert';
-
-            default:
-                return 'validate';
-        }
+        return match ($this->parse('action')) {
+            'assert' => 'assert',
+            default => 'validate',
+        };
     }
 
     public function isAssertion(): bool
@@ -54,7 +37,7 @@ class CallDelegator
      *
      * @return mixed
      */
-    public function getValue()
+    public function getValue(): mixed
     {
         return isset($this->arguments[0]) ? $this->arguments[0] : null;
     }
@@ -93,7 +76,7 @@ class CallDelegator
     {
         $classname = sprintf('Intervention\Validation\Rules\%s', $this->parse('rule'));
 
-        if (! class_exists($classname)) {
+        if (!class_exists($classname)) {
             throw new NotExistingRuleException(
                 "Rule does not exist (" . $classname . ")"
             );
