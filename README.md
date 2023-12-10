@@ -1,6 +1,8 @@
 # Intervention Validation
 
-Intervention Validation is an extension library for Laravel's own validation system. The package adds rules to validate data like IBAN, BIC, ISBN, creditcard numbers and more.
+Intervention Validation is an extension library for Laravel's own validation
+system. The package adds rules to validate data like IBAN, BIC, ISBN,
+creditcard numbers and more.
 
 [![Latest Version](https://img.shields.io/packagist/v/intervention/validation.svg)](https://packagist.org/packages/intervention/validation)
 ![build](https://github.com/Intervention/validation/workflows/build/badge.svg)
