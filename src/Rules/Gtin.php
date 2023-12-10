@@ -4,17 +4,9 @@ namespace Intervention\Validation\Rules;
 
 class Gtin extends Ean
 {
-    /**
-     * Valid lengths
-     *
-     * @var array
-     */
-    protected $lengths = [
-        8,
-        12,
-        13,
-        14,
-    ];
+    public function __construct(protected array $lengths = [8, 12, 13, 14])
+    {
+    }
 
     /**
      * Determine if the validation rule passes.

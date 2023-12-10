@@ -21,7 +21,7 @@ class IsbnTest extends TestCase
     */
     public function testValidationShort($result, $value)
     {
-        $valid = (new Isbn(10))->isValid($value);
+        $valid = (new Isbn([10]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -30,7 +30,7 @@ class IsbnTest extends TestCase
     */
     public function testValidationLong($result, $value)
     {
-        $valid = (new Isbn(13))->isValid($value);
+        $valid = (new Isbn([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 

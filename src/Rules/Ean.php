@@ -7,26 +7,13 @@ use Intervention\Validation\AbstractRule;
 class Ean extends AbstractRule
 {
     /**
-     * Valid lengths
-     *
-     * @var array
-     */
-    protected $lengths = [
-        8,
-        13,
-    ];
-
-    /**
      * Create a new rule instance.
      *
-     * @param  int  $length
+     * @param  array  $lengths
      * @return void
      */
-    public function __construct(?int $length = null)
+    public function __construct(protected array $lengths = [8, 13])
     {
-        if (is_int($length)) {
-            $this->lengths = [$length];
-        }
     }
 
     /**

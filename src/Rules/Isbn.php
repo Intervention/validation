@@ -4,15 +4,9 @@ namespace Intervention\Validation\Rules;
 
 class Isbn extends Ean
 {
-    /**
-     * Valid lengths
-     *
-     * @var array
-     */
-    protected $lengths = [
-        10,
-        13,
-    ];
+    public function __construct(protected array $lengths = [10, 13])
+    {
+    }
 
     /**
      * Determine if the validation rule passes.

@@ -8,13 +8,6 @@ use Intervention\Validation\AbstractRule;
 class Postalcode extends AbstractRule implements DataAwareRule
 {
     /**
-     * Country code to match postal code
-     *
-     * @var string
-     */
-    protected $countrycode;
-
-    /**
      * Reference key to get locale from data
      *
      * @var ?string
@@ -33,9 +26,8 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @param string $countrycode
      */
-    public function __construct(string $countrycode)
+    public function __construct(protected string $countrycode)
     {
-        $this->countrycode = $countrycode;
     }
 
     /**

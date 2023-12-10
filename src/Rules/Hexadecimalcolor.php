@@ -7,28 +7,13 @@ use Intervention\Validation\AbstractRegexRule;
 class Hexadecimalcolor extends AbstractRegexRule
 {
     /**
-     * Allowed lengths of hexcolor
-     *
-     * @var array
-     */
-    protected $lengths = [
-        3,
-        4,
-        6,
-        8,
-    ];
-
-    /**
      * Create a new rule instance.
      *
-     * @param  int  $length
+     * @param  array  $lengths
      * @return void
      */
-    public function __construct(?int $length = null)
+    public function __construct(protected array $lengths = [3, 4, 6, 8])
     {
-        if (is_int($length)) {
-            $this->lengths = [$length];
-        }
     }
 
     protected function pattern(): string

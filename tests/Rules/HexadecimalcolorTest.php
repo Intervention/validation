@@ -21,7 +21,7 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationShort($result, $value)
     {
-        $valid = (new Hexadecimalcolor(3))->isValid($value);
+        $valid = (new Hexadecimalcolor([3]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -30,7 +30,7 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationLongAlpha($result, $value)
     {
-        $valid = (new Hexadecimalcolor(8))->isValid($value);
+        $valid = (new Hexadecimalcolor([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -39,7 +39,7 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationShortAlpha($result, $value)
     {
-        $valid = (new Hexadecimalcolor(4))->isValid($value);
+        $valid = (new Hexadecimalcolor([4]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -48,7 +48,7 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationLong($result, $value)
     {
-        $valid = (new Hexadecimalcolor(6))->isValid($value);
+        $valid = (new Hexadecimalcolor([6]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 

@@ -21,7 +21,7 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin8($result, $value)
     {
-        $valid = (new Gtin(8))->isValid($value);
+        $valid = (new Gtin([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -30,7 +30,7 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin12($result, $value)
     {
-        $valid = (new Gtin(12))->isValid($value);
+        $valid = (new Gtin([12]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -39,7 +39,7 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin13($result, $value)
     {
-        $valid = (new Gtin(13))->isValid($value);
+        $valid = (new Gtin([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -48,7 +48,7 @@ class GtinTest extends TestCase
     */
     public function testValidationGtin14($result, $value)
     {
-        $valid = (new Gtin(14))->isValid($value);
+        $valid = (new Gtin([14]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 

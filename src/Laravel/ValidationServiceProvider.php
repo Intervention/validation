@@ -5,7 +5,6 @@ namespace Intervention\Validation\Laravel;
 use Illuminate\Support\ServiceProvider;
 use Intervention\Validation\Exceptions\NotExistingRuleException;
 use Intervention\Validation\Rule;
-use Intervention\Validation\Validator;
 
 class ValidationServiceProvider extends ServiceProvider
 {
@@ -51,7 +50,7 @@ class ValidationServiceProvider extends ServiceProvider
             throw new NotExistingRuleException("Rule " . $rulename . " does not exist.");
         }
 
-        return new $classname(...$parameters);
+        return new $classname($parameters);
     }
 
     /**

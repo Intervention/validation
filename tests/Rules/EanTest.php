@@ -21,7 +21,7 @@ class EanTest extends TestCase
     */
     public function testValidationEan13($result, $value)
     {
-        $valid = (new Ean(13))->isValid($value);
+        $valid = (new Ean([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
@@ -30,7 +30,7 @@ class EanTest extends TestCase
     */
     public function testValidationEan8($result, $value)
     {
-        $valid = (new Ean(8))->isValid($value);
+        $valid = (new Ean([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
