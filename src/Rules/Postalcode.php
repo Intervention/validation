@@ -24,7 +24,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Create a new rule instance with allowed countrycodes
      *
-     * @param string $countrycode
+     * @param array $countrycodes
      */
     public function __construct(protected array $countrycodes = [])
     {
@@ -76,7 +76,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Return regex patterns for allowed country codes
      *
-     * @param  string $var
      * @return array
      */
     protected function getPatterns(): array
