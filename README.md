@@ -203,7 +203,7 @@ Checks for a valid [Mime Type](https://en.wikipedia.org/wiki/Media_type) (Media 
 
 The field under validation must be a [postal code](https://en.wikipedia.org/wiki/Postal_code) of the given country.
 
-    public Intervention\Validation\Rules\Postalcode::__construct(string $countrycode)
+    public Intervention\Validation\Rules\Postalcode::__construct(array $countrycodes)
 
 #### Parameters
 
@@ -213,23 +213,13 @@ Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
 
 ### Postal Code (static instantiation)
 
-    public static Intervention\Validation\Rules\Postalcode::countrycode(string $countrycode): Postalcode
+    public static Intervention\Validation\Rules\Postalcode::countrycode(array $countrycodes): Postalcode
 
 #### Parameters
 
 **countrycode**
 
 Country code in [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) format.
-
-### Postal Code (static instantiation with callback)
-
-    public static Intervention\Validation\Rules\Postalcode::resolve(callable $callback): Postalcode
-
-#### Parameters
-
-**callback**
-
-Callback to resolve [ISO-639-1](https://en.wikipedia.org/wiki/ISO_639-1) country code from other source.
 
 ### Postal Code (static instantiation with reference)
 

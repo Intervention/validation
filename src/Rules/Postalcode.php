@@ -43,6 +43,13 @@ class Postalcode extends AbstractRule implements DataAwareRule
         return $this;
     }
 
+    /**
+     * Static constructor method to create data aware validation rule which
+     * reads the allowed country code by reference.
+     *
+     * @param string $reference
+     * @return Postalcode
+     */
     public static function reference(string $reference): self
     {
         $rule = new self();
@@ -51,9 +58,15 @@ class Postalcode extends AbstractRule implements DataAwareRule
         return $rule;
     }
 
-    public static function countrycode(string $countrycode): self
+    /**
+     * Static constructor method
+     *
+     * @param array $countrycodes
+     * @return Postalcode
+     */
+    public static function countrycode(array $countrycodes): self
     {
-        return new self([$countrycode]);
+        return new self($countrycodes);
     }
 
     /**
