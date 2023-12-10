@@ -7,6 +7,16 @@ use Intervention\Validation\AbstractRule;
 class DataUri extends AbstractRule
 {
     /**
+     * Create new instance with allowed media types or null for all valid media types
+     *
+     * @param null|array $media_types
+     * @return void
+     */
+    public function __construct(protected ?array $media_types = null)
+    {
+    }
+
+    /**
      * Determine if the validation rule passes.
      *
      * @param  mixed  $value
@@ -15,11 +25,19 @@ class DataUri extends AbstractRule
     public function isValid(mixed $value): bool
     {
         $info = $this->dataUriInfo($value);
-        if (! $info->isValid()) {
+        if (!$info->isValid()) {
             return false;
         }
 
         if ($info->hasMediaType() && !$this->isValidMimeType($info->mediaType())) {
+            return false;
+        }
+
+        if ($this->expectsMediaType() && !$info->hasMediaType()) {
+            return false;
+        }
+
+        if ($this->expectsMediaType() && !$this->isAllowedMimeType($info->mediaType())) {
             return false;
         }
 
@@ -30,9 +48,50 @@ class DataUri extends AbstractRule
         return true;
     }
 
+    /**
+     * Determine if the rule expects a set mime type in the data url
+     *
+     * @return bool
+     */
+    protected function expectsMediaType(): bool
+    {
+        return is_array($this->media_types);
+    }
+
+    /**
+     * Check for validity of given mime type
+     *
+     * @param mixed $value
+     * @return bool
+     */
     protected function isValidMimeType(mixed $value): bool
     {
         return (new MimeType())->isValid($value);
+    }
+
+    /**
+     * Check if give mime type is allowed
+     *
+     * @param mixed $type
+     * @return bool
+     */
+    protected function isAllowedMimeType(mixed $type): bool
+    {
+        if (is_null($this->media_types)) {
+            return true;
+        }
+
+        if (count($this->media_types) === 0) {
+            return false;
+        }
+
+        foreach ($this->media_types as $allowed) {
+            if ($type === $allowed) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function isValidBase64EncodedValue(mixed $value): bool
@@ -50,7 +109,7 @@ class DataUri extends AbstractRule
         $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
         $result = preg_match($pattern, $value, $matches);
 
-        return new class ($matches, $result)
+        return new class($matches, $result)
         {
             private $matches;
             private $result;

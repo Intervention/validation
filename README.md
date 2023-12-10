@@ -83,7 +83,7 @@ The field under validation must be a valid [creditcard number](https://en.wikipe
 
 The field under validation must be a valid [Data URI](https://en.wikipedia.org/wiki/Data_URI_scheme).
 
-    public Intervention\Validation\Rules\DataUri::__construct()
+    public Intervention\Validation\Rules\DataUri::__construct(?array $media_types = null)
 
 ### Domain name 
 
