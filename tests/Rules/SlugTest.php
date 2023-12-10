@@ -3,23 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Slug;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class SlugTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Slug()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['slug']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Slug())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

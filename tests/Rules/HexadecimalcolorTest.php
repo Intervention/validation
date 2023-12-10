@@ -3,23 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Hexadecimalcolor;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class HexadecimalcolorTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexadecimalcolor()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['hexadecimalcolor']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Hexadecimalcolor())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -27,11 +21,8 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationShort($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexadecimalcolor(3)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['hexadecimalcolor:3']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Hexadecimalcolor(3))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -39,11 +30,8 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationLongAlpha($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexadecimalcolor(8)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['hexadecimalcolor:8']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Hexadecimalcolor(8))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -51,11 +39,8 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationShortAlpha($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexadecimalcolor(4)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['hexadecimalcolor:4']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Hexadecimalcolor(4))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -63,12 +48,10 @@ class HexadecimalcolorTest extends TestCase
     */
     public function testValidationLong($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Hexadecimalcolor(6)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['hexadecimalcolor:6']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Hexadecimalcolor(6))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
+
     public function dataProvider()
     {
         return [

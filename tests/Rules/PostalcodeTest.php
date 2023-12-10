@@ -3,44 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Postalcode;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class PostalcodeTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidationConstructor($result, $countrycode, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Postalcode($countrycode)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['postalcode:' . $countrycode]]);
-        $this->assertEquals($result, $validator->passes());
-    }
-
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidationStatic($result, $countrycode, $value)
-    {
-        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::countrycode($countrycode)]]);
-        $this->assertEquals($result, $validator->passes());
-    }
-
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidationStaticCallback($result, $countrycode, $value)
-    {
-
-        $validator = $this->getValidator(['value' => $value], ['value' => [Postalcode::resolve(function () use ($countrycode) {
-            return $countrycode;
-        })]]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Postalcode($countrycode))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

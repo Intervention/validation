@@ -3,23 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Jwt;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class JwtTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Jwt()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['jwt']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Jwt())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

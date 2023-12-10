@@ -3,24 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Bic;
-use Intervention\Validation\Traits\CanValidate;
-use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class BicTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Bic()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['bic']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Bic())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

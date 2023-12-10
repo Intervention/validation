@@ -2,10 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Ulid extends AbstractRegexRule implements ValidationRule
+class Ulid extends AbstractRegexRule
 {
     protected function pattern(): string
     {
@@ -15,13 +14,12 @@ class Ulid extends AbstractRegexRule implements ValidationRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, mixed $value): bool
+    public function isValid(mixed $value): bool
     {
-        if (! parent::passes($attribute, $value)) {
+        if (! parent::isValid($value)) {
             return false;
         }
 

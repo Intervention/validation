@@ -3,23 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Domainname;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class DomainnameTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Domainname()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['domainname']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Domainname())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

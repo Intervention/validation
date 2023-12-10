@@ -2,10 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Slug extends AbstractRegexRule implements ValidationRule
+class Slug extends AbstractRegexRule
 {
     protected function pattern(): string
     {

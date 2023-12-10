@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-
-class Isin extends Luhn implements ValidationRule
+class Isin extends Luhn
 {
     /**
      * Chars to calculate checksum
@@ -43,13 +41,12 @@ class Isin extends Luhn implements ValidationRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, mixed $value): bool
+    public function isValid(mixed $value): bool
     {
-        return parent::passes($attribute, $this->normalize($value));
+        return parent::isValid($this->normalize($value));
     }
 
     /**

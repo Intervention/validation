@@ -2,9 +2,7 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
-
-class Gtin extends Ean implements ValidationRule
+class Gtin extends Ean
 {
     /**
      * Valid lengths
@@ -28,11 +26,10 @@ class Gtin extends Ean implements ValidationRule
      * - GTIN-14 will be checked as EAN-13 after cropping first char
      * - GTIN-12 will be checked as EAN-13 after adding leading zero
      *
-     * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, mixed $value): bool
+    public function isValid(mixed $value): bool
     {
         if (!is_numeric($value)) {
             return false;
@@ -45,7 +42,7 @@ class Gtin extends Ean implements ValidationRule
         switch (strlen($value)) {
             case 8:
             case 13:
-                return parent::passes($attribute, $value);
+                return parent::isValid($value);
 
             case 14:
                 return parent::checksumMatches(substr($value, 1));

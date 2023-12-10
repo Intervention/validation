@@ -4,15 +4,11 @@ namespace Intervention\Validation;
 
 use ReflectionClass;
 use Closure;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Translation\FileLoader;
-use Illuminate\Translation\Translator;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-abstract class AbstractRule
+abstract class AbstractRule implements Rule, ValidationRule
 {
-    use Traits\HasCurrentLocale;
-
-    abstract public function passes(string $attribute, mixed $value): bool;
+    abstract public function isValid(mixed $value): bool;
 
     /**
      * Laravel Framwork validation method
@@ -24,7 +20,7 @@ abstract class AbstractRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!$this->passes($attribute, $value)) {
+        if (!$this->isValid($value)) {
             $fail($this->message())->translate();
         }
     }
@@ -56,16 +52,8 @@ abstract class AbstractRule
             if ($message === $key) {
                 return trans('validation::' . $key);
             }
-
-            return $message;
         }
 
-        return $this->translatorInstance()->get($key);
-    }
-
-    protected function translatorInstance(): Translator
-    {
-        $loader = new FileLoader(new Filesystem(), __DIR__ . '/lang');
-        return new Translator($loader, self::getCurrentLocale());
+        return $key;
     }
 }

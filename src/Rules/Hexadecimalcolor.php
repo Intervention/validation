@@ -2,10 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Hexadecimalcolor extends AbstractRegexRule implements ValidationRule
+class Hexadecimalcolor extends AbstractRegexRule
 {
     /**
      * Allowed lengths of hexcolor
@@ -40,17 +39,16 @@ class Hexadecimalcolor extends AbstractRegexRule implements ValidationRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, mixed $value): bool
+    public function isValid(mixed $value): bool
     {
         if (!$this->hasAllowedLength($value)) {
             return false;
         }
 
-        return parent::passes($attribute, $value);
+        return parent::isValid($value);
     }
 
     /**

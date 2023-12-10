@@ -2,10 +2,9 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRegexRule;
 
-class Snakecase extends AbstractRegexRule implements ValidationRule
+class Snakecase extends AbstractRegexRule
 {
     protected function pattern(): string
     {

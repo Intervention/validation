@@ -3,24 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Creditcard;
-use Intervention\Validation\Traits\CanValidate;
-use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class CreditcardTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Creditcard()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['creditcard']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Creditcard())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

@@ -2,22 +2,17 @@
 
 namespace Intervention\Validation\Rules;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Intervention\Validation\AbstractRule;
-use Intervention\Validation\Traits\CanValidate;
 
-class DataUri extends AbstractRule implements ValidationRule
+class DataUri extends AbstractRule
 {
-    use CanValidate;
-
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, mixed $value): bool
+    public function isValid(mixed $value): bool
     {
         $info = $this->dataUriInfo($value);
         if (! $info->isValid()) {
@@ -35,14 +30,14 @@ class DataUri extends AbstractRule implements ValidationRule
         return true;
     }
 
-    protected function isValidMimeType($value): bool
+    protected function isValidMimeType(mixed $value): bool
     {
-        return $this->getValidator(['value' => $value], ['value' => ['required', new MimeType()]])->passes();
+        return (new MimeType())->isValid($value);
     }
 
-    protected function isValidBase64EncodedValue($value): bool
+    protected function isValidBase64EncodedValue(mixed $value): bool
     {
-        return $this->getValidator(['value' => $value], ['value' => ['required', new Base64()]])->passes();
+        return (new Base64())->isValid($value);
     }
 
     /**

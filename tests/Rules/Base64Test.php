@@ -3,24 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Base64;
-use Intervention\Validation\Traits\CanValidate;
-use Intervention\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 
 class Base64Test extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Base64()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['base64']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Base64())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()

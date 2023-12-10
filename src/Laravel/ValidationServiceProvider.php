@@ -3,6 +3,8 @@
 namespace Intervention\Validation\Laravel;
 
 use Illuminate\Support\ServiceProvider;
+use Intervention\Validation\Exceptions\NotExistingRuleException;
+use Intervention\Validation\Rule;
 use Intervention\Validation\Validator;
 
 class ValidationServiceProvider extends ServiceProvider
@@ -25,15 +27,31 @@ class ValidationServiceProvider extends ServiceProvider
             $this->app['validator']->extend(
                 $rulename,
                 function ($attribute, $value, $parameters, $validator) use ($rulename) {
-                    return forward_static_call(
-                        [Validator::class, 'is' . ucfirst($rulename)],
-                        $value,
-                        data_get($parameters, 0)
-                    );
+                    return $this->getInterventionRule($rulename, $parameters)
+                        ->isValid($value);
                 },
                 $this->getErrorMessage($rulename)
             );
         }
+    }
+
+    /**
+     * Return rule object for given shortname
+     *
+     * @param string $rulename
+     * @param array $parameters
+     * @return Rule
+     * @throws NotExistingRuleException
+     */
+    private function getInterventionRule(string $rulename, array $parameters): Rule
+    {
+        $classname = sprintf("Intervention\Validation\Rules\%s", ucfirst($rulename));
+
+        if (!class_exists($classname)) {
+            throw new NotExistingRuleException("Rule " . $rulename . " does not exist.");
+        }
+
+        return new $classname(...$parameters);
     }
 
     /**

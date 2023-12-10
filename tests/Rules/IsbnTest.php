@@ -3,23 +3,17 @@
 namespace Intervention\Validation\Test\Rules;
 
 use Intervention\Validation\Rules\Isbn;
-use Intervention\Validation\Traits\CanValidate;
 use PHPUnit\Framework\TestCase;
 
 class IsbnTest extends TestCase
 {
-    use CanValidate;
-
     /**
      * @dataProvider dataProvider
     */
     public function testValidation($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn()]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Isbn())->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -27,11 +21,8 @@ class IsbnTest extends TestCase
     */
     public function testValidationShort($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn(10)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn:10']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Isbn(10))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     /**
@@ -39,11 +30,8 @@ class IsbnTest extends TestCase
     */
     public function testValidationLong($result, $value)
     {
-        $validator = $this->getValidator(['value' => $value], ['value' => [new Isbn(13)]]);
-        $this->assertEquals($result, $validator->passes());
-
-        $validator = $this->getValidator(['value' => $value], ['value' => ['isbn:13']]);
-        $this->assertEquals($result, $validator->passes());
+        $valid = (new Isbn(13))->isValid($value);
+        $this->assertEquals($result, $valid);
     }
 
     public function dataProvider()
