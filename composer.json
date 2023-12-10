@@ -28,6 +28,7 @@
     ],
     "require": {
         "php": "^8.1",
+        "ext-mbstring": "*",
         "illuminate/validation": "~10"
     },
     "require-dev": {
