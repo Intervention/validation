@@ -5,7 +5,7 @@ system. The package adds rules to validate data like IBAN, BIC, ISBN,
 creditcard numbers and more.
 
 [![Latest Version](https://img.shields.io/packagist/v/intervention/validation.svg)](https://packagist.org/packages/intervention/validation)
-![build](https://github.com/Intervention/validation/workflows/build/badge.svg)
+[![Tests](https://github.com/Intervention/validation/actions/workflows/build.yml/badge.svg)](https://github.com/Intervention/validation/actions/workflows/build.yml)
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/validation.svg)](https://packagist.org/packages/intervention/validation/stats)
 
 ## Installation
