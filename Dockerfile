@@ -7,6 +7,4 @@ RUN apt update \
             intl \
         && apt-get clean
 
-# install composer
-#
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
