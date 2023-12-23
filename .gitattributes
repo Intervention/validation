@@ -1,0 +1,10 @@
+# https://php.watch/articles/composer-gitattributes
+
+# Exclude build/test files from archive
+/.github export-ignore
+/tests export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+Dockerfile export-ignore
+docker-compose.yml export-ignore
+phpunit.xml export-ignore
