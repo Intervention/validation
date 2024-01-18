@@ -106,10 +106,11 @@ class DataUri extends AbstractRule
      */
     protected function dataUriInfo($value): object
     {
-        $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
+        $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>" .
+            "(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
         $result = preg_match($pattern, $value, $matches);
 
-        return new class($matches, $result)
+        return new class ($matches, $result)
         {
             private $matches;
             private $result;

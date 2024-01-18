@@ -9,7 +9,7 @@ class DataUriTest extends TestCase
 {
     /**
      * @dataProvider dataProvider
-    */
+     */
     public function testValidation($result, $value)
     {
         $valid = (new DataUri())->isValid($value);
@@ -18,7 +18,7 @@ class DataUriTest extends TestCase
 
     /**
      * @dataProvider dataProviderImages
-    */
+     */
     public function testValidationWithMimeTypes($result, $value)
     {
         $valid = (new DataUri(['image/jpeg', 'image/png']))->isValid($value);
@@ -32,7 +32,8 @@ class DataUriTest extends TestCase
             [true, 'data:,foo'],
             [true, 'data:;base64,Zm9v'],
             [true, 'data:,foo%20bar'],
-            [true, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='],
+            [true, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH' .
+                'ElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='],
             [true, 'data:text/vnd-example+xyz;foo=bar;base64,R0lGODdh'],
             [true, 'data:text/vnd-example+xyz;foo=bar;bar-baz=false;base64,R0lGODdh'],
             [true, 'data:text/plain;charset=UTF-8;page=21,the%20data:1234,5678'],
@@ -61,7 +62,8 @@ class DataUriTest extends TestCase
             [false, 'data:,foo'],
             [false, 'data:;base64,Zm9v'],
             [false, 'data:,foo%20bar'],
-            [true, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='],
+            [true, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH' .
+                'ElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='],
             [false, 'data:text/vnd-example+xyz;foo=bar;base64,R0lGODdh'],
             [false, 'data:text/vnd-example+xyz;foo=bar;bar-baz=false;base64,R0lGODdh'],
             [false, 'data:text/plain;charset=UTF-8;page=21,the%20data:1234,5678'],

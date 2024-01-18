@@ -17,7 +17,8 @@ return [
     'semver' => 'Der Wert :attribute ist keine Versionsnummer im Sinne der Semantic Versioning Spezifikation.',
     'luhn' => 'Der Wert :attribute kann nicht nach dem Luhn-Algorithmus verifiziert werden.',
     'base64' => 'Der Wert :attribute ist nicht nach dem Base64 Verfahren kodiert.',
-    'issn' => 'Der Wert :attribute ist keine gültige internationale Standardnummer für fortlaufende Sammelwerke (ISSN).',
+    'issn' => 'Der Wert :attribute ist keine gültige internationale ' .
+        'Standardnummer für fortlaufende Sammelwerke (ISSN).',
     'lowercase' => 'Der Inhalt :attribute darf nur aus Kleinbuchstaben bestehen.',
     'uppercase' => 'Der Inhalt :attribute darf nur aus Großbuchstaben bestehen.',
     'titlecase' => 'Alle Wörter aus :attribute müssen mit Großbuchstaben beginnen.',

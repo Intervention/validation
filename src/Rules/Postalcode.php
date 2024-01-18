@@ -262,7 +262,8 @@ class Postalcode extends AbstractRule implements DataAwareRule
                 return "/^[0-9]{3}([0-9]{2})?$/";
 
             case 'gb':
-                return "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i";
+                return "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])" .
+                    "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i";
         }
 
         return null;
