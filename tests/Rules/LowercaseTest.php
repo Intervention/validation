@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Validation\Test\Rules;
+namespace Intervention\Validation\Tests\Rules;
 
 use Intervention\Validation\Rules\Lowercase;
 use PHPUnit\Framework\TestCase;

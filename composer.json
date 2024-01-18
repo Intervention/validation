@@ -43,7 +43,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Intervention\\Validation\\Test\\": "tests"
+            "Intervention\\Validation\\Tests\\": "tests"
         }
     },
     "extra": {
