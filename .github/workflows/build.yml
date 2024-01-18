@@ -28,3 +28,6 @@ jobs:
 
       - name: Run phpstan
         run: vendor/bin/phpstan analyze --no-progress --autoload-file=tests/phpstan/bootstrap.php --level=5 src/
+
+      - name: Validate coding standards
+        run: vendor/bin/phpcs
