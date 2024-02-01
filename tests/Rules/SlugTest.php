@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Tests\Rules;
 
 use Intervention\Validation\Rules\Slug;

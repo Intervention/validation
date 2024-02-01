@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRule;
@@ -9,13 +11,13 @@ class Titlecase extends AbstractRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
     {
         foreach ($this->getWords($value) as $word) {
-            if (! $this->isValidWord($word)) {
+            if (!$this->isValidWord($word)) {
                 return false;
             }
         }
@@ -36,8 +38,8 @@ class Titlecase extends AbstractRule
     /**
      * Determine if given word starts with upper case letter or number
      *
-     * @param  string  $word
-     * @return boolean
+     * @param string $word
+     * @return bool
      */
     private function isValidWord(string $word): bool
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRule;
@@ -9,7 +11,7 @@ class Domainname extends AbstractRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -24,13 +26,13 @@ class Domainname extends AbstractRule
 
         // each label must be valid
         foreach ($labels as $label) {
-            if (! $this->isValidLabel($label)) {
+            if (!$this->isValidLabel($label)) {
                 return false;
             }
         }
 
         // tld must be valid
-        if (! $this->isValidTld($tld)) {
+        if (!$this->isValidTld($tld)) {
             return false;
         }
 
@@ -50,8 +52,8 @@ class Domainname extends AbstractRule
     /**
      * Determine if given string is valid idn label
      *
-     * @param  string  $value
-     * @return boolean
+     * @param string $value
+     * @return bool
      */
     private function isValidLabel(string $value): bool
     {
@@ -63,8 +65,8 @@ class Domainname extends AbstractRule
      *
      * Begins with "xn--" and is resolvable by PunyCode algorithm
      *
-     * @param  string  $value
-     * @return boolean
+     * @param string $value
+     * @return bool
      */
     private function isValidALabel(string $value): bool
     {
@@ -74,8 +76,8 @@ class Domainname extends AbstractRule
     /**
      * Determine if given value is valud NR-LDH label
      *
-     * @param  string  $value
-     * @return boolean
+     * @param string $value
+     * @return bool
      */
     private function isValidNrLdhLabel(string $value): bool
     {
@@ -85,8 +87,8 @@ class Domainname extends AbstractRule
     /**
      * Determine if given value is valid TLD
      *
-     * @param  string  $value
-     * @return boolean
+     * @param string $value
+     * @return bool
      */
     private function isValidTld(string $value): bool
     {
@@ -100,7 +102,7 @@ class Domainname extends AbstractRule
     /**
      * Wrapper method for idn_to_utf8 call
      *
-     * @param  string $domain
+     * @param string $domain
      * @return string
      */
     private function idnToUtf8(string $domain): string
@@ -111,11 +113,13 @@ class Domainname extends AbstractRule
     /**
      * Wrapper method for idn_to_ascii call
      *
-     * @param  string $domain
+     * @param string $domain
      * @return string
      */
     private function idnToAscii(string $domain): string
     {
-        return idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        $domain = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+
+        return $domain ? $domain : '';
     }
 }

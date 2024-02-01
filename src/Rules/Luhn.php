@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRule;
@@ -9,7 +11,7 @@ class Luhn extends AbstractRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -20,7 +22,7 @@ class Luhn extends AbstractRule
     /**
      * Determine if the given checksum is valid
      *
-     * @param  mixed $checksum
+     * @param mixed $checksum
      * @return bool
      */
     protected function checksumIsValid($checksum): bool
@@ -31,13 +33,13 @@ class Luhn extends AbstractRule
     /**
      * Calculate checksum for the given value
      *
-     * @param  mixed $value
+     * @param mixed $value
      * @return int
      */
     protected function getChecksum($value): int
     {
         $checksum = 0;
-        $reverse = strrev($value);
+        $reverse = strrev(strval($value));
 
         foreach (str_split($reverse) as $num => $digit) {
             if (is_numeric($digit)) {

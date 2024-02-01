@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRule;
@@ -122,7 +124,7 @@ class Iban extends AbstractRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -137,7 +139,7 @@ class Iban extends AbstractRule
     /**
      * Calculate checksum of iban
      *
-     * @param  string $iban
+     * @param string $iban
      * @return int
      */
     private function getChecksum($iban)
@@ -163,8 +165,8 @@ class Iban extends AbstractRule
     /**
      * Returns the designated length of IBAN for given IBAN
      *
-     * @param  string $iban
-     * @return integer
+     * @param string $iban
+     * @return int
      */
     private function getDesignatedIbanLength($iban)
     {
@@ -176,8 +178,8 @@ class Iban extends AbstractRule
     /**
      * Determine if given iban has the proper length
      *
-     * @param  string  $iban
-     * @return boolean
+     * @param string $iban
+     * @return bool
      */
     private function hasValidLength($iban)
     {

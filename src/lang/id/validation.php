@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => ':attribute harus berupa International Securities Identification Number (ISIN) yang valid.',
     'iban' => ':attribute harus berupa International Bank Account Number (IBAN) yang valid.',

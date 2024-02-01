@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => 'Le champ :attribute doit être un code ISIN valide.',
     'iban' => 'Le champ :attribute doit être un code IBAN valide.',

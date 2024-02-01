@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => ':attribute debe ser un número ISIN válido',
     'iban' => ':attribute debe ser un número IBAN válido.',

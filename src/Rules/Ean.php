@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRule;
@@ -9,7 +11,7 @@ class Ean extends AbstractRule
     /**
      * Create a new rule instance.
      *
-     * @param  array  $lengths
+     * @param array $lengths
      * @return void
      */
     public function __construct(protected array $lengths = [8, 13])
@@ -19,7 +21,7 @@ class Ean extends AbstractRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -30,7 +32,7 @@ class Ean extends AbstractRule
     /**
      * Determine if the current value has the lenghts of EAN-8 or EAN-13
      *
-     * @return boolean
+     * @return bool
      */
     public function hasAllowedLength($value): bool
     {
@@ -61,7 +63,7 @@ class Ean extends AbstractRule
     /**
      * Calculate modulo checksum of given value
      *
-     * @param  mixed $value
+     * @param mixed $value
      * @return int
      */
     protected function calculateChecksum($value): int

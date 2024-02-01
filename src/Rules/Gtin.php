@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 class Gtin extends Ean
@@ -18,7 +20,7 @@ class Gtin extends Ean
      * - GTIN-14 will be checked as EAN-13 after cropping first char
      * - GTIN-12 will be checked as EAN-13 after adding leading zero
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => 'The :attribute must be a valid International Securities Identification Number (ISIN).',
     'iban' => 'The :attribute must be a valid International Bank Account Number (IBAN).',

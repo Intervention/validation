@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
@@ -9,7 +11,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     /**
      * Create a new rule instance.
      *
-     * @param  array  $lengths
+     * @param array $lengths
      * @return void
      */
     public function __construct(protected array $lengths = [3, 4, 6, 8])
@@ -24,7 +26,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -39,7 +41,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     /**
      * Determine if the current value has correct lenght
      *
-     * @return boolean
+     * @return bool
      */
     public function hasAllowedLength($value): bool
     {

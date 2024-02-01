@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 class Creditcard extends Luhn
@@ -7,7 +9,7 @@ class Creditcard extends Luhn
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -18,7 +20,7 @@ class Creditcard extends Luhn
     /**
      * Check if the given value has the proper length for creditcards
      *
-     * @return boolean
+     * @return bool
      */
     private function hasValidLength($value): bool
     {

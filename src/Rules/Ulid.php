@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Intervention\Validation\AbstractRegexRule;
@@ -14,12 +16,12 @@ class Ulid extends AbstractRegexRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
     {
-        if (! parent::isValid($value)) {
+        if (!parent::isValid($value)) {
             return false;
         }
 

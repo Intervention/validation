@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 class Isin extends Luhn
@@ -41,7 +43,7 @@ class Isin extends Luhn
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool
@@ -62,7 +64,7 @@ class Isin extends Luhn
     /**
      * Replace chars in given value with corresponding numbers
      *
-     * @param  string $value
+     * @param string $value
      * @return string
      */
     private function replaceChars($value)

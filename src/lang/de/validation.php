@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => 'Der Wert :attribute ist keine International Securities Identification Number (ISIN).',
     'iban' => 'Der Wert :attribute ist keine International Bank Account Number (IBAN).',

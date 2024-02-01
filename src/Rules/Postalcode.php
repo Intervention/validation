@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Rules;
 
 use Illuminate\Contracts\Validation\DataAwareRule;
@@ -72,7 +74,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  mixed  $value
+     * @param mixed $value
      * @return bool
      */
     public function isValid(mixed $value): bool

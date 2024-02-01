@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => ':attribute tulee olla kelvollinen International Securities Identification Number (ISIN).',
     'iban' => ':attribute tulee olla kelvollinen International Bank Account Number (IBAN).',

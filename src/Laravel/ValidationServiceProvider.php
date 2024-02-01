@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Intervention\Validation\Laravel;
 
 use Illuminate\Support\ServiceProvider;
@@ -68,7 +70,7 @@ class ValidationServiceProvider extends ServiceProvider
     /**
      * Return error message of given rule shortname
      *
-     * @param  string $rulename
+     * @param string $rulename
      * @return string
      */
     protected function getErrorMessage(string $rulename): string

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'isin' => '.(ISIN) دولي صالح للأوراق المالية :attribute يجب أن يكون رقم تعريف',
     'iban' => '.(IBAN) رقم حساب مصرفي دولي صالح :attribute يجب أن يكون',
