@@ -11,20 +11,20 @@ use PHPUnit\Framework\TestCase;
 class DataUriTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new DataUri())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderImages')]
-    public function testValidationWithMimeTypes($result, $value)
+    public function testValidationWithMimeTypes($result, $value): void
     {
         $valid = (new DataUri(['image/jpeg', 'image/png']))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [
@@ -123,7 +123,7 @@ class DataUriTest extends TestCase
         ];
     }
 
-    public static function dataProviderImages()
+    public static function dataProviderImages(): array
     {
         return [
             [

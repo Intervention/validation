@@ -11,41 +11,41 @@ use PHPUnit\Framework\TestCase;
 class HexadecimalcolorTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Hexadecimalcolor())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShort')]
-    public function testValidationShort($result, $value)
+    public function testValidationShort($result, $value): void
     {
         $valid = (new Hexadecimalcolor([3]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLongAlpha')]
-    public function testValidationLongAlpha($result, $value)
+    public function testValidationLongAlpha($result, $value): void
     {
         $valid = (new Hexadecimalcolor([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShortAlpha')]
-    public function testValidationShortAlpha($result, $value)
+    public function testValidationShortAlpha($result, $value): void
     {
         $valid = (new Hexadecimalcolor([4]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLong')]
-    public function testValidationLong($result, $value)
+    public function testValidationLong($result, $value): void
     {
         $valid = (new Hexadecimalcolor([6]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [false, '#'],
@@ -69,7 +69,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public static function dataProviderShort()
+    public static function dataProviderShort(): array
     {
         return [
             [false, '#'],
@@ -86,7 +86,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public static function dataProviderLong()
+    public static function dataProviderLong(): array
     {
         return [
             [false, '#'],
@@ -102,7 +102,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public static function dataProviderShortAlpha()
+    public static function dataProviderShortAlpha(): array
     {
         return [
             [false, '#'],
@@ -117,7 +117,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public static function dataProviderLongAlpha()
+    public static function dataProviderLongAlpha(): array
     {
         return [
             [false, '#'],

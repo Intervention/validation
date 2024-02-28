@@ -11,27 +11,27 @@ use PHPUnit\Framework\TestCase;
 class IsbnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Isbn())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShort')]
-    public function testValidationShort($result, $value)
+    public function testValidationShort($result, $value): void
     {
         $valid = (new Isbn([10]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLong')]
-    public function testValidationLong($result, $value)
+    public function testValidationLong($result, $value): void
     {
         $valid = (new Isbn([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '3498016709'],
@@ -58,7 +58,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public static function dataProviderShort()
+    public static function dataProviderShort(): array
     {
         return [
             [true, '3498016709'],
@@ -84,7 +84,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public static function dataProviderLong()
+    public static function dataProviderLong(): array
     {
         return [
             [false, '3498016709'],

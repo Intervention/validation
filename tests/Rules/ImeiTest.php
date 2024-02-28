@@ -11,13 +11,13 @@ use PHPUnit\Framework\TestCase;
 class ImeiTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Imei())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '355689070069001'],

@@ -11,13 +11,13 @@ use PHPUnit\Framework\TestCase;
 class Base64Test extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Base64())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [

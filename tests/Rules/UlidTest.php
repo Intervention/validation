@@ -11,13 +11,13 @@ use PHPUnit\Framework\TestCase;
 class UlidTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Ulid())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '01B8KYR6G8BC61CE8R6K2T16HY'],

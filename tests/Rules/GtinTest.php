@@ -11,41 +11,41 @@ use PHPUnit\Framework\TestCase;
 class GtinTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value)
+    public function testValidation($result, $value): void
     {
         $valid = (new Gtin())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin8')]
-    public function testValidationGtin8($result, $value)
+    public function testValidationGtin8($result, $value): void
     {
         $valid = (new Gtin([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin12')]
-    public function testValidationGtin12($result, $value)
+    public function testValidationGtin12($result, $value): void
     {
         $valid = (new Gtin([12]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin13')]
-    public function testValidationGtin13($result, $value)
+    public function testValidationGtin13($result, $value): void
     {
         $valid = (new Gtin([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin14')]
-    public function testValidationGtin14($result, $value)
+    public function testValidationGtin14($result, $value): void
     {
         $valid = (new Gtin([14]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '9789510475270'],
@@ -74,7 +74,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public static function dataProviderGtin8()
+    public static function dataProviderGtin8(): array
     {
         return [
             [false, '4012345678901'],
@@ -101,7 +101,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public static function dataProviderGtin12()
+    public static function dataProviderGtin12(): array
     {
         return [
             [false, '4012345678901'],
@@ -130,7 +130,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public static function dataProviderGtin13()
+    public static function dataProviderGtin13(): array
     {
         return [
             [true, '9789510475270'],
@@ -161,7 +161,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public static function dataProviderGtin14()
+    public static function dataProviderGtin14(): array
     {
         return [
             [true, '00012345000058'],

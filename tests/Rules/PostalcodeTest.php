@@ -11,13 +11,13 @@ use PHPUnit\Framework\TestCase;
 class PostalcodeTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidationConstructor($result, $countrycode, $value)
+    public function testValidationConstructor($result, $countrycode, $value): void
     {
         $valid = (new Postalcode([$countrycode]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [false, 'non-existing-country-code', '0'],
