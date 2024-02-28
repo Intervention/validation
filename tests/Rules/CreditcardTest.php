@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Creditcard;
 use PHPUnit\Framework\TestCase;
 
-class CreditcardTest extends TestCase
+final class CreditcardTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Creditcard())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '4444111122223333'],

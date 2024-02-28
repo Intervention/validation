@@ -4,57 +4,48 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hexadecimalcolor;
 use PHPUnit\Framework\TestCase;
 
-class HexadecimalcolorTest extends TestCase
+final class HexadecimalcolorTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Hexadecimalcolor())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShort
-    */
-    public function testValidationShort($result, $value)
+    #[DataProvider('dataProviderShort')]
+    public function testValidationShort($result, $value): void
     {
         $valid = (new Hexadecimalcolor([3]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLongAlpha
-    */
-    public function testValidationLongAlpha($result, $value)
+    #[DataProvider('dataProviderLongAlpha')]
+    public function testValidationLongAlpha($result, $value): void
     {
         $valid = (new Hexadecimalcolor([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShortAlpha
-    */
-    public function testValidationShortAlpha($result, $value)
+    #[DataProvider('dataProviderShortAlpha')]
+    public function testValidationShortAlpha($result, $value): void
     {
         $valid = (new Hexadecimalcolor([4]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLong
-    */
-    public function testValidationLong($result, $value)
+    #[DataProvider('dataProviderLong')]
+    public function testValidationLong($result, $value): void
     {
         $valid = (new Hexadecimalcolor([6]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [false, '#'],
@@ -78,7 +69,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderShort()
+    public static function dataProviderShort(): array
     {
         return [
             [false, '#'],
@@ -95,7 +86,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderLong()
+    public static function dataProviderLong(): array
     {
         return [
             [false, '#'],
@@ -111,7 +102,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderShortAlpha()
+    public static function dataProviderShortAlpha(): array
     {
         return [
             [false, '#'],
@@ -126,7 +117,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderLongAlpha()
+    public static function dataProviderLongAlpha(): array
     {
         return [
             [false, '#'],

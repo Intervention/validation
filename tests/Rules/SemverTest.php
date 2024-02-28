@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Semver;
 use PHPUnit\Framework\TestCase;
 
-class SemverTest extends TestCase
+final class SemverTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Semver())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '1.0.0'],

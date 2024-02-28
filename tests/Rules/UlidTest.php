@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Ulid;
 use PHPUnit\Framework\TestCase;
 
-class UlidTest extends TestCase
+final class UlidTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Ulid())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '01B8KYR6G8BC61CE8R6K2T16HY'],

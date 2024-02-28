@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Postalcode;
 use PHPUnit\Framework\TestCase;
 
-class PostalcodeTest extends TestCase
+final class PostalcodeTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidationConstructor($result, $countrycode, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidationConstructor($result, $countrycode, $value): void
     {
         $valid = (new Postalcode([$countrycode]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [false, 'non-existing-country-code', '0'],

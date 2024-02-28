@@ -4,39 +4,34 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Ean;
 use PHPUnit\Framework\TestCase;
 
-class EanTest extends TestCase
+final class EanTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Ean())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderEan13
-    */
-    public function testValidationEan13($result, $value)
+    #[DataProvider('dataProviderEan13')]
+    public function testValidationEan13($result, $value): void
     {
         $valid = (new Ean([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderEan8
-    */
-    public function testValidationEan8($result, $value)
+    #[DataProvider('dataProviderEan8')]
+    public function testValidationEan8($result, $value): void
     {
         $valid = (new Ean([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '9789510475270'],
@@ -62,7 +57,7 @@ class EanTest extends TestCase
         ];
     }
 
-    public function dataProviderEan13()
+    public static function dataProviderEan13(): array
     {
         return [
             [true, '9789510475270'],
@@ -75,7 +70,7 @@ class EanTest extends TestCase
         ];
     }
 
-    public function dataProviderEan8()
+    public static function dataProviderEan8(): array
     {
         return [
             [false, '4012345678901'],

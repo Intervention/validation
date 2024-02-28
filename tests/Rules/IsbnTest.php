@@ -4,39 +4,34 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Isbn;
 use PHPUnit\Framework\TestCase;
 
-class IsbnTest extends TestCase
+final class IsbnTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Isbn())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShort
-    */
-    public function testValidationShort($result, $value)
+    #[DataProvider('dataProviderShort')]
+    public function testValidationShort($result, $value): void
     {
         $valid = (new Isbn([10]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLong
-    */
-    public function testValidationLong($result, $value)
+    #[DataProvider('dataProviderLong')]
+    public function testValidationLong($result, $value): void
     {
         $valid = (new Isbn([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '3498016709'],
@@ -63,7 +58,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public function dataProviderShort()
+    public static function dataProviderShort(): array
     {
         return [
             [true, '3498016709'],
@@ -89,7 +84,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public function dataProviderLong()
+    public static function dataProviderLong(): array
     {
         return [
             [false, '3498016709'],

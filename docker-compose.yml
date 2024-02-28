@@ -1,8 +1,8 @@
-services: 
+services:
   tests:
     build: ./
     working_dir: /project
-    command: bash -c "composer install && ./vendor/bin/phpunit -vvv"
+    command: bash -c "composer install && ./vendor/bin/phpunit"
     volumes:
       - ./:/project
   analysis:

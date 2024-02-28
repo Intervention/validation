@@ -4,57 +4,48 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Gtin;
 use PHPUnit\Framework\TestCase;
 
-class GtinTest extends TestCase
+final class GtinTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
-    public function testValidation($result, $value)
+    #[DataProvider('dataProvider')]
+    public function testValidation($result, $value): void
     {
         $valid = (new Gtin())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin8
-    */
-    public function testValidationGtin8($result, $value)
+    #[DataProvider('dataProviderGtin8')]
+    public function testValidationGtin8($result, $value): void
     {
         $valid = (new Gtin([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin12
-    */
-    public function testValidationGtin12($result, $value)
+    #[DataProvider('dataProviderGtin12')]
+    public function testValidationGtin12($result, $value): void
     {
         $valid = (new Gtin([12]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin13
-    */
-    public function testValidationGtin13($result, $value)
+    #[DataProvider('dataProviderGtin13')]
+    public function testValidationGtin13($result, $value): void
     {
         $valid = (new Gtin([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin14
-    */
-    public function testValidationGtin14($result, $value)
+    #[DataProvider('dataProviderGtin14')]
+    public function testValidationGtin14($result, $value): void
     {
         $valid = (new Gtin([14]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider(): array
     {
         return [
             [true, '9789510475270'],
@@ -83,7 +74,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin8()
+    public static function dataProviderGtin8(): array
     {
         return [
             [false, '4012345678901'],
@@ -110,7 +101,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin12()
+    public static function dataProviderGtin12(): array
     {
         return [
             [false, '4012345678901'],
@@ -139,7 +130,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin13()
+    public static function dataProviderGtin13(): array
     {
         return [
             [true, '9789510475270'],
@@ -170,7 +161,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin14()
+    public static function dataProviderGtin14(): array
     {
         return [
             [true, '00012345000058'],
