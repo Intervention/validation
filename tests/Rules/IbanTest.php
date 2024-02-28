@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Iban;
 use PHPUnit\Framework\TestCase;
 
 class IbanTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Iban())->isValid($value);

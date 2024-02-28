@@ -4,50 +4,41 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Gtin;
 use PHPUnit\Framework\TestCase;
 
 class GtinTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Gtin())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin8
-    */
+    #[DataProvider('dataProviderGtin8')]
     public function testValidationGtin8($result, $value)
     {
         $valid = (new Gtin([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin12
-    */
+    #[DataProvider('dataProviderGtin12')]
     public function testValidationGtin12($result, $value)
     {
         $valid = (new Gtin([12]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin13
-    */
+    #[DataProvider('dataProviderGtin13')]
     public function testValidationGtin13($result, $value)
     {
         $valid = (new Gtin([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderGtin14
-    */
+    #[DataProvider('dataProviderGtin14')]
     public function testValidationGtin14($result, $value)
     {
         $valid = (new Gtin([14]))->isValid($value);

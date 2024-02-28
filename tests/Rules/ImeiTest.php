@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Imei;
 use PHPUnit\Framework\TestCase;
 
 class ImeiTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Imei())->isValid($value);

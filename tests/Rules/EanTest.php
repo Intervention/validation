@@ -4,32 +4,27 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Ean;
 use PHPUnit\Framework\TestCase;
 
 class EanTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Ean())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderEan13
-    */
+    #[DataProvider('dataProviderEan13')]
     public function testValidationEan13($result, $value)
     {
         $valid = (new Ean([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderEan8
-    */
+    #[DataProvider('dataProviderEan8')]
     public function testValidationEan8($result, $value)
     {
         $valid = (new Ean([8]))->isValid($value);

@@ -4,23 +4,20 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\DataUri;
 use PHPUnit\Framework\TestCase;
 
 class DataUriTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-     */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new DataUri())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderImages
-     */
+    #[DataProvider('dataProviderImages')]
     public function testValidationWithMimeTypes($result, $value)
     {
         $valid = (new DataUri(['image/jpeg', 'image/png']))->isValid($value);

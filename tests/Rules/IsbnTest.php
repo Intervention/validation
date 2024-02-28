@@ -4,32 +4,27 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Isbn;
 use PHPUnit\Framework\TestCase;
 
 class IsbnTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Isbn())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShort
-    */
+    #[DataProvider('dataProviderShort')]
     public function testValidationShort($result, $value)
     {
         $valid = (new Isbn([10]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLong
-    */
+    #[DataProvider('dataProviderLong')]
     public function testValidationLong($result, $value)
     {
         $valid = (new Isbn([13]))->isValid($value);

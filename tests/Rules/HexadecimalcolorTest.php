@@ -4,50 +4,41 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hexadecimalcolor;
 use PHPUnit\Framework\TestCase;
 
 class HexadecimalcolorTest extends TestCase
 {
-    /**
-     * @dataProvider dataProvider
-    */
+    #[DataProvider('dataProvider')]
     public function testValidation($result, $value)
     {
         $valid = (new Hexadecimalcolor())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShort
-    */
+    #[DataProvider('dataProviderShort')]
     public function testValidationShort($result, $value)
     {
         $valid = (new Hexadecimalcolor([3]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLongAlpha
-    */
+    #[DataProvider('dataProviderLongAlpha')]
     public function testValidationLongAlpha($result, $value)
     {
         $valid = (new Hexadecimalcolor([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderShortAlpha
-    */
+    #[DataProvider('dataProviderShortAlpha')]
     public function testValidationShortAlpha($result, $value)
     {
         $valid = (new Hexadecimalcolor([4]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
-    /**
-     * @dataProvider dataProviderLong
-    */
+    #[DataProvider('dataProviderLong')]
     public function testValidationLong($result, $value)
     {
         $valid = (new Hexadecimalcolor([6]))->isValid($value);
