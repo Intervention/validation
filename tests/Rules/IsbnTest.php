@@ -31,7 +31,7 @@ class IsbnTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '3498016709'],
@@ -58,7 +58,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public function dataProviderShort()
+    public static function dataProviderShort()
     {
         return [
             [true, '3498016709'],
@@ -84,7 +84,7 @@ class IsbnTest extends TestCase
         ];
     }
 
-    public function dataProviderLong()
+    public static function dataProviderLong()
     {
         return [
             [false, '3498016709'],

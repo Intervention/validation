@@ -31,7 +31,7 @@ class EanTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '9789510475270'],
@@ -57,7 +57,7 @@ class EanTest extends TestCase
         ];
     }
 
-    public function dataProviderEan13()
+    public static function dataProviderEan13()
     {
         return [
             [true, '9789510475270'],
@@ -70,7 +70,7 @@ class EanTest extends TestCase
         ];
     }
 
-    public function dataProviderEan8()
+    public static function dataProviderEan8()
     {
         return [
             [false, '4012345678901'],

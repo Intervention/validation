@@ -17,7 +17,7 @@ class MimeTypeTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, 'application/pdf'],

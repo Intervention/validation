@@ -17,7 +17,7 @@ class PostalcodeTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [false, 'non-existing-country-code', '0'],

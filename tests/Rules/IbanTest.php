@@ -17,7 +17,7 @@ class IbanTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, 'DE12500105170648489890'],

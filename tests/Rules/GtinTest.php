@@ -45,7 +45,7 @@ class GtinTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '9789510475270'],
@@ -74,7 +74,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin8()
+    public static function dataProviderGtin8()
     {
         return [
             [false, '4012345678901'],
@@ -101,7 +101,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin12()
+    public static function dataProviderGtin12()
     {
         return [
             [false, '4012345678901'],
@@ -130,7 +130,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin13()
+    public static function dataProviderGtin13()
     {
         return [
             [true, '9789510475270'],
@@ -161,7 +161,7 @@ class GtinTest extends TestCase
         ];
     }
 
-    public function dataProviderGtin14()
+    public static function dataProviderGtin14()
     {
         return [
             [true, '00012345000058'],

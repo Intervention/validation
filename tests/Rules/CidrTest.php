@@ -17,7 +17,7 @@ class CidrTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '0.0.0.0/0'],

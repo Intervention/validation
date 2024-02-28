@@ -17,7 +17,7 @@ class SemverTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '1.0.0'],

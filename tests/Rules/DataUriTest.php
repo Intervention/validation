@@ -24,7 +24,7 @@ class DataUriTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [
@@ -123,7 +123,7 @@ class DataUriTest extends TestCase
         ];
     }
 
-    public function dataProviderImages()
+    public static function dataProviderImages()
     {
         return [
             [

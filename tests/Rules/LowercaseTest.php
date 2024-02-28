@@ -17,7 +17,7 @@ class LowercaseTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, 'a'],

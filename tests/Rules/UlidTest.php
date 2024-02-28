@@ -17,7 +17,7 @@ class UlidTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [true, '01B8KYR6G8BC61CE8R6K2T16HY'],

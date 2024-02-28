@@ -45,7 +45,7 @@ class HexadecimalcolorTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public function dataProvider()
+    public static function dataProvider()
     {
         return [
             [false, '#'],
@@ -69,7 +69,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderShort()
+    public static function dataProviderShort()
     {
         return [
             [false, '#'],
@@ -86,7 +86,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderLong()
+    public static function dataProviderLong()
     {
         return [
             [false, '#'],
@@ -102,7 +102,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderShortAlpha()
+    public static function dataProviderShortAlpha()
     {
         return [
             [false, '#'],
@@ -117,7 +117,7 @@ class HexadecimalcolorTest extends TestCase
         ];
     }
 
-    public function dataProviderLongAlpha()
+    public static function dataProviderLongAlpha()
     {
         return [
             [false, '#'],
