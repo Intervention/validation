@@ -2,4 +2,5 @@
 /.phpunit.cache
 .idea/
 composer.lock
+phpunit.xml
 vendor/
