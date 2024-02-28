@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Imei;
 use PHPUnit\Framework\TestCase;
 
-class ImeiTest extends TestCase
+final class ImeiTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

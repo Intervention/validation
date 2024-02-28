@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\MimeType;
 use PHPUnit\Framework\TestCase;
 
-class MimeTypeTest extends TestCase
+final class MimeTypeTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

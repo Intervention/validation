@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Lowercase;
 use PHPUnit\Framework\TestCase;
 
-class LowercaseTest extends TestCase
+final class LowercaseTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

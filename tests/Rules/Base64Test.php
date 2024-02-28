@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Base64;
 use PHPUnit\Framework\TestCase;
 
-class Base64Test extends TestCase
+final class Base64Test extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Ean;
 use PHPUnit\Framework\TestCase;
 
-class EanTest extends TestCase
+final class EanTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Bic;
 use PHPUnit\Framework\TestCase;
 
-class BicTest extends TestCase
+final class BicTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

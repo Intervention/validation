@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Cidr;
 use PHPUnit\Framework\TestCase;
 
-class CidrTest extends TestCase
+final class CidrTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

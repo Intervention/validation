@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Gtin;
 use PHPUnit\Framework\TestCase;
 
-class GtinTest extends TestCase
+final class GtinTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

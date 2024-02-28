@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hexadecimalcolor;
 use PHPUnit\Framework\TestCase;
 
-class HexadecimalcolorTest extends TestCase
+final class HexadecimalcolorTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

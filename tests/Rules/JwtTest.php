@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Jwt;
 use PHPUnit\Framework\TestCase;
 
-class JwtTest extends TestCase
+final class JwtTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

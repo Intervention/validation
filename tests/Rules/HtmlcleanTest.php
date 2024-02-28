@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Htmlclean;
 use PHPUnit\Framework\TestCase;
 
-class HtmlcleanTest extends TestCase
+final class HtmlcleanTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Snakecase;
 use PHPUnit\Framework\TestCase;
 
-class SnakecaseTest extends TestCase
+final class SnakecaseTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

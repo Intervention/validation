@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Postalcode;
 use PHPUnit\Framework\TestCase;
 
-class PostalcodeTest extends TestCase
+final class PostalcodeTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidationConstructor($result, $countrycode, $value): void

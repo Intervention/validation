@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Isin;
 use PHPUnit\Framework\TestCase;
 
-class IsinTest extends TestCase
+final class IsinTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

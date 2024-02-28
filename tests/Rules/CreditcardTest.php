@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Creditcard;
 use PHPUnit\Framework\TestCase;
 
-class CreditcardTest extends TestCase
+final class CreditcardTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

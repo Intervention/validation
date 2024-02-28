@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Luhn;
 use PHPUnit\Framework\TestCase;
 
-class LuhnTest extends TestCase
+final class LuhnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

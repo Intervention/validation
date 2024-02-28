@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Isbn;
 use PHPUnit\Framework\TestCase;
 
-class IsbnTest extends TestCase
+final class IsbnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

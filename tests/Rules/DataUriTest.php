@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\DataUri;
 use PHPUnit\Framework\TestCase;
 
-class DataUriTest extends TestCase
+final class DataUriTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

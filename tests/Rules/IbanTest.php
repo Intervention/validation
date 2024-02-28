@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Iban;
 use PHPUnit\Framework\TestCase;
 
-class IbanTest extends TestCase
+final class IbanTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Semver;
 use PHPUnit\Framework\TestCase;
 
-class SemverTest extends TestCase
+final class SemverTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

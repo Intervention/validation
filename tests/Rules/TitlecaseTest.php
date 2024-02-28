@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Titlecase;
 use PHPUnit\Framework\TestCase;
 
-class TitlecaseTest extends TestCase
+final class TitlecaseTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Domainname;
 use PHPUnit\Framework\TestCase;
 
-class DomainnameTest extends TestCase
+final class DomainnameTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

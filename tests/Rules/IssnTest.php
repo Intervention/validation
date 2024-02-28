@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Issn;
 use PHPUnit\Framework\TestCase;
 
-class IssnTest extends TestCase
+final class IssnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

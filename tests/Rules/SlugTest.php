@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Slug;
 use PHPUnit\Framework\TestCase;
 
-class SlugTest extends TestCase
+final class SlugTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void

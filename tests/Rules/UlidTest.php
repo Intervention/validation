@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Ulid;
 use PHPUnit\Framework\TestCase;
 
-class UlidTest extends TestCase
+final class UlidTest extends TestCase
 {
     #[DataProvider('dataProvider')]
     public function testValidation($result, $value): void
