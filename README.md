@@ -69,13 +69,13 @@ The field under validation must be a formated in [Camel case](https://en.wikiped
 
     public Intervention\Validation\Rules\Camelcase::__construct()
 
-### Classless Inter-Domain Routing (CIDR) 
+### Classless Inter-Domain Routing (CIDR)
 
 Check if the value is a [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (CIDR).
 
     public Intervention\Validation\Rules\Cidr::__construct()
 
-### Creditcard Number 
+### Creditcard Number
 
 The field under validation must be a valid [creditcard number](https://en.wikipedia.org/wiki/Payment_card_number).
 
@@ -87,7 +87,7 @@ The field under validation must be a valid [Data URI](https://en.wikipedia.org/w
 
     public Intervention\Validation\Rules\DataUri::__construct(?array $media_types = null)
 
-### Domain name 
+### Domain name
 
 The field under validation must be a well formed [domainname](https://en.wikipedia.org/wiki/Domain_name).
 
@@ -119,7 +119,7 @@ Optional array of allowed lengths to check only for certain types (GTIN-8, GTIN-
 
 ### Hexadecimal color code
 
-The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors). 
+The field under validation must be a valid [hexadecimal color code](https://en.wikipedia.org/wiki/Web_colors).
 
     public Intervention\Validation\Rules\Hexadecimalcolor::__construct(array $lengths = [3, 4, 6, 8])
 
@@ -141,7 +141,7 @@ Checks for a valid [International Bank Account Number](https://en.wikipedia.org/
 
     public Intervention\Validation\Rules\Iban::__construct()
 
-### International Mobile Equipment Identity (IMEI) 
+### International Mobile Equipment Identity (IMEI)
 
 The field under validation must be a [International Mobile Equipment Identity](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity) (IMEI).
 
@@ -159,7 +159,7 @@ The field under validation must be a valid [International Standard Book Number](
 
 Optional length parameter as integer to check only for ISBN-10 or ISBN-13.
 
-### International Securities Identification Number (ISIN) 
+### International Securities Identification Number (ISIN)
 
 Checks for a valid [International Securities Identification Number](https://en.wikipedia.org/wiki/International_Securities_Identification_Number) (ISIN).
 
@@ -183,7 +183,7 @@ The given value must be formated in [Kebab case](https://en.wikipedia.org/wiki/L
 
     public Intervention\Validation\Rules\Kebabcase::__construct()
 
-### Lower case string 
+### Lower case string
 
 The given value must be all lower case letters.
 
@@ -271,16 +271,27 @@ The field under validation must be all upper case.
 
 ### Username
 
-The field under validation must be a valid username. Consisting of alpha-numeric characters, underscores, minus and starting with a alphabetic character. Multiple underscore and minus chars are not allowed. Underscore and minus chars are not allowed at the beginning or end.
+The field under validation must be a valid username. Consisting of
+alpha-numeric characters, underscores, minus and starting with a alphabetic
+character. Multiple underscore and minus chars are not allowed. Underscore and
+minus chars are not allowed at the beginning or end.
 
     public Intervention\Validation\Rules\Username::__construct()
 
 ## Development & Testing
 
-With this package comes a Docker image to build a test suite container. To build this container you have to have Docker installed on your system. You can run all tests with this command.
+With this package comes a Docker image to build a test suite container. To
+build this container you have to have Docker installed on your system. You can
+run all tests with this command.
 
     $ docker-compose run --rm --build tests
 
+## Authors
+
+- [Oliver Vogel](https://intervention.io)
+
+Thanks to the community of [contributors](https://github.com/Intervention/validation/graphs/contributors) who have helped to improve this project.
+
 ## License
 
-Intervention Validation is licensed under the [MIT License](http://opensource.org/licenses/MIT).
+Intervention Validation is licensed under the [MIT License](LICENSE).
