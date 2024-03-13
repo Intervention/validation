@@ -288,7 +288,7 @@ run all tests with this command.
 
 ## Authors
 
-- [Oliver Vogel](https://intervention.io)
+This library is developed and maintained by [Oliver Vogel](https://intervention.io)
 
 Thanks to the community of [contributors](https://github.com/Intervention/validation/graphs/contributors) who have helped to improve this project.
 
