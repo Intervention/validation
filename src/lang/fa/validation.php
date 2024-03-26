@@ -9,7 +9,7 @@ return [
     'hexadecimalcolor' => 'مقدار :attribute باید یک کد رنگ HEX معتبر باشد.',
     'creditcard' => 'مقدار :attribute باید یک شماره کارت اعتباری معتبر باشد.',
     'isbn' => 'مقدار :attribute باید یک شماره ISBN معتبر باشد.',
-    'username' =>  'مقدار :attribute باید یک نام کاربری معتبر باشد.',
+    'username' => 'مقدار :attribute باید یک نام کاربری معتبر باشد.',
     'htmlclean' => 'مقدار :attribute باید یک متن HTML معتبر باشد.',
     'domainname' => 'مقدار :attribute باید یک نام دامنه معتبر باشد.',
     'jwt' => 'مقدار :attribute باید یک توکن JWT معتبر باشد.',
