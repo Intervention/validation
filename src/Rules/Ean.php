@@ -57,7 +57,7 @@ class Ean extends AbstractRule
      */
     protected function cutChecksum($value): int
     {
-        return intval(substr((string)$value, -1));
+        return intval(substr((string) $value, -1));
     }
 
     /**
