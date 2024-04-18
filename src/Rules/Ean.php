@@ -71,7 +71,7 @@ class Ean extends AbstractRule
         $checksum = 0;
 
         // chars without check digit in reverse
-        $chars = array_reverse(str_split(substr((string)$value, 0, -1)));
+        $chars = array_reverse(str_split(substr((string) $value, 0, -1)));
 
         foreach ($chars as $key => $char) {
             $multiplier = $key % 2 ? 1 : 3;
