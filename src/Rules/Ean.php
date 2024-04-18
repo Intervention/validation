@@ -36,7 +36,7 @@ class Ean extends AbstractRule
      */
     public function hasAllowedLength($value): bool
     {
-        return in_array(strlen((string)$value), $this->lengths);
+        return in_array(strlen((string) $value), $this->lengths);
     }
 
     /**
