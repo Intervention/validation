@@ -54,6 +54,8 @@ final class EanTest extends TestCase
             [false, '978-3499255496'],
             [false, '00123456000018'], // GTIN-14
             [false, '012345678905'], // GTIN-12
+            [true, 5901234123457],
+            [true, 40123455],
         ];
     }
 
@@ -64,6 +66,7 @@ final class EanTest extends TestCase
             [true, '4012345678901'],
             [true, '0712345678911'],
             [true, '5901234123457'],
+            [true, 5901234123457],
             [false, '40123455'],
             [false, '96385074'],
             [false, '65833254'],
@@ -79,6 +82,7 @@ final class EanTest extends TestCase
             [true, '40123455'],
             [true, '96385074'],
             [true, '65833254'],
+            [true, 65833254],
         ];
     }
 }
