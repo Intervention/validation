@@ -36,7 +36,7 @@ class Ean extends AbstractRule
      */
     public function hasAllowedLength($value): bool
     {
-        return in_array(strlen($value), $this->lengths);
+        return in_array(strlen((string)$value), $this->lengths);
     }
 
     /**
@@ -57,7 +57,7 @@ class Ean extends AbstractRule
      */
     protected function cutChecksum($value): int
     {
-        return intval(substr($value, -1));
+        return intval(substr((string)$value, -1));
     }
 
     /**
@@ -71,7 +71,7 @@ class Ean extends AbstractRule
         $checksum = 0;
 
         // chars without check digit in reverse
-        $chars = array_reverse(str_split(substr($value, 0, -1)));
+        $chars = array_reverse(str_split(substr((string)$value, 0, -1)));
 
         foreach ($chars as $key => $char) {
             $multiplier = $key % 2 ? 1 : 3;
