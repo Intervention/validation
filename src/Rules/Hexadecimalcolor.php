@@ -39,7 +39,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     }
 
     /**
-     * Determine if the current value has correct lenght
+     * Determine if the current value has correct length
      *
      * @return bool
      */
