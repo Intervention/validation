@@ -13,7 +13,7 @@ abstract class AbstractRule implements Rule, ValidationRule
     abstract public function isValid(mixed $value): bool;
 
     /**
-     * Laravel Framwork validation method
+     * Laravel Framework validation method
      *
      * @param string $attribute
      * @param mixed $value
@@ -49,7 +49,7 @@ abstract class AbstractRule implements Rule, ValidationRule
 
         if (function_exists('trans')) {
             // if message is same as key, there is no
-            // tranlation so we will use internal
+            // translation so we will use internal
             $message = trans($key);
             if ($message === $key) {
                 return trans('validation::' . $key);

@@ -74,7 +74,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Determine if given value is valud NR-LDH label
+     * Determine if given value is valid NR-LDH label
      *
      * @param string $value
      * @return bool

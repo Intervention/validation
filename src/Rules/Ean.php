@@ -30,7 +30,7 @@ class Ean extends AbstractRule
     }
 
     /**
-     * Determine if the current value has the lenghts of EAN-8 or EAN-13
+     * Determine if the current value has the lengths of EAN-8 or EAN-13
      *
      * @return bool
      */

@@ -65,7 +65,7 @@ Checks for a valid [Business Identifier Code](https://en.wikipedia.org/wiki/ISO_
 
 ### Camel case string
 
-The field under validation must be a formated in [Camel case](https://en.wikipedia.org/wiki/Camel_case).
+The field under validation must be a formatted in [Camel case](https://en.wikipedia.org/wiki/Camel_case).
 
     public Intervention\Validation\Rules\Camelcase::__construct()
 
@@ -179,7 +179,7 @@ The given value must be a in format of a [JSON Web Token](https://en.wikipedia.o
 
 ### Kebab case string
 
-The given value must be formated in [Kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
+The given value must be formatted in [Kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
 
     public Intervention\Validation\Rules\Kebabcase::__construct()
 
@@ -247,13 +247,13 @@ The field under validation must be a user- and [SEO-friendly short text](https:/
 
 ### Snake case string
 
-The field under validation must formated as [Snake case](https://en.wikipedia.org/wiki/Snake_case) text.
+The field under validation must formatted as [Snake case](https://en.wikipedia.org/wiki/Snake_case) text.
 
     public Intervention\Validation\Rules\Snakecase::__construct()
 
 ### Title case string
 
-The field under validation must formated in [Title case](https://en.wikipedia.org/wiki/Title_case).
+The field under validation must formatted in [Title case](https://en.wikipedia.org/wiki/Title_case).
 
     public Intervention\Validation\Rules\Titlecase::__construct()
 
