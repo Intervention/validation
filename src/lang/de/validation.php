@@ -34,5 +34,5 @@ return [
     'gtin' => 'Der Wert :attribute ist keine gültige Global Trade Item Number (GTIN).',
     'postalcode' => 'Der Wert :attribute muss eine gültige Postleitzahl sein.',
     'mimetype' => 'Der Wert :attribute einhält keinen gültigen Internet Media Type (MIME-Type).',
-    'austrianinsurancenumber' => 'Der Wert :attribute enthält keine gültige österreischische Versicherunsnummer',
+    'austrianinsurancenumber' => 'Der Wert :attribute enthält keine gültige österreichische Versicherungsnummer',
 ];
