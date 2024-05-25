@@ -24,8 +24,8 @@ class Uppercase extends AbstractRule
      *
      * @return string
      */
-    private function getUpperCaseValue($value): string
+    private function getUpperCaseValue(mixed $value): string
     {
-        return mb_strtoupper($value, mb_detect_encoding($value));
+        return mb_strtoupper(strval($value), mb_detect_encoding($value));
     }
 }

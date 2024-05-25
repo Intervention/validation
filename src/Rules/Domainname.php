@@ -42,7 +42,7 @@ class Domainname extends AbstractRule
     /**
      * Get all labels of domainname
      *
-     * @return array
+     * @return array<string>
      */
     private function getLabels(mixed $value): array
     {

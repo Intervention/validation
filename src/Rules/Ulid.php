@@ -34,10 +34,11 @@ class Ulid extends AbstractRegexRule
 
     /**
      * Determine if current ulid has exceeded maximum size
-     *
+
+     * @param string $value
      * @return bool
      */
-    protected function ulidTooLarge($value): bool
+    protected function ulidTooLarge(string $value): bool
     {
         return intval($value[0]) > 7;
     }

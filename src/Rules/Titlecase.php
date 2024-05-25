@@ -28,9 +28,10 @@ class Titlecase extends AbstractRule
     /**
      * Get array of words from current value
      *
-     * @return array
+     * @param mixed $value
+     * @return array<string>
      */
-    private function getWords($value): array
+    private function getWords(mixed $value): array
     {
         return explode(" ", $value);
     }

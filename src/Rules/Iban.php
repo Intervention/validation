@@ -11,7 +11,7 @@ class Iban extends AbstractRule
     /**
      * IBAN lengths for countries
      *
-     * @var array
+     * @var array<string, int>
      */
     private $lengths = [
         'AL' => 28,
@@ -130,7 +130,7 @@ class Iban extends AbstractRule
     public function isValid(mixed $value): bool
     {
         // normalize value
-        $value = str_replace(' ', '', strtoupper($value));
+        $value = str_replace(' ', '', strtoupper(strval($value)));
 
         // check iban length and checksum
         return $this->hasValidLength($value) && $this->getChecksum($value) === 1;
@@ -142,7 +142,7 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return int
      */
-    private function getChecksum($iban)
+    private function getChecksum(string $iban)
     {
         $iban = substr($iban, 4) . substr($iban, 0, 4);
         $iban = str_replace(
@@ -168,7 +168,7 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return int
      */
-    private function getDesignatedIbanLength($iban)
+    private function getDesignatedIbanLength(string $iban)
     {
         $countrycode = substr($iban, 0, 2);
 
@@ -181,17 +181,27 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return bool
      */
-    private function hasValidLength($iban)
+    private function hasValidLength(string $iban): bool
     {
         return $this->getDesignatedIbanLength($iban) == strlen($iban);
     }
 
-    private function getReplacementsChars()
+    /**
+     * Get chars to be replaced in checksum calculation
+     *
+     * @return array<string>
+     */
+    private function getReplacementsChars(): array
     {
         return range('A', 'Z');
     }
 
-    private function getReplacementsValues()
+    /**
+     * Get values to replace chars in checksum calculation
+     *
+     * @return array<string>
+     */
+    private function getReplacementsValues(): array
     {
         $values = [];
         foreach (range(10, 35) as $value) {

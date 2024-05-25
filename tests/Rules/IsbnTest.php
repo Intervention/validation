@@ -35,6 +35,7 @@ final class IsbnTest extends TestCase
     {
         return [
             [true, '3498016709'],
+            [true, '3498016709'],
             [true, '978-3499255496'],
             [true, '85-359-0277-5'],
             [true, '048665088X'],

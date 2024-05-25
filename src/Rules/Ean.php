@@ -11,7 +11,7 @@ class Ean extends AbstractRule
     /**
      * Create a new rule instance.
      *
-     * @param array $lengths
+     * @param array<int> $lengths
      * @return void
      */
     public function __construct(protected array $lengths = [8, 13])
@@ -32,20 +32,22 @@ class Ean extends AbstractRule
     /**
      * Determine if the current value has the lengths of EAN-8 or EAN-13
      *
+     * @param mixed $value
      * @return bool
      */
-    public function hasAllowedLength($value): bool
+    public function hasAllowedLength(mixed $value): bool
     {
-        return in_array(strlen((string) $value), $this->lengths);
+        return in_array(strlen(strval($value)), $this->lengths);
     }
 
     /**
      * Try to calculate the EAN checksum of the
      * current value and check the matching.
      *
+     * @param mixed $value
      * @return bool
      */
-    protected function checksumMatches($value): bool
+    protected function checksumMatches(mixed $value): bool
     {
         return $this->calculateChecksum($value) === $this->cutChecksum($value);
     }
@@ -53,11 +55,12 @@ class Ean extends AbstractRule
     /**
      * Cut out the checksum of the current value and return
      *
+     * @param mixed $value
      * @return int
      */
-    protected function cutChecksum($value): int
+    protected function cutChecksum(mixed $value): int
     {
-        return intval(substr((string) $value, -1));
+        return intval(substr(strval($value), -1));
     }
 
     /**
@@ -66,12 +69,12 @@ class Ean extends AbstractRule
      * @param mixed $value
      * @return int
      */
-    protected function calculateChecksum($value): int
+    protected function calculateChecksum(mixed $value): int
     {
         $checksum = 0;
 
         // chars without check digit in reverse
-        $chars = array_reverse(str_split(substr((string) $value, 0, -1)));
+        $chars = array_reverse(str_split(substr(strval($value), 0, -1)));
 
         foreach ($chars as $key => $char) {
             $multiplier = $key % 2 ? 1 : 3;

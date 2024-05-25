@@ -20,9 +20,10 @@ class Imei extends Luhn
     /**
      * Determine if current value has valid IMEI length
      *
+     * @param string $value
      * @return bool
      */
-    private function hasValidLength($value): bool
+    private function hasValidLength(string $value): bool
     {
         return strlen($value) === 15;
     }

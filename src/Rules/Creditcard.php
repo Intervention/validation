@@ -20,10 +20,11 @@ class Creditcard extends Luhn
     /**
      * Check if the given value has the proper length for creditcards
      *
+     * @param mixed $value
      * @return bool
      */
-    private function hasValidLength($value): bool
+    private function hasValidLength(mixed $value): bool
     {
-        return (strlen($value) >= 13 && strlen($value) <= 19);
+        return (strlen(strval($value)) >= 13 && strlen(strval($value)) <= 19);
     }
 }

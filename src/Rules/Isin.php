@@ -9,9 +9,9 @@ class Isin extends Luhn
     /**
      * Chars to calculate checksum
      *
-     * @var array
+     * @var array<int, string>
      */
-    private $chars = [
+    private array $chars = [
         10 => 'A',
         11 => 'B',
         12 => 'C',
@@ -54,9 +54,10 @@ class Isin extends Luhn
     /**
      * Get value to check against
      *
+     * @param string $value
      * @return string
      */
-    public function normalize($value)
+    public function normalize(string $value)
     {
         return $this->replaceChars($this->getValueWithoutLastDigit($value)) . $this->getLastDigit($value);
     }
@@ -67,7 +68,7 @@ class Isin extends Luhn
      * @param string $value
      * @return string
      */
-    private function replaceChars($value)
+    private function replaceChars(string $value)
     {
         return str_replace($this->chars, array_keys($this->chars), $value);
     }
@@ -75,9 +76,10 @@ class Isin extends Luhn
     /**
      * Return value without last digit
      *
+     * @param string $value
      * @return string
      */
-    private function getValueWithoutLastDigit($value)
+    private function getValueWithoutLastDigit(string $value)
     {
         return substr($value, 0, -1);
     }
@@ -85,9 +87,10 @@ class Isin extends Luhn
     /**
      * Return last digit of current value
      *
+     * @param string $value
      * @return string
      */
-    private function getLastDigit($value)
+    private function getLastDigit(string $value)
     {
         return substr($value, -1);
     }
