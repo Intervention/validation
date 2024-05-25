@@ -33,4 +33,5 @@ return [
     'gtin' => 'The :attribute is not a valid Global Trade Item Number (GTIN).',
     'postalcode' => 'The value :attribute must be a valid postal code.',
     'mimetype' => 'The value :attribute does not contain a valid Internet Media Type (MIME-Type).',
+    'austrianinsurancenumber' => 'The value :attribute does not contain a valid austrian insurance number.',
 ];
