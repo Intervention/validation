@@ -142,7 +142,7 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return int
      */
-    private function getChecksum(string $iban)
+    private function getChecksum(string $iban): int
     {
         $iban = substr($iban, 4) . substr($iban, 0, 4);
         $iban = str_replace(
@@ -166,9 +166,9 @@ class Iban extends AbstractRule
      * Returns the designated length of IBAN for given IBAN
      *
      * @param string $iban
-     * @return int
+     * @return int|false
      */
-    private function getDesignatedIbanLength(string $iban)
+    private function getDesignatedIbanLength(string $iban): int|false
     {
         $countrycode = substr($iban, 0, 2);
 

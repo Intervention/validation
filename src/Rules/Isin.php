@@ -57,7 +57,7 @@ class Isin extends Luhn
      * @param string $value
      * @return string
      */
-    public function normalize(string $value)
+    public function normalize(string $value): string
     {
         return $this->replaceChars($this->getValueWithoutLastDigit($value)) . $this->getLastDigit($value);
     }
@@ -68,7 +68,7 @@ class Isin extends Luhn
      * @param string $value
      * @return string
      */
-    private function replaceChars(string $value)
+    private function replaceChars(string $value): string
     {
         return str_replace($this->chars, array_keys($this->chars), $value);
     }
@@ -79,7 +79,7 @@ class Isin extends Luhn
      * @param string $value
      * @return string
      */
-    private function getValueWithoutLastDigit(string $value)
+    private function getValueWithoutLastDigit(string $value): string
     {
         return substr($value, 0, -1);
     }
@@ -90,7 +90,7 @@ class Isin extends Luhn
      * @param string $value
      * @return string
      */
-    private function getLastDigit(string $value)
+    private function getLastDigit(string $value): string
     {
         return substr($value, -1);
     }

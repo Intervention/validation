@@ -46,7 +46,7 @@ class Isbn extends Ean
      * @param string $value
      * @return bool
      */
-    private function shortChecksumMatches(string $value)
+    private function shortChecksumMatches(string $value): bool
     {
         return $this->getShortChecksum($value) % 11 === 0;
     }
@@ -57,7 +57,7 @@ class Isbn extends Ean
      * @param string $value
      * @return int
      */
-    private function getShortChecksum(string $value)
+    private function getShortChecksum(string $value): int
     {
         $checksum = 0;
         $multiplier = 10;
