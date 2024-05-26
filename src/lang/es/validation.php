@@ -34,4 +34,9 @@ return [
     'postalcode' => 'El valor de :attribute debe ser un código postal válido.',
     'mimetype' => 'El valor de :attribute no contiene un tipo de media de internet (MIME-Type) válido.',
     'grid' => 'El valor de :attribute no contiene un Global Release Identifier (GRid) válido.',
+    'hslcolor' => ':attribute no es un valor de color HSL válido.',
+    'hsvcolor' => ':attribute no es un valor de color HSV válido.',
+    'latitude' => ':attribute no es una latitud válida.',
+    'longitude' => ':attribute no es una longitud geográfica válida.',
+    'latlng' => ':attribute no es un par de coordenadas geográficas válido.',
 ];
