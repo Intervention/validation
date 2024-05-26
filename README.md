@@ -105,6 +105,12 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 
 Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
+### Global Release Identifier (GRid)
+
+The field under validation must be a [Global Release Identifier](https://en.wikipedia.org/wiki/Global_Release_Identifier).
+
+    public Intervention\Validation\Rules\Grid::__construct()
+
 ### Global Trade Item Number (GTIN)
 
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
