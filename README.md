@@ -135,6 +135,18 @@ The field under validation must be a valid [hexadecimal color code](https://en.w
 
 Optional length as integer to check only for shorthand (3 or 4 characters) or full hexadecimal (6 or 8 characters) form.
 
+### HSL Color
+
+The field under validation must be a valid [HSL color code](https://en.wikipedia.org/wiki/HSL_and_HSV).
+
+    public Intervention\Validation\Rules\Hslcolor::__construct()
+
+### HSV Color
+
+The field under validation must be a valid [HSV/HSB color code](https://en.wikipedia.org/wiki/HSL_and_HSV).
+
+    public Intervention\Validation\Rules\Hsvcolor::__construct()
+
 ### Text without HTML
 
 The field under validation must be free of any html code.
