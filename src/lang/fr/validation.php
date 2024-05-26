@@ -40,4 +40,5 @@ return [
     'gtin' => 'Le :attribute doit être un GTIN valide.',
     'postalcode' => 'La valeur :attribute doit être un code postal valide.',
     'mimetype' => 'La valeur :attribute ne contient pas de type de média Internet valide (type MIME).',
+    'grid' => 'Le :attribute doit être un Global Release Identifier (GRid) valide.',
 ];

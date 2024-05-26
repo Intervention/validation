@@ -33,4 +33,5 @@ return [
     'gtin' => ':attribute is geen geldig Global Trade Item Number (GTIN).',
     'postalcode' => ':attribuut moet een geldige postcode zijn.',
     'mimetype' => ':attribute bevat geen geldig internetmediatype (MIME-type).',
+    'grid' => ':attribute moet een geldige Global Release Identifier (GRid) zijn.',
 ];
