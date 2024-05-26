@@ -201,6 +201,24 @@ The given value must be formatted in [Kebab case](https://en.wikipedia.org/wiki/
 
     public Intervention\Validation\Rules\Kebabcase::__construct()
 
+### Latitude
+
+Checks for a valid geographic [Latitude](https://en.wikipedia.org/wiki/Latitude).
+
+    public Intervention\Validation\Rules\Latitude::__construct()
+
+### Longitude
+
+Checks for a valid geographic [Longitude](https://en.wikipedia.org/wiki/Longitude).
+
+    public Intervention\Validation\Rules\Longitude::__construct()
+
+### LatLng
+
+Checks for a valid geographic comma separated pair of a [Latitude](https://en.wikipedia.org/wiki/Latitude) and a [Longitude](https://en.wikipedia.org/wiki/Longitude).
+
+    public Intervention\Validation\Rules\LatLng::__construct()
+
 ### Lower case string
 
 The given value must be all lower case letters.

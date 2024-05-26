@@ -36,4 +36,7 @@ return [
     'mimetype' => 'Der Wert :attribute einhält keinen gültigen Internet Media Type (MIME-Type).',
     'austrianinsurancenumber' => 'Der Wert :attribute enthält keine gültige österreichische Versicherungsnummer',
     'grid' => 'Der Wert :attribute enthält keinen gültige Global Release Identifier (GRid).',
+    'latitude' => 'Der Wert :attribute enthält keine gültige geographische Breite.',
+    'longitude' => 'Der Wert :attribute enthält keine gültige geographische Länge.',
+    'latlng' => 'Der Wert :attribute enthält keine gültige geographischen Koordinaten.',
 ];

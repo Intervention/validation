@@ -35,4 +35,7 @@ return [
     'mimetype' => 'The value :attribute does not contain a valid Internet Media Type (MIME-Type).',
     'austrianinsurancenumber' => 'The value :attribute does not contain a valid austrian insurance number.',
     'grid' => 'The value :attribute must be a valid Global Release Identifier (GRid).',
+    'latitude' => 'The value :attribute must be a valid geographical latitude.',
+    'longitude' => 'The value :attribute must be a valid geographical longitude.',
+    'latlng' => 'The value :attribute must be valid geographical coordinates.',
 ];
