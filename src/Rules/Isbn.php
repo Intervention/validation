@@ -6,6 +6,10 @@ namespace Intervention\Validation\Rules;
 
 class Isbn extends Ean
 {
+    /**
+     * @param array<int> $lengths
+     * @return void
+     */
     public function __construct(protected array $lengths = [10, 13])
     {
     }
@@ -39,9 +43,10 @@ class Isbn extends Ean
     /**
      * Determine if checksum for ISBN-10 numbers is valid
      *
+     * @param string $value
      * @return bool
      */
-    private function shortChecksumMatches($value)
+    private function shortChecksumMatches(string $value): bool
     {
         return $this->getShortChecksum($value) % 11 === 0;
     }
@@ -49,9 +54,10 @@ class Isbn extends Ean
     /**
      * Calculate checksum of short ISBN numbers
      *
+     * @param string $value
      * @return int
      */
-    private function getShortChecksum($value)
+    private function getShortChecksum(string $value): int
     {
         $checksum = 0;
         $multiplier = 10;

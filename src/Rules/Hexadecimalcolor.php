@@ -11,7 +11,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     /**
      * Create a new rule instance.
      *
-     * @param array $lengths
+     * @param array<int> $lengths
      * @return void
      */
     public function __construct(protected array $lengths = [3, 4, 6, 8])
@@ -41,10 +41,11 @@ class Hexadecimalcolor extends AbstractRegexRule
     /**
      * Determine if the current value has correct length
      *
+     * @param mixed $value
      * @return bool
      */
-    public function hasAllowedLength($value): bool
+    public function hasAllowedLength(mixed $value): bool
     {
-        return in_array(strlen(trim($value, '#')), $this->lengths);
+        return in_array(strlen(trim(strval($value), '#')), $this->lengths);
     }
 }

@@ -35,4 +35,10 @@ return [
     'postalcode' => 'Der Wert :attribute muss eine gültige Postleitzahl sein.',
     'mimetype' => 'Der Wert :attribute einhält keinen gültigen Internet Media Type (MIME-Type).',
     'austrianinsurancenumber' => 'Der Wert :attribute enthält keine gültige österreichische Versicherungsnummer',
+    'grid' => 'Der Wert :attribute enthält keinen gültige Global Release Identifier (GRid).',
+    'hslcolor' => 'Der Wert :attribute enthält keinen gültigen HSL-Farbwert.',
+    'hsvcolor' => 'Der Wert :attribute enthält keinen gültigen HSV-Farbwert.',
+    'latitude' => 'Der Wert :attribute enthält keine gültige geographische Breite.',
+    'longitude' => 'Der Wert :attribute enthält keine gültige geographische Länge.',
+    'latlng' => 'Der Wert :attribute ist kein gültiges geographisches Koordinatenpaar.',
 ];

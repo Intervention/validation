@@ -40,7 +40,7 @@ class ValidationServiceProvider extends ServiceProvider
      * Return rule object for given shortname
      *
      * @param string $rulename
-     * @param array $parameters
+     * @param array<mixed> $parameters
      * @return Rule
      * @throws NotExistingRuleException
      */
@@ -58,7 +58,7 @@ class ValidationServiceProvider extends ServiceProvider
     /**
      * List all shortnames of new rule objects
      *
-     * @return array
+     * @return array<string>
      */
     private function getRuleShortnames(): array
     {
@@ -81,7 +81,7 @@ class ValidationServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return array<string>
      */
     public function provides()
     {

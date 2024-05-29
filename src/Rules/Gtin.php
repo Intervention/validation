@@ -6,6 +6,10 @@ namespace Intervention\Validation\Rules;
 
 class Gtin extends Ean
 {
+    /**
+     * @param array<int> $lengths
+     * @return void
+     */
     public function __construct(protected array $lengths = [8, 12, 13, 14])
     {
     }

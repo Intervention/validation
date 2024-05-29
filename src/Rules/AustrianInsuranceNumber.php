@@ -19,7 +19,7 @@ class AustrianInsuranceNumber extends AbstractRule
      * Multiplier series to calculate checksum
      * https://www.sozialversicherung.at/cdscontent/?contentid=10007.820902&viewmode=content
      *
-     * @var array
+     * @var array<int>
      */
     private array $multiplierSeries = [
         3, 7, 9, 5, 8, 4, 2, 1, 6
@@ -33,7 +33,7 @@ class AustrianInsuranceNumber extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        $value = str_replace(' ', '', $value);
+        $value = str_replace(' ', '', strval($value));
 
         return is_numeric($value)
             && $this->startsNotWithZero($value)
@@ -41,17 +41,17 @@ class AustrianInsuranceNumber extends AbstractRule
             && $this->checkChecksum($value);
     }
 
-    private function hasValidLength($svnumber): bool
+    private function hasValidLength(string $svnumber): bool
     {
         return $this->length === strlen($svnumber);
     }
 
-    private function startsNotWithZero($svnumber): bool
+    private function startsNotWithZero(string $svnumber): bool
     {
         return (int) $svnumber[0] !== 0;
     }
 
-    private function checkChecksum($svnumber): bool
+    private function checkChecksum(string $svnumber): bool
     {
         if (strlen($svnumber) !== $this->length) {
             return false;
@@ -62,7 +62,7 @@ class AustrianInsuranceNumber extends AbstractRule
 
         $sum = 0;
         for ($c = 0, $cMax = strlen($svnumberWithoutChecksum); $c < $cMax; $c++) {
-            $result = $svnumberWithoutChecksum[$c] * $this->multiplierSeries[$c];
+            $result = intval($svnumberWithoutChecksum[$c]) * $this->multiplierSeries[$c];
             $sum += $result;
         }
         $checksum = $sum % 11;

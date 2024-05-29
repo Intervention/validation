@@ -105,6 +105,12 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 
 Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
+### Global Release Identifier (GRid)
+
+The field under validation must be a [Global Release Identifier](https://en.wikipedia.org/wiki/Global_Release_Identifier).
+
+    public Intervention\Validation\Rules\Grid::__construct()
+
 ### Global Trade Item Number (GTIN)
 
 Checks for a valid [Global Trade Item Number](https://en.wikipedia.org/wiki/Global_Trade_Item_Number).
@@ -128,6 +134,18 @@ The field under validation must be a valid [hexadecimal color code](https://en.w
 **length**
 
 Optional length as integer to check only for shorthand (3 or 4 characters) or full hexadecimal (6 or 8 characters) form.
+
+### HSL Color
+
+The field under validation must be a valid [HSL color code](https://en.wikipedia.org/wiki/HSL_and_HSV).
+
+    public Intervention\Validation\Rules\Hslcolor::__construct()
+
+### HSV Color
+
+The field under validation must be a valid [HSV/HSB color code](https://en.wikipedia.org/wiki/HSL_and_HSV).
+
+    public Intervention\Validation\Rules\Hsvcolor::__construct()
 
 ### Text without HTML
 
@@ -182,6 +200,24 @@ The given value must be a in format of a [JSON Web Token](https://en.wikipedia.o
 The given value must be formatted in [Kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
 
     public Intervention\Validation\Rules\Kebabcase::__construct()
+
+### Latitude
+
+Checks for a valid geographic [Latitude](https://en.wikipedia.org/wiki/Latitude).
+
+    public Intervention\Validation\Rules\Latitude::__construct()
+
+### Longitude
+
+Checks for a valid geographic [Longitude](https://en.wikipedia.org/wiki/Longitude).
+
+    public Intervention\Validation\Rules\Longitude::__construct()
+
+### LatLng
+
+Checks for a valid geographic comma separated pair of a [Latitude](https://en.wikipedia.org/wiki/Latitude) and a [Longitude](https://en.wikipedia.org/wiki/Longitude).
+
+    public Intervention\Validation\Rules\LatLng::__construct()
 
 ### Lower case string
 

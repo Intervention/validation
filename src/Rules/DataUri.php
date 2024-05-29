@@ -11,7 +11,7 @@ class DataUri extends AbstractRule
     /**
      * Create new instance with allowed media types or null for all valid media types
      *
-     * @param null|array $media_types
+     * @param null|array<string> $media_types
      * @return void
      */
     public function __construct(protected ?array $media_types = null)
@@ -27,6 +27,7 @@ class DataUri extends AbstractRule
     public function isValid(mixed $value): bool
     {
         $info = $this->dataUriInfo($value);
+
         if (!$info->isValid()) {
             return false;
         }
@@ -104,20 +105,37 @@ class DataUri extends AbstractRule
     /**
      * Parse data url info from current value
      *
+     * @param mixed $value
      * @return object
      */
-    protected function dataUriInfo($value): object
+    protected function dataUriInfo(mixed $value): object
     {
         $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>" .
             "(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
-        $result = preg_match($pattern, $value, $matches);
+        $result = preg_match($pattern, strval($value), $matches);
 
         return new class ($matches, $result)
         {
-            private $matches;
-            private $result;
+            /**
+             * Matches of regex operation
+             *
+             * @var array<mixed> $matches
+             */
+            private array $matches;
 
-            public function __construct($matches, $result)
+            /**
+             * Result of regex operation
+             *
+             * @var int|false $result
+             */
+            private int|false $result;
+
+            /**
+             * @param array<mixed> $matches
+             * @param int|false $result
+             * @return void
+             */
+            public function __construct(array $matches, int|false $result)
             {
                 $this->matches = $matches;
                 $this->result = $result;
@@ -142,6 +160,7 @@ class DataUri extends AbstractRule
                 return !empty($this->mediaType());
             }
 
+            /** @return array<mixed> */
             public function parameters(): array
             {
                 if (isset($this->matches['parameters']) && !empty($this->matches['parameters'])) {

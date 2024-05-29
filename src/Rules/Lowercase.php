@@ -22,10 +22,11 @@ class Lowercase extends AbstractRule
     /**
      * Return value as lowercase
      *
+     * @param mixed $value
      * @return string
      */
-    private function getLowerCaseValue($value): string
+    private function getLowerCaseValue(mixed $value): string
     {
-        return mb_strtolower($value, mb_detect_encoding($value));
+        return mb_strtolower(strval($value), mb_detect_encoding($value));
     }
 }

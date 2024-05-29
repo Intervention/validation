@@ -40,4 +40,10 @@ return [
     'gtin' => 'Le :attribute doit être un GTIN valide.',
     'postalcode' => 'La valeur :attribute doit être un code postal valide.',
     'mimetype' => 'La valeur :attribute ne contient pas de type de média Internet valide (type MIME).',
+    'grid' => 'Le :attribute doit être un Global Release Identifier (GRid) valide.',
+    'hslcolor' => ':attribute n\'est pas une valeur de couleur HSL valide',
+    'hsvcolor' => ':attribute n\'est pas une valeur de couleur HSV valide',
+    'latitude' => ':attribute n\'est pas une latitude valide.',
+    'longitude' => ':attribute n\'est pas une longitude valide.',
+    'latlng' => ':attribute n\'est pas une paire de coordonnées géographiques valables.',
 ];

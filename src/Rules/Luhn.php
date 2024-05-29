@@ -49,6 +49,6 @@ class Luhn extends AbstractRule
             }
         }
 
-        return $checksum;
+        return (int) $checksum;
     }
 }

@@ -14,19 +14,19 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @var ?string
      */
-    protected $reference;
+    protected ?string $reference;
 
     /**
      * Data set used for validation
      *
-     * @var array
+     * @var array<string>
      */
-    protected $data = [];
+    protected array $data = [];
 
     /**
      * Create a new rule instance with allowed countrycodes
      *
-     * @param array $countrycodes
+     * @param array<string> $countrycodes
      */
     public function __construct(protected array $countrycodes = [])
     {
@@ -35,7 +35,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Set data
      *
-     * @param array $data
+     * @param array<mixed> $data
      * @return static
      */
     public function setData(array $data): static
@@ -63,7 +63,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Static constructor method
      *
-     * @param array $countrycodes
+     * @param array<string> $countrycodes
      * @return Postalcode
      */
     public static function countrycode(array $countrycodes): self
@@ -91,7 +91,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Return regex patterns for allowed country codes
      *
-     * @return array
+     * @return array<string>
      */
     protected function getPatterns(): array
     {
@@ -104,6 +104,11 @@ class Postalcode extends AbstractRule implements DataAwareRule
         });
     }
 
+    /**
+     * Get array of allowed country codes
+     *
+     * @return array<string>
+     */
     protected function getCountryCodes(): array
     {
         if (count($this->countrycodes) == 0) {

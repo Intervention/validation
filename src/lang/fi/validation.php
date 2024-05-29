@@ -33,4 +33,10 @@ return [
     'gtin' => ':attribute on oltava kelvollinen GTIN.',
     'postalcode' => 'Arvo :attribute on oltava kelvollinen postinumero.',
     'mimetype' => 'Arvo :attribute ei sisällä kelvollista Internet -mediatyyppiä (MIME-Type).',
+    'grid' => ':attribute on oltava kelvollinen Global Release Identifier (GRid).',
+    'hslcolor' => ':attribute ei ole kelvollinen HSL-väriarvo',
+    'hsvcolor' => ':attribute ei ole kelvollinen HSV-väriarvo',
+    'latitude' => ':attribute ei ole kelvollinen leveysaste.',
+    'longitude' => ':attribute ei ole kelvollinen maantieteellinen pituusaste.',
+    'latlng' => ':attribute ei ole kelvollinen maantieteellinen koordinaattipari.',
 ];
