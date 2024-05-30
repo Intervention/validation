@@ -33,7 +33,7 @@ class AustrianInsuranceNumber extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        $value = str_replace(' ', '', strval($value));
+        $value = str_replace(' ', '', (string) $value);
 
         return is_numeric($value)
             && $this->startsNotWithZero($value)
@@ -62,7 +62,7 @@ class AustrianInsuranceNumber extends AbstractRule
 
         $sum = 0;
         for ($c = 0, $cMax = strlen($svnumberWithoutChecksum); $c < $cMax; $c++) {
-            $result = intval($svnumberWithoutChecksum[$c]) * $this->multiplierSeries[$c];
+            $result = (int) $svnumberWithoutChecksum[$c] * $this->multiplierSeries[$c];
             $sum += $result;
         }
         $checksum = $sum % 11;

@@ -40,6 +40,7 @@ return [
     'gtin' => 'Le :attribute doit être un GTIN valide.',
     'postalcode' => 'La valeur :attribute doit être un code postal valide.',
     'mimetype' => 'La valeur :attribute ne contient pas de type de média Internet valide (type MIME).',
+    'austrianinsurancenumber' => 'La valeur :attribute ne contient pas de numéro d\'assurance autrichien valide.',
     'grid' => 'Le :attribute doit être un Global Release Identifier (GRid) valide.',
     'hslcolor' => ':attribute n\'est pas une valeur de couleur HSL valide',
     'hsvcolor' => ':attribute n\'est pas une valeur de couleur HSV valide',

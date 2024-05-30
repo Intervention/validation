@@ -33,6 +33,7 @@ return [
     'gtin' => ':attribute is geen geldig Global Trade Item Number (GTIN).',
     'postalcode' => ':attribute moet een geldige postcode zijn.',
     'mimetype' => ':attribute bevat geen geldig internetmediatype (MIME-type).',
+    'austrianinsurancenumber' => 'De waarde :attribute bevat geen geldig Oostenrijks verzekeringsnummer.',
     'grid' => ':attribute moet een geldige Global Release Identifier (GRid) zijn.',
     'hslcolor' => ':attribute is geen geldige HSL-kleurwaarde',
     'hsvcolor' => ':attribute is geen geldige HSV-kleurwaarde',

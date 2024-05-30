@@ -51,6 +51,12 @@ Or add your custom messages directly to the validator like [described in the doc
 
 The following validation rules are available with this package.
 
+### Austrian insurance Number (austrian social security number)
+
+The field under validation must be an [Austrian insurance number](https://de.wikipedia.org/wiki/Sozialversicherungsnummer#%C3%96sterreich)
+
+    public Intervention\Validation\Rules\AustrianInsuranceNumber::__construct()
+
 ### Base64 encoded string
 
 The field under validation must be [Base64 encoded](https://en.wikipedia.org/wiki/Base64).
