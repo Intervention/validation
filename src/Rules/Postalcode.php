@@ -127,151 +127,32 @@ class Postalcode extends AbstractRule implements DataAwareRule
      */
     private function getPattern(string $countrycode): ?string
     {
-        switch (strtolower($countrycode)) {
-            case 'dz':
-            case 'as':
-            case 'ad':
-            case 'de':
-            case 'ba':
-            case 'ic':
-            case 'mp':
-            case 'hr':
-            case 'cu':
-            case 'ee':
-            case 'fi':
-            case 'fr':
-            case 'gf':
-            case 'gp':
-            case 'gu':
-            case 'id':
-            case 'it':
-            case 'kr':
-            case 'kv':
-            case 'lt':
-            case 'my':
-            case 'mh':
-            case 'mq':
-            case 'yt':
-            case 'fm':
-            case 'mc':
-            case 'me':
-            case 'ma':
-            case 'nc':
-            case 'pk':
-            case 'pw':
-            case 'pr':
-            case 're':
-            case 'sm':
-            case 'rs':
-            case 'es':
-            case 'xy':
-            case 'th':
-            case 'tr':
-            case 'ua':
-            case 'us':
-            case 'vi':
-                return "/^[0-9]{5}$/";
-
-            case 'fo':
-            case 'is':
-            case 'mg':
-            case 'pg':
-                return "/^[0-9]{3}$/";
-
-            case 'cz':
-            case 'gr':
-            case 'sk':
-            case 'se':
-                return "/^[0-9]{3} [0-9]{2}$/";
-
-            case 'il':
-                return "/^[0-9]{5}([0-9]{2})?$/";
-
-            case 'br':
-                return "/^[0-9]{5}(-?[0-9]{3})?$/";
-
-            case 'gg':
-            case 'je':
-                return "/^[a-z]{2}[0-9][0-9]? [0-9][a-z]{2}$/i";
-
-            case 'bn':
-                return "/^[a-z]{2}[0-9]{4}$/i";
-
-            case 'jp':
-                return "/^[0-9]{3}-[0-9]{4}$/";
-
-            case 'nl':
-                return "/^[0-9]{4}\s?[a-z]{2}$/i";
-
-            case 'ar':
-            case 'am':
-            case 'au':
-            case 'at':
-            case 'bd':
-            case 'be':
-            case 'bg':
-            case 'cy':
-            case 'dk':
-            case 'ge':
-            case 'gl':
-            case 'hu':
-            case 'lv':
-            case 'li':
-            case 'lu':
-            case 'mk':
-            case 'md':
-            case 'nz':
-            case 'no':
-            case 'ph':
-            case 'si':
-            case 'za':
-            case 'ch':
-            case 'tn':
-                return "/^[0-9]{4}$/";
-
-            case 'mv':
-            case 'mx':
-                return "/^[0-9]{4}[0-9]?$/";
-
-            case 'mn':
-                return "/^[0-9]{5}[0-9]?$/";
-
-            case 'pl':
-                return "/^[0-9]{2}-[0-9]{3}$/";
-
-            case 'pt':
-                return "/^[0-9]{4}(-[0-9]{3})?$/";
-
-            case 'by':
-            case 'cn':
-            case 'ec':
-            case 'in':
-            case 'kz':
-            case 'kg':
-            case 'ro':
-            case 'ru':
-            case 'sg':
-            case 'tj':
-            case 'zu':
-                return "/^[0-9]{6}$/";
-
-            case 'ca':
-                return "/^[a-z][0-9][a-z] [0-9][a-z]([0-9])?$/i";
-
-            case 'az':
-                return "/^[0-9]{4}([0-9]{2})?$/";
-
-            case 'sz':
-                return "/^[a-z]{1}[0-9]{3}$/i";
-
-            case 'tw':
-                return "/^[0-9]{3}([0-9]{2})?$/";
-
-            case 'gb':
-                return "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])" .
-                    "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i";
-        }
-
-        return null;
+        return match (strtolower($countrycode)) {
+            'dz', 'as', 'ad', 'de', 'ba', 'ic', 'mp', 'hr', 'cu', 'ee', 'fi', 'fr', 'gf', 'gp', 'gu', 'id', 'it', 'kr',
+            'kv', 'lt', 'my', 'mh', 'mq', 'yt', 'fm', 'mc', 'me', 'ma', 'nc', 'pk', 'pw', 'pr', 're', 'sm', 'rs',
+            'es', 'xy', 'th', 'tr', 'ua', 'us', 'vi' => "/^[0-9]{5}$/",
+            'fo', 'is', 'mg', 'pg' => "/^[0-9]{3}$/",
+            'cz', 'gr', 'sk', 'se' => "/^[0-9]{3} [0-9]{2}$/",
+            'il' => "/^[0-9]{5}([0-9]{2})?$/",
+            'br' => "/^[0-9]{5}(-?[0-9]{3})?$/",
+            'gg', 'je' => "/^[a-z]{2}[0-9][0-9]? [0-9][a-z]{2}$/i",
+            'bn' => "/^[a-z]{2}[0-9]{4}$/i",
+            'jp' => "/^[0-9]{3}-[0-9]{4}$/",
+            'nl' => "/^[0-9]{4}\s?[a-z]{2}$/i",
+            'ar', 'am', 'au', 'at', 'bd', 'be', 'bg', 'cy', 'dk', 'ge', 'gl', 'hu', 'lv', 'li', 'lu', 'mk', 'md', 'nz',
+            'no', 'ph', 'si', 'za', 'ch', 'tn' => "/^[0-9]{4}$/",
+            'mv', 'mx' => "/^[0-9]{4}[0-9]?$/",
+            'mn' => "/^[0-9]{5}[0-9]?$/",
+            'pl' => "/^[0-9]{2}-[0-9]{3}$/",
+            'pt' => "/^[0-9]{4}(-[0-9]{3})?$/",
+            'by', 'cn', 'ec', 'in', 'kz', 'kg', 'ro', 'ru', 'sg', 'tj', 'zu' => "/^[0-9]{6}$/",
+            'ca' => "/^[a-z][0-9][a-z] [0-9][a-z]([0-9])?$/i",
+            'az' => "/^[0-9]{4}([0-9]{2})?$/",
+            'sz' => "/^[a-z]{1}[0-9]{3}$/i",
+            'tw' => "/^[0-9]{3}([0-9]{2})?$/",
+            'gb' => "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])" .
+                    "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i",
+            default => null,
+        };
     }
 }
