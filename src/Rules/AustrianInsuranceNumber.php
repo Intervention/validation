@@ -38,6 +38,7 @@ class AustrianInsuranceNumber extends AbstractRule
         return is_numeric($value)
             && $this->startsNotWithZero($value)
             && $this->hasValidLength($value)
+            && $this->hasValidBirthday($value)
             && $this->checkChecksum($value);
     }
 
@@ -49,6 +50,25 @@ class AustrianInsuranceNumber extends AbstractRule
     private function startsNotWithZero(string $svnumber): bool
     {
         return (int) $svnumber[0] !== 0;
+    }
+
+    private function hasValidBirthday($svnumber): bool
+    {
+        $splittedBirthday = str_split(substr($svnumber, 4, 10), 2);
+
+        if (!in_array((int) $splittedBirthday[0], range(1, 31), true)) {
+            return false;
+        }
+
+        if (!in_array((int) $splittedBirthday[1], range(1, 20), true)) {
+            return false;
+        }
+
+        if (!in_array((int) $splittedBirthday[2], range(0, 99), true)) {
+            return false;
+        }
+
+        return true;
     }
 
     private function checkChecksum(string $svnumber): bool
