@@ -24,7 +24,7 @@ class Luhn extends AbstractRule
      * @param mixed $checksum
      * @return bool
      */
-    protected function checksumIsValid($checksum): bool
+    private function checksumIsValid($checksum): bool
     {
         return $checksum % 10 === 0;
     }
@@ -35,7 +35,7 @@ class Luhn extends AbstractRule
      * @param mixed $value
      * @return int
      */
-    protected function getChecksum($value): int
+    private function getChecksum($value): int
     {
         $checksum = 0;
         $reverse = strrev(strval($value));

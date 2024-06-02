@@ -34,7 +34,7 @@ class Ean extends AbstractRule
      * @param mixed $value
      * @return bool
      */
-    public function hasAllowedLength(mixed $value): bool
+    protected function hasAllowedLength(mixed $value): bool
     {
         return in_array(strlen(strval($value)), $this->lengths);
     }
@@ -57,7 +57,7 @@ class Ean extends AbstractRule
      * @param mixed $value
      * @return int
      */
-    protected function cutChecksum(mixed $value): int
+    private function cutChecksum(mixed $value): int
     {
         return intval(substr(strval($value), -1));
     }
@@ -68,7 +68,7 @@ class Ean extends AbstractRule
      * @param mixed $value
      * @return int
      */
-    protected function calculateChecksum(mixed $value): int
+    private function calculateChecksum(mixed $value): int
     {
         $checksum = 0;
 

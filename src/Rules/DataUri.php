@@ -55,7 +55,7 @@ class DataUri extends AbstractRule
      *
      * @return bool
      */
-    protected function expectsMediaType(): bool
+    private function expectsMediaType(): bool
     {
         return is_array($this->media_types);
     }
@@ -66,7 +66,7 @@ class DataUri extends AbstractRule
      * @param mixed $value
      * @return bool
      */
-    protected function isValidMimeType(mixed $value): bool
+    private function isValidMimeType(mixed $value): bool
     {
         return (new MimeType())->isValid($value);
     }
@@ -77,7 +77,7 @@ class DataUri extends AbstractRule
      * @param mixed $type
      * @return bool
      */
-    protected function isAllowedMimeType(mixed $type): bool
+    private function isAllowedMimeType(mixed $type): bool
     {
         if (is_null($this->media_types)) {
             return true;
@@ -96,7 +96,7 @@ class DataUri extends AbstractRule
         return false;
     }
 
-    protected function isValidBase64EncodedValue(mixed $value): bool
+    private function isValidBase64EncodedValue(mixed $value): bool
     {
         return (new Base64())->isValid($value);
     }
@@ -107,7 +107,7 @@ class DataUri extends AbstractRule
      * @param mixed $value
      * @return object
      */
-    protected function dataUriInfo(mixed $value): object
+    private function dataUriInfo(mixed $value): object
     {
         $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>" .
             "(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";

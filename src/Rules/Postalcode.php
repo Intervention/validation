@@ -92,7 +92,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return array<string>
      */
-    protected function getPatterns(): array
+    private function getPatterns(): array
     {
         $patterns = array_map(function ($countrycode) {
             return $this->getPattern($countrycode);
@@ -108,7 +108,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return array<string>
      */
-    protected function getCountryCodes(): array
+    private function getCountryCodes(): array
     {
         if (count($this->countrycodes) == 0) {
             // return country code by reference
@@ -125,7 +125,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return ?string
      */
-    protected function getPattern(string $countrycode): ?string
+    private function getPattern(string $countrycode): ?string
     {
         switch (strtolower($countrycode)) {
             case 'dz':

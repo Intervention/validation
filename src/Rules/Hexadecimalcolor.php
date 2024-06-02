@@ -48,7 +48,7 @@ class Hexadecimalcolor extends AbstractRegexRule
      * @param mixed $value
      * @return bool
      */
-    public function hasAllowedLength(mixed $value): bool
+    private function hasAllowedLength(mixed $value): bool
     {
         return in_array(strlen(trim(strval($value), '#')), $this->lengths);
     }

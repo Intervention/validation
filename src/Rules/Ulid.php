@@ -42,7 +42,7 @@ class Ulid extends AbstractRegexRule
      * @param string $value
      * @return bool
      */
-    protected function ulidTooLarge(string $value): bool
+    private function ulidTooLarge(string $value): bool
     {
         return intval($value[0]) > 7;
     }
