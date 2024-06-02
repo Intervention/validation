@@ -14,7 +14,7 @@ class DataUri extends AbstractRule
      * @param null|array<string> $media_types
      * @return void
      */
-    public function __construct(protected ?array $media_types = null)
+    public function __construct(private ?array $media_types = null)
     {
     }
 

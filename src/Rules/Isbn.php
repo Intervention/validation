@@ -10,8 +10,9 @@ class Isbn extends Ean
      * @param array<int> $lengths
      * @return void
      */
-    public function __construct(protected array $lengths = [10, 13])
+    public function __construct(private array $lengths = [10, 13])
     {
+        parent::__construct($this->lengths);
     }
 
     /**

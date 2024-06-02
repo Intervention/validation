@@ -14,14 +14,14 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @var ?string
      */
-    protected ?string $reference;
+    private ?string $reference;
 
     /**
      * Data set used for validation
      *
      * @var array<string>
      */
-    protected array $data = [];
+    private array $data = [];
 
     /**
      * Create a new rule instance with allowed countrycodes

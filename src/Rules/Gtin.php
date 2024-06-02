@@ -19,8 +19,9 @@ class Gtin extends Ean
      * @param array<int> $lengths
      * @return void
      */
-    public function __construct(protected array $lengths = [8, 12, 13, 14])
+    public function __construct(private array $lengths = [8, 12, 13, 14])
     {
+        parent::__construct($this->lengths);
     }
 
     /**

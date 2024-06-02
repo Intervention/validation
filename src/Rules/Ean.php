@@ -14,7 +14,7 @@ class Ean extends AbstractRule
      * @param array<int> $lengths
      * @return void
      */
-    public function __construct(protected array $lengths = [8, 13])
+    public function __construct(private array $lengths = [8, 13])
     {
     }
 
