@@ -8,11 +8,21 @@ use Intervention\Validation\AbstractRegexRule;
 
 class Issn extends AbstractRegexRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         return "/^[0-9]{4}-[0-9]{3}[0-9xX]$/";
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see Rule::isValid()
+     */
     public function isValid(mixed $value): bool
     {
         return parent::isValid($value) && $this->checkSumMatches($value);

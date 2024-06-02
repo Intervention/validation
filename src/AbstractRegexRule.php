@@ -8,14 +8,15 @@ abstract class AbstractRegexRule extends AbstractRule
 {
     /**
      * REGEX pattern of rule
+     *
+     * @return string
      */
     abstract protected function pattern(): string;
 
     /**
-     * Determine if the validation rule passes.
+     * {@inheritdoc}
      *
-     * @param mixed $value
-     * @return bool
+     * @see Rule::isValid()
      */
     public function isValid(mixed $value): bool
     {

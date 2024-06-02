@@ -8,16 +8,20 @@ use Intervention\Validation\AbstractRegexRule;
 
 class Ulid extends AbstractRegexRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         return "/^[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{10}[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{16}$/i";
     }
 
     /**
-     * Determine if the validation rule passes.
+     * {@inheritdoc}
      *
-     * @param mixed $value
-     * @return bool
+     * @see Rule::isValid()
      */
     public function isValid(mixed $value): bool
     {

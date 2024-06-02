@@ -7,15 +7,7 @@ namespace Intervention\Validation\Rules;
 class Gtin extends Ean
 {
     /**
-     * @param array<int> $lengths
-     * @return void
-     */
-    public function __construct(protected array $lengths = [8, 12, 13, 14])
-    {
-    }
-
-    /**
-     * Determine if the validation rule passes.
+     * Create instance of gtin validation rule
      *
      * Value must be either GTIN-13 or GTIN-8, which is checked as EAN
      * by parent class. Or value must be GTIN-14 or GTIN-12 which will
@@ -24,8 +16,17 @@ class Gtin extends Ean
      * - GTIN-14 will be checked as EAN-13 after cropping first char
      * - GTIN-12 will be checked as EAN-13 after adding leading zero
      *
-     * @param mixed $value
-     * @return bool
+     * @param array<int> $lengths
+     * @return void
+     */
+    public function __construct(protected array $lengths = [8, 12, 13, 14])
+    {
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see Rule::isValid()
      */
     public function isValid(mixed $value): bool
     {

@@ -26,10 +26,9 @@ class AustrianInsuranceNumber extends AbstractRule
     ];
 
     /**
-     * Determine if the validation rule passes.
+     * {@inheritdoc}
      *
-     * @param mixed $value
-     * @return bool
+     * @see Rule::isValid()
      */
     public function isValid(mixed $value): bool
     {

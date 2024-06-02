@@ -8,6 +8,11 @@ use Intervention\Validation\AbstractRegexRule;
 
 class LatLng extends AbstractRegexRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         $lat = substr((new Latitude())->pattern(), 2, -2);

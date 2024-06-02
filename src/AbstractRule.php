@@ -10,15 +10,17 @@ use Illuminate\Contracts\Validation\ValidationRule;
 
 abstract class AbstractRule implements Rule, ValidationRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see Rule::isValid()
+     */
     abstract public function isValid(mixed $value): bool;
 
     /**
-     * Laravel Framework validation method
+     * {@inheritdoc}
      *
-     * @param string $attribute
-     * @param mixed $value
-     * @param Closure $fail
-     * @return void
+     * @see ValidationRule::validate()
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {

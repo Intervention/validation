@@ -18,16 +18,20 @@ class Hexadecimalcolor extends AbstractRegexRule
     {
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         return '/^#?(?P<hex>[a-f\d]{3}(?:[a-f\d]?|(?:[a-f\d]{3}(?:[a-f\d]{2})?)?)\b)$/i';
     }
 
     /**
-     * Determine if the validation rule passes.
+     * {@inheritdoc}
      *
-     * @param mixed $value
-     * @return bool
+     * @see Rule::isValid()
      */
     public function isValid(mixed $value): bool
     {

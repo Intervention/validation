@@ -8,6 +8,11 @@ use Intervention\Validation\AbstractRegexRule;
 
 class Camelcase extends AbstractRegexRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         return "/^(?:\p{Lu}?\p{Ll}+)(?:\p{Lu}\p{Ll}+)*$/u";

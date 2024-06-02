@@ -8,6 +8,11 @@ use Intervention\Validation\AbstractRegexRule;
 
 class Semver extends AbstractRegexRule
 {
+    /**
+     * {@inheritdoc}
+     *
+     * @see AbstractRegexRule::pattern()
+     */
     protected function pattern(): string
     {
         return "/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)" .
