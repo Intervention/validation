@@ -54,7 +54,7 @@ class AustrianInsuranceNumber extends AbstractRule
 
     private function hasValidBirthday(string $svnumber): bool
     {
-        $splittedBirthday = str_split(substr($svnumber, 4, 10), 2);
+        $splittedBirthday = str_split(substr($svnumber, 4), 2);
 
         if (!in_array((int) $splittedBirthday[0], range(1, 31), true)) {
             return false;
