@@ -29,6 +29,10 @@ final class AustrianInsuranceNumberTest extends TestCase
             [false, '8753080475'],
             [false, 'foo'],
             [true, '1230 011471'],
+            [false, '9999999999'],
+            [false, '9999202501'],
+            [false, '9999009901'],
+            [true, '1680250250'],
         ];
     }
 }
