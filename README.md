@@ -7,6 +7,7 @@ creditcard numbers and more.
 [![Latest Version](https://img.shields.io/packagist/v/intervention/validation.svg)](https://packagist.org/packages/intervention/validation)
 [![Tests](https://github.com/Intervention/validation/actions/workflows/build.yml/badge.svg)](https://github.com/Intervention/validation/actions/workflows/build.yml)
 [![Monthly Downloads](https://img.shields.io/packagist/dm/intervention/validation.svg)](https://packagist.org/packages/intervention/validation/stats)
+[![Support me on Ko-fi](https://raw.githubusercontent.com/Intervention/validation/main/.github/images/support.svg)](https://ko-fi.com/interventionphp)
 
 ## Installation
 
