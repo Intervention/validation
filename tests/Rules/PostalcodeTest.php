@@ -549,6 +549,15 @@ final class PostalcodeTest extends TestCase
             [false, 'gb', '1234'],
             [false, 'gb', '12345'],
             [false, 'gb', '123456'],
+
+            [true, 'ie', 'A65 F4E2'],
+            [true, 'ie', 'D02 X285'],
+            [true, 'ie', 'T12 A7KX'],
+            [false, 'ie', '123456'],
+            [false, 'ie', 'A65F4E2'],
+            [false, 'ie', 'A6 5F4E2'],
+            [false, 'ie', 'D02X28'],
+            [false, 'ie', 'AB12 C345'],
         ];
     }
 }
