@@ -152,6 +152,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
             'tw' => "/^[0-9]{3}([0-9]{2})?$/",
             'gb' => "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])" .
                     "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i",
+            'ie' => "/^[A-Za-z][A-Za-z0-9]{2} [A-Za-z0-9]{4}$/i",
             default => null,
         };
     }
