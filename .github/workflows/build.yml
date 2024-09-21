@@ -11,13 +11,13 @@ jobs:
     name: Testing on PHP ${{ matrix.php }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: mbstring,bcmath
+          extensions: mbstring, bcmath
           tools: composer
 
       - name: Install PHP dependencies
