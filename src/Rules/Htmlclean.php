@@ -15,6 +15,10 @@ class Htmlclean extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return (strip_tags($value) == $value);
+        if (is_null($value)) {
+            return true;
+        }
+
+        return (strip_tags($value) ==  $value);
     }
 }

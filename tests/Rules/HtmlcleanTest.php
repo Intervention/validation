@@ -29,6 +29,7 @@ final class HtmlcleanTest extends TestCase
             [true, 'attr="test"'],
             [true, 'one < two'],
             [true, 'two>one'],
+            [true, null],
             [false, 'The quick brown fox jumps <strong>over</strong> the lazy dog.'],
             [false, '<html>'],
             [false, '<HTML>test</HTML>'],
