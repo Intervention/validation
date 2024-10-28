@@ -19,6 +19,6 @@ class Htmlclean extends AbstractRule
             return true;
         }
 
-        return (strip_tags($value) ==  $value);
+        return (strip_tags($value) == $value);
     }
 }
