@@ -78,7 +78,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      */
     public function isValid(mixed $value): bool
     {
-        foreach ($this->getPatterns() as $pattern) {
+        foreach ($this->patterns() as $pattern) {
             if (preg_match($pattern, $value)) {
                 return true;
             }
@@ -92,11 +92,11 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return array<string>
      */
-    private function getPatterns(): array
+    private function patterns(): array
     {
         $patterns = array_map(function ($countrycode) {
-            return $this->getPattern($countrycode);
-        }, $this->getCountryCodes());
+            return $this->pattern($countrycode);
+        }, $this->countryCodes());
 
         return array_filter($patterns, function ($pattern) {
             return !is_null($pattern);
@@ -108,7 +108,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return array<string>
      */
-    private function getCountryCodes(): array
+    private function countryCodes(): array
     {
         if (count($this->countrycodes) == 0) {
             // return country code by reference
@@ -125,7 +125,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @return ?string
      */
-    private function getPattern(string $countrycode): ?string
+    private function pattern(string $countrycode): ?string
     {
         return match (strtolower($countrycode)) {
             'dz', 'as', 'ad', 'de', 'ba', 'ic', 'mp', 'hr', 'cu', 'ee', 'fi', 'fr', 'gf', 'gp', 'gu', 'id', 'it', 'kr',

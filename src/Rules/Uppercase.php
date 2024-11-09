@@ -15,16 +15,8 @@ class Uppercase extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return $value === $this->getUpperCaseValue($value);
-    }
+        $upperCaseValue = mb_strtoupper(strval($value), mb_detect_encoding($value));
 
-    /**
-     * Return value as uppercase
-     *
-     * @return string
-     */
-    private function getUpperCaseValue(mixed $value): string
-    {
-        return mb_strtoupper(strval($value), mb_detect_encoding($value));
+        return $value === $upperCaseValue;
     }
 }

@@ -132,7 +132,7 @@ class Iban extends AbstractRule
         $value = str_replace(' ', '', strtoupper(strval($value)));
 
         // check iban length and checksum
-        return $this->hasValidLength($value) && $this->getChecksum($value) === 1;
+        return $this->hasValidLength($value) && $this->checksum($value) === 1;
     }
 
     /**
@@ -141,12 +141,12 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return int
      */
-    private function getChecksum(string $iban): int
+    private function checksum(string $iban): int
     {
         $iban = substr($iban, 4) . substr($iban, 0, 4);
         $iban = str_replace(
-            $this->getReplacementsChars(),
-            $this->getReplacementsValues(),
+            $this->replacementsChars(),
+            $this->replacementsValues(),
             $iban
         );
 
@@ -167,7 +167,7 @@ class Iban extends AbstractRule
      * @param string $iban
      * @return int|false
      */
-    private function getDesignatedIbanLength(string $iban): int|false
+    private function designatedIbanLength(string $iban): int|false
     {
         $countrycode = substr($iban, 0, 2);
 
@@ -182,7 +182,7 @@ class Iban extends AbstractRule
      */
     private function hasValidLength(string $iban): bool
     {
-        return $this->getDesignatedIbanLength($iban) == strlen($iban);
+        return $this->designatedIbanLength($iban) == strlen($iban);
     }
 
     /**
@@ -190,7 +190,7 @@ class Iban extends AbstractRule
      *
      * @return array<string>
      */
-    private function getReplacementsChars(): array
+    private function replacementsChars(): array
     {
         return range('A', 'Z');
     }
@@ -200,7 +200,7 @@ class Iban extends AbstractRule
      *
      * @return array<string>
      */
-    private function getReplacementsValues(): array
+    private function replacementsValues(): array
     {
         $values = [];
         foreach (range(10, 35) as $value) {

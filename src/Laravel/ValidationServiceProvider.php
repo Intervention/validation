@@ -24,14 +24,14 @@ class ValidationServiceProvider extends ServiceProvider
         );
 
         // add rules to laravel validator
-        foreach ($this->getRuleShortnames() as $rulename) {
+        foreach ($this->ruleShortnames() as $rulename) {
             $this->app['validator']->extend(
                 $rulename,
                 function ($attribute, $value, $parameters, $validator) use ($rulename) {
-                    return $this->getInterventionRule($rulename, $parameters)
+                    return $this->interventionRule($rulename, $parameters)
                         ->isValid($value);
                 },
-                $this->getErrorMessage($rulename)
+                $this->errorMessage($rulename)
             );
         }
     }
@@ -44,7 +44,7 @@ class ValidationServiceProvider extends ServiceProvider
      * @return Rule
      * @throws NotExistingRuleException
      */
-    private function getInterventionRule(string $rulename, array $parameters): Rule
+    private function interventionRule(string $rulename, array $parameters): Rule
     {
         $classname = sprintf("Intervention\Validation\Rules\%s", ucfirst($rulename));
 
@@ -56,11 +56,11 @@ class ValidationServiceProvider extends ServiceProvider
     }
 
     /**
-     * List all shortnames of new rule objects
+     * List all shortnames of Intervention validation rule objects
      *
      * @return array<string>
      */
-    private function getRuleShortnames(): array
+    private function ruleShortnames(): array
     {
         return array_map(function ($filename) {
             return mb_strtolower(substr($filename, 0, -4));
@@ -73,13 +73,13 @@ class ValidationServiceProvider extends ServiceProvider
      * @param string $rulename
      * @return string
      */
-    protected function getErrorMessage(string $rulename): string
+    protected function errorMessage(string $rulename): string
     {
         return $this->app['translator']->get('validation::validation.' . $rulename);
     }
 
     /**
-     * Get the services provided by the provider.
+     * Return the services provided by the provider.
      *
      * @return array<string>
      */

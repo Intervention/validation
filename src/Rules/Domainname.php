@@ -15,7 +15,7 @@ class Domainname extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        $labels = $this->getLabels($value); // get labels of domainname
+        $labels = $this->labels($value); // get labels of domainname
         $tld = end($labels); // most right label of domainname is tld
 
         // domain must have 2 labels minimum
@@ -43,7 +43,7 @@ class Domainname extends AbstractRule
      *
      * @return array<string>
      */
-    private function getLabels(mixed $value): array
+    private function labels(mixed $value): array
     {
         return explode('.', $this->idnToAscii($value));
     }

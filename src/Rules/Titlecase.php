@@ -15,7 +15,7 @@ class Titlecase extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        foreach ($this->getWords($value) as $word) {
+        foreach ($this->words($value) as $word) {
             if (!$this->isValidWord($word)) {
                 return false;
             }
@@ -30,7 +30,7 @@ class Titlecase extends AbstractRule
      * @param mixed $value
      * @return array<string>
      */
-    private function getWords(mixed $value): array
+    private function words(mixed $value): array
     {
         return explode(" ", $value);
     }

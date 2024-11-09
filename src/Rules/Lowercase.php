@@ -15,17 +15,8 @@ class Lowercase extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return $value === $this->getLowerCaseValue($value);
-    }
+        $lowerCaseValue = mb_strtolower(strval($value), mb_detect_encoding($value));
 
-    /**
-     * Return value as lowercase
-     *
-     * @param mixed $value
-     * @return string
-     */
-    private function getLowerCaseValue(mixed $value): string
-    {
-        return mb_strtolower(strval($value), mb_detect_encoding($value));
+        return $value === $lowerCaseValue;
     }
 }
