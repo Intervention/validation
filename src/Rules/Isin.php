@@ -69,7 +69,11 @@ class Isin extends Luhn
      */
     private function replaceChars(string $value): string
     {
-        return str_replace($this->chars, array_keys($this->chars), $value);
+        return str_replace(
+            $this->chars,
+            array_map(fn (int $value) => strval($value), array_keys($this->chars)),
+            $value,
+        );
     }
 
     /**

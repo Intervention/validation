@@ -73,6 +73,14 @@ class Grid extends AbstractRegexRule
      */
     private function charValue(string $char): int
     {
-        return is_numeric($char) ? (int) $char : (int) str_replace(range('A', 'Z'), range(10, 35), strtoupper($char));
+        if (is_numeric($char)) {
+            return (int) $char;
+        }
+
+        return (int) str_replace(
+            range('A', 'Z'),
+            array_map(fn (int $val) => strval($val), range(10, 35)),
+            strtoupper($char),
+        );
     }
 }

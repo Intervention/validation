@@ -14,7 +14,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      *
      * @var ?string
      */
-    private ?string $reference;
+    private ?string $reference = null;
 
     /**
      * Data set used for validation
@@ -30,6 +30,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      */
     public function __construct(protected array $countrycodes = [])
     {
+        //
     }
 
     /**
@@ -112,7 +113,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     {
         if (count($this->countrycodes) == 0) {
             // return country code by reference
-            if (is_array($this->data) && array_key_exists($this->reference, $this->data)) {
+            if (!is_null($this->reference) && array_key_exists($this->reference, $this->data)) {
                 return [$this->data[$this->reference]];
             }
         }
@@ -151,7 +152,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
             'sz' => "/^[a-z]{1}[0-9]{3}$/i",
             'tw' => "/^[0-9]{3}([0-9]{2})?$/",
             'gb' => "/^(([a-z][0-9])|([a-z][0-9]{2})|([a-z][0-9][a-z])|([a-z]{2}[0-9])" .
-                    "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i",
+                "|([a-z]{2}[0-9]{2})|([a-z]{2}[0-9][a-z])) [0-9][a-z]{2}$/i",
             'ie' => "/^[A-Za-z][A-Za-z0-9]{2} [A-Za-z0-9]{4}$/i",
             default => null,
         };

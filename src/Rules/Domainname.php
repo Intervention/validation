@@ -69,7 +69,7 @@ class Domainname extends AbstractRule
      */
     private function isValidALabel(string $value): bool
     {
-        return substr($value, 0, 4) === 'xn--' && $this->idnToUtf8($value) !== false;
+        return substr($value, 0, 4) === 'xn--' && $this->idnToUtf8($value) != false;
     }
 
     /**
