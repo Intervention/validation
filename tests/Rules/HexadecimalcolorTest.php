@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hexadecimalcolor;
 use PHPUnit\Framework\TestCase;
@@ -45,92 +46,82 @@ final class HexadecimalcolorTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [false, '#'],
-            [false, 'f'],
-            [false, 'ff'],
-            [false, 'x25s11'],
-            [false, 'fffffffff'],
-            [true, '#ccc'],
-            [true, '#cccccc'],
-            [true, '#ffff'],
-            [true, '#ffffffff'],
-            [true, 'abc'],
-            [true, 'abcabc'],
-            [true, 'abcabcab'],
-            [true, 'b33517'],
-            [true, 'b33517ff'],
-            [true, 'ccc'],
-            [true, 'ffff'],
-            [true, 'f00'],
-            [true, 'f000'],
-        ];
+        yield [false, '#'];
+        yield [false, 'f'];
+        yield [false, 'ff'];
+        yield [false, 'x25s11'];
+        yield [false, 'fffffffff'];
+        yield [true, '#ccc'];
+        yield [true, '#cccccc'];
+        yield [true, '#ffff'];
+        yield [true, '#ffffffff'];
+        yield [true, 'abc'];
+        yield [true, 'abcabc'];
+        yield [true, 'abcabcab'];
+        yield [true, 'b33517'];
+        yield [true, 'b33517ff'];
+        yield [true, 'ccc'];
+        yield [true, 'ffff'];
+        yield [true, 'f00'];
+        yield [true, 'f000'];
     }
 
-    public static function dataProviderShort(): array
+    public static function dataProviderShort(): Generator
     {
-        return [
-            [false, '#'],
-            [false, '#cccccc'],
-            [false, '#ffff'],
-            [false, 'b33517'],
-            [false, 'ff'],
-            [false, 'ffff'],
-            [false, 'x25s11'],
-            [false, 'ffffffff'],
-            [true, '#ccc'],
-            [true, 'abc'],
-            [true, 'ccc'],
-        ];
+        yield [false, '#'];
+        yield [false, '#cccccc'];
+        yield [false, '#ffff'];
+        yield [false, 'b33517'];
+        yield [false, 'ff'];
+        yield [false, 'ffff'];
+        yield [false, 'x25s11'];
+        yield [false, 'ffffffff'];
+        yield [true, '#ccc'];
+        yield [true, 'abc'];
+        yield [true, 'ccc'];
     }
 
-    public static function dataProviderLong(): array
+    public static function dataProviderLong(): Generator
     {
-        return [
-            [false, '#'],
-            [false, '#ccc'],
-            [false, '#ffff'],
-            [false, 'abc'],
-            [false, 'ccc'],
-            [false, 'ff'],
-            [false, 'ffff'],
-            [false, 'x25s11'],
-            [true, '#cccccc'],
-            [true, 'b33517'],
-        ];
+        yield [false, '#'];
+        yield [false, '#ccc'];
+        yield [false, '#ffff'];
+        yield [false, 'abc'];
+        yield [false, 'ccc'];
+        yield [false, 'ff'];
+        yield [false, 'ffff'];
+        yield [false, 'x25s11'];
+        yield [true, '#cccccc'];
+        yield [true, 'b33517'];
     }
 
-    public static function dataProviderShortAlpha(): array
+    public static function dataProviderShortAlpha(): Generator
     {
-        return [
-            [false, '#'],
-            [false, '#cccccc'],
-            [false, 'b33517'],
-            [false, 'ff'],
-            [false, 'x25s11'],
-            [false, 'ffffffff'],
-            [true, 'cccc'],
-            [true, '0000'],
-            [true, '#cccc'],
-        ];
+        yield [false, '#'];
+        yield [false, '#cccccc'];
+        yield [false, 'b33517'];
+        yield [false, 'ff'];
+        yield [false, 'x25s11'];
+        yield [false, 'ffffffff'];
+        yield [true, 'cccc'];
+        yield [true, '0000'];
+        yield [true, '#cccc'];
     }
 
-    public static function dataProviderLongAlpha(): array
+    public static function dataProviderLongAlpha(): Generator
     {
-        return [
-            [false, '#'],
-            [false, '#ccc'],
-            [false, '#ffff'],
-            [false, 'abc'],
-            [false, 'ccc'],
-            [false, 'ff'],
-            [false, 'ffff'],
-            [false, 'x25s11'],
-            [true, '#cccccccc'],
-            [true, '00000000'],
-            [true, 'cccccccc'],
-        ];
+        yield [false, '#'];
+        yield [false, '#ccc'];
+        yield [false, '#ffff'];
+        yield [false, 'abc'];
+        yield [false, 'ccc'];
+        yield [false, 'ff'];
+        yield [false, 'ffff'];
+        yield [false, 'x25s11'];
+        yield [true, '#cccccccc'];
+        yield [true, '00000000'];
+        yield [true, 'cccccccc'];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Creditcard;
 use PHPUnit\Framework\TestCase;
@@ -17,15 +18,13 @@ final class CreditcardTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, '4444111122223333'],
-            [false, '9182819264532375'],
-            [false, '12'],
-            [false, '5555111122223333'],
-            [false, 'xxxxxxxxxxxxxxxx'],
-            [false, '4444111I22223333'],
-        ];
+        yield [true, '4444111122223333'];
+        yield [false, '9182819264532375'];
+        yield [false, '12'];
+        yield [false, '5555111122223333'];
+        yield [false, 'xxxxxxxxxxxxxxxx'];
+        yield [false, '4444111I22223333'];
     }
 }

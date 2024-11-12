@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Lowercase;
 use PHPUnit\Framework\TestCase;
@@ -17,26 +18,24 @@ final class LowercaseTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, 'a'],
-            [true, 'abc'],
-            [true, 'ß'],
-            [true, 'êçã'],
-            [true, 'valid'],
-            [true, 'foo bar'],
-            [true, 'foo-bar'],
-            [true, '!'],
-            [true, '?'],
-            [true, '9'],
-            [true, '#'],
-            [false, 'A'],
-            [false, 'ABC'],
-            [false, 'Ä'],
-            [false, 'ÄÖÜ'],
-            [false, 'VALID'],
-            [false, 'ÇÃÊ'],
-        ];
+        yield [true, 'a'];
+        yield [true, 'abc'];
+        yield [true, 'ß'];
+        yield [true, 'êçã'];
+        yield [true, 'valid'];
+        yield [true, 'foo bar'];
+        yield [true, 'foo-bar'];
+        yield [true, '!'];
+        yield [true, '?'];
+        yield [true, '9'];
+        yield [true, '#'];
+        yield [false, 'A'];
+        yield [false, 'ABC'];
+        yield [false, 'Ä'];
+        yield [false, 'ÄÖÜ'];
+        yield [false, 'VALID'];
+        yield [false, 'ÇÃÊ'];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Bic;
 use PHPUnit\Framework\TestCase;
@@ -17,17 +18,15 @@ final class BicTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, 'PBNKDEFF'],
-            [true, 'NOLADE21SHO'],
-            [false, 'foobar'],
-            [false, 'xxx'],
-            [false, 'ABNFDBF'],
-            [false, 'GR82WEST'],
-            [false, '5070081'],
-            [false, 'DEUTDBBER'],
-        ];
+        yield [true, 'PBNKDEFF'];
+        yield [true, 'NOLADE21SHO'];
+        yield [false, 'foobar'];
+        yield [false, 'xxx'];
+        yield [false, 'ABNFDBF'];
+        yield [false, 'GR82WEST'];
+        yield [false, '5070081'];
+        yield [false, 'DEUTDBBER'];
     }
 }

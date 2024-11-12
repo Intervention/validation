@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Longitude;
 use PHPUnit\Framework\TestCase;
@@ -17,21 +18,19 @@ final class LongitudeTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, '0'],
-            [true, '+90'],
-            [true, '-90'],
-            [true, '90'],
-            [true, '+90.0000001'],
-            [true, '-90.0000001'],
-            [true, '90.00000001'],
-            [true, '+180'],
-            [true, '-180'],
-            [true, '180'],
-            [false, '180.0001'],
-            [false, '-180.0001'],
-        ];
+        yield [true, '0'];
+        yield [true, '+90'];
+        yield [true, '-90'];
+        yield [true, '90'];
+        yield [true, '+90.0000001'];
+        yield [true, '-90.0000001'];
+        yield [true, '90.00000001'];
+        yield [true, '+180'];
+        yield [true, '-180'];
+        yield [true, '180'];
+        yield [false, '180.0001'];
+        yield [false, '-180.0001'];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Isbn;
 use PHPUnit\Framework\TestCase;
@@ -31,85 +32,79 @@ final class IsbnTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, '3498016709'],
-            [true, '3498016709'],
-            [true, '978-3499255496'],
-            [true, '85-359-0277-5'],
-            [true, '048665088X'],
-            [true, '9788371815102'],
-            [true, '9971502100'],
-            [true, '99921-58-10-7'],
-            [true, '960 425 059 0'],
-            [true, '9780306406157'],
-            [true, '978-0-306-40615-7'],
-            [true, '978 0 306 40615 7'],
-            [false, '123459181'],
-            [false, '048665088A'],
-            [false, '03064061521'],
-            [false, '048662088X'],
-            [false, '12'],
-            [false, '123'],
-            [false, 'ABC'],
-            [false, '978-0-306-40615-6'],
-            [false, '99921-58-10-6'],
-            [false, '0123456789012'],
-        ];
+        yield [true, '3498016709'];
+        yield [true, '3498016709'];
+        yield [true, '978-3499255496'];
+        yield [true, '85-359-0277-5'];
+        yield [true, '048665088X'];
+        yield [true, '9788371815102'];
+        yield [true, '9971502100'];
+        yield [true, '99921-58-10-7'];
+        yield [true, '960 425 059 0'];
+        yield [true, '9780306406157'];
+        yield [true, '978-0-306-40615-7'];
+        yield [true, '978 0 306 40615 7'];
+        yield [false, '123459181'];
+        yield [false, '048665088A'];
+        yield [false, '03064061521'];
+        yield [false, '048662088X'];
+        yield [false, '12'];
+        yield [false, '123'];
+        yield [false, 'ABC'];
+        yield [false, '978-0-306-40615-6'];
+        yield [false, '99921-58-10-6'];
+        yield [false, '0123456789012'];
     }
 
-    public static function dataProviderShort(): array
+    public static function dataProviderShort(): Generator
     {
-        return [
-            [true, '3498016709'],
-            [false, '978-3499255496'],
-            [true, '85-359-0277-5'],
-            [true, '048665088X'],
-            [false, '9788371815102'],
-            [true, '9971502100'],
-            [true, '99921-58-10-7'],
-            [true, '960 425 059 0'],
-            [false, '9780306406157'],
-            [false, '978-0-306-40615-7'],
-            [false, '978 0 306 40615 7'],
-            [false, '123459181'],
-            [false, '048665088A'],
-            [false, '03064061521'],
-            [false, '048662088X'],
-            [false, '12'],
-            [false, '123'],
-            [false, 'ABC'],
-            [false, '978-0-306-40615-6'],
-            [false, '99921-58-10-6'],
-        ];
+        yield [true, '3498016709'];
+        yield [false, '978-3499255496'];
+        yield [true, '85-359-0277-5'];
+        yield [true, '048665088X'];
+        yield [false, '9788371815102'];
+        yield [true, '9971502100'];
+        yield [true, '99921-58-10-7'];
+        yield [true, '960 425 059 0'];
+        yield [false, '9780306406157'];
+        yield [false, '978-0-306-40615-7'];
+        yield [false, '978 0 306 40615 7'];
+        yield [false, '123459181'];
+        yield [false, '048665088A'];
+        yield [false, '03064061521'];
+        yield [false, '048662088X'];
+        yield [false, '12'];
+        yield [false, '123'];
+        yield [false, 'ABC'];
+        yield [false, '978-0-306-40615-6'];
+        yield [false, '99921-58-10-6'];
     }
 
-    public static function dataProviderLong(): array
+    public static function dataProviderLong(): Generator
     {
-        return [
-            [false, '3498016709'],
-            [true, '978-3499255496'],
-            [false, '978-3495255496'],
-            [false, '85-359-0277-5'],
-            [false, '048665088X'],
-            [true, '9788371815102'],
-            [false, '9971502100'],
-            [false, '99921-58-10-7'],
-            [false, '960 425 059 0'],
-            [true, '9780306406157'],
-            [true, '978-0-306-40615-7'],
-            [true, '978 0 306 40615 7'],
-            [false, '123459181'],
-            [false, '048665088A'],
-            [false, '03064061521'],
-            [false, '048662088X'],
-            [false, '12'],
-            [false, '123'],
-            [false, 'ABC'],
-            [false, '978-0-306-40615-6'],
-            [false, '99921-58-10-6'],
-            [false, '0123456789012'],
-        ];
+        yield [false, '3498016709'];
+        yield [true, '978-3499255496'];
+        yield [false, '978-3495255496'];
+        yield [false, '85-359-0277-5'];
+        yield [false, '048665088X'];
+        yield [true, '9788371815102'];
+        yield [false, '9971502100'];
+        yield [false, '99921-58-10-7'];
+        yield [false, '960 425 059 0'];
+        yield [true, '9780306406157'];
+        yield [true, '978-0-306-40615-7'];
+        yield [true, '978 0 306 40615 7'];
+        yield [false, '123459181'];
+        yield [false, '048665088A'];
+        yield [false, '03064061521'];
+        yield [false, '048662088X'];
+        yield [false, '12'];
+        yield [false, '123'];
+        yield [false, 'ABC'];
+        yield [false, '978-0-306-40615-6'];
+        yield [false, '99921-58-10-6'];
+        yield [false, '0123456789012'];
     }
 }

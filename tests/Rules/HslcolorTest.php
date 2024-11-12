@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hslcolor;
 use PHPUnit\Framework\TestCase;
@@ -17,20 +18,18 @@ final class HslcolorTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, 'hsl(20, 100, 50)'],
-            [true, 'hsl(20, 100%, 50%)'],
-            [true, 'hsl(0, 100%, 50%)'],
-            [true, 'hsl(0, 0%, 0%)'],
-            [true, 'hsl(0,0%,0%)'],
-            [true, 'hsl(0,0,0)'],
-            [true, 'HSL(0,0,0)'],
-            [true, 'hsl(360, 100%, 100%)'],
-            [false, 'hsl(361, 101%, 101%)'],
-            [false, 'hsl(-1, 0%, 0%)'],
-            [false, ''],
-        ];
+        yield [true, 'hsl(20, 100, 50)'];
+        yield [true, 'hsl(20, 100%, 50%)'];
+        yield [true, 'hsl(0, 100%, 50%)'];
+        yield [true, 'hsl(0, 0%, 0%)'];
+        yield [true, 'hsl(0,0%,0%)'];
+        yield [true, 'hsl(0,0,0)'];
+        yield [true, 'HSL(0,0,0)'];
+        yield [true, 'hsl(360, 100%, 100%)'];
+        yield [false, 'hsl(361, 101%, 101%)'];
+        yield [false, 'hsl(-1, 0%, 0%)'];
+        yield [false, ''];
     }
 }

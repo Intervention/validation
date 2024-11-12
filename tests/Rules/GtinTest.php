@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Gtin;
 use PHPUnit\Framework\TestCase;
@@ -45,151 +46,141 @@ final class GtinTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, '9789510475270'],
-            [true, '4012345678901'],
-            [true, '0712345678911'],
-            [true, '5901234123457'],
-            [true, '40123455'],
-            [true, '96385074'],
-            [true, '65833254'],
-            [true, '00123456000018'],
-            [true, '012345678905'],
-            [true, '012345000041'],
-            [true, '012345000058'],
-            [false, 'foo'],
-            [false, '0000000000001'],
-            [false, 'FFFFFFFFFFFFF'],
-            [false, 'FFFFFFFFFFFF0'],
-            [false, '4012345678903'],
-            [false, '1xxxxxxxxxxx0'],
-            [false, '4012342678901'],
-            [false, '07123456789110712345678911'],
-            [false, '10123455'],
-            [false, '40113455'],
-            [false, '012341000058'],
-            [false, '1012345678905'],
-        ];
+        yield [true, '9789510475270'];
+        yield [true, '4012345678901'];
+        yield [true, '0712345678911'];
+        yield [true, '5901234123457'];
+        yield [true, '40123455'];
+        yield [true, '96385074'];
+        yield [true, '65833254'];
+        yield [true, '00123456000018'];
+        yield [true, '012345678905'];
+        yield [true, '012345000041'];
+        yield [true, '012345000058'];
+        yield [false, 'foo'];
+        yield [false, '0000000000001'];
+        yield [false, 'FFFFFFFFFFFFF'];
+        yield [false, 'FFFFFFFFFFFF0'];
+        yield [false, '4012345678903'];
+        yield [false, '1xxxxxxxxxxx0'];
+        yield [false, '4012342678901'];
+        yield [false, '07123456789110712345678911'];
+        yield [false, '10123455'];
+        yield [false, '40113455'];
+        yield [false, '012341000058'];
+        yield [false, '1012345678905'];
     }
 
-    public static function dataProviderGtin8(): array
+    public static function dataProviderGtin8(): Generator
     {
-        return [
-            [false, '4012345678901'],
-            [false, '0712345678911'],
-            [false, '5901234123457'],
-            [true, '40123455'],
-            [true, '96385074'],
-            [true, '65833254'],
-            [false, '00123456000018'],
-            [false, '012345678905'],
-            [false, '012345000041'],
-            [false, '012345000058'],
-            [false, 'foo'],
-            [false, '0000000000001'],
-            [false, 'FFFFFFFFFFFFF'],
-            [false, 'FFFFFFFFFFFF0'],
-            [false, '4012345678903'],
-            [false, '1xxxxxxxxxxx0'],
-            [false, '4012342678901'],
-            [false, '07123456789110712345678911'],
-            [false, '10123455'],
-            [false, '40113455'],
-            [false, '012341000058'],
-        ];
+        yield [false, '4012345678901'];
+        yield [false, '0712345678911'];
+        yield [false, '5901234123457'];
+        yield [true, '40123455'];
+        yield [true, '96385074'];
+        yield [true, '65833254'];
+        yield [false, '00123456000018'];
+        yield [false, '012345678905'];
+        yield [false, '012345000041'];
+        yield [false, '012345000058'];
+        yield [false, 'foo'];
+        yield [false, '0000000000001'];
+        yield [false, 'FFFFFFFFFFFFF'];
+        yield [false, 'FFFFFFFFFFFF0'];
+        yield [false, '4012345678903'];
+        yield [false, '1xxxxxxxxxxx0'];
+        yield [false, '4012342678901'];
+        yield [false, '07123456789110712345678911'];
+        yield [false, '10123455'];
+        yield [false, '40113455'];
+        yield [false, '012341000058'];
     }
 
-    public static function dataProviderGtin12(): array
+    public static function dataProviderGtin12(): Generator
     {
-        return [
-            [false, '4012345678901'],
-            [false, '0712345678911'],
-            [false, '5901234123457'],
-            [false, '40123455'],
-            [false, '96385074'],
-            [false, '65833254'],
-            [false, '00123456000018'],
-            [true, '012345678905'],
-            [true, '012345000041'],
-            [true, '012345000058'],
-            [true, '012345000058'],
-            [false, 'foo'],
-            [false, '0000000000001'],
-            [false, 'FFFFFFFFFFFFF'],
-            [false, 'FFFFFFFFFFFF0'],
-            [false, '4012345678903'],
-            [false, '1xxxxxxxxxxx0'],
-            [false, '4012342678901'],
-            [false, '07123456789110712345678911'],
-            [false, '10123455'],
-            [false, '40113455'],
-            [false, '012341000058'],
-            [true, '000040123455'],
-        ];
+        yield [false, '4012345678901'];
+        yield [false, '0712345678911'];
+        yield [false, '5901234123457'];
+        yield [false, '40123455'];
+        yield [false, '96385074'];
+        yield [false, '65833254'];
+        yield [false, '00123456000018'];
+        yield [true, '012345678905'];
+        yield [true, '012345000041'];
+        yield [true, '012345000058'];
+        yield [true, '012345000058'];
+        yield [false, 'foo'];
+        yield [false, '0000000000001'];
+        yield [false, 'FFFFFFFFFFFFF'];
+        yield [false, 'FFFFFFFFFFFF0'];
+        yield [false, '4012345678903'];
+        yield [false, '1xxxxxxxxxxx0'];
+        yield [false, '4012342678901'];
+        yield [false, '07123456789110712345678911'];
+        yield [false, '10123455'];
+        yield [false, '40113455'];
+        yield [false, '012341000058'];
+        yield [true, '000040123455'];
     }
 
-    public static function dataProviderGtin13(): array
+    public static function dataProviderGtin13(): Generator
     {
-        return [
-            [true, '9789510475270'],
-            [true, '0012345000058'],
-            [true, '4012345678901'],
-            [true, '0712345678911'],
-            [true, '5901234123457'],
-            [false, '40123455'],
-            [false, '96385074'],
-            [false, '65833254'],
-            [false, '00123456000018'],
-            [false, '012345678905'],
-            [false, '012345000041'],
-            [false, '012345000058'],
-            [false, 'foo'],
-            [false, '0000000000001'],
-            [false, 'FFFFFFFFFFFFF'],
-            [false, 'FFFFFFFFFFFF0'],
-            [false, '4012345678903'],
-            [false, '1xxxxxxxxxxx0'],
-            [false, '4012342678901'],
-            [false, '07123456789110712345678911'],
-            [false, '10123455'],
-            [false, '40113455'],
-            [false, '012341000058'],
-            [true, '0000040123455'],
-            [true, '0012345000058'],
-        ];
+        yield [true, '9789510475270'];
+        yield [true, '0012345000058'];
+        yield [true, '4012345678901'];
+        yield [true, '0712345678911'];
+        yield [true, '5901234123457'];
+        yield [false, '40123455'];
+        yield [false, '96385074'];
+        yield [false, '65833254'];
+        yield [false, '00123456000018'];
+        yield [false, '012345678905'];
+        yield [false, '012345000041'];
+        yield [false, '012345000058'];
+        yield [false, 'foo'];
+        yield [false, '0000000000001'];
+        yield [false, 'FFFFFFFFFFFFF'];
+        yield [false, 'FFFFFFFFFFFF0'];
+        yield [false, '4012345678903'];
+        yield [false, '1xxxxxxxxxxx0'];
+        yield [false, '4012342678901'];
+        yield [false, '07123456789110712345678911'];
+        yield [false, '10123455'];
+        yield [false, '40113455'];
+        yield [false, '012341000058'];
+        yield [true, '0000040123455'];
+        yield [true, '0012345000058'];
     }
 
-    public static function dataProviderGtin14(): array
+    public static function dataProviderGtin14(): Generator
     {
-        return [
-            [true, '00012345000058'],
-            [false, 'w0012345000058'],
-            [false, '4012345678901'],
-            [false, '0712345678911'],
-            [false, '5901234123457'],
-            [false, '40123455'],
-            [false, '96385074'],
-            [false, '65833254'],
-            [true, '00123456000018'],
-            [false, '012345678905'],
-            [false, '012345000041'],
-            [false, '012345000058'],
-            [false, 'foo'],
-            [false, '0000000000001'],
-            [false, 'FFFFFFFFFFFFF'],
-            [false, 'FFFFFFFFFFFF0'],
-            [false, '4012345678903'],
-            [false, '1xxxxxxxxxxx0'],
-            [false, '4012342678901'],
-            [false, '07123456789110712345678911'],
-            [false, '10123455'],
-            [false, '40113455'],
-            [false, '012341000058'],
-            [true, '00000040123455'],
-            [true, '00012345000058'],
-            [true, '05901234123457'],
-        ];
+        yield [true, '00012345000058'];
+        yield [false, 'w0012345000058'];
+        yield [false, '4012345678901'];
+        yield [false, '0712345678911'];
+        yield [false, '5901234123457'];
+        yield [false, '40123455'];
+        yield [false, '96385074'];
+        yield [false, '65833254'];
+        yield [true, '00123456000018'];
+        yield [false, '012345678905'];
+        yield [false, '012345000041'];
+        yield [false, '012345000058'];
+        yield [false, 'foo'];
+        yield [false, '0000000000001'];
+        yield [false, 'FFFFFFFFFFFFF'];
+        yield [false, 'FFFFFFFFFFFF0'];
+        yield [false, '4012345678903'];
+        yield [false, '1xxxxxxxxxxx0'];
+        yield [false, '4012342678901'];
+        yield [false, '07123456789110712345678911'];
+        yield [false, '10123455'];
+        yield [false, '40113455'];
+        yield [false, '012341000058'];
+        yield [true, '00000040123455'];
+        yield [true, '00012345000058'];
+        yield [true, '05901234123457'];
     }
 }

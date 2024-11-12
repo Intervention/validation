@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Hsvcolor;
 use PHPUnit\Framework\TestCase;
@@ -17,30 +18,28 @@ final class HsvcolorTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, 'hsv(20, 100, 50)'],
-            [true, 'hsv(20, 100%, 50%)'],
-            [true, 'hsv(0, 100%, 50%)'],
-            [true, 'hsv(0, 0%, 0%)'],
-            [true, 'hsv(0,0%,0%)'],
-            [true, 'hsv(0,0,0)'],
-            [true, 'HSV(0,0,0)'],
-            [true, 'hsv(360, 100%, 100%)'],
-            [true, 'hsb(20, 100, 50)'],
-            [true, 'hsb(20, 100%, 50%)'],
-            [true, 'hsb(0, 100%, 50%)'],
-            [true, 'hsb(0, 0%, 0%)'],
-            [true, 'hsb(0,0%,0%)'],
-            [true, 'hsb(0,0,0)'],
-            [true, 'HSB(0,0,0)'],
-            [true, 'hsb(360, 100%, 100%)'],
-            [false, 'hsv(361, 101%, 101%)'],
-            [false, 'hsv(-1, 0%, 0%)'],
-            [false, 'hsb(361, 101%, 101%)'],
-            [false, 'hsb(-1, 0%, 0%)'],
-            [false, ''],
-        ];
+        yield [true, 'hsv(20, 100, 50)'];
+        yield [true, 'hsv(20, 100%, 50%)'];
+        yield [true, 'hsv(0, 100%, 50%)'];
+        yield [true, 'hsv(0, 0%, 0%)'];
+        yield [true, 'hsv(0,0%,0%)'];
+        yield [true, 'hsv(0,0,0)'];
+        yield [true, 'HSV(0,0,0)'];
+        yield [true, 'hsv(360, 100%, 100%)'];
+        yield [true, 'hsb(20, 100, 50)'];
+        yield [true, 'hsb(20, 100%, 50%)'];
+        yield [true, 'hsb(0, 100%, 50%)'];
+        yield [true, 'hsb(0, 0%, 0%)'];
+        yield [true, 'hsb(0,0%,0%)'];
+        yield [true, 'hsb(0,0,0)'];
+        yield [true, 'HSB(0,0,0)'];
+        yield [true, 'hsb(360, 100%, 100%)'];
+        yield [false, 'hsv(361, 101%, 101%)'];
+        yield [false, 'hsv(-1, 0%, 0%)'];
+        yield [false, 'hsb(361, 101%, 101%)'];
+        yield [false, 'hsb(-1, 0%, 0%)'];
+        yield [false, ''];
     }
 }

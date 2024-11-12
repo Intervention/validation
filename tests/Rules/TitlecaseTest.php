@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Tests\Rules;
 
+use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Intervention\Validation\Rules\Titlecase;
 use PHPUnit\Framework\TestCase;
@@ -17,30 +18,28 @@ final class TitlecaseTest extends TestCase
         $this->assertEquals($result, $valid);
     }
 
-    public static function dataProvider(): array
+    public static function dataProvider(): Generator
     {
-        return [
-            [true, 'Foo'],
-            [true, 'FooBar'],
-            [true, 'Foo Bar'],
-            [true, 'F Bar'],
-            [true, '6 Bar'],
-            [true, 'FooBar Baz'],
-            [true, 'Foo Bar Baz'],
-            [true, 'Foo-Bar Baz'],
-            [true, 'Ba_r Baz'],
-            [true, 'F00 Bar Baz'],
-            [true, 'Ês Üm Ñõ'],
-            [false, 'foo'],
-            [false, 'Foo '],
-            [false, ' Foo'],
-            [false, 'Foo bar'],
-            [false, 'foo bar'],
-            [false, 'Foo Bar baz'],
-            [false, 'Foo bar baz'],
-            [false, '-fooBar'],
-            [false, '-fooBar-'],
-            [false, 'The quick brown fox jumps over the lazy dog.'],
-        ];
+        yield [true, 'Foo'];
+        yield [true, 'FooBar'];
+        yield [true, 'Foo Bar'];
+        yield [true, 'F Bar'];
+        yield [true, '6 Bar'];
+        yield [true, 'FooBar Baz'];
+        yield [true, 'Foo Bar Baz'];
+        yield [true, 'Foo-Bar Baz'];
+        yield [true, 'Ba_r Baz'];
+        yield [true, 'F00 Bar Baz'];
+        yield [true, 'Ês Üm Ñõ'];
+        yield [false, 'foo'];
+        yield [false, 'Foo '];
+        yield [false, ' Foo'];
+        yield [false, 'Foo bar'];
+        yield [false, 'foo bar'];
+        yield [false, 'Foo Bar baz'];
+        yield [false, 'Foo bar baz'];
+        yield [false, '-fooBar'];
+        yield [false, '-fooBar-'];
+        yield [false, 'The quick brown fox jumps over the lazy dog.'];
     }
 }
