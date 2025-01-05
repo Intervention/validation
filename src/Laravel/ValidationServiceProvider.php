@@ -27,9 +27,8 @@ class ValidationServiceProvider extends ServiceProvider
         foreach ($this->ruleShortnames() as $rulename) {
             $this->app['validator']->extend(
                 $rulename,
-                function ($attribute, $value, $parameters, $validator) use ($rulename) {
-                    return $this->interventionRule($rulename, $parameters)
-                        ->isValid($value);
+                function ($attribute, $value, $parameters, $validator) use ($rulename): bool {
+                    return $this->interventionRule($rulename, $parameters)->isValid($value);
                 },
                 $this->errorMessage($rulename)
             );
@@ -62,9 +61,10 @@ class ValidationServiceProvider extends ServiceProvider
      */
     private function ruleShortnames(): array
     {
-        return array_map(function ($filename) {
-            return mb_strtolower(substr($filename, 0, -4));
-        }, array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']));
+        return array_map(
+            fn(string $filename): string => mb_strtolower(substr($filename, 0, -4)),
+            array_diff(scandir(__DIR__ . '/../Rules'), ['.', '..']),
+        );
     }
 
     /**

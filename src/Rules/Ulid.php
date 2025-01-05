@@ -29,11 +29,7 @@ class Ulid extends AbstractRegexRule
             return false;
         }
 
-        if ($this->ulidTooLarge($value)) {
-            return false;
-        }
-
-        return true;
+        return !$this->ulidTooLarge($value);
     }
 
     /**

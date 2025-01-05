@@ -39,18 +39,11 @@ class Gtin extends Ean
             return false;
         }
 
-        switch (strlen($value)) {
-            case 8:
-            case 13:
-                return parent::isValid($value);
-
-            case 14:
-                return parent::checksumMatches(substr($value, 1));
-
-            case 12:
-                return parent::checksumMatches('0' . $value);
-        }
-
-        return false;
+        return match (strlen($value)) {
+            8, 13 => parent::isValid($value),
+            12 => parent::checksumMatches('0' . $value),
+            14 => parent::checksumMatches(substr($value, 1)),
+            default => false,
+        };
     }
 }

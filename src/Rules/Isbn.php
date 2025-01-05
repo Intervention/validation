@@ -23,21 +23,17 @@ class Isbn extends Ean
     public function isValid(mixed $value): bool
     {
         // normalize value
-        $value = preg_replace("/[^0-9x]/i", '', $value);
+        $value = preg_replace("/[^0-9x]/i", '', (string) $value);
 
         if (!$this->hasAllowedLength($value)) {
             return false;
         }
 
-        switch (strlen($value)) {
-            case 10:
-                return $this->shortChecksumMatches($value);
-
-            case 13: // isbn-13 is a subset of ean-13
-                return preg_match("/^(978|979)/", $value) && parent::checksumMatches($value);
-        }
-
-        return false;
+        return match (strlen((string) $value)) {
+            10 => $this->shortChecksumMatches($value),
+            13 => preg_match("/^(978|979)/", (string) $value) && parent::checksumMatches($value),
+            default => false,
+        };
     }
 
     /**
@@ -62,7 +58,7 @@ class Isbn extends Ean
         $checksum = 0;
         $multiplier = 10;
         foreach (str_split($value) as $digit) {
-            $digit = strtolower($digit) == 'x' ? 10 : intval($digit);
+            $digit = strtolower($digit) === 'x' ? 10 : intval($digit);
             $checksum += $digit * $multiplier;
             $multiplier--;
         }

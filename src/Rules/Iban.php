@@ -13,7 +13,7 @@ class Iban extends AbstractRule
      *
      * @var array<string, int>
      */
-    private $lengths = [
+    private array $lengths = [
         'AL' => 28,
         'AD' => 24,
         'AT' => 20,
@@ -171,7 +171,7 @@ class Iban extends AbstractRule
     {
         $countrycode = substr($iban, 0, 2);
 
-        return isset($this->lengths[$countrycode]) ? $this->lengths[$countrycode] : false;
+        return $this->lengths[$countrycode] ?? false;
     }
 
     /**

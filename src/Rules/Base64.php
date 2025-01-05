@@ -15,7 +15,7 @@ class Base64 extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        $decoded = base64_decode($value, true);
+        $decoded = base64_decode((string) $value, true);
 
         return $decoded ? base64_encode($decoded) === $value : false;
     }

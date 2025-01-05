@@ -32,7 +32,7 @@ class Titlecase extends AbstractRule
      */
     private function words(mixed $value): array
     {
-        return explode(" ", $value);
+        return explode(" ", (string) $value);
     }
 
     /**

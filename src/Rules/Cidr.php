@@ -18,7 +18,7 @@ class Cidr extends AbstractRule
         // A CIDR should consist of an IP part and a mask bit number delimited by a `/`
 
         // split by the slash that should be there
-        $parts = explode('/', $value, 2);
+        $parts = explode('/', (string) $value, 2);
         // we should have 2 parts (the ip and mask)
         if (count($parts) !== 2) {
             return false;
