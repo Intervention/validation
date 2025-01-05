@@ -30,12 +30,7 @@ class Domainname extends AbstractRule
             }
         }
 
-        // tld must be valid
-        if (!$this->isValidTld($tld)) {
-            return false;
-        }
-
-        return true;
+        return $this->isValidTld($tld);
     }
 
     /**
@@ -69,7 +64,7 @@ class Domainname extends AbstractRule
      */
     private function isValidALabel(string $value): bool
     {
-        return substr($value, 0, 4) === 'xn--' && $this->idnToUtf8($value) != false;
+        return str_starts_with($value, 'xn--') && $this->idnToUtf8($value) != false;
     }
 
     /**
@@ -119,6 +114,6 @@ class Domainname extends AbstractRule
     {
         $domain = idn_to_ascii($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
 
-        return $domain ? $domain : '';
+        return $domain ?: '';
     }
 }

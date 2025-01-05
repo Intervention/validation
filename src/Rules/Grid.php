@@ -79,7 +79,7 @@ class Grid extends AbstractRegexRule
 
         return (int) str_replace(
             range('A', 'Z'),
-            array_map(fn (int $val) => strval($val), range(10, 35)),
+            array_map(fn(int $val): string => strval($val), range(10, 35)),
             strtoupper($char),
         );
     }

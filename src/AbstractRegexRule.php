@@ -20,6 +20,6 @@ abstract class AbstractRegexRule extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return (bool) preg_match($this->pattern(), $value);
+        return (bool) preg_match($this->pattern(), (string) $value);
     }
 }

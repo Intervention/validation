@@ -83,17 +83,11 @@ class DataUri extends AbstractRule
             return true;
         }
 
-        if (count($this->media_types) === 0) {
+        if ($this->media_types === []) {
             return false;
         }
 
-        foreach ($this->media_types as $allowed) {
-            if ($type === $allowed) {
-                return true;
-            }
-        }
-
-        return false;
+        return in_array($type, $this->media_types, true);
     }
 
     private function isValidBase64EncodedValue(mixed $value): bool
@@ -116,28 +110,13 @@ class DataUri extends AbstractRule
         return new class ($matches, $result)
         {
             /**
-             * Matches of regex operation
-             *
-             * @var array<mixed> $matches
-             */
-            private array $matches;
-
-            /**
-             * Result of regex operation
-             *
-             * @var int|false $result
-             */
-            private int|false $result;
-
-            /**
              * @param array<mixed> $matches
              * @param int|false $result
              * @return void
              */
-            public function __construct(array $matches, int|false $result)
+            public function __construct(private array $matches, private int|false $result)
             {
-                $this->matches = $matches;
-                $this->result = $result;
+                //
             }
 
             public function isValid(): bool
@@ -163,7 +142,7 @@ class DataUri extends AbstractRule
             public function parameters(): array
             {
                 if (isset($this->matches['parameters']) && !empty($this->matches['parameters'])) {
-                    return explode(';', trim($this->matches['parameters'], ';'));
+                    return explode(';', trim((string) $this->matches['parameters'], ';'));
                 }
 
                 return [];
@@ -171,11 +150,7 @@ class DataUri extends AbstractRule
 
             public function isBase64Encoded(): bool
             {
-                if (isset($this->matches['base64']) && $this->matches['base64'] === ';base64') {
-                    return true;
-                }
-
-                return false;
+                return isset($this->matches['base64']) && $this->matches['base64'] === ';base64';
             }
 
             public function data(): ?string

@@ -16,6 +16,7 @@ class Ean extends AbstractRule
      */
     public function __construct(private array $lengths = [8, 13])
     {
+        //
     }
 
     /**

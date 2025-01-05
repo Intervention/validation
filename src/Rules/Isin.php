@@ -71,7 +71,7 @@ class Isin extends Luhn
     {
         return str_replace(
             $this->chars,
-            array_map(fn (int $value) => strval($value), array_keys($this->chars)),
+            array_map(fn(int $value): string => strval($value), array_keys($this->chars)),
             $value,
         );
     }
