@@ -65,5 +65,30 @@
   <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces"/>
   <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
   <rule ref="SlevomatCodingStandard.Variables.UselessVariable"/>
+  <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
+    <properties>
+      <property name="linesCountBeforeFirstContent" value="0"/>
+      <property name="linesCountAfterLastContent" value="0"/>
+      <property name="linesCountBetweenDescriptionAndAnnotations" value="1"/>
+      <property name="linesCountBetweenAnnotationsGroups" value="1"/>
+      <property name="annotationsGroups" type="array">
+        <element value="
+          @ORM\,
+          @ODM\,
+          "/>
+        <element value="
+          @link,
+          @internal,
+          @deprecated,
+          @see,
+          @uses,
+          "/>
+        <element value="
+          @param,
+          @throws,
+          @return,
+          "/>
+      </property>
+    </properties>
+  </rule>
 </ruleset>
-
