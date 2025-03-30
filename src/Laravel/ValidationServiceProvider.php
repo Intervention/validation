@@ -40,8 +40,8 @@ class ValidationServiceProvider extends ServiceProvider
      *
      * @param string $rulename
      * @param array<mixed> $parameters
-     * @return Rule
      * @throws NotExistingRuleException
+     * @return Rule
      */
     private function interventionRule(string $rulename, array $parameters): Rule
     {
