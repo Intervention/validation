@@ -34,19 +34,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Set data
-     *
-     * @param array<mixed> $data
-     * @return static
-     */
-    public function setData(array $data): static
-    {
-        $this->data = $data;
-
-        return $this;
-    }
-
-    /**
      * Static constructor method to create data aware validation rule which
      * reads the allowed country code by reference.
      *
@@ -70,6 +57,19 @@ class Postalcode extends AbstractRule implements DataAwareRule
     public static function countrycode(array $countrycodes): self
     {
         return new self($countrycodes);
+    }
+
+    /**
+     * Set data
+     *
+     * @param array<mixed> $data
+     * @return static
+     */
+    public function setData(array $data): static
+    {
+        $this->data = $data;
+
+        return $this;
     }
 
     /**
