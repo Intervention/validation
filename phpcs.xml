@@ -88,6 +88,13 @@
   <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces"/>
   <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
   <rule ref="SlevomatCodingStandard.Variables.UselessVariable"/>
+  <rule ref="SlevomatCodingStandard.Operators.SpreadOperatorSpacing">
+    <properties>
+      <property name="spacesCountAfterOperator" value="0" />
+    </properties>
+  </rule>
+  <rule ref="SlevomatCodingStandard.PHP.ShortList"/>
+  <rule ref="SlevomatCodingStandard.PHP.TypeCast"/>
   <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
     <properties>
       <property name="linesCountBeforeFirstContent" value="0"/>
