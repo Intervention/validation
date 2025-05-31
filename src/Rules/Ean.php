@@ -31,9 +31,6 @@ class Ean extends AbstractRule
 
     /**
      * Determine if the current value has the lengths of EAN-8 or EAN-13
-     *
-     * @param mixed $value
-     * @return bool
      */
     protected function hasAllowedLength(mixed $value): bool
     {
@@ -43,9 +40,6 @@ class Ean extends AbstractRule
     /**
      * Try to calculate the EAN checksum of the
      * current value and check the matching.
-     *
-     * @param mixed $value
-     * @return bool
      */
     protected function checksumMatches(mixed $value): bool
     {
@@ -54,9 +48,6 @@ class Ean extends AbstractRule
 
     /**
      * Cut out the checksum of the current value and return
-     *
-     * @param mixed $value
-     * @return int
      */
     private function cutChecksum(mixed $value): int
     {
@@ -65,9 +56,6 @@ class Ean extends AbstractRule
 
     /**
      * Calculate modulo checksum of given value
-     *
-     * @param mixed $value
-     * @return int
      */
     private function calculateChecksum(mixed $value): int
     {

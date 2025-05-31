@@ -52,8 +52,6 @@ class DataUri extends AbstractRule
 
     /**
      * Determine if the rule expects a set mime type in the data url
-     *
-     * @return bool
      */
     private function expectsMediaType(): bool
     {
@@ -62,9 +60,6 @@ class DataUri extends AbstractRule
 
     /**
      * Check for validity of given mime type
-     *
-     * @param mixed $value
-     * @return bool
      */
     private function isValidMimeType(mixed $value): bool
     {
@@ -73,9 +68,6 @@ class DataUri extends AbstractRule
 
     /**
      * Check if give mime type is allowed
-     *
-     * @param mixed $type
-     * @return bool
      */
     private function isAllowedMimeType(mixed $type): bool
     {
@@ -97,9 +89,6 @@ class DataUri extends AbstractRule
 
     /**
      * Parse data url info from current value
-     *
-     * @param mixed $value
-     * @return object
      */
     private function dataUriInfo(mixed $value): object
     {
@@ -111,7 +100,6 @@ class DataUri extends AbstractRule
         {
             /**
              * @param array<mixed> $matches
-             * @param int|false $result
              * @return void
              */
             public function __construct(private array $matches, private int|false $result)

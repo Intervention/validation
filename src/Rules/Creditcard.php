@@ -18,9 +18,6 @@ class Creditcard extends Luhn
 
     /**
      * Check if the given value has the proper length for creditcards
-     *
-     * @param mixed $value
-     * @return bool
      */
     private function hasValidLength(mixed $value): bool
     {

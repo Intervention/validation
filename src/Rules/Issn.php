@@ -30,9 +30,6 @@ class Issn extends AbstractRegexRule
 
     /**
      * Determine if checksum matches
-     *
-     * @param string $value
-     * @return bool
      */
     private function checkSumMatches(string $value): bool
     {
@@ -41,9 +38,6 @@ class Issn extends AbstractRegexRule
 
     /**
      * Calculate checksum from the current value
-     *
-     * @param string $value
-     * @return int
      */
     private function calculateChecksum(string $value): int
     {
@@ -61,9 +55,6 @@ class Issn extends AbstractRegexRule
 
     /**
      * Parse attached checksum of current value (last digit)
-     *
-     * @param string $value
-     * @return int
      */
     private function parseChecksum(string $value): int
     {

@@ -31,8 +31,6 @@ abstract class AbstractRule implements Rule, ValidationRule
 
     /**
      * Return shortname of current rule
-     *
-     * @return string
      */
     protected function shortname(): string
     {

@@ -137,9 +137,6 @@ class Iban extends AbstractRule
 
     /**
      * Calculate checksum of iban
-     *
-     * @param string $iban
-     * @return int
      */
     private function checksum(string $iban): int
     {
@@ -164,7 +161,6 @@ class Iban extends AbstractRule
     /**
      * Returns the designated length of IBAN for given IBAN
      *
-     * @param string $iban
      * @return int|false
      */
     private function designatedIbanLength(string $iban): int|false
@@ -176,9 +172,6 @@ class Iban extends AbstractRule
 
     /**
      * Determine if given iban has the proper length
-     *
-     * @param string $iban
-     * @return bool
      */
     private function hasValidLength(string $iban): bool
     {

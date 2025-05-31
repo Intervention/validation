@@ -10,8 +10,6 @@ class AustrianInsuranceNumber extends AbstractRule
 {
     /**
      * Austrian insurance number length
-     *
-     * @var int
      */
     private int $length = 10;
 

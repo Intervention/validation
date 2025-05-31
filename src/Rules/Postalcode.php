@@ -11,8 +11,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
 {
     /**
      * Reference key to get locale from data
-     *
-     * @var ?string
      */
     private ?string $reference = null;
 
@@ -36,9 +34,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
     /**
      * Static constructor method to create data aware validation rule which
      * reads the allowed country code by reference.
-     *
-     * @param string $reference
-     * @return Postalcode
      */
     public static function reference(string $reference): self
     {
@@ -52,7 +47,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
      * Static constructor method
      *
      * @param array<string> $countrycodes
-     * @return Postalcode
      */
     public static function countrycode(array $countrycodes): self
     {
@@ -63,7 +57,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
      * Set data
      *
      * @param array<mixed> $data
-     * @return static
      */
     public function setData(array $data): static
     {
@@ -121,8 +114,6 @@ class Postalcode extends AbstractRule implements DataAwareRule
 
     /**
      * Return regex pattern for postal code of current country code
-     *
-     * @return ?string
      */
     private function pattern(string $countrycode): ?string
     {

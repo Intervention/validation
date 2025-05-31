@@ -20,9 +20,6 @@ class Luhn extends AbstractRule
 
     /**
      * Determine if the given checksum is valid
-     *
-     * @param int $checksum
-     * @return bool
      */
     private function checksumIsValid(int $checksum): bool
     {
@@ -31,9 +28,6 @@ class Luhn extends AbstractRule
 
     /**
      * Calculate checksum for the given value
-     *
-     * @param mixed $value
-     * @return int
      */
     private function checksum(mixed $value): int
     {

@@ -38,10 +38,8 @@ class ValidationServiceProvider extends ServiceProvider
     /**
      * Return rule object for given shortname
      *
-     * @param string $rulename
      * @param array<mixed> $parameters
      * @throws NotExistingRuleException
-     * @return Rule
      */
     private function interventionRule(string $rulename, array $parameters): Rule
     {
@@ -69,9 +67,6 @@ class ValidationServiceProvider extends ServiceProvider
 
     /**
      * Return error message of given rule shortname
-     *
-     * @param string $rulename
-     * @return string
      */
     protected function errorMessage(string $rulename): string
     {

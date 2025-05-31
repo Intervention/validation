@@ -52,9 +52,6 @@ class Isin extends Luhn
 
     /**
      * Get value to check against
-     *
-     * @param string $value
-     * @return string
      */
     public function normalize(string $value): string
     {
@@ -63,9 +60,6 @@ class Isin extends Luhn
 
     /**
      * Replace chars in given value with corresponding numbers
-     *
-     * @param string $value
-     * @return string
      */
     private function replaceChars(string $value): string
     {
@@ -78,9 +72,6 @@ class Isin extends Luhn
 
     /**
      * Return value without last digit
-     *
-     * @param string $value
-     * @return string
      */
     private function valueWithoutLastDigit(string $value): string
     {
@@ -89,9 +80,6 @@ class Isin extends Luhn
 
     /**
      * Return last digit of current value
-     *
-     * @param string $value
-     * @return string
      */
     private function lastDigit(string $value): string
     {

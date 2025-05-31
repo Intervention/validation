@@ -8,8 +8,6 @@ abstract class AbstractRegexRule extends AbstractRule
 {
     /**
      * REGEX pattern of rule
-     *
-     * @return string
      */
     abstract protected function pattern(): string;
 

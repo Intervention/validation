@@ -32,9 +32,6 @@ class Grid extends AbstractRegexRule
 
     /**
      * Calculate checksum from given grid number
-     *
-     * @param string $value
-     * @return bool
      */
     private function hasValidChecksum(string $value): bool
     {
@@ -67,9 +64,6 @@ class Grid extends AbstractRegexRule
 
     /**
      * Get character value according to GRid standard v2.1
-     *
-     * @param string $char
-     * @return int
      */
     private function charValue(string $char): int
     {
