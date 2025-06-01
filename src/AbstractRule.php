@@ -39,10 +39,8 @@ abstract class AbstractRule implements Rule, ValidationRule
 
     /**
      * Return localized error message
-     *
-     * @return string
      */
-    public function message()
+    public function message(): string
     {
         // try key for application custom translation
         $key = 'validation.' . $this->shortname();

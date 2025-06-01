@@ -11,12 +11,15 @@ use PHPUnit\Framework\TestCase;
 final class IssnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Issn())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
+    /**
+     * @return array<mixed>
+     */
     public static function dataProvider(): array
     {
         return [

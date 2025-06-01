@@ -12,10 +12,8 @@ class ValidationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // load translation files
         $this->loadTranslationsFrom(
@@ -78,7 +76,7 @@ class ValidationServiceProvider extends ServiceProvider
      *
      * @return array<string>
      */
-    public function provides()
+    public function provides(): array
     {
         return ['validator'];
     }

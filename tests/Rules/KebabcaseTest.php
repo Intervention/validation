@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class KebabcaseTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Kebabcase())->isValid($value);
         $this->assertEquals($result, $valid);

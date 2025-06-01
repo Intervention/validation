@@ -12,21 +12,21 @@ use PHPUnit\Framework\TestCase;
 final class EanTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, int|string $value): void
     {
         $valid = (new Ean())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderEan13')]
-    public function testValidationEan13($result, $value): void
+    public function testValidationEan13(bool $result, int|string $value): void
     {
         $valid = (new Ean([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderEan8')]
-    public function testValidationEan8($result, $value): void
+    public function testValidationEan8(bool $result, int|string $value): void
     {
         $valid = (new Ean([8]))->isValid($value);
         $this->assertEquals($result, $valid);

@@ -160,8 +160,6 @@ class Iban extends AbstractRule
 
     /**
      * Returns the designated length of IBAN for given IBAN
-     *
-     * @return int|false
      */
     private function designatedIbanLength(string $iban): int|false
     {

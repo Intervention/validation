@@ -12,21 +12,21 @@ use PHPUnit\Framework\TestCase;
 final class IsbnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Isbn())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShort')]
-    public function testValidationShort($result, $value): void
+    public function testValidationShort(bool $result, string $value): void
     {
         $valid = (new Isbn([10]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLong')]
-    public function testValidationLong($result, $value): void
+    public function testValidationLong(bool $result, string $value): void
     {
         $valid = (new Isbn([13]))->isValid($value);
         $this->assertEquals($result, $valid);

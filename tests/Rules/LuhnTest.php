@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class LuhnTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, int|string $value): void
     {
         $valid = (new Luhn())->isValid($value);
         $this->assertEquals($result, $valid);

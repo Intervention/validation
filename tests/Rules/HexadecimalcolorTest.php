@@ -12,35 +12,35 @@ use PHPUnit\Framework\TestCase;
 final class HexadecimalcolorTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Hexadecimalcolor())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShort')]
-    public function testValidationShort($result, $value): void
+    public function testValidationShort(bool $result, string $value): void
     {
         $valid = (new Hexadecimalcolor([3]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLongAlpha')]
-    public function testValidationLongAlpha($result, $value): void
+    public function testValidationLongAlpha(bool $result, string $value): void
     {
         $valid = (new Hexadecimalcolor([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderShortAlpha')]
-    public function testValidationShortAlpha($result, $value): void
+    public function testValidationShortAlpha(bool $result, string $value): void
     {
         $valid = (new Hexadecimalcolor([4]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderLong')]
-    public function testValidationLong($result, $value): void
+    public function testValidationLong(bool $result, string $value): void
     {
         $valid = (new Hexadecimalcolor([6]))->isValid($value);
         $this->assertEquals($result, $valid);

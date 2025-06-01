@@ -12,14 +12,14 @@ use PHPUnit\Framework\TestCase;
 final class DataUriTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new DataUri())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderImages')]
-    public function testValidationWithMimeTypes($result, $value): void
+    public function testValidationWithMimeTypes(bool $result, string $value): void
     {
         $valid = (new DataUri(['image/jpeg', 'image/png']))->isValid($value);
         $this->assertEquals($result, $valid);

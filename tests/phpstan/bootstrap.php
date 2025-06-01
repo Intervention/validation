@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function trans($key): string
+function trans(string $key): string
 {
     return $key;
 }

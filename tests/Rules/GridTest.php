@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class GridTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Grid())->isValid($value);
         $this->assertEquals($result, $valid);

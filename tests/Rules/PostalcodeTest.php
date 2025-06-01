@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 final class PostalcodeTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidationConstructor($result, $countrycode, $value): void
+    public function testValidationConstructor(bool $result, string $countrycode, string $value): void
     {
         $valid = (new Postalcode([$countrycode]))->isValid($value);
         $this->assertEquals($result, $valid);

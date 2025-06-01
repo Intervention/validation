@@ -12,35 +12,35 @@ use PHPUnit\Framework\TestCase;
 final class GtinTest extends TestCase
 {
     #[DataProvider('dataProvider')]
-    public function testValidation($result, $value): void
+    public function testValidation(bool $result, string $value): void
     {
         $valid = (new Gtin())->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin8')]
-    public function testValidationGtin8($result, $value): void
+    public function testValidationGtin8(bool $result, string $value): void
     {
         $valid = (new Gtin([8]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin12')]
-    public function testValidationGtin12($result, $value): void
+    public function testValidationGtin12(bool $result, string $value): void
     {
         $valid = (new Gtin([12]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin13')]
-    public function testValidationGtin13($result, $value): void
+    public function testValidationGtin13(bool $result, string $value): void
     {
         $valid = (new Gtin([13]))->isValid($value);
         $this->assertEquals($result, $valid);
     }
 
     #[DataProvider('dataProviderGtin14')]
-    public function testValidationGtin14($result, $value): void
+    public function testValidationGtin14(bool $result, string $value): void
     {
         $valid = (new Gtin([14]))->isValid($value);
         $this->assertEquals($result, $valid);
