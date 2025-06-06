@@ -9,6 +9,7 @@ return [
     'hexadecimalcolor' => 'Le champ :attribute doit être un code couleur hexadécimal valide.',
     'creditcard' => 'Le champ :attribute doit être un numéro de carte de crédit valide.',
     'isbn' => 'Le champ :attribute doit être un numéro ISBN valide.',
+    'isrc' => 'Le champ :attribute doit être un code ISRC (International Standard Recording Code) valide.',
     'username' => 'La valeur de :attribute doit être un pseudonyme valide : chaine alphanumérique entre 3' .
         ' et 20 caractères, débutant obligatoirement par une lettre, acceptant les tirets et tirets bas.',
     'htmlclean' => 'La valeur de :attribute ne doit pas contenir de code HTML.',

@@ -9,6 +9,7 @@ return [
     'hexadecimalcolor' => 'The :attribute must be a valid hexadecimal color code.',
     'creditcard' => 'The :attribute must be a valid creditcard number.',
     'isbn' => ':attribute must be a valid International Standard Book Number (ISBN).',
+    'isrc' => 'The :attribute must be a valid International Standard Recording Code (ISRC).',
     'username' => 'The value :attribute must be a valid username.',
     'htmlclean' => 'The value :attribute contains forbidden HTML code.',
     'domainname' => ':attribute must be a well formed domainname.',
