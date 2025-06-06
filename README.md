@@ -21,7 +21,7 @@ Require the package via Composer:
 
 The Validation library is built to work with the Laravel Framework (>=10). It
 comes with a service provider, which will be discovered automatically and
-registers the validation rules into your installation. The package provides 30
+registers the validation rules into your installation. The package provides 37
 additional validation rules including multi language error messages, which can
 be used like Laravel's own validation rules.
 
@@ -189,6 +189,12 @@ Optional length parameter as integer to check only for ISBN-10 or ISBN-13.
 Checks for a valid [International Securities Identification Number](https://en.wikipedia.org/wiki/International_Securities_Identification_Number) (ISIN).
 
     public Intervention\Validation\Rules\Isin::__construct()
+
+### International Standard Recording Code (ISRC)
+
+The field under validation must be a valid [International Standard Recording Code](https://en.wikipedia.org/wiki/International_Standard_Recording_Code) (ISRC).
+
+    public Intervention\Validation\Rules\Isrc::__construct()
 
 ### International Standard Serial Number (ISSN)
 

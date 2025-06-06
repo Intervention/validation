@@ -9,6 +9,7 @@ return [
     'hexadecimalcolor' => 'Der Wert :attribute muss einen gültigen hexadezimalen Farbwert enthalten.',
     'creditcard' => 'Der Wert :attribute ist keine gültige Kreditkartennummer.',
     'isbn' => 'Der Wert :attribute muss eine gültige International Standard Book Number (ISBN) enthalten.',
+    'isrc' => 'Der Wert :attribute muss eine gültige International Standard Recording Code (ISRC) enthalten.',
     'username' => 'Der Wert :attribute enthält keinen gültigen Benutzernamen.',
     'htmlclean' => 'Der Wert :attribute enthält nicht erlaubten HTML Code.',
     'domainname' => 'Der Wert :attribute muss einen Domainnamen enthalten.',
