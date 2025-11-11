@@ -25,7 +25,7 @@ final class IbanTest extends TestCase
         yield [true, 'PK36SCBL0000001123456702'];
         yield [true, 'QA 54QNBA0000 00000000 693123456'];
         yield [true, 'CI93CI0080111301134291200589'];
-        yield [true, 'NI92BAMC000000000000000003123123'];
+        yield [true, 'NI91BAMC01120203000003558124'];
         yield [true, 'IE91AIBK93419446888083'];
         yield [true, 'IT38N0103014217000000668829'];
         yield [true, 'IE92PFSR99107016194974'];
