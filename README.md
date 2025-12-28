@@ -21,7 +21,7 @@ Require the package via Composer:
 
 The Validation library is built to work with the Laravel Framework (>=10). It
 comes with a service provider, which will be discovered automatically and
-registers the validation rules into your installation. The package provides 37
+registers the validation rules into your installation. The package provides 38
 additional validation rules including multi language error messages, which can
 be used like Laravel's own validation rules.
 
@@ -111,6 +111,18 @@ Checks for a valid [European Article Number](https://en.wikipedia.org/wiki/Inter
 **length**
 
 Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
+
+### European VAT Number
+
+Checks for a valid [European VAT identification number](https://en.wikipedia.org/wiki/VAT_identification_number).
+
+    public Intervention\Validation\Rules\EuropeanVatNumber::__construct(bool $withApi = false)
+
+#### Parameters
+
+**withApi**
+
+Set to `true` to validate the VAT number against the official [VIES API](http://ec.europa.eu/taxation_customs/vies/). Defaults to `false` for format validation only.
 
 ### Global Release Identifier (GRid)
 
