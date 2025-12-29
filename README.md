@@ -116,13 +116,7 @@ Optional integer length (8 or 13) to check only for EAN-8 or EAN-13.
 
 Checks for a valid [European VAT identification number](https://en.wikipedia.org/wiki/VAT_identification_number).
 
-    public Intervention\Validation\Rules\EuropeanVatNumber::__construct(bool $withApi = false)
-
-#### Parameters
-
-**withApi**
-
-Set to `true` to validate the VAT number against the official [VIES API](http://ec.europa.eu/taxation_customs/vies/). Defaults to `false` for format validation only.
+    public Intervention\Validation\Rules\EuropeanVatNumber::__construct()
 
 ### Global Release Identifier (GRid)
 
