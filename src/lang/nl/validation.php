@@ -30,6 +30,7 @@ return [
     'datauri' => ':attribute moet een geldige Data-URL zijn.',
     'ulid' => ':attribute is geen geldig ULID.',
     'ean' => ':attribute is geen geldig European Article Number (EAN).',
+    'europeanvatnumber' => ':attribute is geen geldig Europees btw-nummer.',
     'gtin' => ':attribute is geen geldig Global Trade Item Number (GTIN).',
     'postalcode' => ':attribute moet een geldige postcode zijn.',
     'mimetype' => ':attribute bevat geen geldig internetmediatype (MIME-type).',

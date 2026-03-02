@@ -30,6 +30,7 @@ return [
     'datauri' => ':attribute debe ser un url de datos válido .',
     'ulid' => ':attribute no es un ULID válido.',
     'ean' => ':attribute no es un EAN válido.',
+    'europeanvatnumber' => ':attribute no es un número de IVA europeo válido.',
     'gtin' => ':attribute no es un número GTIN válido.',
     'postalcode' => 'El valor de :attribute debe ser un código postal válido.',
     'mimetype' => 'El valor de :attribute no contiene un tipo de media de internet (MIME-Type) válido.',

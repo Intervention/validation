@@ -32,6 +32,7 @@ return [
     'datauri' => ':attribute ist keine gültige Data-URL.',
     'ulid' => ':attribute ist keine gültige ULID.',
     'ean' => 'Der Wert :attribute ist keine gültige European Article Number (EAN).',
+    'europeanvatnumber' => 'Der Wert :attribute ist keine gültige europäische Umsatzsteuer-Identifikationsnummer.',
     'gtin' => 'Der Wert :attribute ist keine gültige Global Trade Item Number (GTIN).',
     'postalcode' => 'Der Wert :attribute muss eine gültige Postleitzahl sein.',
     'mimetype' => 'Der Wert :attribute einhält keinen gültigen Internet Media Type (MIME-Type).',
