@@ -12,3 +12,4 @@ phpunit.xml.dist export-ignore
 phpcs.xml export-ignore
 phpstan.dist.neon export-ignore
 CONTRIBUTING.md export-ignore
+/phpunit.xml export-ignore
