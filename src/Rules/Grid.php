@@ -44,7 +44,7 @@ class Grid extends AbstractRegexRule
         );
 
         // extract last (check) character
-        $checkCharacter = array_pop($characters);
+        $checkCharacter = strval(array_pop($characters));
 
         $m = 36;
         $n = 37;
