@@ -17,7 +17,7 @@ class Imei extends Luhn
     }
 
     /**
-     * Determine if current value has valid IMEI length
+     * Determine if current value has valid IMEI length.
      */
     private function hasValidLength(string $value): bool
     {

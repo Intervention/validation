@@ -9,7 +9,7 @@ use Intervention\Validation\AbstractRule;
 class DataUri extends AbstractRule
 {
     /**
-     * Create new instance with allowed media types or null for all valid media types
+     * Create new instance with allowed media types or null for all valid media types.
      *
      * @param null|array<string> $media_types
      * @return void
@@ -51,7 +51,7 @@ class DataUri extends AbstractRule
     }
 
     /**
-     * Determine if the rule expects a set mime type in the data url
+     * Determine if the rule expects a set mime type in the data url.
      */
     private function expectsMediaType(): bool
     {
@@ -59,7 +59,7 @@ class DataUri extends AbstractRule
     }
 
     /**
-     * Check for validity of given mime type
+     * Check for validity of given mime type.
      */
     private function isValidMimeType(mixed $value): bool
     {
@@ -67,7 +67,7 @@ class DataUri extends AbstractRule
     }
 
     /**
-     * Check if give mime type is allowed
+     * Check if give mime type is allowed.
      */
     private function isAllowedMimeType(mixed $type): bool
     {
@@ -88,7 +88,7 @@ class DataUri extends AbstractRule
     }
 
     /**
-     * Parse data url info from current value
+     * Parse data url info from current value.
      */
     private function dataUriInfo(mixed $value): object
     {

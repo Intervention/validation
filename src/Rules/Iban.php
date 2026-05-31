@@ -9,7 +9,7 @@ use Intervention\Validation\AbstractRule;
 class Iban extends AbstractRule
 {
     /**
-     * IBAN lengths for countries
+     * IBAN lengths for countries.
      *
      * @var array<string, int>
      */
@@ -144,7 +144,7 @@ class Iban extends AbstractRule
     }
 
     /**
-     * Calculate checksum of iban
+     * Calculate checksum of iban.
      */
     private function checksum(string $iban): int
     {
@@ -167,7 +167,7 @@ class Iban extends AbstractRule
     }
 
     /**
-     * Returns the designated length of IBAN for given IBAN
+     * Returns the designated length of IBAN for given IBAN.
      */
     private function designatedIbanLength(string $iban): int|false
     {
@@ -177,7 +177,7 @@ class Iban extends AbstractRule
     }
 
     /**
-     * Determine if given iban has the proper length
+     * Determine if given iban has the proper length.
      */
     private function hasValidLength(string $iban): bool
     {
@@ -185,7 +185,7 @@ class Iban extends AbstractRule
     }
 
     /**
-     * Get chars to be replaced in checksum calculation
+     * Get chars to be replaced in checksum calculation.
      *
      * @return array<string>
      */
@@ -195,7 +195,7 @@ class Iban extends AbstractRule
     }
 
     /**
-     * Get values to replace chars in checksum calculation
+     * Get values to replace chars in checksum calculation.
      *
      * @return array<string>
      */

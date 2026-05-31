@@ -37,7 +37,7 @@ class Isbn extends Ean
     }
 
     /**
-     * Determine if checksum for ISBN-10 numbers is valid
+     * Determine if checksum for ISBN-10 numbers is valid.
      */
     private function shortChecksumMatches(string $value): bool
     {
@@ -45,7 +45,7 @@ class Isbn extends Ean
     }
 
     /**
-     * Calculate checksum of short ISBN numbers
+     * Calculate checksum of short ISBN numbers.
      */
     private function shortChecksum(string $value): int
     {

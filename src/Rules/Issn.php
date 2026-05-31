@@ -29,7 +29,7 @@ class Issn extends AbstractRegexRule
     }
 
     /**
-     * Determine if checksum matches
+     * Determine if checksum matches.
      */
     private function checkSumMatches(string $value): bool
     {
@@ -37,7 +37,7 @@ class Issn extends AbstractRegexRule
     }
 
     /**
-     * Calculate checksum from the current value
+     * Calculate checksum from the current value.
      */
     private function calculateChecksum(string $value): int
     {
@@ -54,7 +54,7 @@ class Issn extends AbstractRegexRule
     }
 
     /**
-     * Parse attached checksum of current value (last digit)
+     * Parse attached checksum of current value (last digit).
      */
     private function parseChecksum(string $value): int
     {

@@ -30,7 +30,7 @@ abstract class AbstractRule implements Rule, ValidationRule
     }
 
     /**
-     * Return shortname of current rule
+     * Return shortname of current rule.
      */
     protected function shortname(): string
     {
@@ -38,7 +38,7 @@ abstract class AbstractRule implements Rule, ValidationRule
     }
 
     /**
-     * Return localized error message
+     * Return localized error message.
      */
     public function message(): string
     {

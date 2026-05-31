@@ -25,7 +25,7 @@ class Titlecase extends AbstractRule
     }
 
     /**
-     * Get array of words from current value
+     * Get array of words from current value.
      *
      * @return array<string>
      */
@@ -35,7 +35,7 @@ class Titlecase extends AbstractRule
     }
 
     /**
-     * Determine if given word starts with upper case letter or number
+     * Determine if given word starts with upper case letter or number.
      */
     private function isValidWord(string $word): bool
     {

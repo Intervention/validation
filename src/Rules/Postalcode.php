@@ -10,19 +10,19 @@ use Intervention\Validation\AbstractRule;
 class Postalcode extends AbstractRule implements DataAwareRule
 {
     /**
-     * Reference key to get locale from data
+     * Reference key to get locale from data.
      */
     private ?string $reference = null;
 
     /**
-     * Data set used for validation
+     * Data set used for validation.
      *
      * @var array<string>
      */
     private array $data = [];
 
     /**
-     * Create a new rule instance with allowed countrycodes
+     * Create a new rule instance with allowed countrycodes.
      *
      * @param array<string> $countrycodes
      */
@@ -44,7 +44,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Static constructor method
+     * Static constructor method.
      *
      * @param array<string> $countrycodes
      */
@@ -54,7 +54,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Set data
+     * Set data.
      *
      * @param array<mixed> $data
      */
@@ -82,7 +82,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Return regex patterns for allowed country codes
+     * Return regex patterns for allowed country codes.
      *
      * @return array<string>
      */
@@ -94,7 +94,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Get array of allowed country codes
+     * Get array of allowed country codes.
      *
      * @return array<string>
      */
@@ -113,7 +113,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     }
 
     /**
-     * Return regex pattern for postal code of current country code
+     * Return regex pattern for postal code of current country code.
      */
     private function pattern(string $countrycode): ?string
     {

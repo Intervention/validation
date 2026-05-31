@@ -34,7 +34,7 @@ class ValidationServiceProvider extends ServiceProvider
     }
 
     /**
-     * Return rule object for given shortname
+     * Return rule object for given shortname.
      *
      * @param array<mixed> $parameters
      * @throws NotExistingRuleException
@@ -51,7 +51,7 @@ class ValidationServiceProvider extends ServiceProvider
     }
 
     /**
-     * List all shortnames of Intervention validation rule objects
+     * List all shortnames of Intervention validation rule objects.
      *
      * @return array<string>
      */
@@ -64,7 +64,7 @@ class ValidationServiceProvider extends ServiceProvider
     }
 
     /**
-     * Return error message of given rule shortname
+     * Return error message of given rule shortname.
      */
     protected function errorMessage(string $rulename): string
     {

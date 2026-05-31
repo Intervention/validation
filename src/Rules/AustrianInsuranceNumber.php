@@ -9,12 +9,13 @@ use Intervention\Validation\AbstractRule;
 class AustrianInsuranceNumber extends AbstractRule
 {
     /**
-     * Austrian insurance number length
+     * Austrian insurance number length.
      */
     private int $length = 10;
 
     /**
-     * Multiplier series to calculate checksum
+     * Multiplier series to calculate checksum.
+     *
      * https://www.sozialversicherung.at/cdscontent/?contentid=10007.820902&viewmode=content
      *
      * @var array<int>

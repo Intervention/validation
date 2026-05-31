@@ -8,4 +8,5 @@ use RuntimeException;
 
 class NotExistingRuleException extends RuntimeException
 {
+    //
 }

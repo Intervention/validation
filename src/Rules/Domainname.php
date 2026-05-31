@@ -34,7 +34,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Get all labels of domainname
+     * Get all labels of domainname.
      *
      * @return array<string>
      */
@@ -44,7 +44,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Determine if given string is valid idn label
+     * Determine if given string is valid idn label.
      */
     private function isValidLabel(string $value): bool
     {
@@ -52,7 +52,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Determine if given value is valid A-Label
+     * Determine if given value is valid A-Label.
      *
      * Begins with "xn--" and is resolvable by PunyCode algorithm
      */
@@ -62,7 +62,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Determine if given value is valid NR-LDH label
+     * Determine if given value is valid NR-LDH label.
      */
     private function isValidNrLdhLabel(string $value): bool
     {
@@ -70,7 +70,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Determine if given value is valid TLD
+     * Determine if given value is valid TLD.
      */
     private function isValidTld(string $value): bool
     {
@@ -82,7 +82,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Wrapper method for idn_to_utf8 call
+     * Wrapper method for idn_to_utf8 call.
      */
     private function idnToUtf8(string $domain): string
     {
@@ -90,7 +90,7 @@ class Domainname extends AbstractRule
     }
 
     /**
-     * Wrapper method for idn_to_ascii call
+     * Wrapper method for idn_to_ascii call.
      */
     private function idnToAscii(string $domain): string
     {

@@ -43,7 +43,7 @@ class Hexadecimalcolor extends AbstractRegexRule
     }
 
     /**
-     * Determine if the current value has correct length
+     * Determine if the current value has correct length.
      */
     private function hasAllowedLength(mixed $value): bool
     {

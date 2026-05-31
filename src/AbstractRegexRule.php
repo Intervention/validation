@@ -7,7 +7,7 @@ namespace Intervention\Validation;
 abstract class AbstractRegexRule extends AbstractRule
 {
     /**
-     * REGEX pattern of rule
+     * REGEX pattern of rule.
      */
     abstract protected function pattern(): string;
 

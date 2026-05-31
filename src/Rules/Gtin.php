@@ -7,7 +7,7 @@ namespace Intervention\Validation\Rules;
 class Gtin extends Ean
 {
     /**
-     * Create instance of gtin validation rule
+     * Create instance of gtin validation rule.
      *
      * Value must be either GTIN-13 or GTIN-8, which is checked as EAN
      * by parent class. Or value must be GTIN-14 or GTIN-12 which will

@@ -7,7 +7,7 @@ namespace Intervention\Validation\Rules;
 class Isin extends Luhn
 {
     /**
-     * Chars to calculate checksum
+     * Chars to calculate checksum.
      *
      * @var array<int, string>
      */
@@ -51,7 +51,7 @@ class Isin extends Luhn
     }
 
     /**
-     * Get value to check against
+     * Get value to check against.
      */
     public function normalize(string $value): string
     {
@@ -59,7 +59,7 @@ class Isin extends Luhn
     }
 
     /**
-     * Replace chars in given value with corresponding numbers
+     * Replace chars in given value with corresponding numbers.
      */
     private function replaceChars(string $value): string
     {
@@ -71,7 +71,7 @@ class Isin extends Luhn
     }
 
     /**
-     * Return value without last digit
+     * Return value without last digit.
      */
     private function valueWithoutLastDigit(string $value): string
     {
@@ -79,7 +79,7 @@ class Isin extends Luhn
     }
 
     /**
-     * Return last digit of current value
+     * Return last digit of current value.
      */
     private function lastDigit(string $value): string
     {

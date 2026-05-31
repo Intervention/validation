@@ -7,7 +7,7 @@ namespace Intervention\Validation;
 interface Rule
 {
     /**
-     * Checks if the given value is valid in the scope of the current rule
+     * Checks if the given value is valid in the scope of the current rule.
      */
     public function isValid(mixed $value): bool;
 }
