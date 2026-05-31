@@ -16,6 +16,7 @@ class DataUri extends AbstractRule
      */
     public function __construct(private ?array $media_types = null)
     {
+        //
     }
 
     /**

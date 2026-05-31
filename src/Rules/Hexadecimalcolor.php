@@ -16,6 +16,7 @@ class Hexadecimalcolor extends AbstractRegexRule
      */
     public function __construct(protected array $lengths = [3, 4, 6, 8])
     {
+        //
     }
 
     /**
