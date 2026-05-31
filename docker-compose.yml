@@ -2,18 +2,18 @@ services:
   tests:
     build: ./
     working_dir: /project
-    command: bash -c "composer install && ./vendor/bin/phpunit"
+    entrypoint: ["/usr/local/bin/entrypoint.sh", "./vendor/bin/phpunit"]
     volumes:
       - ./:/project
   analysis:
     build: ./
     working_dir: /project
-    command: bash -c "composer install && ./vendor/bin/phpstan analyze ./src"
+    entrypoint: ["/usr/local/bin/entrypoint.sh", "./vendor/bin/phpstan", "analyze", "--memory-limit=512M"]
     volumes:
       - ./:/project
   standards:
     build: ./
     working_dir: /project
-    command: bash -c "composer install && ./vendor/bin/phpcs"
+    entrypoint: ["/usr/local/bin/entrypoint.sh", "./vendor/bin/phpcs"]
     volumes:
       - ./:/project
