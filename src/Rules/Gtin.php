@@ -39,6 +39,8 @@ class Gtin extends Ean
             return false;
         }
 
+        $value = strval($value);
+
         return match (strlen($value)) {
             8, 13 => parent::isValid($value),
             12 => parent::checksumMatches('0' . $value),

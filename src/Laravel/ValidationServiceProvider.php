@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Intervention\Validation\Laravel;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 use Intervention\Validation\Exceptions\NotExistingRuleException;
 use Intervention\Validation\Rule;
@@ -12,6 +13,8 @@ class ValidationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
+     *
+     * @throws BindingResolutionException
      */
     public function boot(): void
     {
@@ -23,7 +26,7 @@ class ValidationServiceProvider extends ServiceProvider
 
         // add rules to laravel validator
         foreach ($this->ruleShortnames() as $rulename) {
-            $this->app['validator']->extend(
+            $this->app->make('validator')->extend(
                 $rulename,
                 function ($attribute, $value, $parameters, $validator) use ($rulename): bool {
                     return $this->interventionRule($rulename, $parameters)->isValid($value);
@@ -44,10 +47,16 @@ class ValidationServiceProvider extends ServiceProvider
         $classname = sprintf("Intervention\Validation\Rules\%s", ucfirst($rulename));
 
         if (!class_exists($classname)) {
-            throw new NotExistingRuleException("Rule " . $rulename . " does not exist.");
+            throw new NotExistingRuleException("Rule " . $rulename . " does not exist");
         }
 
-        return new $classname($parameters);
+        $rule = new $classname($parameters);
+
+        if (!$rule instanceof Rule) {
+            throw new NotExistingRuleException("Rule is not an instance of " . Rule::class);
+        }
+
+        return $rule;
     }
 
     /**
@@ -65,10 +74,12 @@ class ValidationServiceProvider extends ServiceProvider
 
     /**
      * Return error message of given rule shortname.
+     *
+     * @throws BindingResolutionException
      */
     protected function errorMessage(string $rulename): string
     {
-        return $this->app['translator']->get('validation::validation.' . $rulename);
+        return $this->app->make('translator')->get('validation::validation.' . $rulename);
     }
 
     /**

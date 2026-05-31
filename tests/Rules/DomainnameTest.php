@@ -47,6 +47,9 @@ final class DomainnameTest extends TestCase
         yield [true, 't.co'];
         yield [true, '0.com'];
         yield [true, 'இந்தியா.com'];
+        yield [true, '💩.com'];
+        yield [true, 'аррӏе.com'];
+        yield [true, 'we❤️it.gm'];
         yield [false, 'foo'];
         yield [false, 'foo.f'];
         yield [false, 'foo.com.'];
@@ -71,5 +74,6 @@ final class DomainnameTest extends TestCase
         yield [false, '0.0.0'];
         yield [false, 'foo.123'];
         yield [false, 'mandrill._domainkey.mailchimp.com'];
+        yield [false, 'xn--ao3ao12-39.com'];
     }
 }

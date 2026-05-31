@@ -18,6 +18,10 @@ class Domainname extends AbstractRule
         $labels = $this->labels($value); // get labels of domainname
         $tld = end($labels); // most right label of domainname is tld
 
+        if ($tld === false) {
+            return false;
+        }
+
         // domain must have 2 labels minimum
         if (count($labels) <= 1) {
             return false;
@@ -58,7 +62,7 @@ class Domainname extends AbstractRule
      */
     private function isValidALabel(string $value): bool
     {
-        return str_starts_with($value, 'xn--') && $this->idnToUtf8($value) != false;
+        return str_starts_with($value, 'xn--') && $this->idnToUtf8($value) !== '';
     }
 
     /**
@@ -86,7 +90,9 @@ class Domainname extends AbstractRule
      */
     private function idnToUtf8(string $domain): string
     {
-        return idn_to_utf8($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+        $domain = idn_to_utf8($domain, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+
+        return $domain ?: '';
     }
 
     /**

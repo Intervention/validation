@@ -30,7 +30,7 @@ class Isbn extends Ean
         }
 
         return match (strlen((string) $value)) {
-            10 => $this->shortChecksumMatches($value),
+            10 => $this->shortChecksumMatches((string) $value),
             13 => preg_match("/^(978|979)/", (string) $value) && parent::checksumMatches($value),
             default => false,
         };

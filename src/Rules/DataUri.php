@@ -90,7 +90,7 @@ class DataUri extends AbstractRule
     /**
      * Parse data url info from current value.
      */
-    private function dataUriInfo(mixed $value): object
+    private function dataUriInfo(mixed $value): mixed
     {
         $pattern = "/^data:(?P<mediatype>\w+\/[-+.\w]+)?(?P<parameters>" .
             "(;[-\w]+=[-\w]+)*)(?P<base64>;base64)?,(?P<data>.*)/";
