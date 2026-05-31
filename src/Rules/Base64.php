@@ -17,6 +17,6 @@ class Base64 extends AbstractRule
     {
         $decoded = base64_decode((string) $value, true);
 
-        return $decoded ? base64_encode($decoded) === $value : false;
+        return $decoded !== false ? base64_encode($decoded) === $value : false;
     }
 }

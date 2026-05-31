@@ -181,7 +181,7 @@ class Iban extends AbstractRule
      */
     private function hasValidLength(string $iban): bool
     {
-        return $this->designatedIbanLength($iban) == strlen($iban);
+        return $this->designatedIbanLength($iban) === strlen($iban);
     }
 
     /**

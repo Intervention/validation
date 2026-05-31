@@ -31,15 +31,15 @@ class Hslcolor extends AbstractRegexRule
             return false;
         }
 
-        if (!in_array(intval($matches['h']), range(0, 360))) {
+        if (!in_array(intval($matches['h']), range(0, 360), true)) {
             return false;
         }
 
-        if (!in_array(intval($matches['s']), range(0, 100))) {
+        if (!in_array(intval($matches['s']), range(0, 100), true)) {
             return false;
         }
 
-        if (!in_array(intval($matches['l']), range(0, 100))) {
+        if (!in_array(intval($matches['l']), range(0, 100), true)) {
             return false;
         }
 

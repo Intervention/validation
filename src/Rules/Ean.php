@@ -34,7 +34,7 @@ class Ean extends AbstractRule
      */
     protected function hasAllowedLength(mixed $value): bool
     {
-        return in_array(strlen(strval($value)), $this->lengths);
+        return in_array(strlen(strval($value)), $this->lengths, true);
     }
 
     /**
@@ -64,7 +64,7 @@ class Ean extends AbstractRule
         $chars = array_reverse(str_split(substr(strval($value), 0, -1)));
 
         foreach ($chars as $key => $char) {
-            $multiplier = $key % 2 ? 1 : 3;
+            $multiplier = ($key % 2) === 1 ? 1 : 3;
             $checksum += intval($char) * $multiplier;
         }
 

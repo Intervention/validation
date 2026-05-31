@@ -115,7 +115,7 @@ class DataUri extends AbstractRule
 
             public function mediaType(): ?string
             {
-                if (isset($this->matches['mediatype']) && !empty($this->matches['mediatype'])) {
+                if (isset($this->matches['mediatype']) && $this->matches['mediatype'] !== '') {
                     return $this->matches['mediatype'];
                 }
 
@@ -124,13 +124,13 @@ class DataUri extends AbstractRule
 
             public function hasMediaType(): bool
             {
-                return !empty($this->mediaType());
+                return $this->mediaType() !== null;
             }
 
             /** @return array<mixed> */
             public function parameters(): array
             {
-                if (isset($this->matches['parameters']) && !empty($this->matches['parameters'])) {
+                if (isset($this->matches['parameters']) && $this->matches['parameters'] !== '') {
                     return explode(';', trim((string) $this->matches['parameters'], ';'));
                 }
 
@@ -144,7 +144,7 @@ class DataUri extends AbstractRule
 
             public function data(): ?string
             {
-                if (isset($this->matches['data']) && !empty($this->matches['data'])) {
+                if (isset($this->matches['data']) && $this->matches['data'] !== '') {
                     return $this->matches['data'];
                 }
 

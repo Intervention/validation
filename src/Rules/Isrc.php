@@ -28,7 +28,7 @@ class Isrc extends AbstractRegexRule
     {
         $normalized = preg_replace('/[^A-Z0-9]/i', '', $value);
 
-        return $normalized === null ? null : (string) $normalized;
+        return $normalized === null ? null : $normalized;
     }
 
     private function hasInvalidLength(string $value): bool

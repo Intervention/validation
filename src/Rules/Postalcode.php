@@ -73,7 +73,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
     public function isValid(mixed $value): bool
     {
         foreach ($this->patterns() as $pattern) {
-            if (preg_match($pattern, (string) $value)) {
+            if (preg_match($pattern, (string) $value) === 1) {
                 return true;
             }
         }
@@ -100,7 +100,7 @@ class Postalcode extends AbstractRule implements DataAwareRule
      */
     private function countryCodes(): array
     {
-        if (count($this->countrycodes) != 0) {
+        if (count($this->countrycodes) !== 0) {
             return $this->countrycodes;
         }
 
