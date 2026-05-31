@@ -8,6 +8,7 @@
 .editorconfig export-ignore
 Dockerfile export-ignore
 docker-compose.yml export-ignore
+entrypoint.sh      export-ignore
 phpunit.xml.dist export-ignore
 phpcs.xml export-ignore
 phpstan.dist.neon export-ignore
