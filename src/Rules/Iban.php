@@ -152,7 +152,7 @@ class Iban extends AbstractRule
         $iban = str_replace(
             $this->replacementsChars(),
             $this->replacementsValues(),
-            $iban
+            $iban,
         );
 
         $checksum = intval(substr($iban, 0, 1));

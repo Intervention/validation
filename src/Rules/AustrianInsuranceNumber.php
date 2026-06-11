@@ -21,7 +21,7 @@ class AustrianInsuranceNumber extends AbstractRule
      * @var array<int>
      */
     private array $multiplierSeries = [
-        3, 7, 9, 5, 8, 4, 2, 1, 6
+        3, 7, 9, 5, 8, 4, 2, 1, 6,
     ];
 
     /**

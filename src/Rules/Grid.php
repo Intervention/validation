@@ -40,7 +40,7 @@ class Grid extends AbstractRegexRule
 
         // split GRid into single characters (without dashes)
         $characters = str_split(
-            str_replace('-', '', $matches['grid'])
+            str_replace('-', '', $matches['grid']),
         );
 
         // extract last (check) character

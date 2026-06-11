@@ -21,7 +21,7 @@ class ValidationServiceProvider extends ServiceProvider
         // load translation files
         $this->loadTranslationsFrom(
             __DIR__ . '/../lang',
-            'validation'
+            'validation',
         );
 
         // add rules to laravel validator
@@ -31,7 +31,7 @@ class ValidationServiceProvider extends ServiceProvider
                 function ($attribute, $value, $parameters, $validator) use ($rulename): bool {
                     return $this->interventionRule($rulename, $parameters)->isValid($value);
                 },
-                $this->errorMessage($rulename)
+                $this->errorMessage($rulename),
             );
         }
     }

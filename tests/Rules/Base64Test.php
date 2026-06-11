@@ -22,48 +22,48 @@ final class Base64Test extends TestCase
     {
         yield [
             true,
-            'Zm9v'
+            'Zm9v',
         ];
         yield [
             true,
-            'YmFy'
+            'YmFy',
         ];
         yield [
             true,
-            'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4='
+            'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4=',
         ];
         yield [
             true,
             'bGFuZ3VhZ2U6IHBocAoKZGlzdDogJ3RydXN0eScKCnBocDoKICAtICc3LjInCiAgLSAnNy4zJw' .
                 'oKY2FjaGU6CiAgZGlyZWN0b3JpZXM6CiAgICAtIC4vdmVuZG9yCgppbnN0YWxsOgogIC0gY29tcG9zZX' .
-                'IgaW5zdGFsbAoKc2NyaXB0OiB2ZW5kb3IvYmluL3BocHVuaXQK'
+                'IgaW5zdGFsbAoKc2NyaXB0OiB2ZW5kb3IvYmluL3BocHVuaXQK',
         ];
         yield [
             true,
             'iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAT0lEQVR4AbXRQQrAMAgF0d7' .
                 'J+5/NggjTT5lNIOPSt4l5PvVOlmBTyHLxnwFqZmAwUMNARmBHqIIoKkHK/HWQQHpMO2gsleUH' .
-                'w6w7DOQNeQHgxcBzQQpFawAAAABJRU5ErkJggg=='
+                'w6w7DOQNeQHgxcBzQQpFawAAAABJRU5ErkJggg==',
         ];
         yield [
             false,
-            'foo'
+            'foo',
         ];
         yield [
             false,
-            'bar'
+            'bar',
         ];
         yield [
             false,
-            'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy='
+            'VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy=',
         ];
         yield [
             false,
-            'bGFuZ3VhZ2U6IHBocAoKZGlzdDogJ3RydXN0eScKCnBocDoKICAtICc3xx'
+            'bGFuZ3VhZ2U6IHBocAoKZGlzdDogJ3RydXN0eScKCnBocDoKICAtICc3xx',
         ];
         yield [
             false,
             'iVBORw0KGgoAAAANSUhEUgAAABIAAAAsCcAQAAAD8x0bcAAAaT0lEQVR4AbXRQQrAMAgF0d7J+5/NggjTT5lNIOPSt4' .
-                'l5PvVOlmBTyHLxnwFqZmAwUMNARmBHqIIoKkHK/HWQQHpMO2gsleUHw6w7DOQNeQHgxcBzQQpFawAAAABJRU5ErkJggg=='
+                'l5PvVOlmBTyHLxnwFqZmAwUMNARmBHqIIoKkHK/HWQQHpMO2gsleUHw6w7DOQNeQHgxcBzQQpFawAAAABJRU5ErkJggg==',
         ];
     }
 }
