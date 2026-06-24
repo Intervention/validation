@@ -33,7 +33,7 @@ class AustrianInsuranceNumber extends AbstractRule
     {
         $value = str_replace(' ', '', (string) $value);
 
-        return $this->isOnlyNumericCharacters(strval($value))
+        return $this->isOnlyNumericCharacters($value)
             && $this->startsNotWithZero($value)
             && $this->hasValidLength($value)
             && $this->hasValidBirthday($value)
