@@ -31,7 +31,7 @@ class Gtin extends Ean
      */
     public function isValid(mixed $value): bool
     {
-        if (!$this->isOnlyNumbers(strval($value))) {
+        if (!$this->isOnlyNumericCharacters(strval($value))) {
             return false;
         }
 
