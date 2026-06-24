@@ -26,7 +26,9 @@ class Ean extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return is_numeric($value) && $this->hasAllowedLength($value) && $this->checksumMatches($value);
+        return $this->isOnlyNumbers(strval($value))
+            && $this->hasAllowedLength($value)
+            && $this->checksumMatches($value);
     }
 
     /**

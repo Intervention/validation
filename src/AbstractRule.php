@@ -38,6 +38,14 @@ abstract class AbstractRule implements Rule, ValidationRule
     }
 
     /**
+     * Determine if input chars are only numbers.
+     */
+    protected function isOnlyNumbers(string $value): bool
+    {
+        return preg_match("/^[0-9]+$/", $value) === 1;
+    }
+
+    /**
      * Return localized error message.
      */
     public function message(): string
