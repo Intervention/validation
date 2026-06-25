@@ -31,15 +31,15 @@ class Gtin extends Ean
      */
     public function isValid(mixed $value): bool
     {
-        if (!is_numeric($value)) {
+        $value = strval($value);
+
+        if (!$this->isOnlyNumericCharacters($value)) {
             return false;
         }
 
         if (!$this->hasAllowedLength($value)) {
             return false;
         }
-
-        $value = strval($value);
 
         return match (strlen($value)) {
             8, 13 => parent::isValid($value),
