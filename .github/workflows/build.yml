@@ -14,7 +14,7 @@ jobs:
     name: Testing on PHP ${{ matrix.php }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
