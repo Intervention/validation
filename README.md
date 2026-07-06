@@ -327,6 +327,18 @@ minus chars are not allowed at the beginning or end.
 
     public Intervention\Validation\Rules\Username::__construct()
 
+### VIN (Vehicle Identification Number)
+
+The field under validation must be a valid Vehicle identification number according to ISO-3779.
+
+    public Intervention\Validation\Rules\Vin::__construct(bool $checkDigit = false)
+
+#### Parameters
+
+**checkDigit**
+
+Optional verification according to the North American check system. Default `false`.
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To
