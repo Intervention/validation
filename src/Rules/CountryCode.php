@@ -73,7 +73,7 @@ class CountryCode extends AbstractRule
     /**
      * @throws InvalidArgumentException
      */
-    public function __construct(protected string $format = self::ALPHA2)
+    public function __construct(protected string $format = self::ALPHA2, protected bool $strict = true)
     {
         if (!in_array($this->format, [self::ALPHA2, self::ALPHA3, self::NUMERIC])) {
             throw new InvalidArgumentException('Invalid format.');
@@ -87,6 +87,12 @@ class CountryCode extends AbstractRule
      */
     public function isValid(mixed $value): bool
     {
-        return in_array(strval($value), self::VALUES[$this->format], strict: true);
+        $value = strval($value);
+
+        if ($this->strict === false) {
+            $value = strtoupper($value);
+        }
+
+        return in_array($value, self::VALUES[$this->format], strict: true);
     }
 }
