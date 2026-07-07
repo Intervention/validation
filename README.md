@@ -351,6 +351,18 @@ The field under validation must be a valid country code according to ISO 3166-1
 
 The country code has three different format `ALPHA2`, `ALPHA3` or `NUMERIC`. Select the format you want to check. Default `Iso3166::ALPHA2`.
 
+### Language Code (ISO 639-1)
+
+The field under validation must be a valid language code according to ISO ISO 639-1.
+
+    public Intervention\Validation\Rules\Iso3166::__construct(bool $strict = true)
+
+#### Parameters
+
+**strict**
+
+If `strict` is `true`, the language code must be passed in lowercase. Otherwise, the case doesn't matter.
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To
