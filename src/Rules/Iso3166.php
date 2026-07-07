@@ -70,6 +70,9 @@ class Iso3166 extends AbstractRule
         ],
     ];
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function __construct(protected string $format = self::ALPHA2)
     {
         if (!in_array($this->format, [self::ALPHA2, self::ALPHA3, self::NUMERIC])) {
