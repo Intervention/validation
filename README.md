@@ -339,6 +339,18 @@ The field under validation must be a valid Vehicle identification number accordi
 
 Optional verification according to the North American check system. Default `false`.
 
+### ISO 3166-1 Country Code
+
+The field under validation must be a valid country code according to ISO 3166-1
+
+    public Intervention\Validation\Rules\Iso3166::__construct(string $format = Iso3166::ALPHA2)
+
+#### Parameters
+
+**format**
+
+The country code has three different format `ALPHA2`, `ALPHA3` or `NUMERIC`. Select the format you want to check. Default `Iso3166::ALPHA2`.
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To
