@@ -7,7 +7,7 @@ namespace Intervention\Validation\Rules;
 use Intervention\Validation\AbstractRule;
 use InvalidArgumentException;
 
-class Iso3166 extends AbstractRule
+class CountryCode extends AbstractRule
 {
     public const ALPHA2 = 'alpha2';
     public const ALPHA3 = 'alpha3';
