@@ -39,4 +39,7 @@ return [
     'latitude' => ':attribute ei ole kelvollinen leveysaste.',
     'longitude' => ':attribute ei ole kelvollinen maantieteellinen pituusaste.',
     'latlng' => ':attribute ei ole kelvollinen maantieteellinen koordinaattipari.',
+    'vin' => ':attribute on oltava kelvollinen ajoneuvon tunnistenumero (VIN).',
+    'countrycode' => ':attribute on oltava kelvollinen maakoodi.',
+    'languagecode' => ':attribute on oltava kelvollinen kielikoodi.',
 ];

@@ -48,4 +48,7 @@ return [
     'latitude' => ':attribute n\'est pas une latitude valide.',
     'longitude' => ':attribute n\'est pas une longitude valide.',
     'latlng' => ':attribute n\'est pas une paire de coordonnées géographiques valables.',
+    'vin' => 'Le champ :attribute doit être un numéro d\'identification de véhicule (VIN) valide.',
+    'countrycode' => 'Le champ :attribute doit être un code de pays valide.',
+    'languagecode' => 'Le champ :attribute doit être un code de langue valide.',
 ];

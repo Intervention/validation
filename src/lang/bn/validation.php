@@ -33,4 +33,7 @@ return [
     'gtin' => 'এই :attribute টি একটি বৈধ গ্লোবাল ট্রেড আইটেম নম্বর নয় (GTIN).',
     'postalcode' => 'এই :attribute টি একটি বৈধ পোস্টাল কোড হতে হবে.',
     'mimetype' => 'এই :attribute টিতে একটি বৈধ ইন্টারনেট মিডিয়া টাইপ নেই (MIME-Type).',
+    'vin' => 'এই :attribute টি একটি বৈধ যানবাহন সনাক্তকরণ নম্বর (VIN) হতে হবে.',
+    'countrycode' => 'এই :attribute টি একটি বৈধ দেশ কোড হতে হবে.',
+    'languagecode' => 'এই :attribute টি একটি বৈধ ভাষা কোড হতে হবে.',
 ];

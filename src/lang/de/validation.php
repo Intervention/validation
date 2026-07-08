@@ -42,4 +42,7 @@ return [
     'latitude' => 'Der Wert :attribute enthält keine gültige geographische Breite.',
     'longitude' => 'Der Wert :attribute enthält keine gültige geographische Länge.',
     'latlng' => 'Der Wert :attribute ist kein gültiges geographisches Koordinatenpaar.',
+    'vin' => 'Der Wert :attribute muss eine gültige Fahrzeug-Identifizierungsnummer (VIN) enthalten.',
+    'countrycode' => 'Der Wert :attribute muss einen gültigen Ländercode enthalten.',
+    'languagecode' => 'Der Wert :attribute muss einen gültigen Sprachcode enthalten.',
 ];

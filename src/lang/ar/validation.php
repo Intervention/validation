@@ -33,4 +33,7 @@ return [
     'postalcode' => 'يجب أن تكون القيمة :attribute رمزًا بريديًا صالحًا.',
     'mimetype' => 'لا تحتوي القيمة :attribute على نوع وسائط إنترنت صالح (نوع MIME)',
     'semver' => 'القيمة :attribute ليست رقم إصدار بمعنى مواصفات الإصدار الدلالية.',
+    'vin' => 'يجب أن يكون :attribute رقم تعريف مركبة صالحًا (VIN).',
+    'countrycode' => 'يجب أن يكون :attribute رمز بلد صالحًا.',
+    'languagecode' => 'يجب أن يكون :attribute رمز لغة صالحًا.',
 ];

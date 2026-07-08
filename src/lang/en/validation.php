@@ -41,4 +41,7 @@ return [
     'latitude' => 'The value :attribute must be a valid geographical latitude.',
     'longitude' => 'The value :attribute must be a valid geographical longitude.',
     'latlng' => 'The value :attribute must be valid geographical coordinates.',
+    'vin' => 'The :attribute must be a valid Vehicle Identification Number (VIN).',
+    'countrycode' => 'The :attribute must be a valid country code.',
+    'languagecode' => 'The :attribute must be a valid language code.',
 ];

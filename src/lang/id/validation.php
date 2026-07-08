@@ -34,4 +34,7 @@ return [
     'postalcode' => 'Nilai :attribute harus berupa kode pos yang valid.',
     'mimetype' => 'Nilai :attribute tidak berisi Jenis Media Internet yang valid (jenis MIME).',
     'grid' => 'Nilai :attribute harus berupa Global Release Identifier (GRid) yang valid.',
+    'vin' => ':attribute harus berupa Nomor Identifikasi Kendaraan (VIN) yang valid.',
+    'countrycode' => ':attribute harus berupa kode negara yang valid.',
+    'languagecode' => ':attribute harus berupa kode bahasa yang valid.',
 ];
