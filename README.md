@@ -359,7 +359,7 @@ If `strict` is `true`, the language code must be passed in lowercase. Otherwise,
 
 The field under validation must be a valid language code according to ISO ISO 639-1.
 
-    public Intervention\Validation\Rules\Iso3166::__construct(bool $strict = true)
+    public Intervention\Validation\Rules\LanguageCode::__construct(bool $strict = true)
 
 #### Parameters
 
