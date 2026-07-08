@@ -42,4 +42,5 @@ return [
     'vin' => ':attribute on oltava kelvollinen ajoneuvon tunnistenumero (VIN).',
     'countrycode' => ':attribute on oltava kelvollinen maakoodi.',
     'languagecode' => ':attribute on oltava kelvollinen kielikoodi.',
+    'currencycode' => ':attribute on oltava kelvollinen valuuttakoodi.',
 ];

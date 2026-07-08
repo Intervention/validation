@@ -44,4 +44,5 @@ return [
     'vin' => 'The :attribute must be a valid Vehicle Identification Number (VIN).',
     'countrycode' => 'The :attribute must be a valid country code.',
     'languagecode' => 'The :attribute must be a valid language code.',
+    'currencycode' => 'The :attribute must be a valid currency code.',
 ];

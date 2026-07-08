@@ -51,4 +51,5 @@ return [
     'vin' => 'Le champ :attribute doit être un numéro d\'identification de véhicule (VIN) valide.',
     'countrycode' => 'Le champ :attribute doit être un code de pays valide.',
     'languagecode' => 'Le champ :attribute doit être un code de langue valide.',
+    'currencycode' => 'Le champ :attribute doit être un code de devise valide.',
 ];

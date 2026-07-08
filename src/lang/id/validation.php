@@ -37,4 +37,5 @@ return [
     'vin' => ':attribute harus berupa Nomor Identifikasi Kendaraan (VIN) yang valid.',
     'countrycode' => ':attribute harus berupa kode negara yang valid.',
     'languagecode' => ':attribute harus berupa kode bahasa yang valid.',
+    'currencycode' => ':attribute harus berupa kode mata uang yang valid.',
 ];

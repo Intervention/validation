@@ -343,17 +343,17 @@ Optional verification according to the North American check system. Default `fal
 
 The field under validation must be a valid country code according to ISO 3166-1.
 
-    public Intervention\Validation\Rules\CountryCode::__construct(string $format = Iso3166::ALPHA2, bool $strict = true)
+    public Intervention\Validation\Rules\CountryCode::__construct(string $format = CountryCode::ALPHA2, bool $strict = true)
 
 #### Parameters
 
 **format**
 
-The country code has three different format `ALPHA2`, `ALPHA3` or `NUMERIC`. Select the format you want to check. Default `CountryCode::ALPHA2`.
+The country code has three different formats `ALPHA2`, `ALPHA3` or `NUMERIC`. Select the format you want to check. Default `CountryCode::ALPHA2`.
 
 **strict**
 
-If `strict` is `true`, the language code must be passed in lowercase. Otherwise, the case doesn't matter.
+If `strict` is `true`, the language code must be passed in uppercase. Otherwise, the case doesn't matter.
 
 ### Language Code (ISO 639-1)
 
@@ -366,6 +366,22 @@ The field under validation must be a valid language code according to ISO ISO 63
 **strict**
 
 If `strict` is `true`, the language code must be passed in lowercase. Otherwise, the case doesn't matter.
+
+### Currency Code (ISO 4217)
+
+The field under validation must be a valid currency code according to ISO 4217.
+
+    public Intervention\Validation\Rules\CurrencyCode::__construct(string $format = CurrencyCode::ALPHA, bool $strict = true)
+
+#### Parameters
+
+**format**
+
+The currency code has two different formats `ALPHA` or `NUMERIC`. Select the format you want to check. Default `CurrencyCode::ALPHA`.
+
+**strict**
+
+If `strict` is `true`, the code must be passed in uppercase. Otherwise, the case doesn't matter.
 
 ## Development & Testing
 

@@ -45,4 +45,5 @@ return [
     'vin' => 'Der Wert :attribute muss eine gültige Fahrzeug-Identifizierungsnummer (VIN) enthalten.',
     'countrycode' => 'Der Wert :attribute muss einen gültigen Ländercode enthalten.',
     'languagecode' => 'Der Wert :attribute muss einen gültigen Sprachcode enthalten.',
+    'currencycode' => 'Der Wert :attribute muss einen gültigen Währungscode enthalten.',
 ];
