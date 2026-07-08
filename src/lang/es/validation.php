@@ -43,4 +43,5 @@ return [
     'vin' => ':attribute debe ser un Número de Identificación de Vehículo (VIN) válido.',
     'countrycode' => ':attribute debe ser un código de país válido.',
     'languagecode' => ':attribute debe ser un código de idioma válido.',
+    'currencycode' => ':attribute debe ser un código de moneda válido.',
 ];

@@ -43,4 +43,5 @@ return [
     'vin' => ':attribute moet een geldig voertuigidentificatienummer (VIN) zijn.',
     'countrycode' => ':attribute moet een geldige landcode zijn.',
     'languagecode' => ':attribute moet een geldige taalcode zijn.',
+    'currencycode' => ':attribute moet een geldige valutacode zijn.',
 ];

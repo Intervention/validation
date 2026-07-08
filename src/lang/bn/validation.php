@@ -36,4 +36,5 @@ return [
     'vin' => 'এই :attribute টি একটি বৈধ যানবাহন সনাক্তকরণ নম্বর (VIN) হতে হবে.',
     'countrycode' => 'এই :attribute টি একটি বৈধ দেশ কোড হতে হবে.',
     'languagecode' => 'এই :attribute টি একটি বৈধ ভাষা কোড হতে হবে.',
+    'currencycode' => 'এই :attribute টি একটি বৈধ মুদ্রা কোড হতে হবে.',
 ];
