@@ -44,4 +44,5 @@ return [
     'countrycode' => ':attribute debe ser un código de país válido.',
     'languagecode' => ':attribute debe ser un código de idioma válido.',
     'currencycode' => ':attribute debe ser un código de moneda válido.',
+    'languagetag' => ':attribute debe ser una etiqueta de idioma válida.',
 ];

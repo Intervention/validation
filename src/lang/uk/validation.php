@@ -44,4 +44,5 @@ return [
     'countrycode' => 'Поле :attribute повинно містити дійсний код країни.',
     'languagecode' => 'Поле :attribute повинно містити дійсний код мови.',
     'currencycode' => 'Поле :attribute повинно містити дійсний код валюти.',
+    'languagetag' => 'Поле :attribute повинно містити дійсний тег мови.',
 ];

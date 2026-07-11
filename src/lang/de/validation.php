@@ -46,4 +46,5 @@ return [
     'countrycode' => 'Der Wert :attribute muss einen gültigen Ländercode enthalten.',
     'languagecode' => 'Der Wert :attribute muss einen gültigen Sprachcode enthalten.',
     'currencycode' => 'Der Wert :attribute muss einen gültigen Währungscode enthalten.',
+    'languagetag' => 'Der Wert :attribute muss einen gültigen Sprach-Tag enthalten.',
 ];

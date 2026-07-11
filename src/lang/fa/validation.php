@@ -37,4 +37,5 @@ return [
     'countrycode' => 'مقدار :attribute باید یک کد کشور معتبر باشد.',
     'languagecode' => 'مقدار :attribute باید یک کد زبان معتبر باشد.',
     'currencycode' => 'مقدار :attribute باید یک کد واحد پول معتبر باشد.',
+    'languagetag' => 'مقدار :attribute باید یک برچسب زبان معتبر باشد.',
 ];

@@ -383,6 +383,42 @@ The currency code has two different formats `ALPHA` or `NUMERIC`. Select the for
 
 If `strict` is `true`, the code must be passed in uppercase. Otherwise, the case doesn't matter.
 
+### Language Tag (BCP 47)
+
+The field under validation must be a valid IETF language tag according to BCP 47 standard.
+
+    public Intervention\Validation\Rules\LanguageTag::__construct(string $delimiter = '-', bool $allowScript = false, bool $allowRegion = true, bool $allowVariants = false, bool $allowExtensions = false, bool $allowPrivateUse = false, bool $strict = true)
+
+#### Parameters
+
+**delimiter**
+
+Define the delimiter used for validation. Default `-`.
+
+**allowScript**
+
+Specify whether the script subtag is allowed during validation. Default `false.`
+
+**allowRegion**
+
+Specify whether the region subtag is allowed during validation. Default `true.`
+
+**allowVariants**
+
+Specify whether variant subtags are allowed during validation. Default `false.`
+
+**allowExtensions**
+
+Specify whether extension subtags are allowed during validation. Default `false.`
+
+**allowPrivateUse**
+
+Specify whether private use subtags are allowed during validation. Default `false.`
+
+**strict**
+
+If `strict` is `true`, the subtags must be in the correct case. Otherwise, the case doesn't matter. Default `true`.
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To

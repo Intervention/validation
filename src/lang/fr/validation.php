@@ -52,4 +52,5 @@ return [
     'countrycode' => 'Le champ :attribute doit être un code de pays valide.',
     'languagecode' => 'Le champ :attribute doit être un code de langue valide.',
     'currencycode' => 'Le champ :attribute doit être un code de devise valide.',
+    'languagetag' => 'Le champ :attribute doit être un tag de langue valide.',
 ];

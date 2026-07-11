@@ -43,4 +43,5 @@ return [
     'countrycode' => ':attribute on oltava kelvollinen maakoodi.',
     'languagecode' => ':attribute on oltava kelvollinen kielikoodi.',
     'currencycode' => ':attribute on oltava kelvollinen valuuttakoodi.',
+    'languagetag' => ':attribute on oltava kelvollinen kielitunniste.',
 ];

@@ -37,4 +37,5 @@ return [
     'countrycode' => 'يجب أن يكون :attribute رمز بلد صالحًا.',
     'languagecode' => 'يجب أن يكون :attribute رمز لغة صالحًا.',
     'currencycode' => 'يجب أن يكون :attribute رمز عملة صالحًا.',
+    'languagetag' => 'يجب أن يكون :attribute علامة لغة صالحة.',
 ];

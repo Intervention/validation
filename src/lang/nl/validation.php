@@ -44,4 +44,5 @@ return [
     'countrycode' => ':attribute moet een geldige landcode zijn.',
     'languagecode' => ':attribute moet een geldige taalcode zijn.',
     'currencycode' => ':attribute moet een geldige valutacode zijn.',
+    'languagetag' => ':attribute moet een geldige taaltag zijn.',
 ];

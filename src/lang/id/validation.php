@@ -38,4 +38,5 @@ return [
     'countrycode' => ':attribute harus berupa kode negara yang valid.',
     'languagecode' => ':attribute harus berupa kode bahasa yang valid.',
     'currencycode' => ':attribute harus berupa kode mata uang yang valid.',
+    'languagetag' => ':attribute harus berupa tag bahasa yang valid.',
 ];
