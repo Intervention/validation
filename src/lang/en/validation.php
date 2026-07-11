@@ -45,4 +45,5 @@ return [
     'countrycode' => 'The :attribute must be a valid country code.',
     'languagecode' => 'The :attribute must be a valid language code.',
     'currencycode' => 'The :attribute must be a valid currency code.',
+    'languagetag' => 'The :attribute must be a valid language tag.',
 ];
