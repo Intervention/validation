@@ -327,6 +327,98 @@ minus chars are not allowed at the beginning or end.
 
     public Intervention\Validation\Rules\Username::__construct()
 
+### VIN (Vehicle Identification Number)
+
+The field under validation must be a valid Vehicle identification number according to ISO-3779.
+
+    public Intervention\Validation\Rules\Vin::__construct(bool $checkDigit = false)
+
+#### Parameters
+
+**checkDigit**
+
+Optional verification according to the North American check system. Default `false`.
+
+### Country Code (ISO 3166-1)
+
+The field under validation must be a valid country code according to ISO 3166-1.
+
+    public Intervention\Validation\Rules\CountryCode::__construct(string $format = CountryCode::ALPHA2, bool $strict = true)
+
+#### Parameters
+
+**format**
+
+The country code has three different formats `ALPHA2`, `ALPHA3` or `NUMERIC`. Select the format you want to check. Default `CountryCode::ALPHA2`.
+
+**strict**
+
+If `strict` is `true`, the language code must be passed in uppercase. Otherwise, the case doesn't matter.
+
+### Language Code (ISO 639-1)
+
+The field under validation must be a valid language code according to ISO ISO 639-1.
+
+    public Intervention\Validation\Rules\LanguageCode::__construct(bool $strict = true)
+
+#### Parameters
+
+**strict**
+
+If `strict` is `true`, the language code must be passed in lowercase. Otherwise, the case doesn't matter.
+
+### Currency Code (ISO 4217)
+
+The field under validation must be a valid currency code according to ISO 4217.
+
+    public Intervention\Validation\Rules\CurrencyCode::__construct(string $format = CurrencyCode::ALPHA, bool $strict = true)
+
+#### Parameters
+
+**format**
+
+The currency code has two different formats `ALPHA` or `NUMERIC`. Select the format you want to check. Default `CurrencyCode::ALPHA`.
+
+**strict**
+
+If `strict` is `true`, the code must be passed in uppercase. Otherwise, the case doesn't matter.
+
+### Language Tag (BCP 47)
+
+The field under validation must be a valid IETF language tag according to BCP 47 standard.
+
+    public Intervention\Validation\Rules\LanguageTag::__construct(string $delimiter = '-', bool $allowScript = false, bool $allowRegion = true, bool $allowVariants = false, bool $allowExtensions = false, bool $allowPrivateUse = false, bool $strict = true)
+
+#### Parameters
+
+**delimiter**
+
+Define the delimiter used for validation. Default `-`.
+
+**allowScript**
+
+Specify whether the script subtag is allowed during validation. Default `false.`
+
+**allowRegion**
+
+Specify whether the region subtag is allowed during validation. Default `true.`
+
+**allowVariants**
+
+Specify whether variant subtags are allowed during validation. Default `false.`
+
+**allowExtensions**
+
+Specify whether extension subtags are allowed during validation. Default `false.`
+
+**allowPrivateUse**
+
+Specify whether private use subtags are allowed during validation. Default `false.`
+
+**strict**
+
+If `strict` is `true`, the subtags must be in the correct case. Otherwise, the case doesn't matter. Default `true`.
+
 ## Development & Testing
 
 With this package comes a Docker image to build a test suite container. To

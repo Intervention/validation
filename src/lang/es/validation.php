@@ -40,4 +40,9 @@ return [
     'latitude' => ':attribute no es una latitud válida.',
     'longitude' => ':attribute no es una longitud geográfica válida.',
     'latlng' => ':attribute no es un par de coordenadas geográficas válido.',
+    'vin' => ':attribute debe ser un Número de Identificación de Vehículo (VIN) válido.',
+    'countrycode' => ':attribute debe ser un código de país válido.',
+    'languagecode' => ':attribute debe ser un código de idioma válido.',
+    'currencycode' => ':attribute debe ser un código de moneda válido.',
+    'languagetag' => ':attribute debe ser una etiqueta de idioma válida.',
 ];

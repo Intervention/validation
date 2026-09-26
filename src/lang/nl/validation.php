@@ -40,4 +40,9 @@ return [
     'latitude' => ':attribute is geen geldige breedtegraad.',
     'longitude' => ':attribute is geen geldige lengtegraad.',
     'latlng' => ':attribute geen geldig geografisch coördinatenpaar is.',
+    'vin' => ':attribute moet een geldig voertuigidentificatienummer (VIN) zijn.',
+    'countrycode' => ':attribute moet een geldige landcode zijn.',
+    'languagecode' => ':attribute moet een geldige taalcode zijn.',
+    'currencycode' => ':attribute moet een geldige valutacode zijn.',
+    'languagetag' => ':attribute moet een geldige taaltag zijn.',
 ];

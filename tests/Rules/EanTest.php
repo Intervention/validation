@@ -68,6 +68,7 @@ final class EanTest extends TestCase
         yield [false, '40123455'];
         yield [false, '96385074'];
         yield [false, '65833254'];
+        yield [false, '004.03996E+12'];
     }
 
     public static function dataProviderEan8(): Generator

@@ -33,4 +33,9 @@ return [
     'gtin' => 'مقدار :attribute باید یک GTIN معتبر باشد.',
     'postalcode' => 'مقدار :attribute باید یک کد پستی معتبر باشد.',
     'mimetype' => 'مقدار :attribute باید یک نوع رسانه اینترنتی معتبر باشد.',
+    'vin' => 'مقدار :attribute باید یک شماره شناسایی خودرو (VIN) معتبر باشد.',
+    'countrycode' => 'مقدار :attribute باید یک کد کشور معتبر باشد.',
+    'languagecode' => 'مقدار :attribute باید یک کد زبان معتبر باشد.',
+    'currencycode' => 'مقدار :attribute باید یک کد واحد پول معتبر باشد.',
+    'languagetag' => 'مقدار :attribute باید یک برچسب زبان معتبر باشد.',
 ];
